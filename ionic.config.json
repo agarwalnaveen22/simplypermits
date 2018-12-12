@@ -1,0 +1,7 @@
+{
+  "name": "SimplyPermits-LPR",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

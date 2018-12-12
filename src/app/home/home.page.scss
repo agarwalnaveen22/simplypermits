@@ -1,0 +1,76 @@
+ion-row {
+    border: 0.5px solid;
+    margin-top: 5px;
+}
+
+
+
+.scanImage {
+    width: 60%;
+    margin: 15% auto;
+}
+@media screen and (min-width : 576px) {
+    .scanImage {
+        width: 90%;
+        margin: 5% auto;
+    }
+}
+.hintIcon {
+    background: #28223d;
+    margin-bottom: 5%;
+    float: left;
+    width: 100%;
+    ion-icon.hydrated {
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin: 0;
+        width: 2em;
+        height: 100%;
+        background: #5f2877;
+    }
+    .sc-ion-label-md-h {
+        margin-left: 3em;
+    }
+}
+
+.ad-search {
+    float: left;
+    width: 100%;
+    margin-bottom: 5%;
+    background: transparent !important;
+    position: relative;
+    .sc-ion-label-md-h { 
+        padding-left: 0 !important;
+        left: 0;
+        z-index: 9;
+        position: absolute;
+    }
+}
+
+
+
+
+ion-select {
+    background: #2c2649;
+  }
+
+  ion-button.logout-btn::before {
+    content: "Logout";
+    position: absolute;
+    text-align: center;
+    display: block;
+    color: #FFF;
+    left: 0;
+    right: 0;
+    top: .25em;
+}
+ion-button.logout-btn { 
+    width: 6em; 
+    position: relative;
+    ion-icon{
+        margin-top: 1em;
+    }
+
+}
+

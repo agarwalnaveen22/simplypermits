@@ -1,0 +1,25 @@
+.image_preview {
+    --padding-end: 0;
+    --padding-start: 0;
+    --padding-bottom: 0;
+    --padding-top: 0;
+    --min-height: aut0;
+    ion-buttons {
+        width: 50%;
+        float: left;
+        --padding-end: 0;
+        --padding-start: 0;
+        margin-left: 0;
+        margin-right: 0;
+        ion-button {
+            width: 100%;
+            text-align: center;
+        }
+    }
+    ion-buttons.btn_retake{
+        background: #140d33;
+    }
+    ion-buttons.search_permit{
+        background: #f26825;
+    }
+}

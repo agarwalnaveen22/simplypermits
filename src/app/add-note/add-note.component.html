@@ -1,0 +1,37 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons class="logoHeader" slot="start" (click)="closeModal(0)">
+        <ion-button>
+          <img [src]="appLogo" />
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button>
+          <ion-label>ADD NOTE</ion-label>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content padding text-center>
+
+  <ion-item class="description_area">
+    <ion-textarea rows="21" [(ngModel)]="description" placeholder="Add note here..."></ion-textarea>
+  </ion-item>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar class="footer_add_note" >
+      <ion-buttons class="add_note_btn_cancel" (click)="closeModal(1)"  text-center slot="start">
+        <ion-button>
+          <ion-label>CANCEL</ion-label>
+        </ion-button>
+      </ion-buttons>
+      
+      <ion-buttons class="add_note_btn_submit" text-center slot="end" (click)="addNotes()">
+        <ion-button>
+          <ion-label>SUBMIT</ion-label>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>

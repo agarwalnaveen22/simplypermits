@@ -1,0 +1,120 @@
+.Cancelled {
+    background: #31092d;
+    ion-item.list-header {
+        background: #9b1f60;
+        ion-label {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
+    .list-header ion-label:nth-child(2) {
+        text-align: right;
+        font-size: 1.4em;
+        text-transform: uppercase;
+    }
+    ion-item.list-footer {
+        background: #521038;
+        text-align: center;
+    }
+    .list-inner-box {
+        padding-top: 0;
+        ion-item {
+            min-height: 30px;
+            height: 30px;
+            --padding-start: 0;
+            ion-label {
+                margin-top: 0;
+                margin-bottom: 0;
+                color: #FFF !important;
+                font-size: 1em;
+            }
+        }
+    }
+    
+}
+
+.Active {
+    background: #3e141a;
+    ion-item.list-header {
+        background: #f26825;
+        ion-label {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
+    .list-header ion-label:nth-child(2) {
+        text-align: right;
+        font-size: 1.4em;
+        text-transform: uppercase;
+        font-family: open sans;
+    }
+    ion-item.list-footer {
+        background: #7e341b;
+        text-align: center;
+    }
+    .list-inner-box {
+        padding-top: 0;
+        ion-item {
+            min-height: 30px;
+            height: 30px;
+            --padding-start: 0;
+            ion-label {
+                margin-top: 0;
+                margin-bottom: 0;
+                color: #FFF !important;
+                font-size: 1em;
+            }
+        }
+    }
+    
+}
+
+.footerBack {
+    --background: #201553;
+}
+.user_search_data {
+    ion-item.user_search_data_name {
+        background: #cb3125;
+    }
+    ion-card-content.user_search_data_permits {
+        background: #2b0f13;
+        .inactive {
+            background: #2c0f13;
+            margin-bottom: 1em;
+            padding: 0;
+            ion-item.permits_header {
+                background: #9b1f60;
+                color: #FFF;
+            }
+            ion-item.list-footer {
+                background: #521038;
+                text-align: center;
+            }
+            ion-item {
+                background: #1f051c;
+                ion-label{
+                    color:#FFFFFF;
+                }
+            }
+        }
+        .active {
+            background: #2c0f13;
+            margin-bottom: 1em;
+            padding: 0;
+            ion-item.permits_header {
+                background: #f26825;
+                color: #FFF;
+            }
+            ion-item.list-footer {
+                background: #7e341b;
+                text-align: center;
+            }
+            ion-item {
+                background: #1f051c;
+                ion-label{
+                    color:#FFFFFF;
+                }
+            }
+        }
+    }
+}

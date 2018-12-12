@@ -1,0 +1,17 @@
+ion-toolbar {
+    --background: #1a1142;
+}
+.view_permit_notes{
+    background: #17082d;
+    margin-bottom: 2em;
+    .header {
+        background: #1b1549;
+        .date_block {
+            margin: 0;
+        }
+    }
+    ion-card-content {
+        color: #FFFFFF;
+        text-align: left;
+    }
+}

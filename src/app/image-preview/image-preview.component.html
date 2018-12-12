@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons class="logoHeader" slot="start">
+        <ion-button>
+          <img [src]="appLogo" />
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button>
+          <ion-label>CONFIRM PHOTO</ion-label>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content padding text-center>
+
+  <ion-item>
+    <img [src]="selectedImage" style="width: 300px;" />
+  </ion-item>
+</ion-content>
+
+
+<ion-footer>
+    <ion-toolbar class="image_preview" >
+      <ion-buttons class="btn_retake"  (click)="closeModal(0)"  text-center slot="start">
+        <ion-button>
+          <ion-label>RETAKE PHOTO</ion-label>
+        </ion-button>
+      </ion-buttons>
+      
+      <ion-buttons class="search_permit"  text-center slot="end" (click)="closeModal(1)">
+        <ion-button>
+          <ion-label>SEARCH PERMITS</ion-label>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>

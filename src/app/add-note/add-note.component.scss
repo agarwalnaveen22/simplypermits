@@ -1,0 +1,33 @@
+.description_area { 
+    background: #191242;
+    height: 100%;
+    ion-textarea {
+        color: #FFF;
+        height: 100%;
+    }
+}
+.footer_add_note {
+    --padding-end: 0;
+    --padding-start: 0;
+    --padding-bottom: 0;
+    --padding-top: 0;
+    --min-height: aut0;
+    ion-buttons {
+        width: 50%;
+        float: left;
+        --padding-end: 0;
+        --padding-start: 0;
+        margin-left: 0;
+        margin-right: 0;
+        ion-button {
+            width: 100%;
+            text-align: center;
+        }
+    }
+    ion-buttons.add_note_btn_submit{
+        background: #9b1f60;
+    }
+    ion-buttons.add_note_btn_cancel{
+        background: #191242;
+    }
+}

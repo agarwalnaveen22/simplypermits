@@ -1,0 +1,39 @@
+<ion-content padding>
+
+    <ion-grid>
+        <ion-row>
+    
+            <ion-col size="12" size-sm="6" size-md="6" size-lg="6" size-xl="6">
+                <ion-item>
+                    <img class="logoImg" [src]="appLogo" />
+                  </ion-item>
+            </ion-col>
+            <ion-col size="12" size-sm="6" size-md="6" size-lg="6" size-xl="6">
+                <ion-item class="margin-bottom" margin-top>
+                    <ion-icon slot="start" name="person"></ion-icon>
+                    <ion-input [(ngModel)]="username" placeholder="USERNAME OR EMAIL ADDRESS"></ion-input>
+                  </ion-item>
+              
+                  <ion-item class="margin-bottom">
+                    <ion-icon slot="start" name="lock"></ion-icon>
+                    <ion-input [(ngModel)]="password" type="password" placeholder="PASSWORD"></ion-input>
+              
+                  </ion-item>
+              
+                  <ion-item class="margin-bottom">
+                    <ion-icon class="select-pin" slot="start" name="pin"></ion-icon>
+                    <ion-select [(ngModel)]="city" interface="popover" (ionChange)="changeApiUrl()" placeholder="SELECT CITY">
+                      <ion-select-option *ngFor="let city of cities" value="{{city.city_api_url}}|{{city.forgot_password_link}}">{{city.city_name}}</ion-select-option>
+                    </ion-select>
+                  </ion-item>
+              
+                  <ion-button class="loginButton" expand="block" size="large" (click)="login()">LOGIN</ion-button>
+                  <ion-button class="forget-link" (click)="openForgotPassword()">FORGOT YOUR PASSWORD?</ion-button>
+            </ion-col>
+    
+        </ion-row>
+        </ion-grid> 
+  
+
+
+</ion-content>

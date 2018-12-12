@@ -1,0 +1,105 @@
+<ion-header text-left>
+  <ion-toolbar>
+    <ion-buttons class="logoHeader" (click)="goToHome()" slot="start">
+      <ion-button>
+        <img [src]="appLogo" />
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-label>SEARCH RESULTS</ion-label>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher slot="fixed" (ionRefresh)="refreshData($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div *ngIf="vehicleData.length>0">
+    <ion-card *ngFor="let vehicleInfo of vehicleData" [ngClass]="vehicleInfo.status=='Active'?'Active':'Cancelled'">
+
+
+      <ion-item class="list-header">
+        <ion-label>#{{vehicleInfo.permit_id}}</ion-label>
+        <ion-label slot="end">{{vehicleInfo.status}}</ion-label>
+      </ion-item>
+
+      <ion-card-content text-center class="list-inner-box">
+        <ion-item class="in-list">
+          <ion-label start>{{vehicleInfo.first_name}} {{vehicleInfo.last_name}}</ion-label>
+          <ion-label end color="medium" text-wrap>
+            <ion-icon name="ios-home"></ion-icon>
+            {{vehicleInfo.address_2}}
+          </ion-label>
+        </ion-item>
+        <ion-item *ngFor="let attributeData of vehicleInfo.attribute_data">
+          <ion-label start>{{attributeData.attribute_name}}</ion-label>
+          <ion-label end color="medium" text-wrap>{{attributeData.attribute_value}}</ion-label>
+        </ion-item>
+        <ion-item *ngFor="let vehicleLicenseInfo of vehicleInfo.vehicle_info">
+          <ion-label start>License Plate</ion-label>
+          <ion-label end color="medium" text-wrap>{{vehicleLicenseInfo.license_plate}}
+            ({{vehicleLicenseInfo.license_plate_state}})</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label start>Start Date</ion-label>
+          <ion-label end color="medium">{{vehicleInfo.start_date}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label start>End Date</ion-label>
+          <ion-label end color="medium">{{vehicleInfo.end_date}}</ion-label>
+        </ion-item>
+        
+
+      </ion-card-content>
+      <ion-item class="list-footer" href="/permit-detail/{{vehicleInfo.permit_id}}" routerDirection="forward">
+        <ion-label>PERMIT/VEHICLE DETAILS</ion-label>
+      </ion-item>
+    </ion-card>
+  </div>
+
+
+  <div *ngIf="userData.length>0">
+    <ion-card *ngFor="let userInfo of userData" class="user_search_data">
+      <ion-item class="user_search_data_name">
+        <ion-label>{{userInfo.first_name}} {{userInfo.last_name}}</ion-label>
+      </ion-item>
+
+      <ion-card-content text-center class="user_search_data_permits">
+        <ion-grid>
+          <ion-row *ngFor="let permits of userInfo.permit_data">
+            <ion-col [ngClass]="permits.status=='Active'?'active':'inactive'" text-center>
+              <ion-item class="permits_header">
+                <ion-label start>#{{permits.permit_id}}</ion-label>
+                <ion-label text-end end color="medium">{{permits.status}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label start>License Plate</ion-label>
+                <ion-label text-end text-wrap end color="medium">{{permits.license_plate}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label start>License Plate State</ion-label>
+                <ion-label text-end text-wrap end color="medium">{{permits.license_plate_state}}</ion-label>
+              </ion-item>
+              <ion-item class="list-footer" href="/permit-detail/{{permits.permit_id}}" routerDirection="forward">
+                <ion-label>PERMIT/VEHICLE DETAILS</ion-label>
+              </ion-item>
+            </ion-col>
+
+          </ion-row>
+
+
+        </ion-grid>
+      </ion-card-content>
+
+    </ion-card>
+  </div>
+</ion-content>
+
+<ion-footer (click)="goBack()">
+  <ion-toolbar class="footerBack">
+    <ion-title text-center>BACK</ion-title>
+  </ion-toolbar>
+</ion-footer>

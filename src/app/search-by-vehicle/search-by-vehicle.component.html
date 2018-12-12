@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons class="logoHeader" slot="start" (click)="closeModal(0)">
+      <ion-button>
+        <img slot="start" [src]="appLogo" />
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Search By Vehicle</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal(0)">
+        <ion-icon class="logoutIcon" slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding text-center>
+
+  <ion-item class="margin-bottom" margin-top>
+    <ion-icon slot="start" name="car"></ion-icon>
+    <ion-input [(ngModel)]="make" placeholder="Make"></ion-input>
+  </ion-item>
+
+  <ion-item class="margin-bottom">
+    <ion-icon slot="start" name="car"></ion-icon>
+    <ion-input [(ngModel)]="model" placeholder="Model"></ion-input>
+  </ion-item>
+
+  <ion-item class="margin-bottom">
+    <ion-icon slot="start" name="time"></ion-icon>
+    <ion-input [(ngModel)]="year" type="number" placeholder="Year"></ion-input>
+  </ion-item>
+
+  <ion-item class="margin-bottom">
+    <ion-icon slot="start" name="disc"></ion-icon>
+    <ion-input [(ngModel)]="vin" placeholder="Vin"></ion-input>
+  </ion-item>
+
+  <ion-item class="margin-bottom">
+    <ion-icon slot="start" name="car"></ion-icon>
+    <ion-input [(ngModel)]="plate" placeholder="Plate"></ion-input>
+  </ion-item>
+
+  <ion-button class="loginButton" expand="block" size="large" (click)="closeModal(1)">Search</ion-button>
+
+</ion-content>

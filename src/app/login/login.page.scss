@@ -1,0 +1,33 @@
+
+
+
+
+.item-interactive.sc-ion-label-md-h, .item-interactive .sc-ion-label-md-h {
+    z-index: 9;
+}
+.input-box {
+    position: relative;
+}
+
+.select-pin { margin-top: 0;}
+
+.logoImg {
+    max-width: 85% !important;
+    margin: 0 auto;
+}
+
+.forget-link {
+    --box-shadow: none !important;
+    box-shadow: none !important;
+}
+@media screen and (min-width : 576px) {
+    .logoImg {
+        max-width: 100% !important;
+        margin: 0 auto;
+    }
+
+    .loginButton {
+        margin-top: 25px;
+    }
+}
+
