@@ -22,12 +22,12 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col  size="12" size-sm="5" size-md="5" size-lg="5" size-xl="5">
+      <ion-col  size="12" [attr.size-sm]="colSize1" [attr.size-md]="colSize1" [attr.size-lg]="colSize1" [attr.size-xl]="colSize1">
         <ion-item (click)="takePicture()">
           <img class="scanImage" [src]="scanImage" />
         </ion-item>
       </ion-col>
-      <ion-col  size="12" size-sm="7" size-md="7" size-lg="7" size-xl="7">
+      <ion-col  size="12" [attr.size-sm]="colSize2" [attr.size-md]="colSize2" [attr.size-lg]="colSize2" [attr.size-xl]="colSize2">
         <ion-item class="ad-search">
           <ion-label>ADVANCED SEARCH</ion-label>
         </ion-item>

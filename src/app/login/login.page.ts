@@ -2,6 +2,7 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { RestService } from '../rest.service';
 import { NavController } from '@ionic/angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
 @Component({
   selector: 'app-login',
@@ -15,16 +16,34 @@ export class LoginPage implements OnInit {
   city: string = '';
   forgotPasswordLink: string = '';
   appLogo: string = 'assets/icon/login_logo.png';
+  deviceMode: string = '';
+  colSize: number = 12;
   constructor(
     private restService: RestService,
     private navCtrl: NavController,
     private zone: NgZone,
-    private iab: InAppBrowser
+    private iab: InAppBrowser,
+    private screenOrientation: ScreenOrientation
   ) {
   }
 
   ngOnInit() {
     this.getCities();
+    this.deviceMode = this.screenOrientation.type;
+    if (this.deviceMode == 'landscape-primary' || this.deviceMode == 'landscape-secondary') {
+      this.colSize = 6;
+    }
+
+    this.screenOrientation.onChange().subscribe(
+      () => {
+        this.deviceMode = this.screenOrientation.type;
+        if (this.deviceMode == 'landscape-primary' || this.deviceMode == 'landscape-secondary') {
+          this.colSize = 6;
+        } else {
+          this.colSize = 12;
+        }
+      }
+    );
   }
 
   async changeApiUrl() {
@@ -39,7 +58,7 @@ export class LoginPage implements OnInit {
 
   getCities() {
     this.restService.showLoader('Loading cities...');
-    
+
     let requestData = {
       sp_action: "sp_lpr_cities_list"
     }

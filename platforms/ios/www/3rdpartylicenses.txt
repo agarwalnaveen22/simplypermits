@@ -133,6 +133,10 @@ MIT
 MIT
 MIT
 
+@ionic-native/device@5.0.0-beta.23
+MIT
+MIT
+
 @ionic-native/file-transfer@5.0.0-beta.17
 MIT
 MIT
@@ -146,6 +150,10 @@ MIT
 MIT
 
 @ionic-native/in-app-browser@5.0.0-beta.21
+MIT
+MIT
+
+@ionic-native/screen-orientation@5.0.0-beta.23
 MIT
 MIT
 

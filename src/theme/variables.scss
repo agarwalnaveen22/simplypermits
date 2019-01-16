@@ -140,7 +140,7 @@ ion-content {
     width: 90%;
     /* position: absolute; */
     right: 0;
-    margin-left: 21px;
+    margin-left: 9%;
   }
 }
 
@@ -296,7 +296,15 @@ ion-row {
   }
   .margin-bottom {
     ion-select {
-      margin-left: 25px;
+      margin-left: 15%;
     }
+  }
+}
+
+@media screen and (min-width : 768px) {
+  .margin-bottom {
+      ion-select {
+        margin-left: 14%;
+      }
   }
 }

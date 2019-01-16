@@ -61,7 +61,7 @@ var HomePageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons class=\"logoHeader\" slot=\"start\">\n      <ion-button>\n        <img slot=\"start\" [src]=\"appLogo\" />\n      </ion-button>\n    </ion-buttons>\n    <ion-select [(ngModel)]=\"property\" interface=\"popover\" placeholder=\"Select One\">\n      <ion-select-option *ngFor=\"let property of properties\" value=\"{{property.id}}\">{{property.name}}</ion-select-option>\n    </ion-select>\n\n\n    <ion-buttons slot=\"end\">\n      <ion-button class=\"logout-btn\" (click)=\"logout()\">\n        <ion-icon class=\"logoutIcon\" slot=\"icon-only\" name=\"ios-log-out\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n\n  <ion-grid>\n    <ion-row>\n      <ion-col  size=\"12\" size-sm=\"5\" size-md=\"5\" size-lg=\"5\" size-xl=\"5\">\n        <ion-item (click)=\"takePicture()\">\n          <img class=\"scanImage\" [src]=\"scanImage\" />\n        </ion-item>\n      </ion-col>\n      <ion-col  size=\"12\" size-sm=\"7\" size-md=\"7\" size-lg=\"7\" size-xl=\"7\">\n        <ion-item class=\"ad-search\">\n          <ion-label>ADVANCED SEARCH</ion-label>\n        </ion-item>\n\n        <ion-item class=\"hintIcon\" (click)=\"viewVehicleSearchForm()\">\n          <ion-icon slot=\"start\" name=\"car\"></ion-icon>\n          <ion-label>SEARCH PERMITS BY VEHICLE</ion-label>\n        </ion-item>\n\n        <ion-item class=\"hintIcon\" (click)=\"viewUserSearchForm()\" *ngIf=\"!isEnforcement\">\n          <ion-icon slot=\"start\" name=\"people\"></ion-icon>\n          <ion-label>SEARCH PERMITS BY USER</ion-label>\n        </ion-item>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n\n\n</ion-content>"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons class=\"logoHeader\" slot=\"start\">\n      <ion-button>\n        <img slot=\"start\" [src]=\"appLogo\" />\n      </ion-button>\n    </ion-buttons>\n    <ion-select [(ngModel)]=\"property\" interface=\"popover\" placeholder=\"Select One\">\n      <ion-select-option *ngFor=\"let property of properties\" value=\"{{property.id}}\">{{property.name}}</ion-select-option>\n    </ion-select>\n\n\n    <ion-buttons slot=\"end\">\n      <ion-button class=\"logout-btn\" (click)=\"logout()\">\n        <ion-icon class=\"logoutIcon\" slot=\"icon-only\" name=\"ios-log-out\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n\n  <ion-grid>\n    <ion-row>\n      <ion-col  size=\"12\" [attr.size-sm]=\"colSize1\" [attr.size-md]=\"colSize1\" [attr.size-lg]=\"colSize1\" [attr.size-xl]=\"colSize1\">\n        <ion-item (click)=\"takePicture()\">\n          <img class=\"scanImage\" [src]=\"scanImage\" />\n        </ion-item>\n      </ion-col>\n      <ion-col  size=\"12\" [attr.size-sm]=\"colSize2\" [attr.size-md]=\"colSize2\" [attr.size-lg]=\"colSize2\" [attr.size-xl]=\"colSize2\">\n        <ion-item class=\"ad-search\">\n          <ion-label>ADVANCED SEARCH</ion-label>\n        </ion-item>\n\n        <ion-item class=\"hintIcon\" (click)=\"viewVehicleSearchForm()\">\n          <ion-icon slot=\"start\" name=\"car\"></ion-icon>\n          <ion-label>SEARCH PERMITS BY VEHICLE</ion-label>\n        </ion-item>\n\n        <ion-item class=\"hintIcon\" (click)=\"viewUserSearchForm()\" *ngIf=\"!isEnforcement\">\n          <ion-icon slot=\"start\" name=\"people\"></ion-icon>\n          <ion-label>SEARCH PERMITS BY USER</ion-label>\n        </ion-item>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n\n\n</ion-content>"
 
 /***/ }),
 
@@ -94,6 +94,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _rest_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../rest.service */ "./src/app/rest.service.ts");
 /* harmony import */ var _search_by_vehicle_search_by_vehicle_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../search-by-vehicle/search-by-vehicle.component */ "./src/app/search-by-vehicle/search-by-vehicle.component.ts");
 /* harmony import */ var _search_by_user_search_by_user_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../search-by-user/search-by-user.component */ "./src/app/search-by-user/search-by-user.component.ts");
+/* harmony import */ var _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic-native/screen-orientation/ngx */ "./node_modules/@ionic-native/screen-orientation/ngx/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -146,8 +147,10 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var HomePage = /** @class */ (function () {
-    function HomePage(camera, restService, imageResizer, transfer, modalController, actionSheetController, zone, navCtrl) {
+    function HomePage(camera, restService, imageResizer, transfer, modalController, actionSheetController, zone, navCtrl, screenOrientation) {
+        var _this = this;
         this.camera = camera;
         this.restService = restService;
         this.imageResizer = imageResizer;
@@ -156,6 +159,7 @@ var HomePage = /** @class */ (function () {
         this.actionSheetController = actionSheetController;
         this.zone = zone;
         this.navCtrl = navCtrl;
+        this.screenOrientation = screenOrientation;
         this.appLogo = 'assets/icon/inner_header_logo.png';
         this.scanImage = 'assets/icon/scan_img.png';
         this.property = 0;
@@ -172,8 +176,27 @@ var HomePage = /** @class */ (function () {
         this.phone = '';
         this.selectedImage = '';
         this.isEnforcement = false;
+        this.deviceMode = '';
+        this.colSize1 = 12;
+        this.colSize2 = 12;
         this.checkRole();
         this.getProperties();
+        this.deviceMode = screenOrientation.type;
+        if (this.deviceMode == 'landscape-primary' || this.deviceMode == 'landscape-secondary') {
+            this.colSize1 = 5;
+            this.colSize2 = 7;
+        }
+        screenOrientation.onChange().subscribe(function () {
+            _this.deviceMode = screenOrientation.type;
+            if (_this.deviceMode == 'landscape-primary' || _this.deviceMode == 'landscape-secondary') {
+                _this.colSize1 = 5;
+                _this.colSize2 = 7;
+            }
+            else {
+                _this.colSize1 = 12;
+                _this.colSize2 = 12;
+            }
+        });
     }
     HomePage.prototype.logout = function () {
         this.restService.systemLogout();
@@ -525,7 +548,8 @@ var HomePage = /** @class */ (function () {
             _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["ModalController"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["ActionSheetController"],
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"],
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["NavController"]])
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["NavController"],
+            _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_8__["ScreenOrientation"]])
     ], HomePage);
     return HomePage;
 }());

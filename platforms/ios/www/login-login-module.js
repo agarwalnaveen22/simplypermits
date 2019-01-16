@@ -62,7 +62,7 @@ var LoginPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-content padding>\n\n    <ion-grid>\n        <ion-row>\n    \n            <ion-col size=\"12\" size-sm=\"6\" size-md=\"6\" size-lg=\"6\" size-xl=\"6\">\n                <ion-item>\n                    <img class=\"logoImg\" [src]=\"appLogo\" />\n                  </ion-item>\n            </ion-col>\n            <ion-col size=\"12\" size-sm=\"6\" size-md=\"6\" size-lg=\"6\" size-xl=\"6\">\n                <ion-item class=\"margin-bottom\" margin-top>\n                    <ion-icon slot=\"start\" name=\"person\"></ion-icon>\n                    <ion-input [(ngModel)]=\"username\" placeholder=\"USERNAME OR EMAIL ADDRESS\"></ion-input>\n                  </ion-item>\n              \n                  <ion-item class=\"margin-bottom\">\n                    <ion-icon slot=\"start\" name=\"lock\"></ion-icon>\n                    <ion-input [(ngModel)]=\"password\" type=\"password\" placeholder=\"PASSWORD\"></ion-input>\n              \n                  </ion-item>\n              \n                  <ion-item class=\"margin-bottom\">\n                    <ion-icon class=\"select-pin\" slot=\"start\" name=\"pin\"></ion-icon>\n                    <ion-select [(ngModel)]=\"city\" interface=\"popover\" (ionChange)=\"changeApiUrl()\" placeholder=\"SELECT CITY\">\n                      <ion-select-option *ngFor=\"let city of cities\" value=\"{{city.city_api_url}}|{{city.forgot_password_link}}\">{{city.city_name}}</ion-select-option>\n                    </ion-select>\n                  </ion-item>\n              \n                  <ion-button class=\"loginButton\" expand=\"block\" size=\"large\" (click)=\"login()\">LOGIN</ion-button>\n                  <ion-button class=\"forget-link\" (click)=\"openForgotPassword()\">FORGOT YOUR PASSWORD?</ion-button>\n            </ion-col>\n    \n        </ion-row>\n        </ion-grid> \n  \n\n\n</ion-content>"
+module.exports = "<ion-content padding>\n\n  <ion-grid>\n    <ion-row>\n\n      <ion-col size=\"12\" [attr.size-sm]=\"colSize\" [attr.size-md]=\"colSize\" [attr.size-lg]=\"colSize\" [attr.size-xl]=\"colSize\">\n        <ion-item>\n          <img class=\"logoImg\" [src]=\"appLogo\" />\n        </ion-item>\n      </ion-col>\n      <ion-col size=\"12\" [attr.size-sm]=\"colSize\" [attr.size-md]=\"colSize\" [attr.size-lg]=\"colSize\" [attr.size-xl]=\"colSize\">\n        <ion-item class=\"margin-bottom\" margin-top>\n          <ion-icon slot=\"start\" name=\"person\"></ion-icon>\n          <ion-input [(ngModel)]=\"username\" placeholder=\"USERNAME OR EMAIL ADDRESS\"></ion-input>\n        </ion-item>\n\n        <ion-item class=\"margin-bottom\">\n          <ion-icon slot=\"start\" name=\"lock\"></ion-icon>\n          <ion-input [(ngModel)]=\"password\" type=\"password\" placeholder=\"PASSWORD\"></ion-input>\n\n        </ion-item>\n\n        <ion-item class=\"margin-bottom\">\n          <ion-icon class=\"select-pin\" slot=\"start\" name=\"pin\"></ion-icon>\n          <ion-select [(ngModel)]=\"city\" interface=\"popover\" (ionChange)=\"changeApiUrl()\" placeholder=\"SELECT CITY\">\n            <ion-select-option *ngFor=\"let city of cities\" value=\"{{city.city_api_url}}|{{city.forgot_password_link}}\">{{city.city_name}}</ion-select-option>\n          </ion-select>\n        </ion-item>\n\n        <ion-button class=\"loginButton\" expand=\"block\" size=\"large\" (click)=\"login()\">LOGIN</ion-button>\n        <ion-button class=\"forget-link\" (click)=\"openForgotPassword()\">FORGOT YOUR PASSWORD?</ion-button>\n      </ion-col>\n\n    </ion-row>\n  </ion-grid>\n\n\n\n</ion-content>"
 
 /***/ }),
 
@@ -73,7 +73,7 @@ module.exports = "<ion-content padding>\n\n    <ion-grid>\n        <ion-row>\n  
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".item-interactive.sc-ion-label-md-h, .item-interactive .sc-ion-label-md-h {\n  z-index: 9; }\n\n.input-box {\n  position: relative; }\n\n.select-pin {\n  margin-top: 0; }\n\n.logoImg {\n  max-width: 85% !important;\n  margin: 0 auto; }\n\n.forget-link {\n  --box-shadow: none !important;\n  box-shadow: none !important; }\n\n@media screen and (min-width: 576px) {\n  .logoImg {\n    max-width: 100% !important;\n    margin: 0 auto; }\n  .loginButton {\n    margin-top: 25px; } }\n"
+module.exports = ".item-interactive.sc-ion-label-md-h, .item-interactive .sc-ion-label-md-h {\n  z-index: 9; }\n\n.input-box {\n  position: relative; }\n\n.select-pin {\n  margin-top: 0; }\n\n.logoImg {\n  max-width: 85% !important;\n  margin: 0 auto; }\n\n.forget-link {\n  --box-shadow: none !important;\n  box-shadow: none !important; }\n\n@media screen and (min-width: 576px) {\n  .logoImg {\n    max-width: 90% !important;\n    margin: 0 auto; }\n  .loginButton {\n    margin-top: 25px; } }\n"
 
 /***/ }),
 
@@ -91,6 +91,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _rest_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../rest.service */ "./src/app/rest.service.ts");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
 /* harmony import */ var _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/in-app-browser/ngx */ "./node_modules/@ionic-native/in-app-browser/ngx/index.js");
+/* harmony import */ var _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/screen-orientation/ngx */ "./node_modules/@ionic-native/screen-orientation/ngx/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -139,19 +140,23 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var LoginPage = /** @class */ (function () {
-    function LoginPage(restService, navCtrl, zone, iab) {
+    function LoginPage(restService, navCtrl, zone, iab, screenOrientation) {
         var _this = this;
         this.restService = restService;
         this.navCtrl = navCtrl;
         this.zone = zone;
         this.iab = iab;
+        this.screenOrientation = screenOrientation;
         this.cities = [];
         this.username = '';
         this.password = '';
         this.city = '';
         this.forgotPasswordLink = '';
         this.appLogo = 'assets/icon/login_logo.png';
+        this.deviceMode = '';
+        this.colSize = 12;
         this.login = function () {
             if (_this.city == '' || _this.city == undefined) {
                 _this.restService.showToast('Please select a city');
@@ -202,7 +207,21 @@ var LoginPage = /** @class */ (function () {
         };
     }
     LoginPage.prototype.ngOnInit = function () {
+        var _this = this;
         this.getCities();
+        this.deviceMode = this.screenOrientation.type;
+        if (this.deviceMode == 'landscape-primary' || this.deviceMode == 'landscape-secondary') {
+            this.colSize = 6;
+        }
+        this.screenOrientation.onChange().subscribe(function () {
+            _this.deviceMode = _this.screenOrientation.type;
+            if (_this.deviceMode == 'landscape-primary' || _this.deviceMode == 'landscape-secondary') {
+                _this.colSize = 6;
+            }
+            else {
+                _this.colSize = 12;
+            }
+        });
     };
     LoginPage.prototype.changeApiUrl = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -261,7 +280,8 @@ var LoginPage = /** @class */ (function () {
         __metadata("design:paramtypes", [_rest_service__WEBPACK_IMPORTED_MODULE_1__["RestService"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"],
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"],
-            _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_3__["InAppBrowser"]])
+            _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_3__["InAppBrowser"],
+            _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_4__["ScreenOrientation"]])
     ], LoginPage);
     return LoginPage;
 }());

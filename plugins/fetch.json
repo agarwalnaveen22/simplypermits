@@ -106,5 +106,21 @@
       "PHOTOLIBRARY_USAGE_DESCRIPTION": "App wants to scan car number plate",
       "PHOTOLIBRARY_ADD_USAGE_DESCRIPTION": "App wants to scan car number plate"
     }
+  },
+  "cordova-plugin-screen-orientation": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-screen-orientation"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "es6-promise-plugin": {
+    "source": {
+      "type": "registry",
+      "id": "es6-promise-plugin@^4.1.0"
+    },
+    "is_top_level": false,
+    "variables": {}
   }
 }

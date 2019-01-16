@@ -15,6 +15,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP } from '@ionic-native/http/ngx';
 import { IonicStorageModule } from '@ionic/storage';
+import { Device } from '@ionic-native/device/ngx';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -48,6 +50,8 @@ import { DISABLED } from '@angular/forms/src/model';
     AuthGuardService,
     InAppBrowser,
     HTTP,
+    Device,
+    ScreenOrientation,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

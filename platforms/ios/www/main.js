@@ -412,14 +412,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _ionic_native_http_ngx__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @ionic-native/http/ngx */ "./node_modules/@ionic-native/http/ngx/index.js");
 /* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _add_note_add_note_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./add-note/add-note.component */ "./src/app/add-note/add-note.component.ts");
-/* harmony import */ var _view_notes_view_notes_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./view-notes/view-notes.component */ "./src/app/view-notes/view-notes.component.ts");
-/* harmony import */ var _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./image-preview/image-preview.component */ "./src/app/image-preview/image-preview.component.ts");
-/* harmony import */ var _auth_guard_service__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./auth-guard.service */ "./src/app/auth-guard.service.ts");
-/* harmony import */ var _search_by_vehicle_search_by_vehicle_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./search-by-vehicle/search-by-vehicle.component */ "./src/app/search-by-vehicle/search-by-vehicle.component.ts");
-/* harmony import */ var _search_by_user_search_by_user_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./search-by-user/search-by-user.component */ "./src/app/search-by-user/search-by-user.component.ts");
+/* harmony import */ var _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/device/ngx */ "./node_modules/@ionic-native/device/ngx/index.js");
+/* harmony import */ var _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @ionic-native/screen-orientation/ngx */ "./node_modules/@ionic-native/screen-orientation/ngx/index.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _add_note_add_note_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./add-note/add-note.component */ "./src/app/add-note/add-note.component.ts");
+/* harmony import */ var _view_notes_view_notes_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./view-notes/view-notes.component */ "./src/app/view-notes/view-notes.component.ts");
+/* harmony import */ var _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./image-preview/image-preview.component */ "./src/app/image-preview/image-preview.component.ts");
+/* harmony import */ var _auth_guard_service__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./auth-guard.service */ "./src/app/auth-guard.service.ts");
+/* harmony import */ var _search_by_vehicle_search_by_vehicle_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./search-by-vehicle/search-by-vehicle.component */ "./src/app/search-by-vehicle/search-by-vehicle.component.ts");
+/* harmony import */ var _search_by_user_search_by_user_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./search-by-user/search-by-user.component */ "./src/app/search-by-user/search-by-user.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -450,17 +452,19 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
-            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_16__["AppComponent"], _add_note_add_note_component__WEBPACK_IMPORTED_MODULE_18__["AddNoteComponent"], _view_notes_view_notes_component__WEBPACK_IMPORTED_MODULE_19__["ViewNotesComponent"], _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_20__["ImagePreviewComponent"], _search_by_vehicle_search_by_vehicle_component__WEBPACK_IMPORTED_MODULE_22__["SearchByVehicleComponent"], _search_by_user_search_by_user_component__WEBPACK_IMPORTED_MODULE_23__["SearchByUserComponent"]],
-            entryComponents: [_add_note_add_note_component__WEBPACK_IMPORTED_MODULE_18__["AddNoteComponent"], _view_notes_view_notes_component__WEBPACK_IMPORTED_MODULE_19__["ViewNotesComponent"], _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_20__["ImagePreviewComponent"], _search_by_vehicle_search_by_vehicle_component__WEBPACK_IMPORTED_MODULE_22__["SearchByVehicleComponent"], _search_by_user_search_by_user_component__WEBPACK_IMPORTED_MODULE_23__["SearchByUserComponent"]],
+            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_18__["AppComponent"], _add_note_add_note_component__WEBPACK_IMPORTED_MODULE_20__["AddNoteComponent"], _view_notes_view_notes_component__WEBPACK_IMPORTED_MODULE_21__["ViewNotesComponent"], _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_22__["ImagePreviewComponent"], _search_by_vehicle_search_by_vehicle_component__WEBPACK_IMPORTED_MODULE_24__["SearchByVehicleComponent"], _search_by_user_search_by_user_component__WEBPACK_IMPORTED_MODULE_25__["SearchByUserComponent"]],
+            entryComponents: [_add_note_add_note_component__WEBPACK_IMPORTED_MODULE_20__["AddNoteComponent"], _view_notes_view_notes_component__WEBPACK_IMPORTED_MODULE_21__["ViewNotesComponent"], _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_22__["ImagePreviewComponent"], _search_by_vehicle_search_by_vehicle_component__WEBPACK_IMPORTED_MODULE_24__["SearchByVehicleComponent"], _search_by_user_search_by_user_component__WEBPACK_IMPORTED_MODULE_25__["SearchByUserComponent"]],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot({ mode: 'md', scrollAssist: 'DISABLED' }),
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_17__["AppRoutingModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_19__["AppRoutingModule"],
                 _ngx_progressbar_core__WEBPACK_IMPORTED_MODULE_8__["NgProgressModule"].forRoot(),
                 _ionic_storage__WEBPACK_IMPORTED_MODULE_15__["IonicStorageModule"].forRoot(),
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClientModule"],
@@ -473,12 +477,14 @@ var AppModule = /** @class */ (function () {
                 _ionic_native_image_resizer_ngx__WEBPACK_IMPORTED_MODULE_10__["ImageResizer"],
                 _ionic_native_base64_ngx__WEBPACK_IMPORTED_MODULE_9__["Base64"],
                 _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_11__["FileTransfer"],
-                _auth_guard_service__WEBPACK_IMPORTED_MODULE_21__["AuthGuardService"],
+                _auth_guard_service__WEBPACK_IMPORTED_MODULE_23__["AuthGuardService"],
                 _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_12__["InAppBrowser"],
                 _ionic_native_http_ngx__WEBPACK_IMPORTED_MODULE_14__["HTTP"],
+                _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_16__["Device"],
+                _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_17__["ScreenOrientation"],
                 { provide: _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] }
             ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_16__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_18__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;

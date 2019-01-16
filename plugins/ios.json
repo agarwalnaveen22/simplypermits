@@ -45,6 +45,9 @@
     },
     "cordova-plugin-camera": {
       "PACKAGE_NAME": "com.simplypermits"
+    },
+    "cordova-plugin-screen-orientation": {
+      "PACKAGE_NAME": "com.simplypermits"
     }
   },
   "dependent_plugins": {}

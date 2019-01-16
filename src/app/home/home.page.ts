@@ -7,6 +7,7 @@ import { RestService } from '../rest.service';
 import { ImagePreviewComponent } from '../image-preview/image-preview.component';
 import { SearchByVehicleComponent } from '../search-by-vehicle/search-by-vehicle.component';
 import { SearchByUserComponent } from '../search-by-user/search-by-user.component';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
 @Component({
   selector: 'app-home',
@@ -30,7 +31,9 @@ export class HomePage {
   phone: string = '';
   selectedImage: string = '';
   isEnforcement: boolean = false;
-
+  deviceMode: string = '';
+  colSize1: number = 12;
+  colSize2: number = 12;
   constructor(
     private camera: Camera,
     private restService: RestService,
@@ -39,10 +42,29 @@ export class HomePage {
     private modalController: ModalController,
     public actionSheetController: ActionSheetController,
     private zone: NgZone,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private screenOrientation: ScreenOrientation
   ) {
     this.checkRole();
     this.getProperties();
+    this.deviceMode = screenOrientation.type;
+    if (this.deviceMode == 'landscape-primary' || this.deviceMode == 'landscape-secondary') {
+      this.colSize1 = 5;
+      this.colSize2 = 7;
+    }
+
+    screenOrientation.onChange().subscribe(
+      () => {
+        this.deviceMode = screenOrientation.type;
+        if (this.deviceMode == 'landscape-primary' || this.deviceMode == 'landscape-secondary') {
+          this.colSize1 = 5;
+          this.colSize2 = 7;
+        } else {
+          this.colSize1 = 12;
+          this.colSize2 = 12;
+        }
+      }
+    );
   }
 
   logout() {

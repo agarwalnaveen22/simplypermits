@@ -95,6 +95,7 @@
         <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="App wants to scan car number plate" />
         <variable name="PHOTOLIBRARY_ADD_USAGE_DESCRIPTION" value="App wants to scan car number plate" />
     </plugin>
+    <plugin name="cordova-plugin-screen-orientation" spec="3.0.1" />
     <engine name="android" spec="7.0.0" />
     <engine name="ios" spec="4.5.5" />
 </widget>

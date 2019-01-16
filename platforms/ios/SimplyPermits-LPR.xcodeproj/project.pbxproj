@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0207DA571B56EA530066E2B4 /* Images.xcassets */; };
 		0B5B6CF330EC44D3A8A4438F /* GCDWebServerFileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16BD7E60AAAD4480950B6C84 /* GCDWebServerFileResponse.m */; };
@@ -61,6 +60,7 @@
 		EFB9A6171879498E9B87804C /* GCDWebServerFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = F70129C25EA74D51B6AF7744 /* GCDWebServerFunctions.m */; };
 		F9BF2B3455DA4E109FFE76E1 /* CDVWKWebViewEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6B8E13738F42C2A06FFE38 /* CDVWKWebViewEngine.m */; };
 		FB36639BBAC34DBD8989ADF9 /* CDVAssetLibraryFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 793C268A1A3349309C12481A /* CDVAssetLibraryFilesystem.m */; };
+		56A16EDAE59141CE8EAD0A24 /* CDVOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9EFE5697F041D0B5F953DE /* CDVOrientation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -199,6 +199,8 @@
 		F80825D2DE274006A981A998 /* GCDWebServerMultiPartFormRequest.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = GCDWebServerMultiPartFormRequest.m; path = "cordova-plugin-ionic-webview/GCDWebServerMultiPartFormRequest.m"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "SimplyPermits-LPR/config.xml"; sourceTree = "<group>"; };
 		FB2F0FEAB8784E52813D676E /* TextResponseSerializer.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = TextResponseSerializer.h; path = "cordova-plugin-advanced-http/TextResponseSerializer.h"; sourceTree = "<group>"; };
+		5F9EFE5697F041D0B5F953DE /* CDVOrientation.m */ = {isa = PBXFileReference; name = "CDVOrientation.m"; path = "cordova-plugin-screen-orientation/CDVOrientation.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		1615161FB90F4FAF8338D298 /* CDVOrientation.h */ = {isa = PBXFileReference; name = "CDVOrientation.h"; path = "cordova-plugin-screen-orientation/CDVOrientation.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -401,6 +403,8 @@
 				A1AA6BE6BD5E4FB1ACAF8BB0 /* CDVCamera.h */,
 				54C0EE3959294A65BD0B9C68 /* CDVJpegHeaderWriter.h */,
 				DAA13AF79D364DA4A57C008F /* CDVExif.h */,
+				5F9EFE5697F041D0B5F953DE /* CDVOrientation.m */,
+				1615161FB90F4FAF8338D298 /* CDVOrientation.h */,
 			);
 			name = Plugins;
 			path = "SimplyPermits-LPR/Plugins";
@@ -569,6 +573,7 @@
 				303D08AFAB3B4D9EBC79DD93 /* UIImage+CropScaleOrientation.m in Sources */,
 				EBFC999E58624DA19BBD8D41 /* CDVCamera.m in Sources */,
 				EF30AE807F44425DA45AFC68 /* CDVJpegHeaderWriter.m in Sources */,
+				56A16EDAE59141CE8EAD0A24 /* CDVOrientation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,7 +612,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				PRODUCT_NAME = "SimplyPermits-LPR";
 				PROVISIONING_PROFILE_SPECIFIER = "SimplyPermits Prod";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -633,7 +638,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				PRODUCT_NAME = "SimplyPermits-LPR";
 				PROVISIONING_PROFILE_SPECIFIER = "SimplyPermits Prod";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
