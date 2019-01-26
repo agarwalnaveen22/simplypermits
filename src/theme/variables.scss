@@ -308,3 +308,19 @@ ion-row {
       }
   }
 }
+
+@media screen and (min-width : 768px) and (orientation:portrait) {
+  .sc-ion-buttons-md-s .button.button-clear {
+    --height: 75px;
+  }
+  .popover-md .popover-content {
+    width: 50%;
+    left: 25% !important;
+  }
+}
+
+@media screen and (min-width : 1024px) and (orientation:landscape) {
+  .sc-ion-buttons-md-s .button.button-clear {
+    --height: 80px;
+  }
+}

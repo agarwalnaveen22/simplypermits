@@ -15,6 +15,13 @@ ion-row {
         margin: 5% auto;
     }
 }
+
+@media screen and (min-width : 768px) and (orientation:portrait) {
+    .scanImage {
+        width: 60%;
+        margin: 5% auto;
+    }
+}
 .hintIcon {
     background: #28223d;
     margin-bottom: 5%;
