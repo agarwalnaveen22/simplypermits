@@ -1,23 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { LoadingController, AlertController, ToastController, NavController } from '@ionic/angular';
+import { LoadingController, AlertController, ToastController, NavController, ModalController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
-import { HTTP } from '@ionic-native/http/ngx';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestService {
-  apiUrl = 'https://simplypermits.com/API/rest.php';
+  apiUrl = 'https://demo.simplypermits.com/API/rest.php';
   cityApiUrl: string = '';
   loading: any;
   alert: any;
+  checkSession: any;
 
   constructor(
     public http: HttpClient,
     public loadingController: LoadingController,
     public alertController: AlertController,
     public toastController: ToastController,
+    private modalCtrl: ModalController,
     private storage: Storage,
     private navCtrl: NavController,
   ) { }
@@ -37,6 +38,9 @@ export class RestService {
   }
 
   hideLoader() {
+    if((<HTMLElement>document.getElementsByClassName("backdrop-no-tappable")[0]) === undefined){
+      return;
+    }
     (<HTMLElement>document.getElementsByClassName("backdrop-no-tappable")[0]).style.opacity = '0.5';
     this.loading.dismiss();
   }
@@ -101,8 +105,7 @@ export class RestService {
         }, {
           text: 'Yes',
           handler: async () => {
-            this.storage.clear();
-            this.navCtrl.goRoot("/login");
+            this.logout(1);
           }
         }
       ]
@@ -111,79 +114,52 @@ export class RestService {
     await alert.present();
   }
 
+  logout = async (type) => {
+    if (type === 1) {
+      let requestData = {
+        sp_action: "sp_lpr_logout"
+      }
+      this.showLoader('Logging out...');
+      try {
+        await this.makePostRequest(requestData);
+        this.hideLoader();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    this.storage.clear();
+    this.navCtrl.goRoot("/login");
+  }
 
-  // makeGetRequest(data, loadingText) {
-  //   let cthis = this;
-  //   // cthis.showLoader(loadingText);
-  //   alert(this.cityApiUrl);
-  //   return new Promise((resolve, reject) => {
-  //     this.http.get(this.cityApiUrl, data, {'Content-Type': 'application/json'})
-  //     .then(res => {
-  //       alert("success");
-  //       alert(JSON.stringify(res));
-  //       // cthis.hideLoader();
-  //       resolve(JSON.parse(res['data']));
-  //     })
-  //     .catch(err => {
-  //       alert("error");
-  //       alert(JSON.stringify(err));
-  //       // cthis.hideLoader();
-  //       reject(err);
-  //     });
-  //   });
-  // }
+  sessionExpireAction = () => {
+    clearInterval(this.checkSession);
+    this.hideLoader();
+    this.modalCtrl.dismiss();
+    this.logout(2);
+    this.showAlert("Error", "Your session has been expired please relogin to continue");
+  }
 
-  // makeCommonGetRequest(data, loadingText) {
-  //   let cthis = this;
-  //   cthis.showLoader(loadingText);
-  //   return new Promise((resolve, reject) => {
-  //     this.http.get(this.apiUrl, data, {'Content-Type': 'application/json'})
-  //     .then(res => {
-  //       cthis.hideLoader();
-  //       resolve(JSON.parse(res['data']));
-  //     })
-  //     .catch(err => {
-  //       cthis.hideLoader();
-  //       reject(err);
-  //     });
-  //   });
-  // }
+  setSessionId = async (data) => {
+    try {
+      data['session_id'] = await this.getStorage('session_id');
+      return data;
+    } catch (error) {
+      this.logout(2);
+    }
+  }
 
-  // makeCommonPostRequest(data, loadingText) {
-  //   this.http.setDataSerializer("json");
-  //   let cthis = this;
-  //   cthis.showLoader(loadingText);
-  //   return new Promise((resolve, reject) => {
-  //     this.http.post(this.apiUrl, data, {'Content-Type': 'application/json'})
-  //     .then(res => {
-  //       cthis.hideLoader();
-  //       resolve(JSON.parse(res['data']));
-  //     })
-  //     .catch(err => {
-  //       cthis.hideLoader();
-  //       reject(err);
-  //     });
-  //   });
-  // }
-
-  // makePostRequest(data, loadingText) {
-  //   this.http.setDataSerializer("json");
-  //   this.http.setHeader(this.cityApiUrl, "Accept", "application/json");
-  //   this.http.setHeader(this.cityApiUrl, "Content-Type", "application/json");
-  //   let cthis = this;
-  //   cthis.showLoader(loadingText);
-  //   return new Promise((resolve, reject) => {
-  //     this.http.post(this.cityApiUrl, data, {})
-  //     .then(res => {
-  //       cthis.hideLoader();
-  //       resolve(JSON.parse(res['data']));
-  //     })
-  //     .catch(err => {
-  //       cthis.hideLoader();
-  //       reject(err);
-  //     });
-  //   });
-  // }
+  checkLoginStatus = async () => {
+    this.checkSession = setInterval( async ()=>{
+      let requestData = {
+        sp_action: "sp_check_session"
+      }
+      try {
+        await this.makePostRequest(requestData);
+      } catch (error) {
+        this.logout(2);
+      }
+    }, 30000);
+  }
 
 
   makeCommonGetRequest(data) {
@@ -197,13 +173,13 @@ export class RestService {
         .subscribe(res => {
           resolve(res);
         }, (err) => {
-          alert(JSON.stringify(err));
           reject(err);
         });
     });
   }
 
-  makeGetRequest(data) {
+  async makeGetRequest(data) {
+    data = await this.setSessionId(data);
     return new Promise((resolve, reject) => {
       this.http.get(this.cityApiUrl, {
         headers: new HttpHeaders({
@@ -212,6 +188,10 @@ export class RestService {
         params: data
       })
         .subscribe(res => {
+          if (res['session_status'] === "Invalid Session") {
+            this.sessionExpireAction();
+            return;
+          }
           resolve(res);
         }, (err) => {
           reject(err);
@@ -235,7 +215,10 @@ export class RestService {
     });
   }
 
-  makePostRequest(data) {
+  async makePostRequest(data) {
+    if (data['sp_action'] !== 'sp_lpr_login') {
+      data = await this.setSessionId(data);
+    }
     data = this.setUrl(data);
     return new Promise((resolve, reject) => {
       this.http.post(this.cityApiUrl, data, {
@@ -244,6 +227,10 @@ export class RestService {
         })
       })
         .subscribe(res => {
+          if (res['session_status'] === "Invalid Session") {
+            this.sessionExpireAction();
+            return;
+          }
           resolve(res);
         }, (err) => {
           reject(err);

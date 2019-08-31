@@ -214,25 +214,6 @@ export class HomePage {
       }
       options['sourceType'] = 1;
       this.launchProgram(options);
-      // const actionSheet = await this.actionSheetController.create({
-      //   header: "Plate Number",
-      //   buttons: [{
-      //     text: 'Camera',
-      //     icon: 'camera',
-      //     handler: () => {
-      //       options['sourceType'] = 1;
-      //       this.launchProgram(options);
-      //     }
-      //   }, {
-      //     text: 'Gallery',
-      //     icon: 'albums',
-      //     handler: () => {
-      //       options['sourceType'] = 0;
-      //       this.launchProgram(options);
-      //     }
-      //   }]
-      // });
-      // await actionSheet.present();
     }
   }
 
@@ -240,24 +221,6 @@ export class HomePage {
     this.camera.getPicture(options).then((imageData) => {
       this.selectedImage = imageData;
       this.viewPicture();
-      // imageData is either a base64 encoded string or a file URI
-      // If it's base64 (DATA_URL): 'data:image/jpeg;base64,' + 
-      // console.log(imageData)
-      // let options = {
-      //   uri: imageData,
-      //   quality: 90,
-      //   width: 1080,
-      //   height: 1080
-      // } as ImageResizerOptions;
-
-      // this.imageResizer
-      //   .resize(options)
-      //   .then((filePath: string) => {
-      //     console.log('FilePath', filePath);
-      //     this.selectedImage = filePath;
-      //     this.viewPicture();
-      //   })
-      //   .catch(e => console.log(e));
 
     }, (err) => {
       this.restService.showAlert("Notice", JSON.stringify(err));
@@ -266,17 +229,6 @@ export class HomePage {
 
   async viewPicture() {
     this.scanPlate();
-    // const modal = await this.modalController.create({
-    //   component: ImagePreviewComponent,
-    //   componentProps: { imageData: this.selectedImage }
-    // });
-    // modal.onDidDismiss(data => {
-    //   console.log(data);
-    //   if (data.data.type == 1) {
-    //     this.scanPlate();
-    //   }
-    // });
-    // return await modal.present();
   }
 
   scanPlate() {
@@ -315,10 +267,15 @@ export class HomePage {
   }
 
   async checkRole() {
-    let response = await this.restService.getStorage("userInfo");
-    let userRoles = response["roles"];
-    if (userRoles.indexOf("enforcement") !== -1) {
-      this.isEnforcement = true;
+    try {
+      let response = await this.restService.getStorage("userInfo");
+      let userRoles = response["roles"];
+      if (userRoles.indexOf("enforcement") !== -1) {
+        this.isEnforcement = true;
+      }
+    } catch (error) {
+      console.log(error);
+      this.navCtrl.goRoot('/login');
     }
   }
 

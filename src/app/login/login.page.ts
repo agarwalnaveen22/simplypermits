@@ -48,12 +48,14 @@ export class LoginPage implements OnInit {
 
   async changeApiUrl() {
     console.log(this.city);
-    let fglink = this.city.split("|");
-    console.log(fglink)
-    this.forgotPasswordLink = fglink[1];
-    await this.restService.setStorage("cityApiUrl", fglink[0]);
-    this.restService.cityApiUrl = fglink[0];
-    console.log(this.restService.cityApiUrl)
+    if (this.city !== undefined) {
+      let fglink = this.city.split("|");
+      console.log(fglink)
+      this.forgotPasswordLink = fglink[1];
+      await this.restService.setStorage("cityApiUrl", fglink[0]);
+      this.restService.cityApiUrl = fglink[0];
+      console.log(this.restService.cityApiUrl)
+    }
   }
 
   getCities() {
@@ -101,8 +103,10 @@ export class LoginPage implements OnInit {
       this.restService.makePostRequest(requestData).then(async (result) => {
         this.restService.hideLoader();
         if (!result['sp_error']) {
+          await this.restService.setStorage("session_id", result['session_id']);
           let response = await this.restService.setStorage("userInfo", result['sp_user']);
           if (response) {
+            this.restService.checkLoginStatus();
             this.navCtrl.goRoot("/home");
           }
         } else {
