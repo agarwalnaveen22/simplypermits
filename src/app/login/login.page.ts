@@ -86,7 +86,7 @@ export class LoginPage implements OnInit {
     }
   }
 
-  login = () => {
+  login = async () => {
     if (this.city == '' || this.city == undefined) {
       this.restService.showToast('Please select a city');
     } else if (this.username == '') {
@@ -94,6 +94,7 @@ export class LoginPage implements OnInit {
     } else if (this.password == '') {
       this.restService.showToast('Please enter password');
     } else {
+      await this.restService.keyBoardHide();
       this.restService.showLoader('Logging in...');
       let requestData = {
         sp_action: "sp_lpr_login",

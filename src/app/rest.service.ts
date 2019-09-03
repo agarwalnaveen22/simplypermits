@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LoadingController, AlertController, ToastController, NavController, ModalController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
+import { Keyboard } from '@ionic-native/keyboard/ngx';
+import { resolve } from 'url';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +14,7 @@ export class RestService {
   loading: any;
   alert: any;
   checkSession: any;
+  isKeyBoardHide: boolean = false;
 
   constructor(
     public http: HttpClient,
@@ -21,6 +24,7 @@ export class RestService {
     private modalCtrl: ModalController,
     private storage: Storage,
     private navCtrl: NavController,
+    private keyboard: Keyboard,
   ) { }
 
   async showLoader(message) {
@@ -38,7 +42,7 @@ export class RestService {
   }
 
   hideLoader() {
-    if((<HTMLElement>document.getElementsByClassName("backdrop-no-tappable")[0]) === undefined){
+    if ((<HTMLElement>document.getElementsByClassName("backdrop-no-tappable")[0]) === undefined) {
       return;
     }
     (<HTMLElement>document.getElementsByClassName("backdrop-no-tappable")[0]).style.opacity = '0.5';
@@ -119,6 +123,7 @@ export class RestService {
       let requestData = {
         sp_action: "sp_lpr_logout"
       }
+      await this.keyBoardHide();
       this.showLoader('Logging out...');
       try {
         await this.makePostRequest(requestData);
@@ -136,12 +141,14 @@ export class RestService {
     this.hideLoader();
     this.modalCtrl.dismiss();
     this.logout(2);
-    this.showAlert("Error", "Your session has been expired please relogin to continue");
+    this.showAlert("Error", "Your session has expired. Please login to continue.");
   }
 
   setSessionId = async (data) => {
     try {
       data['session_id'] = await this.getStorage('session_id');
+      let response = await this.getStorage('userInfo');
+      data['user_id'] = response['user_id'];
       return data;
     } catch (error) {
       this.logout(2);
@@ -149,7 +156,7 @@ export class RestService {
   }
 
   checkLoginStatus = async () => {
-    this.checkSession = setInterval( async ()=>{
+    this.checkSession = setInterval(async () => {
       let requestData = {
         sp_action: "sp_check_session"
       }
@@ -236,6 +243,30 @@ export class RestService {
           reject(err);
         });
     });
+  }
+
+  keyBoardHide = async () => {
+    return new Promise((resolve) => {
+      this.keyboard.hide();
+      this.checkKeyBoardVisible();
+      var keyboardhideint = setInterval(async () => {
+        if(this.isKeyBoardHide){
+          this.isKeyBoardHide = false;
+          clearInterval(keyboardhideint);
+          resolve();
+        }
+      }, 100);
+    });
+  }
+
+  checkKeyBoardVisible = async () => {
+    if (this.keyboard.isVisible) {
+      setTimeout(async () => {
+        this.checkKeyBoardVisible();
+      }, 50);
+    } else {
+      this.isKeyBoardHide = true;
+    }
   }
 
 }

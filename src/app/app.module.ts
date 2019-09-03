@@ -17,6 +17,7 @@ import { HTTP } from '@ionic-native/http/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { Device } from '@ionic-native/device/ngx';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+import { Keyboard } from '@ionic-native/keyboard/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -52,6 +53,7 @@ import { DISABLED } from '@angular/forms/src/model';
     HTTP,
     Device,
     ScreenOrientation,
+    Keyboard,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

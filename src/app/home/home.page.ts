@@ -72,11 +72,10 @@ export class HomePage {
   }
 
   async getProperties() {
-    let response = await this.restService.getStorage("userInfo");
     let requestData = {
       sp_action: "sp_get_property_list",
-      user_id: response["user_id"]
     }
+    await this.restService.keyBoardHide();
     this.restService.showLoader('Fetching Properties');
     this.restService.makePostRequest(requestData).then((result) => {
       this.restService.hideLoader();
@@ -136,7 +135,7 @@ export class HomePage {
     }
   }
 
-  searchManualVehicle() {
+  async searchManualVehicle() {
     let requestData = {
       sp_action: "sp_search_permit_by_vehicle",
       selected_cat: this.property,
@@ -146,6 +145,7 @@ export class HomePage {
       vehicle_vin: this.vin,
       vehicle_plate: this.plate
     }
+    await this.restService.keyBoardHide();
     this.restService.showLoader('Searching Vehicles');
     this.restService.makeGetRequest(requestData).then(async (result) => {
       this.restService.hideLoader();
@@ -168,7 +168,7 @@ export class HomePage {
     });
   }
 
-  searchManualUser() {
+  async searchManualUser() {
     let requestData = {
       sp_action: "sp_search_permit_by_user",
       selected_cat: this.property,
@@ -178,6 +178,7 @@ export class HomePage {
       phone_number: this.phone,
       unit_number: this.residentUnit
     }
+    await this.restService.keyBoardHide();
     this.restService.showLoader('Searching Users');
     this.restService.makeGetRequest(requestData).then(async (result) => {
       this.restService.hideLoader();
@@ -231,7 +232,7 @@ export class HomePage {
     this.scanPlate();
   }
 
-  scanPlate() {
+  async scanPlate() {
     let options: FileUploadOptions = {
       fileKey: 'uploadFileName',
       fileName: 'name.jpg',
@@ -240,7 +241,9 @@ export class HomePage {
     }
     const fileTransfer: FileTransferObject = this.transfer.create();
     this.restService.showLoader('Sending Image');
-    fileTransfer.upload(this.selectedImage, this.restService.cityApiUrl + "?sp_action=sp_permit_check_vehicle_image&selected_cat=" + this.property, options)
+    let sessionId = await this.restService.getStorage('session_id');
+    let userId = await this.restService.getStorage('userInfo');
+    fileTransfer.upload(this.selectedImage, this.restService.cityApiUrl + "?sp_action=sp_permit_check_vehicle_image&selected_cat=" + this.property+"&session_id="+sessionId+"&user_id="+userId['user_id'], options)
       .then(async (result) => {
         this.restService.hideLoader();
         console.log(result)

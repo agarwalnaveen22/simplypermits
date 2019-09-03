@@ -35,12 +35,13 @@ export class ViewNotesComponent implements OnInit {
     }, 2000);
   }
 
-  getPermitDetail() {
+  async getPermitDetail() {
     this.notes = [];
     let requestData = {
       sp_action: "sp_permit_detail",
       permit_id: this.permitId
     }
+    await this.restService.keyBoardHide();
     this.restService.showLoader('Getting Permit Notes');
     this.restService.makeGetRequest(requestData).then((result) => {
       this.restService.hideLoader();

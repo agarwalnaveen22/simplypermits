@@ -34,12 +34,13 @@ export class PermitDetailPage {
     }, 2000);
   }
 
-  getPermitDetail() {
+  async getPermitDetail() {
     this.permitData = [];
     let requestData = {
       sp_action: "sp_permit_detail",
       permit_id: this.permitId
     }
+    await this.restService.keyBoardHide();
     this.restService.showLoader('Getting Permit Details');
     this.restService.makeGetRequest(requestData).then( async (result) => {
       this.restService.hideLoader();

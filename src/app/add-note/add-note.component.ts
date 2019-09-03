@@ -29,14 +29,13 @@ export class AddNoteComponent {
     if (this.description == '') {
       this.restService.showAlert('Error', 'Please enter description');
     } else {
-      let response = await this.restService.getStorage("userInfo");
       let requestData = {
         sp_action: "sp_permit_add_note",
         permit_id: this.permitId,
-        user_id: response["user_id"],
         page_id: "Permit Detail",
         add_note: this.description
       }
+      await this.restService.keyBoardHide();
       this.restService.showLoader('Saving notes');
       this.restService.makePostRequest(requestData).then((result) => {
         this.restService.hideLoader();
