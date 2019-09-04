@@ -157,54 +157,70 @@ var LoginPage = /** @class */ (function () {
         this.appLogo = 'assets/icon/login_logo.png';
         this.deviceMode = '';
         this.colSize = 12;
-        this.login = function () {
-            if (_this.city == '' || _this.city == undefined) {
-                _this.restService.showToast('Please select a city');
-            }
-            else if (_this.username == '') {
-                _this.restService.showToast('Please enter username');
-            }
-            else if (_this.password == '') {
-                _this.restService.showToast('Please enter password');
-            }
-            else {
-                _this.restService.showLoader('Logging in...');
-                var requestData = {
-                    sp_action: "sp_lpr_login",
-                    sp_user_login: _this.username,
-                    sp_user_password: _this.password
-                };
-                _this.restService.makePostRequest(requestData).then(function (result) { return __awaiter(_this, void 0, void 0, function () {
-                    var response;
-                    return __generator(this, function (_a) {
-                        switch (_a.label) {
-                            case 0:
-                                this.restService.hideLoader();
-                                if (!!result['sp_error']) return [3 /*break*/, 2];
-                                return [4 /*yield*/, this.restService.setStorage("userInfo", result['sp_user'])];
-                            case 1:
-                                response = _a.sent();
-                                if (response) {
-                                    this.navCtrl.goRoot("/home");
+        this.login = function () { return __awaiter(_this, void 0, void 0, function () {
+            var _this = this;
+            var requestData;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!(this.city == '' || this.city == undefined)) return [3 /*break*/, 1];
+                        this.restService.showToast('Please select a city');
+                        return [3 /*break*/, 5];
+                    case 1:
+                        if (!(this.username == '')) return [3 /*break*/, 2];
+                        this.restService.showToast('Please enter username');
+                        return [3 /*break*/, 5];
+                    case 2:
+                        if (!(this.password == '')) return [3 /*break*/, 3];
+                        this.restService.showToast('Please enter password');
+                        return [3 /*break*/, 5];
+                    case 3: return [4 /*yield*/, this.restService.keyBoardHide()];
+                    case 4:
+                        _a.sent();
+                        this.restService.showLoader('Logging in...');
+                        requestData = {
+                            sp_action: "sp_lpr_login",
+                            sp_user_login: this.username,
+                            sp_user_password: this.password
+                        };
+                        this.restService.makePostRequest(requestData).then(function (result) { return __awaiter(_this, void 0, void 0, function () {
+                            var response;
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0:
+                                        this.restService.hideLoader();
+                                        if (!!result['sp_error']) return [3 /*break*/, 3];
+                                        return [4 /*yield*/, this.restService.setStorage("session_id", result['session_id'])];
+                                    case 1:
+                                        _a.sent();
+                                        return [4 /*yield*/, this.restService.setStorage("userInfo", result['sp_user'])];
+                                    case 2:
+                                        response = _a.sent();
+                                        if (response) {
+                                            this.restService.checkLoginStatus();
+                                            this.navCtrl.goRoot("/home");
+                                        }
+                                        return [3 /*break*/, 4];
+                                    case 3:
+                                        this.restService.showAlert('Error', result['sp_error']);
+                                        _a.label = 4;
+                                    case 4: return [2 /*return*/];
                                 }
-                                return [3 /*break*/, 3];
-                            case 2:
-                                this.restService.showAlert('Error', result['sp_error']);
-                                _a.label = 3;
-                            case 3: return [2 /*return*/];
-                        }
-                    });
-                }); }, function (err) {
-                    _this.restService.hideLoader();
-                    if (err.error) {
-                        _this.restService.showAlert("Notice", _this.restService.setErrorMessageArray(err.error.message));
-                    }
-                    else {
-                        _this.restService.showAlert("Notice", err.statusText);
-                    }
-                });
-            }
-        };
+                            });
+                        }); }, function (err) {
+                            _this.restService.hideLoader();
+                            if (err.error) {
+                                _this.restService.showAlert("Notice", _this.restService.setErrorMessageArray(err.error.message));
+                            }
+                            else {
+                                _this.restService.showAlert("Notice", err.statusText);
+                            }
+                        });
+                        _a.label = 5;
+                    case 5: return [2 /*return*/];
+                }
+            });
+        }); };
     }
     LoginPage.prototype.ngOnInit = function () {
         var _this = this;
@@ -230,6 +246,7 @@ var LoginPage = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         console.log(this.city);
+                        if (!(this.city !== undefined)) return [3 /*break*/, 2];
                         fglink = this.city.split("|");
                         console.log(fglink);
                         this.forgotPasswordLink = fglink[1];
@@ -238,7 +255,8 @@ var LoginPage = /** @class */ (function () {
                         _a.sent();
                         this.restService.cityApiUrl = fglink[0];
                         console.log(this.restService.cityApiUrl);
-                        return [2 /*return*/];
+                        _a.label = 2;
+                    case 2: return [2 /*return*/];
                 }
             });
         });

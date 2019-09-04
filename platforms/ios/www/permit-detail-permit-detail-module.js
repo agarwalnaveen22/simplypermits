@@ -166,40 +166,52 @@ var PermitDetailPage = /** @class */ (function () {
         }, 2000);
     };
     PermitDetailPage.prototype.getPermitDetail = function () {
-        var _this = this;
-        this.permitData = [];
-        var requestData = {
-            sp_action: "sp_permit_detail",
-            permit_id: this.permitId
-        };
-        this.restService.showLoader('Getting Permit Details');
-        this.restService.makeGetRequest(requestData).then(function (result) { return __awaiter(_this, void 0, void 0, function () {
-            var response, userRoles;
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            var requestData;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        this.restService.hideLoader();
-                        if (!result['PermitDetail']) return [3 /*break*/, 2];
-                        this.permitData = result['PermitDetail'];
-                        return [4 /*yield*/, this.restService.getStorage("userInfo")];
+                        this.permitData = [];
+                        requestData = {
+                            sp_action: "sp_permit_detail",
+                            permit_id: this.permitId
+                        };
+                        return [4 /*yield*/, this.restService.keyBoardHide()];
                     case 1:
-                        response = _a.sent();
-                        userRoles = response["roles"];
-                        if (userRoles.indexOf("enforcement") !== -1) {
-                            this.isEnforcement = true;
-                        }
-                        _a.label = 2;
-                    case 2: return [2 /*return*/];
+                        _a.sent();
+                        this.restService.showLoader('Getting Permit Details');
+                        this.restService.makeGetRequest(requestData).then(function (result) { return __awaiter(_this, void 0, void 0, function () {
+                            var response, userRoles;
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0:
+                                        this.restService.hideLoader();
+                                        if (!result['PermitDetail']) return [3 /*break*/, 2];
+                                        this.permitData = result['PermitDetail'];
+                                        return [4 /*yield*/, this.restService.getStorage("userInfo")];
+                                    case 1:
+                                        response = _a.sent();
+                                        userRoles = response["roles"];
+                                        if (userRoles.indexOf("enforcement") !== -1) {
+                                            this.isEnforcement = true;
+                                        }
+                                        _a.label = 2;
+                                    case 2: return [2 /*return*/];
+                                }
+                            });
+                        }); }, function (err) {
+                            _this.restService.hideLoader();
+                            if (err.error) {
+                                _this.restService.showAlert("Notice", _this.restService.setErrorMessageArray(err.error.message));
+                            }
+                            else {
+                                _this.restService.showAlert("Notice", err.statusText);
+                            }
+                        });
+                        return [2 /*return*/];
                 }
             });
-        }); }, function (err) {
-            _this.restService.hideLoader();
-            if (err.error) {
-                _this.restService.showAlert("Notice", _this.restService.setErrorMessageArray(err.error.message));
-            }
-            else {
-                _this.restService.showAlert("Notice", err.statusText);
-            }
         });
     };
     PermitDetailPage.prototype.presentModal = function () {

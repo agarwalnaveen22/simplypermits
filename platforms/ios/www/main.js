@@ -154,23 +154,23 @@ var AddNoteComponent = /** @class */ (function () {
     AddNoteComponent.prototype.addNotes = function () {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
-            var response, requestData;
+            var requestData;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         if (!(this.description == '')) return [3 /*break*/, 1];
                         this.restService.showAlert('Error', 'Please enter description');
                         return [3 /*break*/, 3];
-                    case 1: return [4 /*yield*/, this.restService.getStorage("userInfo")];
-                    case 2:
-                        response = _a.sent();
+                    case 1:
                         requestData = {
                             sp_action: "sp_permit_add_note",
                             permit_id: this.permitId,
-                            user_id: response["user_id"],
                             page_id: "Permit Detail",
                             add_note: this.description
                         };
+                        return [4 /*yield*/, this.restService.keyBoardHide()];
+                    case 2:
+                        _a.sent();
                         this.restService.showLoader('Saving notes');
                         this.restService.makePostRequest(requestData).then(function (result) {
                             _this.restService.hideLoader();
@@ -356,6 +356,7 @@ var AppComponent = /** @class */ (function () {
                 }
             });
         }); };
+        alert("here");
         this.initializeApp();
     }
     AppComponent.prototype.initializeApp = function () {
@@ -414,14 +415,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
 /* harmony import */ var _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/device/ngx */ "./node_modules/@ionic-native/device/ngx/index.js");
 /* harmony import */ var _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @ionic-native/screen-orientation/ngx */ "./node_modules/@ionic-native/screen-orientation/ngx/index.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _add_note_add_note_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./add-note/add-note.component */ "./src/app/add-note/add-note.component.ts");
-/* harmony import */ var _view_notes_view_notes_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./view-notes/view-notes.component */ "./src/app/view-notes/view-notes.component.ts");
-/* harmony import */ var _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./image-preview/image-preview.component */ "./src/app/image-preview/image-preview.component.ts");
-/* harmony import */ var _auth_guard_service__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./auth-guard.service */ "./src/app/auth-guard.service.ts");
-/* harmony import */ var _search_by_vehicle_search_by_vehicle_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./search-by-vehicle/search-by-vehicle.component */ "./src/app/search-by-vehicle/search-by-vehicle.component.ts");
-/* harmony import */ var _search_by_user_search_by_user_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./search-by-user/search-by-user.component */ "./src/app/search-by-user/search-by-user.component.ts");
+/* harmony import */ var _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @ionic-native/keyboard/ngx */ "./node_modules/@ionic-native/keyboard/ngx/index.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _add_note_add_note_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./add-note/add-note.component */ "./src/app/add-note/add-note.component.ts");
+/* harmony import */ var _view_notes_view_notes_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./view-notes/view-notes.component */ "./src/app/view-notes/view-notes.component.ts");
+/* harmony import */ var _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./image-preview/image-preview.component */ "./src/app/image-preview/image-preview.component.ts");
+/* harmony import */ var _auth_guard_service__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./auth-guard.service */ "./src/app/auth-guard.service.ts");
+/* harmony import */ var _search_by_vehicle_search_by_vehicle_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./search-by-vehicle/search-by-vehicle.component */ "./src/app/search-by-vehicle/search-by-vehicle.component.ts");
+/* harmony import */ var _search_by_user_search_by_user_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./search-by-user/search-by-user.component */ "./src/app/search-by-user/search-by-user.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -454,17 +456,18 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
-            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_18__["AppComponent"], _add_note_add_note_component__WEBPACK_IMPORTED_MODULE_20__["AddNoteComponent"], _view_notes_view_notes_component__WEBPACK_IMPORTED_MODULE_21__["ViewNotesComponent"], _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_22__["ImagePreviewComponent"], _search_by_vehicle_search_by_vehicle_component__WEBPACK_IMPORTED_MODULE_24__["SearchByVehicleComponent"], _search_by_user_search_by_user_component__WEBPACK_IMPORTED_MODULE_25__["SearchByUserComponent"]],
-            entryComponents: [_add_note_add_note_component__WEBPACK_IMPORTED_MODULE_20__["AddNoteComponent"], _view_notes_view_notes_component__WEBPACK_IMPORTED_MODULE_21__["ViewNotesComponent"], _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_22__["ImagePreviewComponent"], _search_by_vehicle_search_by_vehicle_component__WEBPACK_IMPORTED_MODULE_24__["SearchByVehicleComponent"], _search_by_user_search_by_user_component__WEBPACK_IMPORTED_MODULE_25__["SearchByUserComponent"]],
+            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_19__["AppComponent"], _add_note_add_note_component__WEBPACK_IMPORTED_MODULE_21__["AddNoteComponent"], _view_notes_view_notes_component__WEBPACK_IMPORTED_MODULE_22__["ViewNotesComponent"], _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_23__["ImagePreviewComponent"], _search_by_vehicle_search_by_vehicle_component__WEBPACK_IMPORTED_MODULE_25__["SearchByVehicleComponent"], _search_by_user_search_by_user_component__WEBPACK_IMPORTED_MODULE_26__["SearchByUserComponent"]],
+            entryComponents: [_add_note_add_note_component__WEBPACK_IMPORTED_MODULE_21__["AddNoteComponent"], _view_notes_view_notes_component__WEBPACK_IMPORTED_MODULE_22__["ViewNotesComponent"], _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_23__["ImagePreviewComponent"], _search_by_vehicle_search_by_vehicle_component__WEBPACK_IMPORTED_MODULE_25__["SearchByVehicleComponent"], _search_by_user_search_by_user_component__WEBPACK_IMPORTED_MODULE_26__["SearchByUserComponent"]],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot({ mode: 'md', scrollAssist: 'DISABLED' }),
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_19__["AppRoutingModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_20__["AppRoutingModule"],
                 _ngx_progressbar_core__WEBPACK_IMPORTED_MODULE_8__["NgProgressModule"].forRoot(),
                 _ionic_storage__WEBPACK_IMPORTED_MODULE_15__["IonicStorageModule"].forRoot(),
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClientModule"],
@@ -477,14 +480,15 @@ var AppModule = /** @class */ (function () {
                 _ionic_native_image_resizer_ngx__WEBPACK_IMPORTED_MODULE_10__["ImageResizer"],
                 _ionic_native_base64_ngx__WEBPACK_IMPORTED_MODULE_9__["Base64"],
                 _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_11__["FileTransfer"],
-                _auth_guard_service__WEBPACK_IMPORTED_MODULE_23__["AuthGuardService"],
+                _auth_guard_service__WEBPACK_IMPORTED_MODULE_24__["AuthGuardService"],
                 _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_12__["InAppBrowser"],
                 _ionic_native_http_ngx__WEBPACK_IMPORTED_MODULE_14__["HTTP"],
                 _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_16__["Device"],
                 _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_17__["ScreenOrientation"],
+                _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_18__["Keyboard"],
                 { provide: _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] }
             ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_18__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_19__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -561,12 +565,15 @@ var AuthGuardService = /** @class */ (function () {
     }
     AuthGuardService.prototype.canActivate = function (route, state) {
         return __awaiter(this, void 0, void 0, function () {
-            var resp;
+            var resp, error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.restService.getStorage("userInfo")];
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, this.restService.getStorage("userInfo")];
                     case 1:
                         resp = _a.sent();
+                        console.log(resp);
                         if (resp != null) {
                             return [2 /*return*/, true];
                         }
@@ -574,7 +581,12 @@ var AuthGuardService = /** @class */ (function () {
                             this.router.navigate(['/login']);
                             return [2 /*return*/, false];
                         }
-                        return [2 /*return*/];
+                        return [3 /*break*/, 3];
+                    case 2:
+                        error_1 = _a.sent();
+                        this.router.navigate(['/login']);
+                        return [2 /*return*/, false];
+                    case 3: return [2 /*return*/];
                 }
             });
         });
@@ -693,6 +705,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
 /* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
+/* harmony import */ var _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/keyboard/ngx */ "./node_modules/@ionic-native/keyboard/ngx/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -741,16 +754,149 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var RestService = /** @class */ (function () {
-    function RestService(http, loadingController, alertController, toastController, storage, navCtrl) {
+    function RestService(http, loadingController, alertController, toastController, modalCtrl, storage, navCtrl, keyboard) {
+        var _this = this;
         this.http = http;
         this.loadingController = loadingController;
         this.alertController = alertController;
         this.toastController = toastController;
+        this.modalCtrl = modalCtrl;
         this.storage = storage;
         this.navCtrl = navCtrl;
-        this.apiUrl = 'https://simplypermits.com/API/rest.php';
+        this.keyboard = keyboard;
+        this.apiUrl = 'https://demo.simplypermits.com/API/rest.php';
         this.cityApiUrl = '';
+        this.isKeyBoardHide = false;
+        this.logout = function (type) { return __awaiter(_this, void 0, void 0, function () {
+            var requestData, error_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!(type === 1)) return [3 /*break*/, 5];
+                        requestData = {
+                            sp_action: "sp_lpr_logout"
+                        };
+                        return [4 /*yield*/, this.keyBoardHide()];
+                    case 1:
+                        _a.sent();
+                        this.showLoader('Logging out...');
+                        _a.label = 2;
+                    case 2:
+                        _a.trys.push([2, 4, , 5]);
+                        return [4 /*yield*/, this.makePostRequest(requestData)];
+                    case 3:
+                        _a.sent();
+                        this.hideLoader();
+                        return [3 /*break*/, 5];
+                    case 4:
+                        error_1 = _a.sent();
+                        console.log(error_1);
+                        return [3 /*break*/, 5];
+                    case 5:
+                        this.storage.clear();
+                        this.navCtrl.goRoot("/login");
+                        return [2 /*return*/];
+                }
+            });
+        }); };
+        this.sessionExpireAction = function () {
+            clearInterval(_this.checkSession);
+            _this.hideLoader();
+            _this.modalCtrl.dismiss();
+            _this.logout(2);
+            _this.showAlert("Error", "Your session has expired. Please login to continue.");
+        };
+        this.setSessionId = function (data) { return __awaiter(_this, void 0, void 0, function () {
+            var _a, _b, response, error_2;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
+                    case 0:
+                        _c.trys.push([0, 3, , 4]);
+                        _a = data;
+                        _b = 'session_id';
+                        return [4 /*yield*/, this.getStorage('session_id')];
+                    case 1:
+                        _a[_b] = _c.sent();
+                        return [4 /*yield*/, this.getStorage('userInfo')];
+                    case 2:
+                        response = _c.sent();
+                        data['user_id'] = response['user_id'];
+                        return [2 /*return*/, data];
+                    case 3:
+                        error_2 = _c.sent();
+                        this.logout(2);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        }); };
+        this.checkLoginStatus = function () { return __awaiter(_this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                this.checkSession = setInterval(function () { return __awaiter(_this, void 0, void 0, function () {
+                    var requestData, error_3;
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0:
+                                requestData = {
+                                    sp_action: "sp_check_session"
+                                };
+                                _a.label = 1;
+                            case 1:
+                                _a.trys.push([1, 3, , 4]);
+                                return [4 /*yield*/, this.makePostRequest(requestData)];
+                            case 2:
+                                _a.sent();
+                                return [3 /*break*/, 4];
+                            case 3:
+                                error_3 = _a.sent();
+                                this.logout(2);
+                                return [3 /*break*/, 4];
+                            case 4: return [2 /*return*/];
+                        }
+                    });
+                }); }, 30000);
+                return [2 /*return*/];
+            });
+        }); };
+        this.keyBoardHide = function () { return __awaiter(_this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                return [2 /*return*/, new Promise(function (resolve) {
+                        _this.keyboard.hide();
+                        _this.checkKeyBoardVisible();
+                        var keyboardhideint = setInterval(function () { return __awaiter(_this, void 0, void 0, function () {
+                            return __generator(this, function (_a) {
+                                if (this.isKeyBoardHide) {
+                                    this.isKeyBoardHide = false;
+                                    clearInterval(keyboardhideint);
+                                    resolve();
+                                }
+                                return [2 /*return*/];
+                            });
+                        }); }, 100);
+                    })];
+            });
+        }); };
+        this.checkKeyBoardVisible = function () { return __awaiter(_this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                if (this.keyboard.isVisible) {
+                    setTimeout(function () { return __awaiter(_this, void 0, void 0, function () {
+                        return __generator(this, function (_a) {
+                            this.checkKeyBoardVisible();
+                            return [2 /*return*/];
+                        });
+                    }); }, 50);
+                }
+                else {
+                    this.isKeyBoardHide = true;
+                }
+                return [2 /*return*/];
+            });
+        }); };
     }
     RestService.prototype.showLoader = function (message) {
         return __awaiter(this, void 0, void 0, function () {
@@ -777,6 +923,9 @@ var RestService = /** @class */ (function () {
         });
     };
     RestService.prototype.hideLoader = function () {
+        if (document.getElementsByClassName("backdrop-no-tappable")[0] === undefined) {
+            return;
+        }
         document.getElementsByClassName("backdrop-no-tappable")[0].style.opacity = '0.5';
         this.loading.dismiss();
     };
@@ -886,8 +1035,7 @@ var RestService = /** @class */ (function () {
                                     text: 'Yes',
                                     handler: function () { return __awaiter(_this, void 0, void 0, function () {
                                         return __generator(this, function (_a) {
-                                            this.storage.clear();
-                                            this.navCtrl.goRoot("/login");
+                                            this.logout(1);
                                             return [2 /*return*/];
                                         });
                                     }); }
@@ -904,75 +1052,6 @@ var RestService = /** @class */ (function () {
             });
         });
     };
-    // makeGetRequest(data, loadingText) {
-    //   let cthis = this;
-    //   // cthis.showLoader(loadingText);
-    //   alert(this.cityApiUrl);
-    //   return new Promise((resolve, reject) => {
-    //     this.http.get(this.cityApiUrl, data, {'Content-Type': 'application/json'})
-    //     .then(res => {
-    //       alert("success");
-    //       alert(JSON.stringify(res));
-    //       // cthis.hideLoader();
-    //       resolve(JSON.parse(res['data']));
-    //     })
-    //     .catch(err => {
-    //       alert("error");
-    //       alert(JSON.stringify(err));
-    //       // cthis.hideLoader();
-    //       reject(err);
-    //     });
-    //   });
-    // }
-    // makeCommonGetRequest(data, loadingText) {
-    //   let cthis = this;
-    //   cthis.showLoader(loadingText);
-    //   return new Promise((resolve, reject) => {
-    //     this.http.get(this.apiUrl, data, {'Content-Type': 'application/json'})
-    //     .then(res => {
-    //       cthis.hideLoader();
-    //       resolve(JSON.parse(res['data']));
-    //     })
-    //     .catch(err => {
-    //       cthis.hideLoader();
-    //       reject(err);
-    //     });
-    //   });
-    // }
-    // makeCommonPostRequest(data, loadingText) {
-    //   this.http.setDataSerializer("json");
-    //   let cthis = this;
-    //   cthis.showLoader(loadingText);
-    //   return new Promise((resolve, reject) => {
-    //     this.http.post(this.apiUrl, data, {'Content-Type': 'application/json'})
-    //     .then(res => {
-    //       cthis.hideLoader();
-    //       resolve(JSON.parse(res['data']));
-    //     })
-    //     .catch(err => {
-    //       cthis.hideLoader();
-    //       reject(err);
-    //     });
-    //   });
-    // }
-    // makePostRequest(data, loadingText) {
-    //   this.http.setDataSerializer("json");
-    //   this.http.setHeader(this.cityApiUrl, "Accept", "application/json");
-    //   this.http.setHeader(this.cityApiUrl, "Content-Type", "application/json");
-    //   let cthis = this;
-    //   cthis.showLoader(loadingText);
-    //   return new Promise((resolve, reject) => {
-    //     this.http.post(this.cityApiUrl, data, {})
-    //     .then(res => {
-    //       cthis.hideLoader();
-    //       resolve(JSON.parse(res['data']));
-    //     })
-    //     .catch(err => {
-    //       cthis.hideLoader();
-    //       reject(err);
-    //     });
-    //   });
-    // }
     RestService.prototype.makeCommonGetRequest = function (data) {
         var _this = this;
         return new Promise(function (resolve, reject) {
@@ -985,24 +1064,36 @@ var RestService = /** @class */ (function () {
                 .subscribe(function (res) {
                 resolve(res);
             }, function (err) {
-                alert(JSON.stringify(err));
                 reject(err);
             });
         });
     };
     RestService.prototype.makeGetRequest = function (data) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            _this.http.get(_this.cityApiUrl, {
-                headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
-                    'Content-Type': 'application/json'
-                }),
-                params: data
-            })
-                .subscribe(function (res) {
-                resolve(res);
-            }, function (err) {
-                reject(err);
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.setSessionId(data)];
+                    case 1:
+                        data = _a.sent();
+                        return [2 /*return*/, new Promise(function (resolve, reject) {
+                                _this.http.get(_this.cityApiUrl, {
+                                    headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
+                                        'Content-Type': 'application/json'
+                                    }),
+                                    params: data
+                                })
+                                    .subscribe(function (res) {
+                                    if (res['session_status'] === "Invalid Session") {
+                                        _this.sessionExpireAction();
+                                        return;
+                                    }
+                                    resolve(res);
+                                }, function (err) {
+                                    reject(err);
+                                });
+                            })];
+                }
             });
         });
     };
@@ -1023,18 +1114,35 @@ var RestService = /** @class */ (function () {
         });
     };
     RestService.prototype.makePostRequest = function (data) {
-        var _this = this;
-        data = this.setUrl(data);
-        return new Promise(function (resolve, reject) {
-            _this.http.post(_this.cityApiUrl, data, {
-                headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                })
-            })
-                .subscribe(function (res) {
-                resolve(res);
-            }, function (err) {
-                reject(err);
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!(data['sp_action'] !== 'sp_lpr_login')) return [3 /*break*/, 2];
+                        return [4 /*yield*/, this.setSessionId(data)];
+                    case 1:
+                        data = _a.sent();
+                        _a.label = 2;
+                    case 2:
+                        data = this.setUrl(data);
+                        return [2 /*return*/, new Promise(function (resolve, reject) {
+                                _this.http.post(_this.cityApiUrl, data, {
+                                    headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
+                                        'Content-Type': 'application/x-www-form-urlencoded'
+                                    })
+                                })
+                                    .subscribe(function (res) {
+                                    if (res['session_status'] === "Invalid Session") {
+                                        _this.sessionExpireAction();
+                                        return;
+                                    }
+                                    resolve(res);
+                                }, function (err) {
+                                    reject(err);
+                                });
+                            })];
+                }
             });
         });
     };
@@ -1046,8 +1154,10 @@ var RestService = /** @class */ (function () {
             _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"],
             _ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"],
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"]])
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"],
+            _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_4__["Keyboard"]])
     ], RestService);
     return RestService;
 }());
@@ -1290,6 +1400,41 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 
 
 
@@ -1317,26 +1462,38 @@ var ViewNotesComponent = /** @class */ (function () {
         }, 2000);
     };
     ViewNotesComponent.prototype.getPermitDetail = function () {
-        var _this = this;
-        this.notes = [];
-        var requestData = {
-            sp_action: "sp_permit_detail",
-            permit_id: this.permitId
-        };
-        this.restService.showLoader('Getting Permit Notes');
-        this.restService.makeGetRequest(requestData).then(function (result) {
-            _this.restService.hideLoader();
-            if (result['PermitDetail']) {
-                _this.notes = result['PermitDetail']['Notes'];
-            }
-        }, function (err) {
-            _this.restService.hideLoader();
-            if (err.error) {
-                _this.restService.showAlert("Notice", _this.restService.setErrorMessageArray(err.error.message));
-            }
-            else {
-                _this.restService.showAlert("Notice", err.statusText);
-            }
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            var requestData;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        this.notes = [];
+                        requestData = {
+                            sp_action: "sp_permit_detail",
+                            permit_id: this.permitId
+                        };
+                        return [4 /*yield*/, this.restService.keyBoardHide()];
+                    case 1:
+                        _a.sent();
+                        this.restService.showLoader('Getting Permit Notes');
+                        this.restService.makeGetRequest(requestData).then(function (result) {
+                            _this.restService.hideLoader();
+                            if (result['PermitDetail']) {
+                                _this.notes = result['PermitDetail']['Notes'];
+                            }
+                        }, function (err) {
+                            _this.restService.hideLoader();
+                            if (err.error) {
+                                _this.restService.showAlert("Notice", _this.restService.setErrorMessageArray(err.error.message));
+                            }
+                            else {
+                                _this.restService.showAlert("Notice", err.statusText);
+                            }
+                        });
+                        return [2 /*return*/];
+                }
+            });
         });
     };
     ViewNotesComponent = __decorate([

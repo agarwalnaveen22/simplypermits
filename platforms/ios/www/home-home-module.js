@@ -204,16 +204,16 @@ var HomePage = /** @class */ (function () {
     HomePage.prototype.getProperties = function () {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
-            var response, requestData;
+            var requestData;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.restService.getStorage("userInfo")];
-                    case 1:
-                        response = _a.sent();
+                    case 0:
                         requestData = {
                             sp_action: "sp_get_property_list",
-                            user_id: response["user_id"]
                         };
+                        return [4 /*yield*/, this.restService.keyBoardHide()];
+                    case 1:
+                        _a.sent();
                         this.restService.showLoader('Fetching Properties');
                         this.restService.makePostRequest(requestData).then(function (result) {
                             _this.restService.hideLoader();
@@ -303,93 +303,117 @@ var HomePage = /** @class */ (function () {
         });
     };
     HomePage.prototype.searchManualVehicle = function () {
-        var _this = this;
-        var requestData = {
-            sp_action: "sp_search_permit_by_vehicle",
-            selected_cat: this.property,
-            vehicle_make: this.make,
-            vehicle_model: this.model,
-            vehicle_year: this.year,
-            vehicle_vin: this.vin,
-            vehicle_plate: this.plate
-        };
-        this.restService.showLoader('Searching Vehicles');
-        this.restService.makeGetRequest(requestData).then(function (result) { return __awaiter(_this, void 0, void 0, function () {
-            var response;
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            var requestData;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        this.restService.hideLoader();
-                        if (!(result['json'] && result['json'].length > 0)) return [3 /*break*/, 3];
-                        return [4 /*yield*/, this.restService.setStorage("userData", [])];
+                        requestData = {
+                            sp_action: "sp_search_permit_by_vehicle",
+                            selected_cat: this.property,
+                            vehicle_make: this.make,
+                            vehicle_model: this.model,
+                            vehicle_year: this.year,
+                            vehicle_vin: this.vin,
+                            vehicle_plate: this.plate
+                        };
+                        return [4 /*yield*/, this.restService.keyBoardHide()];
                     case 1:
                         _a.sent();
-                        return [4 /*yield*/, this.restService.setStorage("vehicleData", result['json'])];
-                    case 2:
-                        response = _a.sent();
-                        if (response) {
-                            this.navCtrl.goForward("/property-list");
-                        }
-                        return [3 /*break*/, 4];
-                    case 3:
-                        this.restService.showAlert("Notice", "No vehicles found");
-                        _a.label = 4;
-                    case 4: return [2 /*return*/];
+                        this.restService.showLoader('Searching Vehicles');
+                        this.restService.makeGetRequest(requestData).then(function (result) { return __awaiter(_this, void 0, void 0, function () {
+                            var response;
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0:
+                                        this.restService.hideLoader();
+                                        if (!(result['json'] && result['json'].length > 0)) return [3 /*break*/, 3];
+                                        return [4 /*yield*/, this.restService.setStorage("userData", [])];
+                                    case 1:
+                                        _a.sent();
+                                        return [4 /*yield*/, this.restService.setStorage("vehicleData", result['json'])];
+                                    case 2:
+                                        response = _a.sent();
+                                        if (response) {
+                                            this.navCtrl.goForward("/property-list");
+                                        }
+                                        return [3 /*break*/, 4];
+                                    case 3:
+                                        this.restService.showAlert("Notice", "No vehicles found");
+                                        _a.label = 4;
+                                    case 4: return [2 /*return*/];
+                                }
+                            });
+                        }); }, function (err) {
+                            _this.restService.hideLoader();
+                            if (err.error) {
+                                _this.restService.showAlert("Notice", _this.restService.setErrorMessageArray(err.error.message));
+                            }
+                            else {
+                                _this.restService.showAlert("Notice", err.statusText);
+                            }
+                        });
+                        return [2 /*return*/];
                 }
             });
-        }); }, function (err) {
-            _this.restService.hideLoader();
-            if (err.error) {
-                _this.restService.showAlert("Notice", _this.restService.setErrorMessageArray(err.error.message));
-            }
-            else {
-                _this.restService.showAlert("Notice", err.statusText);
-            }
         });
     };
     HomePage.prototype.searchManualUser = function () {
-        var _this = this;
-        var requestData = {
-            sp_action: "sp_search_permit_by_user",
-            selected_cat: this.property,
-            first_name: this.firstName,
-            last_name: this.lastName,
-            email_address: this.email,
-            phone_number: this.phone,
-            unit_number: this.residentUnit
-        };
-        this.restService.showLoader('Searching Users');
-        this.restService.makeGetRequest(requestData).then(function (result) { return __awaiter(_this, void 0, void 0, function () {
-            var response;
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            var requestData;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        this.restService.hideLoader();
-                        if (!(result['json'] && result['json'].length > 0)) return [3 /*break*/, 3];
-                        return [4 /*yield*/, this.restService.setStorage("vehicleData", [])];
+                        requestData = {
+                            sp_action: "sp_search_permit_by_user",
+                            selected_cat: this.property,
+                            first_name: this.firstName,
+                            last_name: this.lastName,
+                            email_address: this.email,
+                            phone_number: this.phone,
+                            unit_number: this.residentUnit
+                        };
+                        return [4 /*yield*/, this.restService.keyBoardHide()];
                     case 1:
                         _a.sent();
-                        return [4 /*yield*/, this.restService.setStorage("userData", result['json'])];
-                    case 2:
-                        response = _a.sent();
-                        if (response) {
-                            this.navCtrl.goForward("/property-list");
-                        }
-                        return [3 /*break*/, 4];
-                    case 3:
-                        this.restService.showAlert("Notice", "No vehicles found");
-                        _a.label = 4;
-                    case 4: return [2 /*return*/];
+                        this.restService.showLoader('Searching Users');
+                        this.restService.makeGetRequest(requestData).then(function (result) { return __awaiter(_this, void 0, void 0, function () {
+                            var response;
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0:
+                                        this.restService.hideLoader();
+                                        if (!(result['json'] && result['json'].length > 0)) return [3 /*break*/, 3];
+                                        return [4 /*yield*/, this.restService.setStorage("vehicleData", [])];
+                                    case 1:
+                                        _a.sent();
+                                        return [4 /*yield*/, this.restService.setStorage("userData", result['json'])];
+                                    case 2:
+                                        response = _a.sent();
+                                        if (response) {
+                                            this.navCtrl.goForward("/property-list");
+                                        }
+                                        return [3 /*break*/, 4];
+                                    case 3:
+                                        this.restService.showAlert("Notice", "No vehicles found");
+                                        _a.label = 4;
+                                    case 4: return [2 /*return*/];
+                                }
+                            });
+                        }); }, function (err) {
+                            _this.restService.hideLoader();
+                            if (err.error) {
+                                _this.restService.showAlert("Notice", _this.restService.setErrorMessageArray(err.error.message));
+                            }
+                            else {
+                                _this.restService.showAlert("Notice", err.statusText);
+                            }
+                        });
+                        return [2 /*return*/];
                 }
             });
-        }); }, function (err) {
-            _this.restService.hideLoader();
-            if (err.error) {
-                _this.restService.showAlert("Notice", _this.restService.setErrorMessageArray(err.error.message));
-            }
-            else {
-                _this.restService.showAlert("Notice", err.statusText);
-            }
         });
     };
     HomePage.prototype.takePicture = function () {
@@ -409,25 +433,6 @@ var HomePage = /** @class */ (function () {
                     };
                     options['sourceType'] = 1;
                     this.launchProgram(options);
-                    // const actionSheet = await this.actionSheetController.create({
-                    //   header: "Plate Number",
-                    //   buttons: [{
-                    //     text: 'Camera',
-                    //     icon: 'camera',
-                    //     handler: () => {
-                    //       options['sourceType'] = 1;
-                    //       this.launchProgram(options);
-                    //     }
-                    //   }, {
-                    //     text: 'Gallery',
-                    //     icon: 'albums',
-                    //     handler: () => {
-                    //       options['sourceType'] = 0;
-                    //       this.launchProgram(options);
-                    //     }
-                    //   }]
-                    // });
-                    // await actionSheet.present();
                 }
                 return [2 /*return*/];
             });
@@ -438,23 +443,6 @@ var HomePage = /** @class */ (function () {
         this.camera.getPicture(options).then(function (imageData) {
             _this.selectedImage = imageData;
             _this.viewPicture();
-            // imageData is either a base64 encoded string or a file URI
-            // If it's base64 (DATA_URL): 'data:image/jpeg;base64,' + 
-            // console.log(imageData)
-            // let options = {
-            //   uri: imageData,
-            //   quality: 90,
-            //   width: 1080,
-            //   height: 1080
-            // } as ImageResizerOptions;
-            // this.imageResizer
-            //   .resize(options)
-            //   .then((filePath: string) => {
-            //     console.log('FilePath', filePath);
-            //     this.selectedImage = filePath;
-            //     this.viewPicture();
-            //   })
-            //   .catch(e => console.log(e));
         }, function (err) {
             _this.restService.showAlert("Notice", JSON.stringify(err));
         });
@@ -468,69 +456,92 @@ var HomePage = /** @class */ (function () {
         });
     };
     HomePage.prototype.scanPlate = function () {
-        var _this = this;
-        var options = {
-            fileKey: 'uploadFileName',
-            fileName: 'name.jpg',
-            chunkedMode: false,
-            mimeType: "multipart/form-data"
-        };
-        var fileTransfer = this.transfer.create();
-        this.restService.showLoader('Sending Image');
-        fileTransfer.upload(this.selectedImage, this.restService.cityApiUrl + "?sp_action=sp_permit_check_vehicle_image&selected_cat=" + this.property, options)
-            .then(function (result) { return __awaiter(_this, void 0, void 0, function () {
-            var response, response;
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            var options, fileTransfer, sessionId, userId;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        this.restService.hideLoader();
-                        console.log(result);
-                        result = JSON.parse(result.response);
-                        if (!(result['json'].length > 0)) return [3 /*break*/, 3];
-                        // this.zone.run(() => {
-                        //   this.vehicleData = result['json'];
-                        // });
-                        return [4 /*yield*/, this.restService.setStorage("userData", [])];
+                        options = {
+                            fileKey: 'uploadFileName',
+                            fileName: 'name.jpg',
+                            chunkedMode: false,
+                            mimeType: "multipart/form-data"
+                        };
+                        fileTransfer = this.transfer.create();
+                        this.restService.showLoader('Sending Image');
+                        return [4 /*yield*/, this.restService.getStorage('session_id')];
                     case 1:
-                        // this.zone.run(() => {
-                        //   this.vehicleData = result['json'];
-                        // });
-                        _a.sent();
-                        return [4 /*yield*/, this.restService.setStorage("vehicleData", result['json'])];
+                        sessionId = _a.sent();
+                        return [4 /*yield*/, this.restService.getStorage('userInfo')];
                     case 2:
-                        response = _a.sent();
-                        if (response) {
-                            this.navCtrl.goForward("/property-list");
-                        }
-                        return [3 /*break*/, 5];
-                    case 3: return [4 /*yield*/, this.restService.setStorage("plateData", result['plateData'])];
-                    case 4:
-                        response = _a.sent();
-                        if (response) {
-                            this.navCtrl.goForward("/no-permit-result");
-                        }
-                        _a.label = 5;
-                    case 5: return [2 /*return*/];
+                        userId = _a.sent();
+                        fileTransfer.upload(this.selectedImage, this.restService.cityApiUrl + "?sp_action=sp_permit_check_vehicle_image&selected_cat=" + this.property + "&session_id=" + sessionId + "&user_id=" + userId['user_id'], options)
+                            .then(function (result) { return __awaiter(_this, void 0, void 0, function () {
+                            var response, response;
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0:
+                                        this.restService.hideLoader();
+                                        console.log(result);
+                                        result = JSON.parse(result.response);
+                                        if (!(result['json'].length > 0)) return [3 /*break*/, 3];
+                                        // this.zone.run(() => {
+                                        //   this.vehicleData = result['json'];
+                                        // });
+                                        return [4 /*yield*/, this.restService.setStorage("userData", [])];
+                                    case 1:
+                                        // this.zone.run(() => {
+                                        //   this.vehicleData = result['json'];
+                                        // });
+                                        _a.sent();
+                                        return [4 /*yield*/, this.restService.setStorage("vehicleData", result['json'])];
+                                    case 2:
+                                        response = _a.sent();
+                                        if (response) {
+                                            this.navCtrl.goForward("/property-list");
+                                        }
+                                        return [3 /*break*/, 5];
+                                    case 3: return [4 /*yield*/, this.restService.setStorage("plateData", result['plateData'])];
+                                    case 4:
+                                        response = _a.sent();
+                                        if (response) {
+                                            this.navCtrl.goForward("/no-permit-result");
+                                        }
+                                        _a.label = 5;
+                                    case 5: return [2 /*return*/];
+                                }
+                            });
+                        }); }, function (err) {
+                            _this.restService.hideLoader();
+                            _this.restService.showAlert("Notice", JSON.stringify(err));
+                        });
+                        return [2 /*return*/];
                 }
             });
-        }); }, function (err) {
-            _this.restService.hideLoader();
-            _this.restService.showAlert("Notice", JSON.stringify(err));
         });
     };
     HomePage.prototype.checkRole = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var response, userRoles;
+            var response, userRoles, error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.restService.getStorage("userInfo")];
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, this.restService.getStorage("userInfo")];
                     case 1:
                         response = _a.sent();
                         userRoles = response["roles"];
                         if (userRoles.indexOf("enforcement") !== -1) {
                             this.isEnforcement = true;
                         }
-                        return [2 /*return*/];
+                        return [3 /*break*/, 3];
+                    case 2:
+                        error_1 = _a.sent();
+                        console.log(error_1);
+                        this.navCtrl.goRoot('/login');
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
                 }
             });
         });

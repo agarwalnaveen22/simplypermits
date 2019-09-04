@@ -356,6 +356,7 @@ var AppComponent = /** @class */ (function () {
                 }
             });
         }); };
+        alert("here");
         this.initializeApp();
     }
     AppComponent.prototype.initializeApp = function () {
