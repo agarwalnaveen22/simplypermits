@@ -3,13 +3,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LoadingController, AlertController, ToastController, NavController, ModalController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
-import { resolve } from 'url';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestService {
-  apiUrl = 'https://demo.simplypermits.com/API/rest.php';
+  apiUrl = 'https://simplypermits.com/API/rest.php';
   cityApiUrl: string = '';
   loading: any;
   alert: any;

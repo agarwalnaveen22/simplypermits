@@ -356,7 +356,6 @@ var AppComponent = /** @class */ (function () {
                 }
             });
         }); };
-        alert("here");
         this.initializeApp();
     }
     AppComponent.prototype.initializeApp = function () {
@@ -766,7 +765,7 @@ var RestService = /** @class */ (function () {
         this.storage = storage;
         this.navCtrl = navCtrl;
         this.keyboard = keyboard;
-        this.apiUrl = 'https://demo.simplypermits.com/API/rest.php';
+        this.apiUrl = 'https://simplypermits.com/API/rest.php';
         this.cityApiUrl = '';
         this.isKeyBoardHide = false;
         this.logout = function (type) { return __awaiter(_this, void 0, void 0, function () {

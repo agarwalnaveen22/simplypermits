@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon Sep 02 20:50:45 IST 2019
+#Thu Sep 05 12:05:18 IST 2019
 1073.file=/Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/build/intermediates/assets/debug/www/svg/ios-airplane.svg
 1007.base=/Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/build/intermediates/assets/debug
 835.base=/Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/build/intermediates/assets/debug
