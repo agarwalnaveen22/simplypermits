@@ -285,14 +285,6 @@ module.exports = [
     ]
   },
   {
-    "id": "cordova-plugin-ionic-webview.IonicWebView",
-    "file": "plugins/cordova-plugin-ionic-webview/src/www/util.js",
-    "pluginId": "cordova-plugin-ionic-webview",
-    "clobbers": [
-      "Ionic.WebView"
-    ]
-  },
-  {
     "id": "cordova-plugin-camera.Camera",
     "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
     "pluginId": "cordova-plugin-camera",
@@ -337,6 +329,14 @@ module.exports = [
     "clobbers": [
       "cordova.plugins.screenorientation"
     ]
+  },
+  {
+    "id": "cordova-plugin-ionic-webview.IonicWebView",
+    "file": "plugins/cordova-plugin-ionic-webview/src/www/util.js",
+    "pluginId": "cordova-plugin-ionic-webview",
+    "clobbers": [
+      "Ionic.WebView"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -353,10 +353,10 @@ module.exports.metadata =
   "cordova-plugin-whitelist": "1.3.3",
   "info.protonet.imageresizer": "0.1.1",
   "cordova-plugin-advanced-http": "2.0.1",
-  "cordova-plugin-ionic-webview": "2.2.5",
   "cordova-plugin-camera": "4.0.3",
   "es6-promise-plugin": "4.2.2",
-  "cordova-plugin-screen-orientation": "3.0.1"
+  "cordova-plugin-screen-orientation": "3.0.1",
+  "cordova-plugin-ionic-webview": "4.1.0"
 };
 // BOTTOM OF METADATA
 });

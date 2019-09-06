@@ -87,14 +87,6 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-ionic-webview": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-ionic-webview@2.2.5"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "cordova-plugin-camera": {
     "source": {
       "type": "registry",
@@ -121,6 +113,14 @@
       "id": "es6-promise-plugin@^4.1.0"
     },
     "is_top_level": false,
+    "variables": {}
+  },
+  "cordova-plugin-ionic-webview": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-ionic-webview@4.1.0"
+    },
+    "is_top_level": true,
     "variables": {}
   }
 }

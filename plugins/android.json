@@ -40,14 +40,14 @@
     "info.protonet.imageresizer": {
       "PACKAGE_NAME": "com.simplypermits"
     },
-    "cordova-plugin-ionic-webview": {
-      "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+",
-      "PACKAGE_NAME": "com.simplypermits"
-    },
     "cordova-plugin-camera": {
       "PACKAGE_NAME": "com.simplypermits"
     },
     "cordova-plugin-screen-orientation": {
+      "PACKAGE_NAME": "com.simplypermits"
+    },
+    "cordova-plugin-ionic-webview": {
+      "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+",
       "PACKAGE_NAME": "com.simplypermits"
     }
   },

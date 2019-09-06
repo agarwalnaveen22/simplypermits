@@ -19,7 +19,7 @@
   under the License.
 -->
 
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:rim="http://www.blackberry.com/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-ionic-webview" version="2.2.5">
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:rim="http://www.blackberry.com/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-ionic-webview" version="4.1.0">
     <name>cordova-plugin-ionic-webview</name>
     <description>Ionic Web View Engine Plugin</description>
     <license>Apache-2.0</license>
@@ -27,8 +27,9 @@
     <repo>https://github.com/ionic-team/cordova-plugin-ionic-webview</repo>
 
 	<engines>
+        <engine name="cordova" version=">=7.1.0"/>
         <engine name="cordova-ios" version=">=4.0.0-dev"/>
-        <engine name="apple-ios" version=">=9.0"/>
+        <engine name="apple-ios" version=">=11.0"/>
         <engine name="cordova-android" version=">=6.4.0"/>
 	</engines>
 
@@ -38,7 +39,9 @@
 
   <platform name="android">
     <config-file target="config.xml" parent="/*">
-      <allow-navigation href="http://localhost:8080/*"/>
+      <allow-navigation href="http://localhost/*"/>
+      <allow-navigation href="https://localhost/*"/>
+      <allow-navigation href="ionic://*"/>
       <preference name="webView" value="com.ionicframework.cordova.webview.IonicWebViewEngine"/>
       <feature name="IonicWebView">
           <param name="android-package" value="com.ionicframework.cordova.webview.IonicWebView"/>
@@ -60,8 +63,8 @@
     </js-module>
 
     <config-file target="config.xml" parent="/*">
-        <allow-navigation href="http://localhost:8080/*"/>
-        <allow-navigation href="http://127.0.0.1:8080/*"/>
+        <allow-navigation href="ionic://*"/>
+        <preference name="deployment-target" value="11.0"/>
         <feature name="IonicWebView">
             <param name="ios-package" value="CDVWKWebViewEngine"/>
         </feature>
@@ -76,43 +79,9 @@
     <source-file src="src/ios/CDVWKWebViewUIDelegate.m"/>
     <header-file src="src/ios/CDVWKProcessPoolFactory.h"/>
     <source-file src="src/ios/CDVWKProcessPoolFactory.m"/>
+    <header-file src="src/ios/IONAssetHandler.h"/>
+    <source-file src="src/ios/IONAssetHandler.m"/>
     <asset src="src/ios/wk-plugin.js" target="wk-plugin.js"/>
-
-    <!--GCDWebServer headers-->
-    <header-file src="src/ios/GCDWebServer/Core/GCDWebServer.h"/>
-    <header-file src="src/ios/GCDWebServer/Core/GCDWebServerConnection.h"/>
-    <header-file src="src/ios/GCDWebServer/Core/GCDWebServerFunctions.h"/>
-    <header-file src="src/ios/GCDWebServer/Core/GCDWebServerHTTPStatusCodes.h"/>
-    <header-file src="src/ios/GCDWebServer/Core/GCDWebServerPrivate.h"/>
-    <header-file src="src/ios/GCDWebServer/Core/GCDWebServerRequest.h"/>
-    <header-file src="src/ios/GCDWebServer/Core/GCDWebServerResponse.h"/>
-    <header-file src="src/ios/GCDWebServer/Requests/GCDWebServerDataRequest.h"/>
-    <header-file src="src/ios/GCDWebServer/Requests/GCDWebServerFileRequest.h"/>
-    <header-file src="src/ios/GCDWebServer/Requests/GCDWebServerMultiPartFormRequest.h"/>
-    <header-file src="src/ios/GCDWebServer/Requests/GCDWebServerURLEncodedFormRequest.h"/>
-    <header-file src="src/ios/GCDWebServer/Responses/GCDWebServerDataResponse.h"/>
-    <header-file src="src/ios/GCDWebServer/Responses/GCDWebServerErrorResponse.h"/>
-    <header-file src="src/ios/GCDWebServer/Responses/GCDWebServerFileResponse.h"/>
-    <header-file src="src/ios/GCDWebServer/Responses/GCDWebServerStreamedResponse.h"/>
-
-    <!--GCDWebServer source-->
-    <source-file src="src/ios/GCDWebServer/Core/GCDWebServer.m"/>
-    <source-file src="src/ios/GCDWebServer/Core/GCDWebServerConnection.m"/>
-    <source-file src="src/ios/GCDWebServer/Core/GCDWebServerFunctions.m"/>
-    <source-file src="src/ios/GCDWebServer/Core/GCDWebServerRequest.m"/>
-    <source-file src="src/ios/GCDWebServer/Core/GCDWebServerResponse.m"/>
-    <source-file src="src/ios/GCDWebServer/Requests/GCDWebServerDataRequest.m"/>
-    <source-file src="src/ios/GCDWebServer/Requests/GCDWebServerFileRequest.m"/>
-    <source-file src="src/ios/GCDWebServer/Requests/GCDWebServerMultiPartFormRequest.m"/>
-    <source-file src="src/ios/GCDWebServer/Requests/GCDWebServerURLEncodedFormRequest.m"/>
-    <source-file src="src/ios/GCDWebServer/Responses/GCDWebServerDataResponse.m"/>
-    <source-file src="src/ios/GCDWebServer/Responses/GCDWebServerErrorResponse.m"/>
-    <source-file src="src/ios/GCDWebServer/Responses/GCDWebServerFileResponse.m"/>
-    <source-file src="src/ios/GCDWebServer/Responses/GCDWebServerStreamedResponse.m"/>
-
-    <!--GCDWebServer dependencies-->
-    <framework src="libz.tbd"/>
-
   </platform>
   <issue>https://github.com/ionic-team/cordova-plugin-ionic-webview/issues</issue>
   <author>Ionic Team</author>

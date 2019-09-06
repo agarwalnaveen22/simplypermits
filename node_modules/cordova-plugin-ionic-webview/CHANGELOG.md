@@ -1,3 +1,116 @@
+# [4.1.0](https://github.com/ionic-team/cordova-plugin-ionic-webview/compare/v4.0.1...v4.1.0) (2019-06-10)
+
+
+### Features
+
+* **ios:** Add WKSuspendInBackground preference ([#356](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/356)) ([3613602](https://github.com/ionic-team/cordova-plugin-ionic-webview/commit/3613602))
+
+## [4.0.1](https://github.com/ionic-team/cordova-plugin-ionic-webview/compare/v4.0.0...v4.0.1) (2019-03-26)
+
+
+### Bug Fixes
+
+* **ios:** Fix autofocus on iOS 12.2 ([#334](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/334)) ([cb4c491](https://github.com/ionic-team/cordova-plugin-ionic-webview/commit/cb4c491)), closes [#330](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/330)
+* account port on resolving uri path ([#321](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/321)) ([fdfe8aa](https://github.com/ionic-team/cordova-plugin-ionic-webview/commit/fdfe8aa))
+
+# [4.0.0](https://github.com/ionic-team/cordova-plugin-ionic-webview/compare/v3.1.2...v4.0.0) (2019-02-18)
+
+
+### Features
+
+* **ios:** Make iOS app Scheme configurable with a preference ([#307](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/307)) ([d52d37e](https://github.com/ionic-team/cordova-plugin-ionic-webview/commit/d52d37e)), closes [#282](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/282)
+* **ios:** Remove WKSuspendInBackground preference ([#309](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/309)) ([73b6659](https://github.com/ionic-team/cordova-plugin-ionic-webview/commit/73b6659)), closes [#286](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/286)
+
+
+### BREAKING CHANGES
+
+* **ios:** Remove the WKSuspendInBackground preference, so app relying on that prefere will
+not behave as expected
+
+## [3.1.2](https://github.com/ionic-team/cordova-plugin-ionic-webview/compare/v3.1.1...v3.1.2) (2019-02-04)
+
+
+### Bug Fixes
+
+* **Android:** Handle Range Requests for proper media file handling ([#298](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/298)) ([6f18248](https://github.com/ionic-team/cordova-plugin-ionic-webview/commit/6f18248)), closes [#248](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/248) [#205](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/205) [#141](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/141)
+
+## [3.1.1](https://github.com/ionic-team/cordova-plugin-ionic-webview/compare/v3.1.0...v3.1.1) (2019-01-18)
+
+
+### Bug Fixes
+
+* **ios:** Remove unused code ([#281](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/281)) ([fc7ea27](https://github.com/ionic-team/cordova-plugin-ionic-webview/commit/fc7ea27))
+
+# [3.1.0](https://github.com/ionic-team/cordova-plugin-ionic-webview/compare/v3.0.0...v3.1.0) (2019-01-17)
+
+
+### Bug Fixes
+
+* **ios:** Fix video playback of files with uppercase extension ([#264](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/264)) ([2c4b225](https://github.com/ionic-team/cordova-plugin-ionic-webview/commit/2c4b225)), closes [#260](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/260)
+* Set engines to require Cordova CLI 7.1.0 or newer ([#276](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/276)) ([40f42e1](https://github.com/ionic-team/cordova-plugin-ionic-webview/commit/40f42e1)), closes [#263](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/263)
+* Use a single scheme for all files ([#270](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/270)) ([3d1bcdd](https://github.com/ionic-team/cordova-plugin-ionic-webview/commit/3d1bcdd)), closes [#258](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/258)
+
+
+### Features
+
+* **Android:** Make app Scheme configurable with a preference ([#274](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/274)) ([18d9f2c](https://github.com/ionic-team/cordova-plugin-ionic-webview/commit/18d9f2c)), closes [#269](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/269) [#255](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/255)
+
+# [3.0.0](https://github.com/ionic-team/cordova-plugin-ionic-webview/compare/v2.3.1...v3.0.0) (2019-01-03)
+
+
+### Bug Fixes
+
+* **iOS:** Remove unused code ([#247](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/247)) ([bceb17a](https://github.com/ionic-team/cordova-plugin-ionic-webview/commit/bceb17a))
+
+
+### Features
+
+* Allows configuration of Mixed Content Mode ([#240](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/240)) ([486d412](https://github.com/ionic-team/cordova-plugin-ionic-webview/commit/486d412)), closes [#231](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/231)
+* **Android:** Implement ionic-file and ionic-content urls ([#242](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/242)) ([8ef0c30](https://github.com/ionic-team/cordova-plugin-ionic-webview/commit/8ef0c30)), closes [#204](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/204) [#183](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/183)
+* **iOS:** Remove GCDWebServer ([#244](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/244)) ([0dee0cf](https://github.com/ionic-team/cordova-plugin-ionic-webview/commit/0dee0cf))
+* **WebViewLocalServer.java:** return 404 error code when a local file is not found ([#217](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/217)) ([f7a551e](https://github.com/ionic-team/cordova-plugin-ionic-webview/commit/f7a551e)), closes [#216](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/216)
+
+
+### BREAKING CHANGES
+
+* **iOS:** Sets deployment-target to 11, so will only work on iOS 11+
+
+* Address changes
+* changes the default from 1 (never) to 0 (always)
+* **WebViewLocalServer.java:** Until now, the Android part of the plugin was returning a 200 http code even though
+the requested file didn't exist. This behavior was inconsistent with the historical behavior of the
+iOS webView. This change makes them both work in the same manner but introduces a breaking change
+for the current Android users that are expecting a 200 http code no matter what and are testing the
+not found error just by checking if the body is null.
+
+## [2.3.1](https://github.com/ionic-team/cordova-plugin-ionic-webview/compare/v2.3.0...v2.3.1) (2018-12-06)
+
+
+### Bug Fixes
+
+* Handle convertFileSrc when using ionic:// scheme ([#236](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/236)) ([89ce899](https://github.com/ionic-team/cordova-plugin-ionic-webview/commit/89ce899))
+
+# [2.3.0](https://github.com/ionic-team/cordova-plugin-ionic-webview/compare/v2.2.5...v2.3.0) (2018-12-05)
+
+
+### Features
+
+* **ios:** Add URLSchemeHandler for iOS 11+ ([#221](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/221)) ([4a973f4](https://github.com/ionic-team/cordova-plugin-ionic-webview/commit/4a973f4))
+
+## [2.2.5](https://github.com/ionic-team/cordova-plugin-ionic-webview/compare/v2.2.4...v2.2.5) (2018-11-20)
+
+
+### Bug Fixes
+
+* Add option for Dark keyboard appearance ([#44](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/44)) ([6c0fe56](https://github.com/ionic-team/cordova-plugin-ionic-webview/commit/6c0fe56))
+
+## [2.2.4](https://github.com/ionic-team/cordova-plugin-ionic-webview/compare/v2.2.3...v2.2.4) (2018-11-20)
+
+
+### Bug Fixes
+
+* fix keyboard displacement bug in iOS 12 WKWebView ([#201](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/201)) ([a670568](https://github.com/ionic-team/cordova-plugin-ionic-webview/commit/a670568))
+
 ## [2.2.3](https://github.com/ionic-team/cordova-plugin-ionic-webview/compare/v2.2.2...v2.2.3) (2018-11-09)
 
 

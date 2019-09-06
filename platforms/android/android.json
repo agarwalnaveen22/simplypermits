@@ -94,7 +94,7 @@
             },
             {
               "xml": "<allow-navigation href=\"http://localhost:8080/*\" />",
-              "count": 2
+              "count": 1
             },
             {
               "xml": "<preference name=\"webView\" value=\"com.ionicframework.cordova.webview.IonicWebViewEngine\" />",
@@ -103,6 +103,18 @@
             {
               "xml": "<feature name=\"IonicWebView\"><param name=\"android-package\" value=\"com.ionicframework.cordova.webview.IonicWebView\" /></feature>",
               "count": 2
+            },
+            {
+              "xml": "<allow-navigation href=\"http://localhost/*\" />",
+              "count": 1
+            },
+            {
+              "xml": "<allow-navigation href=\"https://localhost/*\" />",
+              "count": 1
+            },
+            {
+              "xml": "<allow-navigation href=\"ionic://*\" />",
+              "count": 1
             }
           ]
         }
@@ -143,10 +155,6 @@
     "cordova-plugin-advanced-http": {
       "PACKAGE_NAME": "com.simplypermits"
     },
-    "cordova-plugin-ionic-webview": {
-      "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+",
-      "PACKAGE_NAME": "com.simplypermits"
-    },
     "cordova-plugin-camera": {
       "PACKAGE_NAME": "com.simplypermits"
     },
@@ -154,6 +162,10 @@
       "PACKAGE_NAME": "com.simplypermits"
     },
     "cordova-plugin-screen-orientation": {
+      "PACKAGE_NAME": "com.simplypermits"
+    },
+    "cordova-plugin-ionic-webview": {
+      "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+",
       "PACKAGE_NAME": "com.simplypermits"
     }
   },
@@ -444,14 +456,6 @@
       ]
     },
     {
-      "id": "cordova-plugin-ionic-webview.IonicWebView",
-      "file": "plugins/cordova-plugin-ionic-webview/src/www/util.js",
-      "pluginId": "cordova-plugin-ionic-webview",
-      "clobbers": [
-        "Ionic.WebView"
-      ]
-    },
-    {
       "id": "cordova-plugin-camera.Camera",
       "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
       "pluginId": "cordova-plugin-camera",
@@ -496,6 +500,14 @@
       "clobbers": [
         "cordova.plugins.screenorientation"
       ]
+    },
+    {
+      "id": "cordova-plugin-ionic-webview.IonicWebView",
+      "file": "plugins/cordova-plugin-ionic-webview/src/www/util.js",
+      "pluginId": "cordova-plugin-ionic-webview",
+      "clobbers": [
+        "Ionic.WebView"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -510,9 +522,9 @@
     "cordova-plugin-whitelist": "1.3.3",
     "info.protonet.imageresizer": "0.1.1",
     "cordova-plugin-advanced-http": "2.0.1",
-    "cordova-plugin-ionic-webview": "2.2.5",
     "cordova-plugin-camera": "4.0.3",
     "es6-promise-plugin": "4.2.2",
-    "cordova-plugin-screen-orientation": "3.0.1"
+    "cordova-plugin-screen-orientation": "3.0.1",
+    "cordova-plugin-ionic-webview": "4.1.0"
   }
 }

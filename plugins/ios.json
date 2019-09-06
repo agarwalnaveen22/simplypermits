@@ -31,9 +31,6 @@
     "cordova-plugin-ionic-keyboard": {
       "PACKAGE_NAME": "com.simplypermits"
     },
-    "cordova-plugin-ionic-webview": {
-      "PACKAGE_NAME": "com.simplypermits"
-    },
     "cordova-plugin-screen-orientation": {
       "PACKAGE_NAME": "com.simplypermits"
     },
@@ -47,6 +44,9 @@
       "PACKAGE_NAME": "com.simplypermits"
     },
     "info.protonet.imageresizer": {
+      "PACKAGE_NAME": "com.simplypermits"
+    },
+    "cordova-plugin-ionic-webview": {
       "PACKAGE_NAME": "com.simplypermits"
     }
   },
