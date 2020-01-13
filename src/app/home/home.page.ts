@@ -65,10 +65,6 @@ export class HomePage {
     );
   }
 
-  logout() {
-    this.restService.systemLogout();
-  }
-
   async viewVehicleSearchForm() {
     if (this.property == 0 || this.property == undefined) {
       this.restService.showToast("Please select property");

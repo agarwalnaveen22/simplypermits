@@ -1,5 +1,5 @@
 import { Component, OnInit, NgZone, Output, EventEmitter, Input } from '@angular/core';
-import { PopoverController } from '@ionic/angular';
+import { PopoverController, NavController } from '@ionic/angular';
 import { MainMenuComponent } from '../main-menu/main-menu.component';
 import { RestService } from '../rest.service';
 
@@ -18,7 +18,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     public popoverController: PopoverController,
     private restService: RestService,
-    private zone: NgZone
+    private zone: NgZone,
+    private navCtrl: NavController
   ) { }
 
   ngOnInit() {
@@ -56,6 +57,10 @@ export class HeaderComponent implements OnInit {
       cssClass: 'main-menu'
     });
     return await popover.present();
+  }
+
+  goToHome() {
+    this.navCtrl.goBack('/home');
   }
 
   selectProperty = (event) => {
