@@ -22,7 +22,6 @@ import { Keyboard } from '@ionic-native/keyboard/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AddNoteComponent } from './add-note/add-note.component';
-import { ViewNotesComponent } from './view-notes/view-notes.component';
 import { ImagePreviewComponent } from './image-preview/image-preview.component';
 import { AuthGuardService } from './auth-guard.service';
 import { SearchByVehicleComponent } from './search-by-vehicle/search-by-vehicle.component';
@@ -31,8 +30,8 @@ import { DISABLED } from '@angular/forms/src/model';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 
 @NgModule({
-  declarations: [AppComponent, AddNoteComponent, ViewNotesComponent, ImagePreviewComponent, SearchByVehicleComponent, SearchByUserComponent, MainMenuComponent],
-  entryComponents: [AddNoteComponent, ViewNotesComponent, ImagePreviewComponent, SearchByVehicleComponent, SearchByUserComponent, MainMenuComponent],
+  declarations: [AppComponent, AddNoteComponent, ImagePreviewComponent, SearchByVehicleComponent, SearchByUserComponent, MainMenuComponent],
+  entryComponents: [AddNoteComponent, ImagePreviewComponent, SearchByVehicleComponent, SearchByUserComponent, MainMenuComponent],
   imports: [
     BrowserModule, 
     IonicModule.forRoot({mode: 'md', scrollAssist: 'DISABLED'}), 

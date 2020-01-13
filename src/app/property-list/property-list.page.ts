@@ -10,7 +10,6 @@ import { NavController } from '@ionic/angular';
 export class PropertyListPage implements OnInit {
   vehicleData: any = [];
   userData: any = [];
-  appLogo: string = 'assets/icon/inner_header_logo.png';
   showProperty: boolean = false;
   pageName: string = 'SEARCH RESULTS';
   constructor(

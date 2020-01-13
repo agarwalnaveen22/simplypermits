@@ -1,31 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, NavParams } from '@ionic/angular';
 import { RestService } from '../rest.service';
+import { NavController } from '@ionic/angular';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-view-notes',
-  templateUrl: './view-notes.component.html',
-  styleUrls: ['./view-notes.component.scss']
+  templateUrl: './view-notes.page.html',
+  styleUrls: ['./view-notes.page.scss'],
 })
-export class ViewNotesComponent implements OnInit {
+export class ViewNotesPage implements OnInit {
   appLogo: string = 'assets/icon/inner_header_logo.png';
   notes: any = [];
   permitId: number = 0;
+  showProperty: boolean = false;
+  pageName: string = 'PERMIT NOTES';
   constructor(
-    private modalCtrl: ModalController,
     private restService: RestService,
-    private navParams: NavParams
+    private route: ActivatedRoute,
+    private navCtrl: NavController
   ) {
-    this.permitId = navParams.get("permitId");
-    this.getPermitDetail();
-   }
+    this.route.params.subscribe((params: Params) => {
+      this.permitId = params['permitId'];
+      this.getPermitDetail();
+    });
+  }
 
   ngOnInit() {
   }
 
-  closeModal(type) {
-    let data = {type:type}
-    this.modalCtrl.dismiss(data);
+  goBack() {
+    this.navCtrl.goBack('/permit-detail/'+this.permitId);
   }
 
   refreshData(event) {

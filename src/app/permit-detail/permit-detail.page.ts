@@ -1,17 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController } from '@ionic/angular';
 import { AddNoteComponent } from '../add-note/add-note.component';
 import { RestService } from '../rest.service';
 import { ActivatedRoute, Params } from '@angular/router';
-import { ViewNotesComponent } from '../view-notes/view-notes.component';
 
 @Component({
   selector: 'app-permit-detail',
   templateUrl: './permit-detail.page.html',
   styleUrls: ['./permit-detail.page.scss'],
 })
-export class PermitDetailPage {
-  appLogo: string = 'assets/icon/inner_header_logo.png';
+export class PermitDetailPage implements OnInit {
   permitData: any = [];
   permitId: number = 0;
   isEnforcement: boolean = false;
@@ -25,8 +23,11 @@ export class PermitDetailPage {
   ) {
     this.route.params.subscribe((params: Params) => {
       this.permitId = params['id'];
-      this.getPermitDetail();
     });
+  }
+
+  ngOnInit() {
+    this.getPermitDetail();
   }
 
   refreshData(event) {
@@ -80,16 +81,7 @@ export class PermitDetailPage {
 
   async viewNotes() {
     if (this.permitData.Notes) {
-      const modal = await this.modalController.create({
-        component: ViewNotesComponent,
-        componentProps: { permitId: this.permitId }
-      });
-      modal.onDidDismiss(data => {
-        if(data['data']['type']==0){
-          this.goToHome();
-        }
-      });
-      return await modal.present();
+      this.navCtrl.goForward('/view-notes/'+this.permitId);
     } else {
       this.restService.showAlert("Notice", "There are no notes for this permit.");
     }

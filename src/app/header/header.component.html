@@ -17,7 +17,7 @@
       <ion-select-option *ngFor="let property of properties" value="{{property.id}}">{{property.name}}</ion-select-option>
     </ion-select>
     <img [src]="lprImage" />
-    <ion-label>{{pageName}}</ion-label>
+    <ion-label *ngIf="!showProperty">{{pageName}}</ion-label>
   </div>
   
 </ion-header>

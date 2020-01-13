@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'property-list', loadChildren: './property-list/property-list.module#PropertyListPageModule' },
   { path: 'forgot-password', loadChildren: './forgot-password/forgot-password.module#ForgotPasswordPageModule' },
   { path: 'no-permit-result', loadChildren: './no-permit-result/no-permit-result.module#NoPermitResultPageModule' },
+  { path: 'view-notes/:permitId', loadChildren: './view-notes/view-notes.module#ViewNotesPageModule' },
 ];
 
 @NgModule({
