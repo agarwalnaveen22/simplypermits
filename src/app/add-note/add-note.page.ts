@@ -1,28 +1,33 @@
-import { Component } from '@angular/core';
-import { ModalController, NavParams } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
+import { ActivatedRoute, Params } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-note',
-  templateUrl: './add-note.component.html',
-  styleUrls: ['./add-note.component.scss']
+  templateUrl: './add-note.page.html',
+  styleUrls: ['./add-note.page.scss'],
 })
-export class AddNoteComponent {
-  appLogo: string = 'assets/icon/inner_header_logo.png';
+export class AddNotePage implements OnInit {
   description: string = '';
   permitId: number = 0;
+  showProperty: boolean = false;
+  pageName: string = 'ADD NOTE';
   constructor(
-    private modalCtrl: ModalController,
     private restService: RestService,
-    private navParams: NavParams
+    private route: ActivatedRoute,
+    private navCtrl: NavController
   ) {
-    this.permitId = navParams.get("permitId");
-   }
+    this.route.params.subscribe((params: Params) => {
+      this.permitId = params['permitId'];
+    });
+  }
 
+  ngOnInit() {
+  }
 
-  closeModal(type) {
-    let data = {type:type}
-    this.modalCtrl.dismiss(data);
+  goBack() {
+    this.navCtrl.goBack('/permit-detail/'+this.permitId);
   }
 
   async addNotes() {
@@ -41,7 +46,7 @@ export class AddNoteComponent {
         this.restService.hideLoader();
         if (!result['error']) {
           this.restService.showAlert('Success', result['message']);
-          this.closeModal(1);
+          this.goBack();
         }else{
           this.restService.showAlert('Error', result['message']);
         }

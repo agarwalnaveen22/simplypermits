@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController } from '@ionic/angular';
-import { AddNoteComponent } from '../add-note/add-note.component';
 import { RestService } from '../rest.service';
 import { ActivatedRoute, Params } from '@angular/router';
 
@@ -66,17 +65,8 @@ export class PermitDetailPage implements OnInit {
     });
   }
 
-  async presentModal() {
-    const modal = await this.modalController.create({
-      component: AddNoteComponent,
-      componentProps: { permitId: this.permitId }
-    });
-    modal.onDidDismiss(data => {
-      if(data['data']['type']==0){
-        this.goToHome();
-      }
-    });
-    return await modal.present();
+  async addNote() {
+    this.navCtrl.goForward('/add-note/'+this.permitId);
   }
 
   async viewNotes() {

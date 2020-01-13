@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'forgot-password', loadChildren: './forgot-password/forgot-password.module#ForgotPasswordPageModule' },
   { path: 'no-permit-result', loadChildren: './no-permit-result/no-permit-result.module#NoPermitResultPageModule' },
   { path: 'view-notes/:permitId', loadChildren: './view-notes/view-notes.module#ViewNotesPageModule' },
+  { path: 'add-note/:permitId', loadChildren: './add-note/add-note.module#AddNotePageModule' },
 ];
 
 @NgModule({
