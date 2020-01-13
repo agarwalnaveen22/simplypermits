@@ -1,0 +1,19 @@
+ion-list.list.list-md.hydrated {
+    background: #130d31;
+    margin-bottom: 0;
+    border-radius: .3em;
+}
+ion-list ion-item ion-label {
+    align-items: center;
+    display: flex;
+
+    img {
+        width: 15px;
+        margin-right: .75em;
+    }
+}
+
+ion-item {
+    // --inner-padding-start: 0.75em;
+    --padding-start: 0.75em;
+}

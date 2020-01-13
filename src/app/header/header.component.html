@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons class="logoHeader" slot="start">
+      <ion-button>
+        <img slot="start" [src]="appLogo" />
+      </ion-button>
+    </ion-buttons>
+    
+    <ion-buttons slot="end">
+      <ion-button class="header-menu" (click)="presentMainMenu()">
+        <ion-icon slot="icon-only" name="more"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <div class="property-dropdown">
+    <ion-select *ngIf="showProperty" class="header-dropdown" interface="popover" (ionChange)="selectProperty($event)" placeholder="Select One">
+      <ion-select-option *ngFor="let property of properties" value="{{property.id}}">{{property.name}}</ion-select-option>
+    </ion-select>
+    <img [src]="lprImage" />
+    <ion-label>{{pageName}}</ion-label>
+  </div>
+  
+</ion-header>

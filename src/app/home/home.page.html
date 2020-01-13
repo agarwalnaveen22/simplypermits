@@ -1,22 +1,4 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons class="logoHeader" slot="start">
-      <ion-button>
-        <img slot="start" [src]="appLogo" />
-      </ion-button>
-    </ion-buttons>
-    <ion-select [(ngModel)]="property" interface="popover" placeholder="Select One">
-      <ion-select-option *ngFor="let property of properties" value="{{property.id}}">{{property.name}}</ion-select-option>
-    </ion-select>
-
-
-    <ion-buttons slot="end">
-      <ion-button class="logout-btn" (click)="logout()">
-        <ion-icon class="logoutIcon" slot="icon-only" name="ios-log-out"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<app-header [showProperty]="showProperty" [pageName]="pageName" (selectedProperty)="getPropertyId($event)"></app-header>
 
 <ion-content padding>
 

@@ -1,0 +1,33 @@
+.property-dropdown {
+    padding: .1em 1.75em 1em 1em;
+    background: #150e35;
+    float: left;
+    width: 100%;
+    margin-top: -1px;
+    margin-bottom: -1px;
+}
+.header-md::after {
+    display: none;
+}
+.property-dropdown img {
+    width: 34px;
+    float: right;
+}
+
+.property-dropdown ion-select.header-dropdown {
+    width: calc(100% - 60px);
+    float: left;
+    padding: 10px 15px;
+    text-align: left;
+    font-size: .75em;
+    position: relative;
+}
+@media only screen and (min-width: 480px) {
+    .property-dropdown {
+        padding-left: 1.75em;
+    }
+}
+
+ion-label {
+    float: left;
+}

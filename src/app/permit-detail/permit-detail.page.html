@@ -1,17 +1,4 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons class="logoHeader" (click)="goToHome()" slot="start">
-      <ion-button>
-        <img [src]="appLogo" />
-      </ion-button>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button>
-        <ion-label>PERMIT DETAILS</ion-label>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<app-header [showProperty]="showProperty" [pageName]="pageName"></app-header>
 
 <ion-content [ngClass]="permitData.status=='Active'?'active':'inactive'" padding>
   <ion-refresher slot="fixed" (ionRefresh)="refreshData($event)">

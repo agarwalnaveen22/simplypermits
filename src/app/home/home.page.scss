@@ -57,27 +57,3 @@ ion-row {
 
 
 
-
-ion-select {
-    background: #2c2649;
-  }
-
-  ion-button.logout-btn::before {
-    content: "Logout";
-    position: absolute;
-    text-align: center;
-    display: block;
-    color: #FFF;
-    left: 0;
-    right: 0;
-    top: .25em;
-}
-ion-button.logout-btn { 
-    width: 6em; 
-    position: relative;
-    ion-icon{
-        margin-top: 1em;
-    }
-
-}
-

@@ -15,6 +15,8 @@ export class PermitDetailPage {
   permitData: any = [];
   permitId: number = 0;
   isEnforcement: boolean = false;
+  showProperty: boolean = false;
+  pageName: string = 'PERMIT DETAILS';
   constructor(
     private modalController: ModalController,
     private restService: RestService,

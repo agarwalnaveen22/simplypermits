@@ -28,10 +28,11 @@ import { AuthGuardService } from './auth-guard.service';
 import { SearchByVehicleComponent } from './search-by-vehicle/search-by-vehicle.component';
 import { SearchByUserComponent } from './search-by-user/search-by-user.component';
 import { DISABLED } from '@angular/forms/src/model';
+import { MainMenuComponent } from './main-menu/main-menu.component';
 
 @NgModule({
-  declarations: [AppComponent, AddNoteComponent, ViewNotesComponent, ImagePreviewComponent, SearchByVehicleComponent, SearchByUserComponent],
-  entryComponents: [AddNoteComponent, ViewNotesComponent, ImagePreviewComponent, SearchByVehicleComponent, SearchByUserComponent],
+  declarations: [AppComponent, AddNoteComponent, ViewNotesComponent, ImagePreviewComponent, SearchByVehicleComponent, SearchByUserComponent, MainMenuComponent],
+  entryComponents: [AddNoteComponent, ViewNotesComponent, ImagePreviewComponent, SearchByVehicleComponent, SearchByUserComponent, MainMenuComponent],
   imports: [
     BrowserModule, 
     IonicModule.forRoot({mode: 'md', scrollAssist: 'DISABLED'}), 

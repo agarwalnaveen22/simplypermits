@@ -4,7 +4,6 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { ImageResizer, ImageResizerOptions } from '@ionic-native/image-resizer/ngx';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { RestService } from '../rest.service';
-import { ImagePreviewComponent } from '../image-preview/image-preview.component';
 import { SearchByVehicleComponent } from '../search-by-vehicle/search-by-vehicle.component';
 import { SearchByUserComponent } from '../search-by-user/search-by-user.component';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
@@ -15,10 +14,7 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  appLogo: string = 'assets/icon/inner_header_logo.png';
   scanImage: string = 'assets/icon/scan_img.png';
-  property: number = 0;
-  properties: any = [];
   make: string = '';
   model: string = '';
   year: string = '';
@@ -34,6 +30,9 @@ export class HomePage {
   deviceMode: string = '';
   colSize1: number = 12;
   colSize2: number = 12;
+  property: number = 0;
+  showProperty: boolean = true;
+  pageName: string = 'HOME';
   constructor(
     private camera: Camera,
     private restService: RestService,
@@ -46,7 +45,6 @@ export class HomePage {
     private screenOrientation: ScreenOrientation
   ) {
     this.checkRole();
-    this.getProperties();
     this.deviceMode = screenOrientation.type;
     if (this.deviceMode == 'landscape-primary' || this.deviceMode == 'landscape-secondary') {
       this.colSize1 = 5;
@@ -69,28 +67,6 @@ export class HomePage {
 
   logout() {
     this.restService.systemLogout();
-  }
-
-  async getProperties() {
-    let requestData = {
-      sp_action: "sp_get_property_list",
-    }
-    await this.restService.keyBoardHide();
-    this.restService.showLoader('Fetching Properties');
-    this.restService.makePostRequest(requestData).then((result) => {
-      this.restService.hideLoader();
-      this.zone.run(async () => {
-        this.properties = result['Properties'];
-      });
-      console.log(this.properties);
-    }, (err) => {
-      this.restService.hideLoader();
-      if (err.error) {
-        this.restService.showAlert("Notice", this.restService.setErrorMessageArray(err.error.message));
-      } else {
-        this.restService.showAlert("Notice", err.statusText);
-      }
-    });
   }
 
   async viewVehicleSearchForm() {
@@ -283,6 +259,9 @@ export class HomePage {
   }
 
 
+  getPropertyId = (event) => {
+    this.property = event;
+  }
 
 
 }
