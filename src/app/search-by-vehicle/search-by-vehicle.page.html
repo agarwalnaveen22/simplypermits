@@ -27,11 +27,11 @@
     <ion-input [(ngModel)]="plate" placeholder="Plate"></ion-input>
   </ion-item>
 
-  <ion-button class="loginButton" expand="block" size="large" (click)="goToBack(1)">Search</ion-button>
+  <ion-button class="loginButton" expand="block" size="large" (click)="submitForm()">Search</ion-button>
 
 </ion-content>
 
-<ion-footer (click)="goToBack(0)">
+<ion-footer (click)="goToBack()">
   <ion-toolbar>
     <ion-title text-center>BACK</ion-title>
   </ion-toolbar>

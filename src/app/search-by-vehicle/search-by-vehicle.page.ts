@@ -23,23 +23,54 @@ export class SearchByVehiclePage implements OnInit {
   ngOnInit() {
   }
 
-  goToBack(type) {
-    if (type == 1) {
-      if (this.make == '' && this.model == '' && this.year == '' && this.vin == '' && this.plate == '') {
-        this.restService.showAlert('Error', 'Please enter some input');
-      } else {
-        let data = {
-          make: this.make,
-          model: this.model,
-          year: this.year,
-          vin: this.vin,
-          plate: this.plate
-        }
-        this.navCtrl.goBack('/home');
-      }
+  goToBack() {
+    this.navCtrl.goBack('/home');
+  }
+
+  submitForm() {
+    if (this.make == '' && this.model == '' && this.year == '' && this.vin == '' && this.plate == '') {
+      this.restService.showAlert('Error', 'Please enter some input');
     } else {
-      this.navCtrl.goBack('/home');
+      this.searchManualVehicle();
     }
+  }
+
+  async searchManualVehicle() {
+    let requestData = {
+      sp_action: "sp_search_permit_by_vehicle",
+      selected_cat: this.restService.selectedProperty,
+      vehicle_make: this.make,
+      vehicle_model: this.model,
+      vehicle_year: this.year,
+      vehicle_vin: this.vin,
+      vehicle_plate: this.plate
+    }
+    await this.restService.keyBoardHide();
+    this.restService.showLoader('Searching Vehicles');
+    this.restService.makeGetRequest(requestData).then(async (result) => {
+      this.restService.hideLoader();
+      if (result['json'] && result['json'].length > 0) {
+        await this.restService.setStorage("userData", []);
+        let response = await this.restService.setStorage("vehicleData", result['json']);
+        if (response) {
+          this.make = '';
+          this.model = '';
+          this.year = '';
+          this.vin = '';
+          this.plate = '';
+          this.navCtrl.goForward("/property-list");
+        }
+      } else {
+        this.restService.showAlert("Notice", "No vehicles found");
+      }
+    }, (err) => {
+      this.restService.hideLoader();
+      if (err.error) {
+        this.restService.showAlert("Notice", this.restService.setErrorMessageArray(err.error.message));
+      } else {
+        this.restService.showAlert("Notice", err.statusText);
+      }
+    });
   }
 
 }
