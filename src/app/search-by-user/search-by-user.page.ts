@@ -1,26 +1,29 @@
-import { Component } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-search-by-user',
-  templateUrl: './search-by-user.component.html',
-  styleUrls: ['./search-by-user.component.scss']
+  templateUrl: './search-by-user.page.html',
+  styleUrls: ['./search-by-user.page.scss'],
 })
-export class SearchByUserComponent {
+export class SearchByUserPage implements OnInit {
   firstName: string = '';
   lastName: string = '';
   residentUnit: string = '';
   email: string = '';
   phone: string = '';
+  showProperty: boolean = false;
+  pageName: string = 'SEARCH BY USER';
   constructor(
-    private modalCtrl: ModalController,
-    private restService: RestService
+    private restService: RestService,
+    private navCtrl: NavController
   ) { }
-  appLogo: string = 'assets/icon/inner_header_logo.png';
 
+  ngOnInit() {
+  }
 
-  closeModal(type) {
+  goToBack(type) {
     if (type == 1) {
       if (this.firstName == '' && this.lastName == '' && this.residentUnit == '' && this.email == '' && this.phone == '') {
         this.restService.showAlert('Error', 'Please enter some input');
@@ -32,14 +35,11 @@ export class SearchByUserComponent {
           email: this.email,
           phone: this.phone
         }
-        this.modalCtrl.dismiss(data);
+        this.navCtrl.goBack('/home');
       }
     } else {
-      let data = {}
-      this.modalCtrl.dismiss(data);
+      this.navCtrl.goBack('/home');
     }
-
-
   }
 
 }

@@ -12,6 +12,8 @@ const routes: Routes = [
   { path: 'no-permit-result', loadChildren: './no-permit-result/no-permit-result.module#NoPermitResultPageModule' },
   { path: 'view-notes/:permitId', loadChildren: './view-notes/view-notes.module#ViewNotesPageModule' },
   { path: 'add-note/:permitId', loadChildren: './add-note/add-note.module#AddNotePageModule' },
+  { path: 'search-by-user', loadChildren: './search-by-user/search-by-user.module#SearchByUserPageModule' },
+  { path: 'search-by-vehicle', loadChildren: './search-by-vehicle/search-by-vehicle.module#SearchByVehiclePageModule' },
 ];
 
 @NgModule({

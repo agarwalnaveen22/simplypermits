@@ -1,8 +1,6 @@
 import { Component, NgZone } from '@angular/core';
 import { ActionSheetController, ModalController, NavController } from '@ionic/angular';
 import { RestService } from '../rest.service';
-import { SearchByVehicleComponent } from '../search-by-vehicle/search-by-vehicle.component';
-import { SearchByUserComponent } from '../search-by-user/search-by-user.component';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
 @Component({
@@ -58,46 +56,12 @@ export class HomePage {
     );
   }
 
-  async viewVehicleSearchForm() {
-    if (this.property == 0 || this.property == undefined) {
-      this.restService.showToast("Please select property");
-    } else {
-      const modal = await this.modalController.create({
-        component: SearchByVehicleComponent
-      });
-      modal.onDidDismiss(data => {
-        if (Object.keys(data.data).length > 0) {
-          this.make = data.data.make;
-          this.model = data.data.model;
-          this.year = data.data.year;
-          this.vin = data.data.vin;
-          this.plate = data.data.plate;
-          this.searchManualVehicle();
-        }
-      });
-      return await modal.present();
-    }
+  viewVehicleSearchForm() {
+    this.restService.viewVehicleSearchForm();
   }
 
-  async viewUserSearchForm() {
-    if (this.property == 0 || this.property == undefined) {
-      this.restService.showToast("Please select property");
-    } else {
-      const modal = await this.modalController.create({
-        component: SearchByUserComponent
-      });
-      modal.onDidDismiss(data => {
-        if (Object.keys(data.data).length > 0) {
-          this.firstName = data.data.firstName;
-          this.lastName = data.data.lastName;
-          this.residentUnit = data.data.residentUnit;
-          this.email = data.data.email;
-          this.phone = data.data.phone;
-          this.searchManualUser();
-        }
-      });
-      return await modal.present();
-    }
+  viewUserSearchForm() {
+    this.restService.viewUserSearchForm();
   }
 
   async searchManualVehicle() {

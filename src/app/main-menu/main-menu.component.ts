@@ -33,4 +33,14 @@ export class MainMenuComponent implements OnInit {
     this.restService.takePicture(this.restService.selectedProperty);
   }
 
+  async viewVehicleSearchForm() {
+    await this.popoverCtrl.dismiss();
+    this.restService.viewVehicleSearchForm();
+  }
+
+  async viewUserSearchForm() {
+    await this.popoverCtrl.dismiss();
+    this.restService.viewUserSearchForm();
+  }
+
 }

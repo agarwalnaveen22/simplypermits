@@ -1,18 +1,4 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons class="logoHeader" slot="start" (click)="closeModal(0)">
-      <ion-button>
-        <img slot="start" [src]="appLogo" />
-      </ion-button>
-    </ion-buttons>
-    <ion-title>Search By Vehicle</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="closeModal(0)">
-        <ion-icon class="logoutIcon" slot="icon-only" name="close"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<app-header [showProperty]="showProperty" [pageName]="pageName"></app-header>
 
 <ion-content padding text-center>
 
@@ -41,6 +27,12 @@
     <ion-input [(ngModel)]="plate" placeholder="Plate"></ion-input>
   </ion-item>
 
-  <ion-button class="loginButton" expand="block" size="large" (click)="closeModal(1)">Search</ion-button>
+  <ion-button class="loginButton" expand="block" size="large" (click)="goToBack(1)">Search</ion-button>
 
 </ion-content>
+
+<ion-footer (click)="goToBack(0)">
+  <ion-toolbar>
+    <ion-title text-center>BACK</ion-title>
+  </ion-toolbar>
+</ion-footer>

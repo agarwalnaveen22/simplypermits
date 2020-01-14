@@ -1,26 +1,29 @@
-import { Component } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-search-by-vehicle',
-  templateUrl: './search-by-vehicle.component.html',
-  styleUrls: ['./search-by-vehicle.component.scss']
+  templateUrl: './search-by-vehicle.page.html',
+  styleUrls: ['./search-by-vehicle.page.scss'],
 })
-export class SearchByVehicleComponent {
+export class SearchByVehiclePage implements OnInit {
   make: string = '';
   model: string = '';
   year: string = '';
   vin: string = '';
   plate: string = '';
+  showProperty: boolean = false;
+  pageName: string = 'SEARCH BY VEHICLE';
   constructor(
-    private modalCtrl: ModalController,
-    private restService: RestService
+    private restService: RestService,
+    private navCtrl: NavController
   ) { }
-  appLogo: string = 'assets/icon/inner_header_logo.png';
 
+  ngOnInit() {
+  }
 
-  closeModal(type) {
+  goToBack(type) {
     if (type == 1) {
       if (this.make == '' && this.model == '' && this.year == '' && this.vin == '' && this.plate == '') {
         this.restService.showAlert('Error', 'Please enter some input');
@@ -32,11 +35,10 @@ export class SearchByVehicleComponent {
           vin: this.vin,
           plate: this.plate
         }
-        this.modalCtrl.dismiss(data);
+        this.navCtrl.goBack('/home');
       }
     } else {
-      let data = {}
-      this.modalCtrl.dismiss(data);
+      this.navCtrl.goBack('/home');
     }
   }
 

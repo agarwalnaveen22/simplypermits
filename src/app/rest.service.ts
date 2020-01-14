@@ -333,4 +333,20 @@ export class RestService {
       })
   }
 
+  async viewVehicleSearchForm() {
+    if (this.selectedProperty == 0 || this.selectedProperty == undefined) {
+      this.showToast("Please select property");
+    } else {
+      this.navCtrl.goForward('/search-by-vehicle');
+    }
+  }
+
+  async viewUserSearchForm() {
+    if (this.selectedProperty == 0 || this.selectedProperty == undefined) {
+      this.showToast("Please select property");
+    } else {
+      this.navCtrl.goForward('/search-by-user');
+    }
+  }
+
 }

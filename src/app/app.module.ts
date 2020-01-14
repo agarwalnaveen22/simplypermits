@@ -23,14 +23,12 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ImagePreviewComponent } from './image-preview/image-preview.component';
 import { AuthGuardService } from './auth-guard.service';
-import { SearchByVehicleComponent } from './search-by-vehicle/search-by-vehicle.component';
-import { SearchByUserComponent } from './search-by-user/search-by-user.component';
 import { DISABLED } from '@angular/forms/src/model';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 
 @NgModule({
-  declarations: [AppComponent, ImagePreviewComponent, SearchByVehicleComponent, SearchByUserComponent, MainMenuComponent],
-  entryComponents: [ImagePreviewComponent, SearchByVehicleComponent, SearchByUserComponent, MainMenuComponent],
+  declarations: [AppComponent, ImagePreviewComponent, MainMenuComponent],
+  entryComponents: [ImagePreviewComponent, MainMenuComponent],
   imports: [
     BrowserModule, 
     IonicModule.forRoot({mode: 'md', scrollAssist: 'DISABLED'}), 
