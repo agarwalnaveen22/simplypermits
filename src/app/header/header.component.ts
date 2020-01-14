@@ -64,6 +64,7 @@ export class HeaderComponent implements OnInit {
   }
 
   selectProperty = (event) => {
+    this.restService.selectedProperty = event.target.value;
     this.selectedProperty.emit(event.target.value);
   }
 

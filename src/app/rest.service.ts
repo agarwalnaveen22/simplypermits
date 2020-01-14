@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LoadingController, AlertController, ToastController, NavController, ModalController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { FileTransfer, FileTransferObject, FileUploadOptions } from '@ionic-native/file-transfer/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +16,8 @@ export class RestService {
   alert: any;
   checkSession: any;
   isKeyBoardHide: boolean = false;
+  selectedImage: string = '';
+  selectedProperty: number = 0;
 
   constructor(
     public http: HttpClient,
@@ -24,6 +28,8 @@ export class RestService {
     private storage: Storage,
     private navCtrl: NavController,
     private keyboard: Keyboard,
+    private camera: Camera,
+    private transfer: FileTransfer
   ) { }
 
   async showLoader(message) {
@@ -266,6 +272,65 @@ export class RestService {
     } else {
       this.isKeyBoardHide = true;
     }
+  }
+
+  async takePicture(property:number = 0) {
+    if (property == 0 || property == undefined) {
+      this.showToast("Please select property");
+    } else {
+      let options: CameraOptions = {
+        quality: 100,
+        destinationType: this.camera.DestinationType.FILE_URI,
+        encodingType: this.camera.EncodingType.JPEG,
+        mediaType: this.camera.MediaType.PICTURE,
+        correctOrientation: true
+      }
+      options['sourceType'] = 1;
+      this.launchProgram(options, property);
+    }
+  }
+
+  launchProgram(options, property) {
+    this.camera.getPicture(options).then((imageData) => {
+      this.selectedImage = imageData;
+      this.scanPlate(property);
+
+    }, (err) => {
+      this.showAlert("Notice", JSON.stringify(err));
+    });
+  }
+
+  async scanPlate(property) {
+    let options: FileUploadOptions = {
+      fileKey: 'uploadFileName',
+      fileName: 'name.jpg',
+      chunkedMode: false,
+      mimeType: "multipart/form-data"
+    }
+    const fileTransfer: FileTransferObject = this.transfer.create();
+    this.showLoader('Sending Image');
+    let sessionId = await this.getStorage('session_id');
+    let userId = await this.getStorage('userInfo');
+    fileTransfer.upload(this.selectedImage, this.cityApiUrl + "?sp_action=sp_permit_check_vehicle_image&selected_cat=" + property+"&session_id="+sessionId+"&user_id="+userId['user_id'], options)
+      .then(async (result) => {
+        this.hideLoader();
+        result = JSON.parse(result.response);
+        if (result['json'].length > 0) {
+          await this.setStorage("userData", []);
+          let response = await this.setStorage("vehicleData", result['json']);
+          if (response) {
+            this.navCtrl.goForward("/property-list");
+          }
+        } else {
+          let response = await this.setStorage("plateData", result['plateData']);
+          if (response) {
+            this.navCtrl.goForward("/no-permit-result");
+          }
+        }
+      }, (err) => {
+        this.hideLoader();
+        this.showAlert("Notice", JSON.stringify(err));
+      })
   }
 
 }

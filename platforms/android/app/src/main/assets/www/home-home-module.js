@@ -16,12 +16,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _home_page__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./home.page */ "./src/app/home/home.page.ts");
+/* harmony import */ var _shared_shared_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../shared/shared.module */ "./src/app/shared/shared.module.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -37,6 +39,7 @@ var HomePageModule = /** @class */ (function () {
                 _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["IonicModule"],
+                _shared_shared_module__WEBPACK_IMPORTED_MODULE_6__["SharedModule"],
                 _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild([
                     {
                         path: '',
@@ -44,7 +47,7 @@ var HomePageModule = /** @class */ (function () {
                     }
                 ])
             ],
-            declarations: [_home_page__WEBPACK_IMPORTED_MODULE_5__["HomePage"]]
+            declarations: [_home_page__WEBPACK_IMPORTED_MODULE_5__["HomePage"]],
         })
     ], HomePageModule);
     return HomePageModule;
@@ -61,7 +64,7 @@ var HomePageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons class=\"logoHeader\" slot=\"start\">\n      <ion-button>\n        <img slot=\"start\" [src]=\"appLogo\" />\n      </ion-button>\n    </ion-buttons>\n    <ion-select [(ngModel)]=\"property\" interface=\"popover\" placeholder=\"Select One\">\n      <ion-select-option *ngFor=\"let property of properties\" value=\"{{property.id}}\">{{property.name}}</ion-select-option>\n    </ion-select>\n\n\n    <ion-buttons slot=\"end\">\n      <ion-button class=\"logout-btn\" (click)=\"logout()\">\n        <ion-icon class=\"logoutIcon\" slot=\"icon-only\" name=\"ios-log-out\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n\n  <ion-grid>\n    <ion-row>\n      <ion-col  size=\"12\" [attr.size-sm]=\"colSize1\" [attr.size-md]=\"colSize1\" [attr.size-lg]=\"colSize1\" [attr.size-xl]=\"colSize1\">\n        <ion-item (click)=\"takePicture()\">\n          <img class=\"scanImage\" [src]=\"scanImage\" />\n        </ion-item>\n      </ion-col>\n      <ion-col  size=\"12\" [attr.size-sm]=\"colSize2\" [attr.size-md]=\"colSize2\" [attr.size-lg]=\"colSize2\" [attr.size-xl]=\"colSize2\">\n        <ion-item class=\"ad-search\">\n          <ion-label>ADVANCED SEARCH</ion-label>\n        </ion-item>\n\n        <ion-item class=\"hintIcon\" (click)=\"viewVehicleSearchForm()\">\n          <ion-icon slot=\"start\" name=\"car\"></ion-icon>\n          <ion-label>SEARCH PERMITS BY VEHICLE</ion-label>\n        </ion-item>\n\n        <ion-item class=\"hintIcon\" (click)=\"viewUserSearchForm()\" *ngIf=\"!isEnforcement\">\n          <ion-icon slot=\"start\" name=\"people\"></ion-icon>\n          <ion-label>SEARCH PERMITS BY USER</ion-label>\n        </ion-item>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n\n\n</ion-content>"
+module.exports = "<app-header [showProperty]=\"showProperty\" [pageName]=\"pageName\" (selectedProperty)=\"getPropertyId($event)\"></app-header>\n\n<ion-content padding>\n\n  <ion-grid>\n    <ion-row>\n      <ion-col  size=\"12\" [attr.size-sm]=\"colSize1\" [attr.size-md]=\"colSize1\" [attr.size-lg]=\"colSize1\" [attr.size-xl]=\"colSize1\">\n        <ion-item (click)=\"takePicture()\">\n          <img class=\"scanImage\" [src]=\"scanImage\" />\n        </ion-item>\n      </ion-col>\n      <ion-col  size=\"12\" [attr.size-sm]=\"colSize2\" [attr.size-md]=\"colSize2\" [attr.size-lg]=\"colSize2\" [attr.size-xl]=\"colSize2\">\n        <ion-item class=\"ad-search\">\n          <ion-label>ADVANCED SEARCH</ion-label>\n        </ion-item>\n\n        <ion-item class=\"hintIcon\" (click)=\"viewVehicleSearchForm()\">\n          <ion-icon slot=\"start\" name=\"car\"></ion-icon>\n          <ion-label>SEARCH PERMITS BY VEHICLE</ion-label>\n        </ion-item>\n\n        <ion-item class=\"hintIcon\" (click)=\"viewUserSearchForm()\" *ngIf=\"!isEnforcement\">\n          <ion-icon slot=\"start\" name=\"people\"></ion-icon>\n          <ion-label>SEARCH PERMITS BY USER</ion-label>\n        </ion-item>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n\n\n</ion-content>"
 
 /***/ }),
 
@@ -72,7 +75,7 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons class=\"logoHe
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-row {\n  border: 0.5px solid;\n  margin-top: 5px; }\n\n.scanImage {\n  width: 60%;\n  margin: 15% auto; }\n\n@media screen and (min-width: 576px) {\n  .scanImage {\n    width: 90%;\n    margin: 5% auto; } }\n\n@media screen and (min-width: 768px) and (orientation: portrait) {\n  .scanImage {\n    width: 60%;\n    margin: 5% auto; } }\n\n.hintIcon {\n  background: #28223d;\n  margin-bottom: 5%;\n  float: left;\n  width: 100%; }\n\n.hintIcon ion-icon.hydrated {\n    position: absolute;\n    left: 0;\n    top: 0;\n    margin: 0;\n    width: 2em;\n    height: 100%;\n    background: #5f2877; }\n\n.hintIcon .sc-ion-label-md-h {\n    margin-left: 3em; }\n\n.ad-search {\n  float: left;\n  width: 100%;\n  margin-bottom: 5%;\n  background: transparent !important;\n  position: relative; }\n\n.ad-search .sc-ion-label-md-h {\n    padding-left: 0 !important;\n    left: 0;\n    z-index: 9;\n    position: absolute; }\n\nion-select {\n  background: #2c2649; }\n\nion-button.logout-btn::before {\n  content: \"Logout\";\n  position: absolute;\n  text-align: center;\n  display: block;\n  color: #FFF;\n  left: 0;\n  right: 0;\n  top: .25em; }\n\nion-button.logout-btn {\n  width: 6em;\n  position: relative; }\n\nion-button.logout-btn ion-icon {\n    margin-top: 1em; }\n"
+module.exports = "ion-row {\n  border: 0.5px solid;\n  margin-top: 5px; }\n\n.scanImage {\n  width: 60%;\n  margin: 15% auto; }\n\n@media screen and (min-width: 576px) {\n  .scanImage {\n    width: 90%;\n    margin: 5% auto; } }\n\n@media screen and (min-width: 768px) and (orientation: portrait) {\n  .scanImage {\n    width: 60%;\n    margin: 5% auto; } }\n\n.hintIcon {\n  background: #28223d;\n  margin-bottom: 5%;\n  float: left;\n  width: 100%; }\n\n.hintIcon ion-icon.hydrated {\n    position: absolute;\n    left: 0;\n    top: 0;\n    margin: 0;\n    width: 2em;\n    height: 100%;\n    background: #5f2877; }\n\n.hintIcon .sc-ion-label-md-h {\n    margin-left: 3em; }\n\n.ad-search {\n  float: left;\n  width: 100%;\n  margin-bottom: 5%;\n  background: transparent !important;\n  position: relative; }\n\n.ad-search .sc-ion-label-md-h {\n    padding-left: 0 !important;\n    left: 0;\n    z-index: 9;\n    position: absolute; }\n"
 
 /***/ }),
 
@@ -160,10 +163,7 @@ var HomePage = /** @class */ (function () {
         this.zone = zone;
         this.navCtrl = navCtrl;
         this.screenOrientation = screenOrientation;
-        this.appLogo = 'assets/icon/inner_header_logo.png';
         this.scanImage = 'assets/icon/scan_img.png';
-        this.property = 0;
-        this.properties = [];
         this.make = '';
         this.model = '';
         this.year = '';
@@ -179,8 +179,13 @@ var HomePage = /** @class */ (function () {
         this.deviceMode = '';
         this.colSize1 = 12;
         this.colSize2 = 12;
+        this.property = 0;
+        this.showProperty = true;
+        this.pageName = 'HOME';
+        this.getPropertyId = function (event) {
+            _this.property = event;
+        };
         this.checkRole();
-        this.getProperties();
         this.deviceMode = screenOrientation.type;
         if (this.deviceMode == 'landscape-primary' || this.deviceMode == 'landscape-secondary') {
             this.colSize1 = 5;
@@ -198,46 +203,6 @@ var HomePage = /** @class */ (function () {
             }
         });
     }
-    HomePage.prototype.logout = function () {
-        this.restService.systemLogout();
-    };
-    HomePage.prototype.getProperties = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var _this = this;
-            var requestData;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        requestData = {
-                            sp_action: "sp_get_property_list",
-                        };
-                        return [4 /*yield*/, this.restService.keyBoardHide()];
-                    case 1:
-                        _a.sent();
-                        this.restService.showLoader('Fetching Properties');
-                        this.restService.makePostRequest(requestData).then(function (result) {
-                            _this.restService.hideLoader();
-                            _this.zone.run(function () { return __awaiter(_this, void 0, void 0, function () {
-                                return __generator(this, function (_a) {
-                                    this.properties = result['Properties'];
-                                    return [2 /*return*/];
-                                });
-                            }); });
-                            console.log(_this.properties);
-                        }, function (err) {
-                            _this.restService.hideLoader();
-                            if (err.error) {
-                                _this.restService.showAlert("Notice", _this.restService.setErrorMessageArray(err.error.message));
-                            }
-                            else {
-                                _this.restService.showAlert("Notice", err.statusText);
-                            }
-                        });
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
     HomePage.prototype.viewVehicleSearchForm = function () {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;

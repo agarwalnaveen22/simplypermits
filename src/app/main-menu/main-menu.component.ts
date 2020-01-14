@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
-import { PopoverController, NavController } from '@ionic/angular';
+import { PopoverController, NavController, NavParams } from '@ionic/angular';
 
 @Component({
   selector: 'app-main-menu',
@@ -8,12 +8,12 @@ import { PopoverController, NavController } from '@ionic/angular';
   styleUrls: ['./main-menu.component.scss']
 })
 export class MainMenuComponent implements OnInit {
-
   constructor(
     private restService: RestService,
     private popoverCtrl: PopoverController,
     private navCtrl: NavController
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
   }
@@ -26,6 +26,11 @@ export class MainMenuComponent implements OnInit {
   async logout() {
     await this.popoverCtrl.dismiss();
     this.restService.systemLogout();
+  }
+
+  async scanImage() {
+    await this.popoverCtrl.dismiss();
+    this.restService.takePicture(this.restService.selectedProperty);
   }
 
 }

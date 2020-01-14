@@ -1,8 +1,5 @@
 import { Component, NgZone } from '@angular/core';
 import { ActionSheetController, ModalController, NavController } from '@ionic/angular';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import { ImageResizer, ImageResizerOptions } from '@ionic-native/image-resizer/ngx';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { RestService } from '../rest.service';
 import { SearchByVehicleComponent } from '../search-by-vehicle/search-by-vehicle.component';
 import { SearchByUserComponent } from '../search-by-user/search-by-user.component';
@@ -34,15 +31,11 @@ export class HomePage {
   showProperty: boolean = true;
   pageName: string = 'HOME';
   constructor(
-    private camera: Camera,
     private restService: RestService,
-    private imageResizer: ImageResizer,
-    private transfer: FileTransfer,
     private modalController: ModalController,
     public actionSheetController: ActionSheetController,
-    private zone: NgZone,
     private navCtrl: NavController,
-    private screenOrientation: ScreenOrientation
+    screenOrientation: ScreenOrientation
   ) {
     this.checkRole();
     this.deviceMode = screenOrientation.type;
@@ -174,73 +167,6 @@ export class HomePage {
     });
   }
 
-  async takePicture() {
-    if (this.property == 0 || this.property == undefined) {
-      this.restService.showToast("Please select property");
-    } else {
-      let options: CameraOptions = {
-        quality: 100,
-        destinationType: this.camera.DestinationType.FILE_URI,
-        encodingType: this.camera.EncodingType.JPEG,
-        mediaType: this.camera.MediaType.PICTURE,
-        correctOrientation: true
-      }
-      options['sourceType'] = 1;
-      this.launchProgram(options);
-    }
-  }
-
-  launchProgram(options) {
-    this.camera.getPicture(options).then((imageData) => {
-      this.selectedImage = imageData;
-      this.viewPicture();
-
-    }, (err) => {
-      this.restService.showAlert("Notice", JSON.stringify(err));
-    });
-  }
-
-  async viewPicture() {
-    this.scanPlate();
-  }
-
-  async scanPlate() {
-    let options: FileUploadOptions = {
-      fileKey: 'uploadFileName',
-      fileName: 'name.jpg',
-      chunkedMode: false,
-      mimeType: "multipart/form-data"
-    }
-    const fileTransfer: FileTransferObject = this.transfer.create();
-    this.restService.showLoader('Sending Image');
-    let sessionId = await this.restService.getStorage('session_id');
-    let userId = await this.restService.getStorage('userInfo');
-    fileTransfer.upload(this.selectedImage, this.restService.cityApiUrl + "?sp_action=sp_permit_check_vehicle_image&selected_cat=" + this.property+"&session_id="+sessionId+"&user_id="+userId['user_id'], options)
-      .then(async (result) => {
-        this.restService.hideLoader();
-        console.log(result)
-        result = JSON.parse(result.response);
-        if (result['json'].length > 0) {
-          // this.zone.run(() => {
-          //   this.vehicleData = result['json'];
-          // });
-          await this.restService.setStorage("userData", []);
-          let response = await this.restService.setStorage("vehicleData", result['json']);
-          if (response) {
-            this.navCtrl.goForward("/property-list");
-          }
-        } else {
-          let response = await this.restService.setStorage("plateData", result['plateData']);
-          if (response) {
-            this.navCtrl.goForward("/no-permit-result");
-          }
-        }
-      }, (err) => {
-        this.restService.hideLoader();
-        this.restService.showAlert("Notice", JSON.stringify(err));
-      })
-  }
-
   async checkRole() {
     try {
       let response = await this.restService.getStorage("userInfo");
@@ -257,6 +183,10 @@ export class HomePage {
 
   getPropertyId = (event) => {
     this.property = event;
+  }
+
+  takePicture() {
+    this.restService.takePicture(this.property);
   }
 
 

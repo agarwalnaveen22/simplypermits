@@ -8,12 +8,20 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"./add-note/add-note.module": [
+		"./src/app/add-note/add-note.module.ts",
+		"add-note-add-note-module~home-home-module~permit-detail-permit-detail-module~property-list-property-~e194f889",
+		"common",
+		"add-note-add-note-module"
+	],
 	"./forgot-password/forgot-password.module": [
 		"./src/app/forgot-password/forgot-password.module.ts",
 		"forgot-password-forgot-password-module"
 	],
 	"./home/home.module": [
 		"./src/app/home/home.module.ts",
+		"add-note-add-note-module~home-home-module~permit-detail-permit-detail-module~property-list-property-~e194f889",
+		"common",
 		"home-home-module"
 	],
 	"./login/login.module": [
@@ -26,11 +34,21 @@ var map = {
 	],
 	"./permit-detail/permit-detail.module": [
 		"./src/app/permit-detail/permit-detail.module.ts",
+		"add-note-add-note-module~home-home-module~permit-detail-permit-detail-module~property-list-property-~e194f889",
+		"common",
 		"permit-detail-permit-detail-module"
 	],
 	"./property-list/property-list.module": [
 		"./src/app/property-list/property-list.module.ts",
+		"add-note-add-note-module~home-home-module~permit-detail-permit-detail-module~property-list-property-~e194f889",
+		"common",
 		"property-list-property-list-module"
+	],
+	"./view-notes/view-notes.module": [
+		"./src/app/view-notes/view-notes.module.ts",
+		"add-note-add-note-module~home-home-module~permit-detail-permit-detail-module~property-list-property-~e194f889",
+		"common",
+		"view-notes-view-notes-module"
 	]
 };
 function webpackAsyncContext(req) {
@@ -42,7 +60,7 @@ function webpackAsyncContext(req) {
 			throw e;
 		});
 	}
-	return __webpack_require__.e(ids[1]).then(function() {
+	return Promise.all(ids.slice(1).map(__webpack_require__.e)).then(function() {
 		var module = __webpack_require__(ids[0]);
 		return module;
 	});
@@ -52,164 +70,6 @@ webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 };
 webpackAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 module.exports = webpackAsyncContext;
-
-/***/ }),
-
-/***/ "./src/app/add-note/add-note.component.html":
-/*!**************************************************!*\
-  !*** ./src/app/add-note/add-note.component.html ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<ion-header>\n    <ion-toolbar>\n      <ion-buttons class=\"logoHeader\" slot=\"start\" (click)=\"closeModal(0)\">\n        <ion-button>\n          <img [src]=\"appLogo\" />\n        </ion-button>\n      </ion-buttons>\n      <ion-buttons slot=\"end\">\n        <ion-button>\n          <ion-label>ADD NOTE</ion-label>\n        </ion-button>\n      </ion-buttons>\n    </ion-toolbar>\n  </ion-header>\n\n<ion-content padding text-center>\n\n  <ion-item class=\"description_area\">\n    <ion-textarea rows=\"21\" [(ngModel)]=\"description\" placeholder=\"Add note here...\"></ion-textarea>\n  </ion-item>\n</ion-content>\n\n<ion-footer>\n    <ion-toolbar class=\"footer_add_note\" >\n      <ion-buttons class=\"add_note_btn_cancel\" (click)=\"closeModal(1)\"  text-center slot=\"start\">\n        <ion-button>\n          <ion-label>CANCEL</ion-label>\n        </ion-button>\n      </ion-buttons>\n      \n      <ion-buttons class=\"add_note_btn_submit\" text-center slot=\"end\" (click)=\"addNotes()\">\n        <ion-button>\n          <ion-label>SUBMIT</ion-label>\n        </ion-button>\n      </ion-buttons>\n    </ion-toolbar>\n  </ion-footer>"
-
-/***/ }),
-
-/***/ "./src/app/add-note/add-note.component.scss":
-/*!**************************************************!*\
-  !*** ./src/app/add-note/add-note.component.scss ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ".description_area {\n  background: #191242;\n  height: 100%; }\n  .description_area ion-textarea {\n    color: #FFF;\n    height: 100%; }\n  .footer_add_note {\n  --padding-end: 0;\n  --padding-start: 0;\n  --padding-bottom: 0;\n  --padding-top: 0;\n  --min-height: aut0; }\n  .footer_add_note ion-buttons {\n    width: 50%;\n    float: left;\n    --padding-end: 0;\n    --padding-start: 0;\n    margin-left: 0;\n    margin-right: 0; }\n  .footer_add_note ion-buttons ion-button {\n      width: 100%;\n      text-align: center; }\n  .footer_add_note ion-buttons.add_note_btn_submit {\n    background: #9b1f60; }\n  .footer_add_note ion-buttons.add_note_btn_cancel {\n    background: #191242; }\n"
-
-/***/ }),
-
-/***/ "./src/app/add-note/add-note.component.ts":
-/*!************************************************!*\
-  !*** ./src/app/add-note/add-note.component.ts ***!
-  \************************************************/
-/*! exports provided: AddNoteComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddNoteComponent", function() { return AddNoteComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
-/* harmony import */ var _rest_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../rest.service */ "./src/app/rest.service.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-
-
-
-var AddNoteComponent = /** @class */ (function () {
-    function AddNoteComponent(modalCtrl, restService, navParams) {
-        this.modalCtrl = modalCtrl;
-        this.restService = restService;
-        this.navParams = navParams;
-        this.appLogo = 'assets/icon/inner_header_logo.png';
-        this.description = '';
-        this.permitId = 0;
-        this.permitId = navParams.get("permitId");
-    }
-    AddNoteComponent.prototype.closeModal = function (type) {
-        var data = { type: type };
-        this.modalCtrl.dismiss(data);
-    };
-    AddNoteComponent.prototype.addNotes = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var _this = this;
-            var requestData;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        if (!(this.description == '')) return [3 /*break*/, 1];
-                        this.restService.showAlert('Error', 'Please enter description');
-                        return [3 /*break*/, 3];
-                    case 1:
-                        requestData = {
-                            sp_action: "sp_permit_add_note",
-                            permit_id: this.permitId,
-                            page_id: "Permit Detail",
-                            add_note: this.description
-                        };
-                        return [4 /*yield*/, this.restService.keyBoardHide()];
-                    case 2:
-                        _a.sent();
-                        this.restService.showLoader('Saving notes');
-                        this.restService.makePostRequest(requestData).then(function (result) {
-                            _this.restService.hideLoader();
-                            if (!result['error']) {
-                                _this.restService.showAlert('Success', result['message']);
-                                _this.closeModal(1);
-                            }
-                            else {
-                                _this.restService.showAlert('Error', result['message']);
-                            }
-                        }, function (err) {
-                            _this.restService.hideLoader();
-                            if (err.error) {
-                                _this.restService.showAlert("Notice", _this.restService.setErrorMessageArray(err.error.message));
-                            }
-                            else {
-                                _this.restService.showAlert("Notice", err.statusText);
-                            }
-                        });
-                        _a.label = 3;
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    AddNoteComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-add-note',
-            template: __webpack_require__(/*! ./add-note.component.html */ "./src/app/add-note/add-note.component.html"),
-            styles: [__webpack_require__(/*! ./add-note.component.scss */ "./src/app/add-note/add-note.component.scss")]
-        }),
-        __metadata("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_1__["ModalController"],
-            _rest_service__WEBPACK_IMPORTED_MODULE_2__["RestService"],
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["NavParams"]])
-    ], AddNoteComponent);
-    return AddNoteComponent;
-}());
-
-
 
 /***/ }),
 
@@ -243,6 +103,8 @@ var routes = [
     { path: 'property-list', loadChildren: './property-list/property-list.module#PropertyListPageModule' },
     { path: 'forgot-password', loadChildren: './forgot-password/forgot-password.module#ForgotPasswordPageModule' },
     { path: 'no-permit-result', loadChildren: './no-permit-result/no-permit-result.module#NoPermitResultPageModule' },
+    { path: 'view-notes/:permitId', loadChildren: './view-notes/view-notes.module#ViewNotesPageModule' },
+    { path: 'add-note/:permitId', loadChildren: './add-note/add-note.module#AddNotePageModule' },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -417,12 +279,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @ionic-native/keyboard/ngx */ "./node_modules/@ionic-native/keyboard/ngx/index.js");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _add_note_add_note_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./add-note/add-note.component */ "./src/app/add-note/add-note.component.ts");
-/* harmony import */ var _view_notes_view_notes_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./view-notes/view-notes.component */ "./src/app/view-notes/view-notes.component.ts");
-/* harmony import */ var _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./image-preview/image-preview.component */ "./src/app/image-preview/image-preview.component.ts");
-/* harmony import */ var _auth_guard_service__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./auth-guard.service */ "./src/app/auth-guard.service.ts");
-/* harmony import */ var _search_by_vehicle_search_by_vehicle_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./search-by-vehicle/search-by-vehicle.component */ "./src/app/search-by-vehicle/search-by-vehicle.component.ts");
-/* harmony import */ var _search_by_user_search_by_user_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./search-by-user/search-by-user.component */ "./src/app/search-by-user/search-by-user.component.ts");
+/* harmony import */ var _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./image-preview/image-preview.component */ "./src/app/image-preview/image-preview.component.ts");
+/* harmony import */ var _auth_guard_service__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./auth-guard.service */ "./src/app/auth-guard.service.ts");
+/* harmony import */ var _search_by_vehicle_search_by_vehicle_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./search-by-vehicle/search-by-vehicle.component */ "./src/app/search-by-vehicle/search-by-vehicle.component.ts");
+/* harmony import */ var _search_by_user_search_by_user_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./search-by-user/search-by-user.component */ "./src/app/search-by-user/search-by-user.component.ts");
+/* harmony import */ var _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./main-menu/main-menu.component */ "./src/app/main-menu/main-menu.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -455,14 +316,13 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
-            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_19__["AppComponent"], _add_note_add_note_component__WEBPACK_IMPORTED_MODULE_21__["AddNoteComponent"], _view_notes_view_notes_component__WEBPACK_IMPORTED_MODULE_22__["ViewNotesComponent"], _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_23__["ImagePreviewComponent"], _search_by_vehicle_search_by_vehicle_component__WEBPACK_IMPORTED_MODULE_25__["SearchByVehicleComponent"], _search_by_user_search_by_user_component__WEBPACK_IMPORTED_MODULE_26__["SearchByUserComponent"]],
-            entryComponents: [_add_note_add_note_component__WEBPACK_IMPORTED_MODULE_21__["AddNoteComponent"], _view_notes_view_notes_component__WEBPACK_IMPORTED_MODULE_22__["ViewNotesComponent"], _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_23__["ImagePreviewComponent"], _search_by_vehicle_search_by_vehicle_component__WEBPACK_IMPORTED_MODULE_25__["SearchByVehicleComponent"], _search_by_user_search_by_user_component__WEBPACK_IMPORTED_MODULE_26__["SearchByUserComponent"]],
+            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_19__["AppComponent"], _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_21__["ImagePreviewComponent"], _search_by_vehicle_search_by_vehicle_component__WEBPACK_IMPORTED_MODULE_23__["SearchByVehicleComponent"], _search_by_user_search_by_user_component__WEBPACK_IMPORTED_MODULE_24__["SearchByUserComponent"], _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_25__["MainMenuComponent"]],
+            entryComponents: [_image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_21__["ImagePreviewComponent"], _search_by_vehicle_search_by_vehicle_component__WEBPACK_IMPORTED_MODULE_23__["SearchByVehicleComponent"], _search_by_user_search_by_user_component__WEBPACK_IMPORTED_MODULE_24__["SearchByUserComponent"], _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_25__["MainMenuComponent"]],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot({ mode: 'md', scrollAssist: 'DISABLED' }),
@@ -479,7 +339,7 @@ var AppModule = /** @class */ (function () {
                 _ionic_native_image_resizer_ngx__WEBPACK_IMPORTED_MODULE_10__["ImageResizer"],
                 _ionic_native_base64_ngx__WEBPACK_IMPORTED_MODULE_9__["Base64"],
                 _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_11__["FileTransfer"],
-                _auth_guard_service__WEBPACK_IMPORTED_MODULE_24__["AuthGuardService"],
+                _auth_guard_service__WEBPACK_IMPORTED_MODULE_22__["AuthGuardService"],
                 _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_12__["InAppBrowser"],
                 _ionic_native_http_ngx__WEBPACK_IMPORTED_MODULE_14__["HTTP"],
                 _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_16__["Device"],
@@ -684,6 +544,139 @@ var ImagePreviewComponent = /** @class */ (function () {
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["DomSanitizer"]])
     ], ImagePreviewComponent);
     return ImagePreviewComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/main-menu/main-menu.component.html":
+/*!****************************************************!*\
+  !*** ./src/app/main-menu/main-menu.component.html ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-list>\n  <ion-item (click)=\"goToPage('home')\">\n    <ion-label>\n      <img src=\"assets/icon/dashborad_menu_icon.png\" />\n      DASHBOARD\n    </ion-label>\n  </ion-item>\n  <ion-item (click)=\"goToPage('home')\">\n    <ion-label>\n      <img src=\"assets/icon/camera_menu_icon.png\" />\n      SCAN PLATE\n    </ion-label>\n  </ion-item>\n  <ion-item (click)=\"goToPage('home')\">\n    <ion-label>\n      <img src=\"assets/icon/vehicle_menu_icon.png\" />\n      SEARCH BY VEHICLE\n    </ion-label>\n  </ion-item>\n  <ion-item (click)=\"goToPage('home')\">\n    <ion-label>\n      <img src=\"assets/icon/user_menu_icon.png\" />\n      SEARCH BY USER\n    </ion-label>\n  </ion-item>\n  <ion-item (click)=\"logout()\">\n    <ion-label>\n      <img src=\"assets/icon/logout_menu_icon.png\" />\n      LOGOUT\n    </ion-label>\n  </ion-item>\n</ion-list>"
+
+/***/ }),
+
+/***/ "./src/app/main-menu/main-menu.component.scss":
+/*!****************************************************!*\
+  !*** ./src/app/main-menu/main-menu.component.scss ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "ion-list.list.list-md.hydrated {\n  background: #130d31;\n  margin-bottom: 0;\n  border-radius: .3em; }\n\nion-list ion-item ion-label {\n  align-items: center;\n  display: flex; }\n\nion-list ion-item ion-label img {\n    width: 15px;\n    margin-right: .75em; }\n\nion-item {\n  --padding-start: 0.75em; }\n"
+
+/***/ }),
+
+/***/ "./src/app/main-menu/main-menu.component.ts":
+/*!**************************************************!*\
+  !*** ./src/app/main-menu/main-menu.component.ts ***!
+  \**************************************************/
+/*! exports provided: MainMenuComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MainMenuComponent", function() { return MainMenuComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _rest_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../rest.service */ "./src/app/rest.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+var MainMenuComponent = /** @class */ (function () {
+    function MainMenuComponent(restService, popoverCtrl, navCtrl) {
+        this.restService = restService;
+        this.popoverCtrl = popoverCtrl;
+        this.navCtrl = navCtrl;
+    }
+    MainMenuComponent.prototype.ngOnInit = function () {
+    };
+    MainMenuComponent.prototype.goToPage = function (pageName) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.popoverCtrl.dismiss()];
+                    case 1:
+                        _a.sent();
+                        this.navCtrl.goForward(pageName);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    MainMenuComponent.prototype.logout = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.popoverCtrl.dismiss()];
+                    case 1:
+                        _a.sent();
+                        this.restService.systemLogout();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    MainMenuComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-main-menu',
+            template: __webpack_require__(/*! ./main-menu.component.html */ "./src/app/main-menu/main-menu.component.html"),
+            styles: [__webpack_require__(/*! ./main-menu.component.scss */ "./src/app/main-menu/main-menu.component.scss")]
+        }),
+        __metadata("design:paramtypes", [_rest_service__WEBPACK_IMPORTED_MODULE_1__["RestService"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["PopoverController"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"]])
+    ], MainMenuComponent);
+    return MainMenuComponent;
 }());
 
 
@@ -1349,163 +1342,6 @@ var SearchByVehicleComponent = /** @class */ (function () {
             _rest_service__WEBPACK_IMPORTED_MODULE_2__["RestService"]])
     ], SearchByVehicleComponent);
     return SearchByVehicleComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/view-notes/view-notes.component.html":
-/*!******************************************************!*\
-  !*** ./src/app/view-notes/view-notes.component.html ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons class=\"logoHeader\" slot=\"start\" (click)=\"closeModal(0)\">\n      <ion-button>\n        <img [src]=\"appLogo\" />\n      </ion-button>\n    </ion-buttons>\n    <ion-buttons slot=\"end\">\n      <ion-button>\n        <ion-label>PERMIT NOTES</ion-label>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding text-center>\n  <ion-refresher slot=\"fixed\" (ionRefresh)=\"refreshData($event)\">\n    <ion-refresher-content></ion-refresher-content>\n  </ion-refresher>\n  <ion-card *ngFor=\"let note of notes\" class=\"view_permit_notes\">\n    <ion-item class=\"header\">\n      <ion-label class=\"date_block\" text-wrap>{{note.notes_date}}</ion-label>\n      <ion-label text-end slot=\"end\">{{note.notes_time}}</ion-label>\n    </ion-item>\n    <ion-card-content [innerHtml]=\"note.notes_desc\">\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n\n<ion-footer (click)=\"closeModal(1)\">\n  <ion-toolbar>\n    <ion-title text-center>BACK</ion-title>\n  </ion-toolbar>\n</ion-footer>"
-
-/***/ }),
-
-/***/ "./src/app/view-notes/view-notes.component.scss":
-/*!******************************************************!*\
-  !*** ./src/app/view-notes/view-notes.component.scss ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "ion-toolbar {\n  --background: #1a1142; }\n\n.view_permit_notes {\n  background: #17082d;\n  margin-bottom: 2em; }\n\n.view_permit_notes .header {\n    background: #1b1549; }\n\n.view_permit_notes .header .date_block {\n      margin: 0; }\n\n.view_permit_notes ion-card-content {\n    color: #FFFFFF;\n    text-align: left; }\n"
-
-/***/ }),
-
-/***/ "./src/app/view-notes/view-notes.component.ts":
-/*!****************************************************!*\
-  !*** ./src/app/view-notes/view-notes.component.ts ***!
-  \****************************************************/
-/*! exports provided: ViewNotesComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewNotesComponent", function() { return ViewNotesComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
-/* harmony import */ var _rest_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../rest.service */ "./src/app/rest.service.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-
-
-
-var ViewNotesComponent = /** @class */ (function () {
-    function ViewNotesComponent(modalCtrl, restService, navParams) {
-        this.modalCtrl = modalCtrl;
-        this.restService = restService;
-        this.navParams = navParams;
-        this.appLogo = 'assets/icon/inner_header_logo.png';
-        this.notes = [];
-        this.permitId = 0;
-        this.permitId = navParams.get("permitId");
-        this.getPermitDetail();
-    }
-    ViewNotesComponent.prototype.ngOnInit = function () {
-    };
-    ViewNotesComponent.prototype.closeModal = function (type) {
-        var data = { type: type };
-        this.modalCtrl.dismiss(data);
-    };
-    ViewNotesComponent.prototype.refreshData = function (event) {
-        this.getPermitDetail();
-        setTimeout(function () {
-            event.target.complete();
-        }, 2000);
-    };
-    ViewNotesComponent.prototype.getPermitDetail = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var _this = this;
-            var requestData;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        this.notes = [];
-                        requestData = {
-                            sp_action: "sp_permit_detail",
-                            permit_id: this.permitId
-                        };
-                        return [4 /*yield*/, this.restService.keyBoardHide()];
-                    case 1:
-                        _a.sent();
-                        this.restService.showLoader('Getting Permit Notes');
-                        this.restService.makeGetRequest(requestData).then(function (result) {
-                            _this.restService.hideLoader();
-                            if (result['PermitDetail']) {
-                                _this.notes = result['PermitDetail']['Notes'];
-                            }
-                        }, function (err) {
-                            _this.restService.hideLoader();
-                            if (err.error) {
-                                _this.restService.showAlert("Notice", _this.restService.setErrorMessageArray(err.error.message));
-                            }
-                            else {
-                                _this.restService.showAlert("Notice", err.statusText);
-                            }
-                        });
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    ViewNotesComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-view-notes',
-            template: __webpack_require__(/*! ./view-notes.component.html */ "./src/app/view-notes/view-notes.component.html"),
-            styles: [__webpack_require__(/*! ./view-notes.component.scss */ "./src/app/view-notes/view-notes.component.scss")]
-        }),
-        __metadata("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_1__["ModalController"],
-            _rest_service__WEBPACK_IMPORTED_MODULE_2__["RestService"],
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["NavParams"]])
-    ], ViewNotesComponent);
-    return ViewNotesComponent;
 }());
 
 
