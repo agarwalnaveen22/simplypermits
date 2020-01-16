@@ -19,3 +19,46 @@
 .footerBack {
     --background: #201553;
 }
+ion-row.no-results-found.hydrated {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+@media screen and (min-device-width: 768px) and (max-device-width: 1824px) and (orientation : portrait){
+    .logoImgHeader img {
+        max-width: 50%;
+    }
+}
+
+@media screen and (min-device-width: 768px) and (max-device-width: 1824px) and (orientation : landscape){
+    .logoImgHeader img {
+        max-width: 30%;
+    }
+}
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 823px) 
+  and (orientation: landscape) { 
+    .logoImgHeader img {
+        max-width: 15%;
+    }
+    .sc-ion-label-md-h {
+        margin: 0;
+    }
+}
+@media only screen
+and (min-width : 480px) and (max-width:767px) {
+    .logoImgHeader img {
+        max-width: 15%;
+    }
+    .sc-ion-label-md-h {
+        margin: 0;
+    }
+}
+@media only screen
+and (max-width : 479px) {
+    .logoImgHeader img {
+        max-width: 50%;
+    }
+}

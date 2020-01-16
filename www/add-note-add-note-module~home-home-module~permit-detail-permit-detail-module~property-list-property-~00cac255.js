@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["add-note-add-note-module~home-home-module~permit-detail-permit-detail-module~property-list-property-~e194f889"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["add-note-add-note-module~home-home-module~permit-detail-permit-detail-module~property-list-property-~00cac255"],{
 
 /***/ "./src/app/header/header.component.html":
 /*!**********************************************!*\
@@ -96,6 +96,7 @@ var HeaderComponent = /** @class */ (function () {
         this.properties = [];
         this.selectedProperty = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.selectProperty = function (event) {
+            _this.restService.selectedProperty = event.target.value;
             _this.selectedProperty.emit(event.target.value);
         };
     }
@@ -237,4 +238,4 @@ var SharedModule = /** @class */ (function () {
 /***/ })
 
 }]);
-//# sourceMappingURL=add-note-add-note-module~home-home-module~permit-detail-permit-detail-module~property-list-property-~e194f889.js.map
+//# sourceMappingURL=add-note-add-note-module~home-home-module~permit-detail-permit-detail-module~property-list-property-~00cac255.js.map

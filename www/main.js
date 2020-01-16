@@ -10,7 +10,7 @@
 var map = {
 	"./add-note/add-note.module": [
 		"./src/app/add-note/add-note.module.ts",
-		"add-note-add-note-module~home-home-module~permit-detail-permit-detail-module~property-list-property-~e194f889",
+		"add-note-add-note-module~home-home-module~permit-detail-permit-detail-module~property-list-property-~00cac255",
 		"common",
 		"add-note-add-note-module"
 	],
@@ -20,7 +20,7 @@ var map = {
 	],
 	"./home/home.module": [
 		"./src/app/home/home.module.ts",
-		"add-note-add-note-module~home-home-module~permit-detail-permit-detail-module~property-list-property-~e194f889",
+		"add-note-add-note-module~home-home-module~permit-detail-permit-detail-module~property-list-property-~00cac255",
 		"common",
 		"home-home-module"
 	],
@@ -34,19 +34,31 @@ var map = {
 	],
 	"./permit-detail/permit-detail.module": [
 		"./src/app/permit-detail/permit-detail.module.ts",
-		"add-note-add-note-module~home-home-module~permit-detail-permit-detail-module~property-list-property-~e194f889",
+		"add-note-add-note-module~home-home-module~permit-detail-permit-detail-module~property-list-property-~00cac255",
 		"common",
 		"permit-detail-permit-detail-module"
 	],
 	"./property-list/property-list.module": [
 		"./src/app/property-list/property-list.module.ts",
-		"add-note-add-note-module~home-home-module~permit-detail-permit-detail-module~property-list-property-~e194f889",
+		"add-note-add-note-module~home-home-module~permit-detail-permit-detail-module~property-list-property-~00cac255",
 		"common",
 		"property-list-property-list-module"
 	],
+	"./search-by-user/search-by-user.module": [
+		"./src/app/search-by-user/search-by-user.module.ts",
+		"add-note-add-note-module~home-home-module~permit-detail-permit-detail-module~property-list-property-~00cac255",
+		"common",
+		"search-by-user-search-by-user-module"
+	],
+	"./search-by-vehicle/search-by-vehicle.module": [
+		"./src/app/search-by-vehicle/search-by-vehicle.module.ts",
+		"add-note-add-note-module~home-home-module~permit-detail-permit-detail-module~property-list-property-~00cac255",
+		"common",
+		"search-by-vehicle-search-by-vehicle-module"
+	],
 	"./view-notes/view-notes.module": [
 		"./src/app/view-notes/view-notes.module.ts",
-		"add-note-add-note-module~home-home-module~permit-detail-permit-detail-module~property-list-property-~e194f889",
+		"add-note-add-note-module~home-home-module~permit-detail-permit-detail-module~property-list-property-~00cac255",
 		"common",
 		"view-notes-view-notes-module"
 	]
@@ -105,6 +117,8 @@ var routes = [
     { path: 'no-permit-result', loadChildren: './no-permit-result/no-permit-result.module#NoPermitResultPageModule' },
     { path: 'view-notes/:permitId', loadChildren: './view-notes/view-notes.module#ViewNotesPageModule' },
     { path: 'add-note/:permitId', loadChildren: './add-note/add-note.module#AddNotePageModule' },
+    { path: 'search-by-user', loadChildren: './search-by-user/search-by-user.module#SearchByUserPageModule' },
+    { path: 'search-by-vehicle', loadChildren: './search-by-vehicle/search-by-vehicle.module#SearchByVehiclePageModule' },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -281,9 +295,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
 /* harmony import */ var _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./image-preview/image-preview.component */ "./src/app/image-preview/image-preview.component.ts");
 /* harmony import */ var _auth_guard_service__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./auth-guard.service */ "./src/app/auth-guard.service.ts");
-/* harmony import */ var _search_by_vehicle_search_by_vehicle_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./search-by-vehicle/search-by-vehicle.component */ "./src/app/search-by-vehicle/search-by-vehicle.component.ts");
-/* harmony import */ var _search_by_user_search_by_user_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./search-by-user/search-by-user.component */ "./src/app/search-by-user/search-by-user.component.ts");
-/* harmony import */ var _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./main-menu/main-menu.component */ "./src/app/main-menu/main-menu.component.ts");
+/* harmony import */ var _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./main-menu/main-menu.component */ "./src/app/main-menu/main-menu.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -314,15 +326,13 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-
-
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
-            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_19__["AppComponent"], _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_21__["ImagePreviewComponent"], _search_by_vehicle_search_by_vehicle_component__WEBPACK_IMPORTED_MODULE_23__["SearchByVehicleComponent"], _search_by_user_search_by_user_component__WEBPACK_IMPORTED_MODULE_24__["SearchByUserComponent"], _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_25__["MainMenuComponent"]],
-            entryComponents: [_image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_21__["ImagePreviewComponent"], _search_by_vehicle_search_by_vehicle_component__WEBPACK_IMPORTED_MODULE_23__["SearchByVehicleComponent"], _search_by_user_search_by_user_component__WEBPACK_IMPORTED_MODULE_24__["SearchByUserComponent"], _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_25__["MainMenuComponent"]],
+            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_19__["AppComponent"], _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_21__["ImagePreviewComponent"], _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_23__["MainMenuComponent"]],
+            entryComponents: [_image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_21__["ImagePreviewComponent"], _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_23__["MainMenuComponent"]],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot({ mode: 'md', scrollAssist: 'DISABLED' }),
@@ -557,7 +567,7 @@ var ImagePreviewComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-list>\n  <ion-item (click)=\"goToPage('home')\">\n    <ion-label>\n      <img src=\"assets/icon/dashborad_menu_icon.png\" />\n      DASHBOARD\n    </ion-label>\n  </ion-item>\n  <ion-item (click)=\"goToPage('home')\">\n    <ion-label>\n      <img src=\"assets/icon/camera_menu_icon.png\" />\n      SCAN PLATE\n    </ion-label>\n  </ion-item>\n  <ion-item (click)=\"goToPage('home')\">\n    <ion-label>\n      <img src=\"assets/icon/vehicle_menu_icon.png\" />\n      SEARCH BY VEHICLE\n    </ion-label>\n  </ion-item>\n  <ion-item (click)=\"goToPage('home')\">\n    <ion-label>\n      <img src=\"assets/icon/user_menu_icon.png\" />\n      SEARCH BY USER\n    </ion-label>\n  </ion-item>\n  <ion-item (click)=\"logout()\">\n    <ion-label>\n      <img src=\"assets/icon/logout_menu_icon.png\" />\n      LOGOUT\n    </ion-label>\n  </ion-item>\n</ion-list>"
+module.exports = "<ion-list>\n  <ion-item (click)=\"goToPage('home')\">\n    <ion-label>\n      <img src=\"assets/icon/dashborad_menu_icon.png\" />\n      DASHBOARD\n    </ion-label>\n  </ion-item>\n  <ion-item (click)=\"scanImage()\">\n    <ion-label>\n      <img src=\"assets/icon/camera_menu_icon.png\" />\n      SCAN PLATE\n    </ion-label>\n  </ion-item>\n  <ion-item (click)=\"viewVehicleSearchForm()\">\n    <ion-label>\n      <img src=\"assets/icon/vehicle_menu_icon.png\" />\n      SEARCH BY VEHICLE\n    </ion-label>\n  </ion-item>\n  <ion-item (click)=\"viewUserSearchForm()\">\n    <ion-label>\n      <img src=\"assets/icon/user_menu_icon.png\" />\n      SEARCH BY USER\n    </ion-label>\n  </ion-item>\n  <ion-item (click)=\"logout()\">\n    <ion-label>\n      <img src=\"assets/icon/logout_menu_icon.png\" />\n      LOGOUT\n    </ion-label>\n  </ion-item>\n</ion-list>"
 
 /***/ }),
 
@@ -666,6 +676,45 @@ var MainMenuComponent = /** @class */ (function () {
             });
         });
     };
+    MainMenuComponent.prototype.scanImage = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.popoverCtrl.dismiss()];
+                    case 1:
+                        _a.sent();
+                        this.restService.takePicture(this.restService.selectedProperty);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    MainMenuComponent.prototype.viewVehicleSearchForm = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.popoverCtrl.dismiss()];
+                    case 1:
+                        _a.sent();
+                        this.restService.viewVehicleSearchForm();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    MainMenuComponent.prototype.viewUserSearchForm = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.popoverCtrl.dismiss()];
+                    case 1:
+                        _a.sent();
+                        this.restService.viewUserSearchForm();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
     MainMenuComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-main-menu',
@@ -698,6 +747,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
 /* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
 /* harmony import */ var _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/keyboard/ngx */ "./node_modules/@ionic-native/keyboard/ngx/index.js");
+/* harmony import */ var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/camera/ngx */ "./node_modules/@ionic-native/camera/ngx/index.js");
+/* harmony import */ var _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/file-transfer/ngx */ "./node_modules/@ionic-native/file-transfer/ngx/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -747,8 +798,10 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
+
 var RestService = /** @class */ (function () {
-    function RestService(http, loadingController, alertController, toastController, modalCtrl, storage, navCtrl, keyboard) {
+    function RestService(http, loadingController, alertController, toastController, modalCtrl, storage, navCtrl, keyboard, camera, transfer) {
         var _this = this;
         this.http = http;
         this.loadingController = loadingController;
@@ -758,9 +811,13 @@ var RestService = /** @class */ (function () {
         this.storage = storage;
         this.navCtrl = navCtrl;
         this.keyboard = keyboard;
+        this.camera = camera;
+        this.transfer = transfer;
         this.apiUrl = 'https://simplypermits.com/API/rest.php';
         this.cityApiUrl = '';
         this.isKeyBoardHide = false;
+        this.selectedImage = '';
+        this.selectedProperty = 0;
         this.logout = function (type) { return __awaiter(_this, void 0, void 0, function () {
             var requestData, error_1;
             return __generator(this, function (_a) {
@@ -1138,6 +1195,123 @@ var RestService = /** @class */ (function () {
             });
         });
     };
+    RestService.prototype.takePicture = function (property) {
+        if (property === void 0) { property = 0; }
+        return __awaiter(this, void 0, void 0, function () {
+            var options;
+            return __generator(this, function (_a) {
+                if (property == 0 || property == undefined) {
+                    this.showToast("Please select property");
+                }
+                else {
+                    options = {
+                        quality: 100,
+                        destinationType: this.camera.DestinationType.FILE_URI,
+                        encodingType: this.camera.EncodingType.JPEG,
+                        mediaType: this.camera.MediaType.PICTURE,
+                        correctOrientation: true
+                    };
+                    options['sourceType'] = 1;
+                    this.launchProgram(options, property);
+                }
+                return [2 /*return*/];
+            });
+        });
+    };
+    RestService.prototype.launchProgram = function (options, property) {
+        var _this = this;
+        this.camera.getPicture(options).then(function (imageData) {
+            _this.selectedImage = imageData;
+            _this.scanPlate(property);
+        }, function (err) {
+            _this.showAlert("Notice", JSON.stringify(err));
+        });
+    };
+    RestService.prototype.scanPlate = function (property) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            var options, fileTransfer, sessionId, userId;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        options = {
+                            fileKey: 'uploadFileName',
+                            fileName: 'name.jpg',
+                            chunkedMode: false,
+                            mimeType: "multipart/form-data"
+                        };
+                        fileTransfer = this.transfer.create();
+                        this.showLoader('Sending Image');
+                        return [4 /*yield*/, this.getStorage('session_id')];
+                    case 1:
+                        sessionId = _a.sent();
+                        return [4 /*yield*/, this.getStorage('userInfo')];
+                    case 2:
+                        userId = _a.sent();
+                        fileTransfer.upload(this.selectedImage, this.cityApiUrl + "?sp_action=sp_permit_check_vehicle_image&selected_cat=" + property + "&session_id=" + sessionId + "&user_id=" + userId['user_id'], options)
+                            .then(function (result) { return __awaiter(_this, void 0, void 0, function () {
+                            var response, response;
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0:
+                                        this.hideLoader();
+                                        result = JSON.parse(result.response);
+                                        if (!(result['json'].length > 0)) return [3 /*break*/, 3];
+                                        return [4 /*yield*/, this.setStorage("userData", [])];
+                                    case 1:
+                                        _a.sent();
+                                        return [4 /*yield*/, this.setStorage("vehicleData", result['json'])];
+                                    case 2:
+                                        response = _a.sent();
+                                        if (response) {
+                                            this.navCtrl.goForward("/property-list");
+                                        }
+                                        return [3 /*break*/, 5];
+                                    case 3: return [4 /*yield*/, this.setStorage("plateData", result['plateData'])];
+                                    case 4:
+                                        response = _a.sent();
+                                        if (response) {
+                                            this.navCtrl.goForward("/no-permit-result");
+                                        }
+                                        _a.label = 5;
+                                    case 5: return [2 /*return*/];
+                                }
+                            });
+                        }); }, function (err) {
+                            _this.hideLoader();
+                            _this.showAlert("Notice", JSON.stringify(err));
+                        });
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    RestService.prototype.viewVehicleSearchForm = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                if (this.selectedProperty == 0 || this.selectedProperty == undefined) {
+                    this.showToast("Please select property");
+                }
+                else {
+                    this.navCtrl.goForward('/search-by-vehicle');
+                }
+                return [2 /*return*/];
+            });
+        });
+    };
+    RestService.prototype.viewUserSearchForm = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                if (this.selectedProperty == 0 || this.selectedProperty == undefined) {
+                    this.showToast("Please select property");
+                }
+                else {
+                    this.navCtrl.goForward('/search-by-user');
+                }
+                return [2 /*return*/];
+            });
+        });
+    };
     RestService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
@@ -1149,199 +1323,11 @@ var RestService = /** @class */ (function () {
             _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"],
             _ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"],
-            _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_4__["Keyboard"]])
+            _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_4__["Keyboard"],
+            _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_5__["Camera"],
+            _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_6__["FileTransfer"]])
     ], RestService);
     return RestService;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/search-by-user/search-by-user.component.html":
-/*!**************************************************************!*\
-  !*** ./src/app/search-by-user/search-by-user.component.html ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<ion-header>\n    <ion-toolbar>\n      <ion-buttons class=\"logoHeader\" slot=\"start\" (click)=\"closeModal(0)\">\n        <ion-button>\n          <img slot=\"start\" [src]=\"appLogo\" />\n        </ion-button>\n      </ion-buttons>\n      <ion-label>Search By User</ion-label>\n      <ion-buttons slot=\"end\">\n        <ion-button (click)=\"closeModal(0)\">\n          <ion-icon class=\"logoutIcon\" slot=\"icon-only\" name=\"close\"></ion-icon>\n        </ion-button>\n      </ion-buttons>\n    </ion-toolbar>\n  </ion-header>\n  \n  <ion-content padding text-center>\n  \n    <ion-item class=\"margin-bottom\" margin-top>\n      <ion-icon slot=\"start\" name=\"contact\"></ion-icon>\n      <ion-input [(ngModel)]=\"firstName\" placeholder=\"First Name\"></ion-input>\n    </ion-item>\n  \n    <ion-item class=\"margin-bottom\">\n      <ion-icon slot=\"start\" name=\"contact\"></ion-icon>\n      <ion-input [(ngModel)]=\"lastName\" placeholder=\"Last Name\"></ion-input>\n    </ion-item>\n  \n    <ion-item class=\"margin-bottom\">\n      <ion-icon slot=\"start\" name=\"home\"></ion-icon>\n      <ion-input [(ngModel)]=\"residentUnit\" placeholder=\"Resident Unit\"></ion-input>\n    </ion-item>\n  \n    <ion-item class=\"margin-bottom\">\n      <ion-icon slot=\"start\" name=\"mail\"></ion-icon>\n      <ion-input [(ngModel)]=\"email\" type=\"email\" placeholder=\"Email Address\"></ion-input>\n    </ion-item>\n  \n    <ion-item class=\"margin-bottom\">\n      <ion-icon slot=\"start\" name=\"call\"></ion-icon>\n      <ion-input [(ngModel)]=\"phone\" type=\"tel\" placeholder=\"Phone Number\"></ion-input>\n    </ion-item>\n  \n    <ion-button class=\"loginButton\" expand=\"block\" size=\"large\" (click)=\"closeModal(1)\">Search</ion-button>\n  \n  </ion-content>"
-
-/***/ }),
-
-/***/ "./src/app/search-by-user/search-by-user.component.scss":
-/*!**************************************************************!*\
-  !*** ./src/app/search-by-user/search-by-user.component.scss ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/search-by-user/search-by-user.component.ts":
-/*!************************************************************!*\
-  !*** ./src/app/search-by-user/search-by-user.component.ts ***!
-  \************************************************************/
-/*! exports provided: SearchByUserComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchByUserComponent", function() { return SearchByUserComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
-/* harmony import */ var _rest_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../rest.service */ "./src/app/rest.service.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var SearchByUserComponent = /** @class */ (function () {
-    function SearchByUserComponent(modalCtrl, restService) {
-        this.modalCtrl = modalCtrl;
-        this.restService = restService;
-        this.firstName = '';
-        this.lastName = '';
-        this.residentUnit = '';
-        this.email = '';
-        this.phone = '';
-        this.appLogo = 'assets/icon/inner_header_logo.png';
-    }
-    SearchByUserComponent.prototype.closeModal = function (type) {
-        if (type == 1) {
-            if (this.firstName == '' && this.lastName == '' && this.residentUnit == '' && this.email == '' && this.phone == '') {
-                this.restService.showAlert('Error', 'Please enter some input');
-            }
-            else {
-                var data = {
-                    firstName: this.firstName,
-                    lastName: this.lastName,
-                    residentUnit: this.residentUnit,
-                    email: this.email,
-                    phone: this.phone
-                };
-                this.modalCtrl.dismiss(data);
-            }
-        }
-        else {
-            var data = {};
-            this.modalCtrl.dismiss(data);
-        }
-    };
-    SearchByUserComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-search-by-user',
-            template: __webpack_require__(/*! ./search-by-user.component.html */ "./src/app/search-by-user/search-by-user.component.html"),
-            styles: [__webpack_require__(/*! ./search-by-user.component.scss */ "./src/app/search-by-user/search-by-user.component.scss")]
-        }),
-        __metadata("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_1__["ModalController"],
-            _rest_service__WEBPACK_IMPORTED_MODULE_2__["RestService"]])
-    ], SearchByUserComponent);
-    return SearchByUserComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/search-by-vehicle/search-by-vehicle.component.html":
-/*!********************************************************************!*\
-  !*** ./src/app/search-by-vehicle/search-by-vehicle.component.html ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons class=\"logoHeader\" slot=\"start\" (click)=\"closeModal(0)\">\n      <ion-button>\n        <img slot=\"start\" [src]=\"appLogo\" />\n      </ion-button>\n    </ion-buttons>\n    <ion-title>Search By Vehicle</ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"closeModal(0)\">\n        <ion-icon class=\"logoutIcon\" slot=\"icon-only\" name=\"close\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding text-center>\n\n  <ion-item class=\"margin-bottom\" margin-top>\n    <ion-icon slot=\"start\" name=\"car\"></ion-icon>\n    <ion-input [(ngModel)]=\"make\" placeholder=\"Make\"></ion-input>\n  </ion-item>\n\n  <ion-item class=\"margin-bottom\">\n    <ion-icon slot=\"start\" name=\"car\"></ion-icon>\n    <ion-input [(ngModel)]=\"model\" placeholder=\"Model\"></ion-input>\n  </ion-item>\n\n  <ion-item class=\"margin-bottom\">\n    <ion-icon slot=\"start\" name=\"time\"></ion-icon>\n    <ion-input [(ngModel)]=\"year\" type=\"number\" placeholder=\"Year\"></ion-input>\n  </ion-item>\n\n  <ion-item class=\"margin-bottom\">\n    <ion-icon slot=\"start\" name=\"disc\"></ion-icon>\n    <ion-input [(ngModel)]=\"vin\" placeholder=\"Vin\"></ion-input>\n  </ion-item>\n\n  <ion-item class=\"margin-bottom\">\n    <ion-icon slot=\"start\" name=\"car\"></ion-icon>\n    <ion-input [(ngModel)]=\"plate\" placeholder=\"Plate\"></ion-input>\n  </ion-item>\n\n  <ion-button class=\"loginButton\" expand=\"block\" size=\"large\" (click)=\"closeModal(1)\">Search</ion-button>\n\n</ion-content>"
-
-/***/ }),
-
-/***/ "./src/app/search-by-vehicle/search-by-vehicle.component.scss":
-/*!********************************************************************!*\
-  !*** ./src/app/search-by-vehicle/search-by-vehicle.component.scss ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/search-by-vehicle/search-by-vehicle.component.ts":
-/*!******************************************************************!*\
-  !*** ./src/app/search-by-vehicle/search-by-vehicle.component.ts ***!
-  \******************************************************************/
-/*! exports provided: SearchByVehicleComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchByVehicleComponent", function() { return SearchByVehicleComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
-/* harmony import */ var _rest_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../rest.service */ "./src/app/rest.service.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var SearchByVehicleComponent = /** @class */ (function () {
-    function SearchByVehicleComponent(modalCtrl, restService) {
-        this.modalCtrl = modalCtrl;
-        this.restService = restService;
-        this.make = '';
-        this.model = '';
-        this.year = '';
-        this.vin = '';
-        this.plate = '';
-        this.appLogo = 'assets/icon/inner_header_logo.png';
-    }
-    SearchByVehicleComponent.prototype.closeModal = function (type) {
-        if (type == 1) {
-            if (this.make == '' && this.model == '' && this.year == '' && this.vin == '' && this.plate == '') {
-                this.restService.showAlert('Error', 'Please enter some input');
-            }
-            else {
-                var data = {
-                    make: this.make,
-                    model: this.model,
-                    year: this.year,
-                    vin: this.vin,
-                    plate: this.plate
-                };
-                this.modalCtrl.dismiss(data);
-            }
-        }
-        else {
-            var data = {};
-            this.modalCtrl.dismiss(data);
-        }
-    };
-    SearchByVehicleComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-search-by-vehicle',
-            template: __webpack_require__(/*! ./search-by-vehicle.component.html */ "./src/app/search-by-vehicle/search-by-vehicle.component.html"),
-            styles: [__webpack_require__(/*! ./search-by-vehicle.component.scss */ "./src/app/search-by-vehicle/search-by-vehicle.component.scss")]
-        }),
-        __metadata("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_1__["ModalController"],
-            _rest_service__WEBPACK_IMPORTED_MODULE_2__["RestService"]])
-    ], SearchByVehicleComponent);
-    return SearchByVehicleComponent;
 }());
 
 
