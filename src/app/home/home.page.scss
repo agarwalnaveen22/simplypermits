@@ -9,17 +9,64 @@ ion-row {
     width: 60%;
     margin: 15% auto;
 }
+
 @media screen and (min-width : 576px) {
     .scanImage {
-        width: 90%;
-        margin: 5% auto;
+        width: 80%;
+        margin: 3% auto;
+    }
+    
+}
+@media screen and (min-device-width: 667px) and (max-device-width: 1824px) and (orientation : landscape){
+    ion-grid.item-verticle-align-center.hydrated {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        ion-row.hydrated {
+            display: flex;
+            align-items: center;
+        }
+    }
+    
+    
+}
+@media only screen 
+and (min-device-width : 667) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {
+    ion-grid.item-verticle-align-center.hydrated {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        ion-row.hydrated {
+            display: flex;
+            align-items: center;
+        }
     }
 }
 
-@media screen and (min-width : 768px) and (orientation:portrait) {
+@media screen and (min-device-width: 768px) and (max-device-width: 1824px) and (orientation : portrait){
     .scanImage {
         width: 60%;
         margin: 5% auto;
+    }
+    ion-grid.item-verticle-align-center.hydrated {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+}
+@media (min-width: 481px) and (max-width: 767px) {
+    ion-grid.item-verticle-align-center.hydrated {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+}
+@media (min-width: 320px) and (max-width: 480px) {
+    ion-grid.item-verticle-align-center.hydrated {
+        height: 100%;
+        align-items: center;
     }
 }
 .hintIcon {

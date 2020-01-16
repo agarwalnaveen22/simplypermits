@@ -20,6 +20,15 @@
     --box-shadow: none !important;
     box-shadow: none !important;
 }
+ion-grid.hydrated {
+    display: grid;
+    align-items: center;
+    height: 100%;
+}
+ion-row.item-verticle-align-center.hydrated {
+    display: flex;
+    align-items: center;
+}
 @media screen and (min-width : 576px) {
     .logoImg {
         max-width: 90% !important;
@@ -31,3 +40,8 @@
     }
 }
 
+@media screen and (max-device-width: 768px) and (orientation: portrait) {
+    ion-item.item.hydrated {
+        margin-bottom: 1.2em;
+    }
+}
