@@ -68,4 +68,8 @@ export class HeaderComponent implements OnInit {
     this.selectedProperty.emit(event.target.value);
   }
 
+  async openVideoScanner() {
+    await this.restService.openCameraMultiplePics();
+  }
+
 }

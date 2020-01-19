@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, RouteReuseStrategy, Routes } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouteReuseStrategy } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { CameraPreview } from '@ionic-native/camera-preview/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { Camera } from '@ionic-native/camera/ngx';
 import { NgProgressModule } from '@ngx-progressbar/core';
 import { Base64 } from '@ionic-native/base64/ngx';
-import { ImageResizer } from '@ionic-native/image-resizer/ngx';
 import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { HttpClientModule } from '@angular/common/http';
@@ -18,12 +17,14 @@ import { IonicStorageModule } from '@ionic/storage';
 import { Device } from '@ionic-native/device/ngx';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
+import { Diagnostic } from '@ionic-native/diagnostic/ngx';
+import { LocationAccuracy } from '@ionic-native/location-accuracy/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ImagePreviewComponent } from './image-preview/image-preview.component';
 import { AuthGuardService } from './auth-guard.service';
-import { DISABLED } from '@angular/forms/src/model';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 
 @NgModule({
@@ -41,8 +42,10 @@ import { MainMenuComponent } from './main-menu/main-menu.component';
   providers: [
     StatusBar,
     SplashScreen,
-    Camera,
-    ImageResizer,
+    CameraPreview,
+    Diagnostic,
+    LocationAccuracy,
+    Geolocation,
     Base64,
     FileTransfer,
     AuthGuardService,

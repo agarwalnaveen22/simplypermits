@@ -91,6 +91,7 @@ ext {
 }
 
 // PLUGIN GRADLE EXTENSIONS START
+apply from: "../cordova-android-support-gradle-release/simplypermits-cordova-android-support-gradle-release.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras = file('build-extras.gradle').exists()
@@ -260,8 +261,11 @@ dependencies {
     // SUB-PROJECT DEPENDENCIES START
     implementation(project(path: ":CordovaLib"))
     compile "com.squareup.okhttp3:okhttp-urlconnection:3.10.0"
-    compile "com.android.support:support-v4:24.1.1+"
     compile "com.android.support:support-annotations:27.+"
+    compile "com.android.support:exifinterface:26+"
+    compile "com.android.support:support-v4:28.+"
+    compile "com.android.support:appcompat-v7:28.+"
+    compile "com.google.android.gms:play-services-location:16.+"
     // SUB-PROJECT DEPENDENCIES END
 }
 

@@ -62,7 +62,7 @@ var NoPermitResultPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<ion-content padding>\n  <ion-item class=\"logoImgHeader\" (click)=\"goToHome()\">\n    <img class=\"logoImg\" [src]=\"appLogo\" />\n  </ion-item>\n\n  <ion-item class=\"no-result-header\" text-center margin-top>\n    <ion-label>No results found.</ion-label>\n  </ion-item>\n\n  <ion-item text-center>\n    <ion-label text-wrap class=\"no-result-sub-header\">We can’t find any permits\n      matching your search:</ion-label>\n  </ion-item>\n\n  <ion-item class=\"no-result-item\" text-center>\n    <ion-label text-wrap>Plate: {{plateData.plateNumber}}</ion-label>\n  </ion-item>\n\n  \n</ion-content>\n\n<ion-footer (click)=\"goBack()\">\n  <ion-toolbar class=\"footerBack\">\n    <ion-title text-center>BACK</ion-title>\n  </ion-toolbar>\n</ion-footer>\n"
+module.exports = "<ion-content padding>\n  <ion-row class=\"no-results-found\">\n    <ion-col size=\"12\">\n      <ion-item class=\"logoImgHeader\" (click)=\"goToHome()\">\n        <img class=\"logoImg\" [src]=\"appLogo\" />\n      </ion-item>\n\n      <ion-item class=\"no-result-header\" text-center margin-top>\n        <ion-label>No results found.</ion-label>\n      </ion-item>\n\n      <ion-item text-center>\n        <ion-label text-wrap class=\"no-result-sub-header\">We can’t find any permits\n          matching your search:</ion-label>\n      </ion-item>\n\n      <ion-item class=\"no-result-item\" text-center>\n        <ion-label text-wrap>Plate: {{plateData.plateNumber}}</ion-label>\n      </ion-item>\n    </ion-col>\n\n  </ion-row>\n\n</ion-content>\n\n<ion-footer (click)=\"goBack()\">\n  <ion-toolbar class=\"footerBack\">\n    <ion-title text-center>BACK</ion-title>\n  </ion-toolbar>\n</ion-footer>"
 
 /***/ }),
 
@@ -73,7 +73,7 @@ module.exports = "\n\n<ion-content padding>\n  <ion-item class=\"logoImgHeader\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".no-result-header {\n  font-size: 2em; }\n\n.no-result-sub-header {\n  font-size: 1.3em; }\n\n.logoImgHeader img {\n  max-width: 80%;\n  margin: 0 auto; }\n\n.no-result-item {\n  font-size: 1.5em;\n  text-transform: uppercase; }\n\n.footerBack {\n  --background: #201553; }\n"
+module.exports = ".no-result-header {\n  font-size: 2em; }\n\n.no-result-sub-header {\n  font-size: 1.3em; }\n\n.logoImgHeader img {\n  max-width: 80%;\n  margin: 0 auto; }\n\n.no-result-item {\n  font-size: 1.5em;\n  text-transform: uppercase; }\n\n.footerBack {\n  --background: #201553; }\n\nion-row.no-results-found.hydrated {\n  display: flex;\n  height: 100%;\n  align-items: center; }\n\n@media screen and (min-device-width: 768px) and (max-device-width: 1824px) and (orientation: portrait) {\n  .logoImgHeader img {\n    max-width: 50%; } }\n\n@media screen and (min-device-width: 768px) and (max-device-width: 1824px) and (orientation: landscape) {\n  .logoImgHeader img {\n    max-width: 30%; } }\n\n@media only screen and (min-device-width: 320px) and (max-device-width: 823px) and (orientation: landscape) {\n  .logoImgHeader img {\n    max-width: 15%; }\n  .sc-ion-label-md-h {\n    margin: 0; } }\n\n@media only screen and (min-width: 480px) and (max-width: 767px) {\n  .logoImgHeader img {\n    max-width: 15%; }\n  .sc-ion-label-md-h {\n    margin: 0; } }\n\n@media only screen and (max-width: 479px) {\n  .logoImgHeader img {\n    max-width: 50%; } }\n"
 
 /***/ }),
 

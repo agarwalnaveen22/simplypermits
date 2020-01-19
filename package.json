@@ -21,14 +21,16 @@
     "@angular/platform-browser-dynamic": "~6.1.1",
     "@angular/router": "~6.1.1",
     "@ionic-native/base64": "^5.0.0-beta.17",
-    "@ionic-native/camera": "^5.0.0-beta.14",
+    "@ionic-native/camera-preview": "^5.19.1",
     "@ionic-native/core": "5.0.0-beta.14",
     "@ionic-native/device": "^5.0.0-beta.23",
+    "@ionic-native/diagnostic": "^5.19.1",
     "@ionic-native/file-transfer": "^5.0.0-beta.17",
+    "@ionic-native/geolocation": "^5.19.1",
     "@ionic-native/http": "^5.0.0-beta.21",
-    "@ionic-native/image-resizer": "^5.0.0-beta.17",
     "@ionic-native/in-app-browser": "^5.0.0-beta.21",
     "@ionic-native/keyboard": "^5.13.0",
+    "@ionic-native/location-accuracy": "^5.19.1",
     "@ionic-native/screen-orientation": "^5.0.0-beta.23",
     "@ionic-native/splash-screen": "5.0.0-beta.14",
     "@ionic-native/status-bar": "^5.0.0-beta.14",
@@ -37,22 +39,25 @@
     "@ngx-progressbar/core": "^5.1.2",
     "com-badrit-base64": "^0.2.0",
     "cordova-android": "7.0.0",
+    "cordova-android-support-gradle-release": "^3.0.1",
     "cordova-ios": "^4.5.5",
     "cordova-plugin-advanced-http": "^2.0.1",
-    "cordova-plugin-camera": "4.0.3",
+    "cordova-plugin-camera-preview": "^0.11.1",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-file": "^6.0.1",
     "cordova-plugin-file-transfer": "^1.7.1",
+    "cordova-plugin-geolocation": "^4.0.2",
     "cordova-plugin-inappbrowser": "^3.0.0",
     "cordova-plugin-ionic-keyboard": "^2.1.3",
     "cordova-plugin-ionic-webview": "^4.1.0",
+    "cordova-plugin-request-location-accuracy": "^2.3.0",
     "cordova-plugin-screen-orientation": "3.0.1",
     "cordova-plugin-splashscreen": "^5.0.2",
     "cordova-plugin-statusbar": "^2.4.2",
     "cordova-plugin-whitelist": "^1.3.3",
+    "cordova.plugins.diagnostic": "^5.0.1",
     "core-js": "^2.5.3",
     "es6-promise-plugin": "4.2.2",
-    "info.protonet.imageresizer": "^0.1.1",
     "ionic-angular": "^3.9.2",
     "rxjs": "6.2.2",
     "rxjs-compat": "^6.3.3",
@@ -96,20 +101,27 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-keyboard": {},
       "com-badrit-base64": {},
-      "info.protonet.imageresizer": {},
       "cordova-plugin-file-transfer": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-inappbrowser": {},
       "cordova-plugin-advanced-http": {},
       "cordova-plugin-file": {},
-      "cordova-plugin-camera": {
-        "CAMERA_USAGE_DESCRIPTION": "App wants to scan car number plate",
-        "PHOTOLIBRARY_USAGE_DESCRIPTION": "App wants to scan car number plate",
-        "PHOTOLIBRARY_ADD_USAGE_DESCRIPTION": "App wants to scan car number plate"
-      },
       "cordova-plugin-screen-orientation": {},
       "cordova-plugin-ionic-webview": {
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
+      },
+      "cordova-plugin-camera-preview": {
+        "ANDROID_SUPPORT_LIBRARY_VERSION": "26+"
+      },
+      "cordova.plugins.diagnostic": {
+        "ANDROID_SUPPORT_VERSION": "28.+"
+      },
+      "cordova-plugin-request-location-accuracy": {
+        "PLAY_SERVICES_LOCATION_VERSION": "16.+"
+      },
+      "cordova-plugin-geolocation": {},
+      "cordova-android-support-gradle-release": {
+        "ANDROID_SUPPORT_VERSION": "27.+"
       }
     },
     "platforms": [

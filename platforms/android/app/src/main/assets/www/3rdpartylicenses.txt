@@ -125,7 +125,7 @@ MIT
 MIT
 MIT
 
-@ionic-native/camera@5.0.0-beta.14
+@ionic-native/camera-preview@5.19.1
 MIT
 MIT
 
@@ -142,10 +142,6 @@ MIT
 MIT
 
 @ionic-native/http@5.0.0-beta.21
-MIT
-MIT
-
-@ionic-native/image-resizer@5.0.0-beta.17
 MIT
 MIT
 

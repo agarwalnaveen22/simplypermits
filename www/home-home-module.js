@@ -220,8 +220,7 @@ var HomePage = /** @class */ (function () {
         });
     };
     HomePage.prototype.takePicture = function () {
-        this.navCtrl.goForward("/no-permit-result");
-        // this.restService.takePicture(this.property);
+        this.restService.openCameraSinglePic(this.property);
     };
     HomePage = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({

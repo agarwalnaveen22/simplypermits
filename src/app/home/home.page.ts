@@ -83,7 +83,8 @@ export class HomePage {
   }
 
   takePicture() {
-    this.restService.takePicture(this.property);
+    this.restService.selectedProperty = this.property;
+    this.restService.openCameraSinglePic();
   }
 
 

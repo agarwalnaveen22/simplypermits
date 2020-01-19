@@ -16,7 +16,7 @@
     <ion-select *ngIf="showProperty" class="header-dropdown" interface="popover" (ionChange)="selectProperty($event)" placeholder="Select One">
       <ion-select-option *ngFor="let property of properties" value="{{property.id}}">{{property.name}}</ion-select-option>
     </ion-select>
-    <img [src]="lprImage" />
+    <img (click)="openVideoScanner()" [src]="lprImage" />
     <ion-label *ngIf="!showProperty">{{pageName}}</ion-label>
   </div>
   

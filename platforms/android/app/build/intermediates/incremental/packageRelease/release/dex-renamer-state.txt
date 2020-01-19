@@ -1,4 +1,0 @@
-#Fri Sep 06 23:09:13 IST 2019
-base.0=/Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/build/intermediates/transforms/dex/release/0
-renamed.0=classes.dex
-file.0=/Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/build/intermediates/transforms/dex/release/0/classes.dex

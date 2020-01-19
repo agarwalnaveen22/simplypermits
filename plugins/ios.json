@@ -13,9 +13,6 @@
     "cordova-plugin-advanced-http": {
       "PACKAGE_NAME": "com.simplypermits"
     },
-    "cordova-plugin-camera": {
-      "PACKAGE_NAME": "com.simplypermits"
-    },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "com.simplypermits"
     },
@@ -43,10 +40,22 @@
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.simplypermits"
     },
-    "info.protonet.imageresizer": {
+    "cordova-plugin-ionic-webview": {
       "PACKAGE_NAME": "com.simplypermits"
     },
-    "cordova-plugin-ionic-webview": {
+    "cordova-plugin-camera-preview": {
+      "PACKAGE_NAME": "com.simplypermits"
+    },
+    "cordova.plugins.diagnostic": {
+      "PACKAGE_NAME": "com.simplypermits"
+    },
+    "cordova-plugin-request-location-accuracy": {
+      "PACKAGE_NAME": "com.simplypermits"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.simplypermits"
+    },
+    "cordova-android-support-gradle-release": {
       "PACKAGE_NAME": "com.simplypermits"
     }
   },

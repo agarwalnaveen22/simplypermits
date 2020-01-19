@@ -1,10 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { LoadingController, AlertController, ToastController, NavController, ModalController } from '@ionic/angular';
+import { LoadingController, AlertController, ToastController, NavController, ModalController, Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { FileTransfer, FileTransferObject, FileUploadOptions } from '@ionic-native/file-transfer/ngx';
+import { CameraPreview, CameraPreviewOptions } from '@ionic-native/camera-preview/ngx';
+import { Diagnostic } from '@ionic-native/diagnostic/ngx';
+import { LocationAccuracy } from '@ionic-native/location-accuracy/ngx';
+import { Geolocation, GeolocationOptions } from '@ionic-native/geolocation/ngx';
+
+
+const cameraPreviewOpts: CameraPreviewOptions = {
+  x: 0,
+  y: 0,
+  width: window.screen.width,
+  height: window.screen.height,
+  camera: 'rear',
+  tapPhoto: false,
+  tapToFocus: false,
+  previewDrag: false,
+  toBack: true,
+  alpha: 1
+};
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +35,8 @@ export class RestService {
   isKeyBoardHide: boolean = false;
   selectedImage: string = '';
   selectedProperty: number = 0;
+  latitude: any = 0;
+  longitude: any = 0;
 
   constructor(
     public http: HttpClient,
@@ -28,8 +47,12 @@ export class RestService {
     private storage: Storage,
     private navCtrl: NavController,
     private keyboard: Keyboard,
-    private camera: Camera,
-    private transfer: FileTransfer
+    private transfer: FileTransfer,
+    private cameraPreview: CameraPreview,
+    private diagnostic: Diagnostic,
+    private platform: Platform,
+    private locationAccuracy: LocationAccuracy,
+    private geolocation: Geolocation
   ) { }
 
   async showLoader(message) {
@@ -255,7 +278,7 @@ export class RestService {
       this.keyboard.hide();
       this.checkKeyBoardVisible();
       var keyboardhideint = setInterval(async () => {
-        if(this.isKeyBoardHide){
+        if (this.isKeyBoardHide) {
           this.isKeyBoardHide = false;
           clearInterval(keyboardhideint);
           resolve();
@@ -274,48 +297,99 @@ export class RestService {
     }
   }
 
-  async takePicture(property:number = 0) {
-    if (property == 0 || property == undefined) {
-      this.showToast("Please select property");
-    } else {
-      let options: CameraOptions = {
-        quality: 100,
-        destinationType: this.camera.DestinationType.FILE_URI,
-        encodingType: this.camera.EncodingType.JPEG,
-        mediaType: this.camera.MediaType.PICTURE,
-        correctOrientation: true
+  async openCameraMultiplePics() {
+    try {
+      if (this.selectedProperty == 0 || this.selectedProperty == undefined) {
+        this.showToast("Please select property");
+      } else {
+        this.navCtrl.goForward('/multiple-pics');
+        await this.cameraPreview.startCamera(cameraPreviewOpts);
+        this.cameraPreview.setFocusMode('continuous-picture');
+        // setTimeout(async () => {
+        //   await this.takeMultiplePictures();
+        // }, 2000);
       }
-      options['sourceType'] = 1;
-      this.launchProgram(options, property);
+    } catch (error) {
+      this.hideLoader();
+      this.showAlert("Notice", JSON.stringify(error));
     }
   }
 
-  launchProgram(options, property) {
-    this.camera.getPicture(options).then((imageData) => {
-      this.selectedImage = imageData;
-      this.scanPlate(property);
+  async takeMultiplePictures() {
+    var pic = await this.cameraPreview.takeSnapshot();
+    pic = 'data:image/jpeg;base64,' + pic;
+    let blobData = this.convertBase64ToBlob(pic);
+    await this.checkPermitDetails(blobData);
+  }
 
-    }, (err) => {
-      this.showAlert("Notice", JSON.stringify(err));
+  async checkPermitDetails(blob) {
+    try {
+      let fd = new FormData();
+      fd.append("image", blob, "image.jpg");
+      let resp: any = await this.scanPlateNumber(fd);
+      alert(resp.results[0].plate);
+    } catch (error) {
+      await this.takeMultiplePictures();
+    }
+  }
+
+  async scanPlateNumber(data) {
+    return new Promise((resolve, reject) => {
+      this.http.post('https://api.openalpr.com/v2/recognize?secret_key=sk_e643a005c52cdd50198cfd5c&country=us', data)
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
     });
   }
 
-  async scanPlate(property) {
-    let options: FileUploadOptions = {
-      fileKey: 'uploadFileName',
-      fileName: 'name.jpg',
-      chunkedMode: false,
-      mimeType: "multipart/form-data"
-    }
-    const fileTransfer: FileTransferObject = this.transfer.create();
-    this.showLoader('Sending Image');
-    let sessionId = await this.getStorage('session_id');
-    let userId = await this.getStorage('userInfo');
-    fileTransfer.upload(this.selectedImage, this.cityApiUrl + "?sp_action=sp_permit_check_vehicle_image&selected_cat=" + property+"&session_id="+sessionId+"&user_id="+userId['user_id'], options)
-      .then(async (result) => {
+  async openCameraSinglePic() {
+    try {
+      if (this.selectedProperty == 0 || this.selectedProperty == undefined) {
+        this.showToast("Please select property");
+      } else {
+        this.showLoader('Fetching location');
+        let coordinates = await this.getCurrentLocation();
+        this.latitude = coordinates.latitude;
+        this.longitude = coordinates.longitude;
         this.hideLoader();
-        result = JSON.parse(result.response);
-        if (result['json'].length > 0) {
+        this.navCtrl.goForward('/single-pic');
+        await this.cameraPreview.startCamera(cameraPreviewOpts);
+      }
+    } catch (error) {
+      this.hideLoader();
+      this.showAlert("Notice", JSON.stringify(error));
+    }
+  }
+
+  stopCamera() {
+    this.cameraPreview.stopCamera();
+    this.navCtrl.goBack('/home');
+  }
+
+  async takePicture() {
+    var pic = await this.cameraPreview.takeSnapshot();
+    pic = 'data:image/jpeg;base64,' + pic;
+    let blobData = this.convertBase64ToBlob(pic);
+    this.sendImageToServer(blobData);
+  }
+
+  async sendImageToServer(blob) {
+    let fd = new FormData();
+    fd.append("uploadFileName", blob, "name.jpg");
+    this.showLoader('Sending Image');
+    this.stopCamera();
+    let sessionId = await this.getStorage('session_id');
+    let response = await this.getStorage('userInfo');
+    let userId = response['user_id'];
+    this.http.post(this.cityApiUrl +
+      "?sp_action=sp_permit_check_vehicle_image&selected_cat=" +
+      this.selectedProperty + "&session_id=" + sessionId + "&user_id=" +
+      userId + "&img_latitude=" + this.latitude + "&img_longitude=" + this.longitude, fd)
+      .subscribe(async result => {
+        this.hideLoader();
+        if (!result['sp_error'] && result['json'].length > 0) {
           await this.setStorage("userData", []);
           let response = await this.setStorage("vehicleData", result['json']);
           if (response) {
@@ -329,8 +403,46 @@ export class RestService {
         }
       }, (err) => {
         this.hideLoader();
-        this.showAlert("Notice", JSON.stringify(err));
-      })
+        if (err.error) {
+          this.showAlert("Notice", this.setErrorMessageArray(err.error.message));
+        } else {
+          this.showAlert("Notice", err.statusText);
+        }
+      });
+  }
+
+  convertBase64ToBlob(base64: string) {
+    const info = this.getInfoFromBase64(base64);
+    const sliceSize = 512;
+    const byteCharacters = window.atob(info.rawBase64);
+    const byteArrays = [];
+
+    for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+      const slice = byteCharacters.slice(offset, offset + sliceSize);
+      const byteNumbers = new Array(slice.length);
+
+      for (let i = 0; i < slice.length; i++) {
+        byteNumbers[i] = slice.charCodeAt(i);
+      }
+
+      byteArrays.push(new Uint8Array(byteNumbers));
+    }
+
+    return new Blob(byteArrays, { type: info.mime });
+  }
+
+  getInfoFromBase64(base64: string) {
+    const meta = base64.split(',')[0];
+    const rawBase64 = base64.split(',')[1].replace(/\s/g, '');
+    const mime = /:([^;]+);/.exec(meta)[1];
+    const extension = /\/([^;]+);/.exec(meta)[1];
+
+    return {
+      mime,
+      extension,
+      meta,
+      rawBase64
+    };
   }
 
   async viewVehicleSearchForm() {
@@ -346,6 +458,71 @@ export class RestService {
       this.showToast("Please select property");
     } else {
       this.navCtrl.goForward('/search-by-user');
+    }
+  }
+
+  async requestLocationAccuracy() {
+    try {
+      let locationAuthorizationStatus = await this.diagnostic.getLocationAuthorizationStatus();
+      switch (locationAuthorizationStatus) {
+        case this.diagnostic.permissionStatus.GRANTED:
+          if (!this.platform.is('ios')) {
+            await this.makeRequest();
+          }
+          break;
+        case this.diagnostic.permissionStatus.NOT_REQUESTED:
+          await this.requestLocationAuthorization();
+          break;
+        case this.diagnostic.permissionStatus.DENIED:
+          if (this.platform.is('android')) {
+            this.showToast("User denied permission to use location");
+          } else {
+            await this.makeRequest();
+          }
+          break;
+        case this.diagnostic.permissionStatus.DENIED_ALWAYS:
+          // Android only
+          this.showToast("User denied permission to use location");
+          break;
+      }
+    } catch (error) {
+      this.showToast("Error: " + error);
+    }
+  }
+
+  async requestLocationAuthorization() {
+    try {
+      await this.diagnostic.requestLocationAuthorization();
+      this.requestLocationAccuracy();
+    } catch (error) {
+      this.showToast("Error: " + error);
+    }
+  }
+
+  async makeRequest() {
+    try {
+      let canRequest = await this.locationAccuracy.canRequest();
+      if (canRequest) {
+        await this.locationAccuracy.request(this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY);
+      } else {
+        this.showToast("Location service is currently in use or app does not have authorization to use location");
+      }
+    } catch (error) {
+      this.showToast("Error: " + error);
+    }
+  }
+
+  async getCurrentLocation() {
+    try {
+      await this.requestLocationAccuracy();
+      let options: GeolocationOptions = {
+        maximumAge: 3000,
+        timeout: 2000
+      }
+      let coordinates = await this.geolocation.getCurrentPosition(options);
+      return coordinates.coords;
+    } catch (error) {
+      this.showToast("Error: " + error);
     }
   }
 

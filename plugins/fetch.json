@@ -79,26 +79,6 @@
     "is_top_level": true,
     "variables": {}
   },
-  "info.protonet.imageresizer": {
-    "source": {
-      "type": "registry",
-      "id": "info.protonet.imageresizer@^0.1.1"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
-  "cordova-plugin-camera": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-camera@4.0.3"
-    },
-    "is_top_level": true,
-    "variables": {
-      "CAMERA_USAGE_DESCRIPTION": "App wants to scan car number plate",
-      "PHOTOLIBRARY_USAGE_DESCRIPTION": "App wants to scan car number plate",
-      "PHOTOLIBRARY_ADD_USAGE_DESCRIPTION": "App wants to scan car number plate"
-    }
-  },
   "cordova-plugin-screen-orientation": {
     "source": {
       "type": "registry",
@@ -119,6 +99,46 @@
     "source": {
       "type": "registry",
       "id": "cordova-plugin-ionic-webview@4.1.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-camera-preview": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-camera-preview@^0.11.1"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova.plugins.diagnostic": {
+    "source": {
+      "type": "registry",
+      "id": "cordova.plugins.diagnostic@5.0.1"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-request-location-accuracy": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-request-location-accuracy"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-geolocation": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-geolocation@4.0.2"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-android-support-gradle-release": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-android-support-gradle-release"
     },
     "is_top_level": true,
     "variables": {}

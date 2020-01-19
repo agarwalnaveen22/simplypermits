@@ -278,24 +278,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
 /* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
-/* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
-/* harmony import */ var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic-native/camera/ngx */ "./node_modules/@ionic-native/camera/ngx/index.js");
+/* harmony import */ var _ionic_native_camera_preview_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/camera-preview/ngx */ "./node_modules/@ionic-native/camera-preview/ngx/index.js");
+/* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
 /* harmony import */ var _ngx_progressbar_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ngx-progressbar/core */ "./node_modules/@ngx-progressbar/core/fesm5/ngx-progressbar-core.js");
 /* harmony import */ var _ionic_native_base64_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic-native/base64/ngx */ "./node_modules/@ionic-native/base64/ngx/index.js");
-/* harmony import */ var _ionic_native_image_resizer_ngx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic-native/image-resizer/ngx */ "./node_modules/@ionic-native/image-resizer/ngx/index.js");
-/* harmony import */ var _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ionic-native/file-transfer/ngx */ "./node_modules/@ionic-native/file-transfer/ngx/index.js");
-/* harmony import */ var _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @ionic-native/in-app-browser/ngx */ "./node_modules/@ionic-native/in-app-browser/ngx/index.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _ionic_native_http_ngx__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @ionic-native/http/ngx */ "./node_modules/@ionic-native/http/ngx/index.js");
-/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
-/* harmony import */ var _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/device/ngx */ "./node_modules/@ionic-native/device/ngx/index.js");
-/* harmony import */ var _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @ionic-native/screen-orientation/ngx */ "./node_modules/@ionic-native/screen-orientation/ngx/index.js");
-/* harmony import */ var _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @ionic-native/keyboard/ngx */ "./node_modules/@ionic-native/keyboard/ngx/index.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./image-preview/image-preview.component */ "./src/app/image-preview/image-preview.component.ts");
-/* harmony import */ var _auth_guard_service__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./auth-guard.service */ "./src/app/auth-guard.service.ts");
-/* harmony import */ var _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./main-menu/main-menu.component */ "./src/app/main-menu/main-menu.component.ts");
+/* harmony import */ var _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic-native/file-transfer/ngx */ "./node_modules/@ionic-native/file-transfer/ngx/index.js");
+/* harmony import */ var _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ionic-native/in-app-browser/ngx */ "./node_modules/@ionic-native/in-app-browser/ngx/index.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _ionic_native_http_ngx__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @ionic-native/http/ngx */ "./node_modules/@ionic-native/http/ngx/index.js");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
+/* harmony import */ var _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ionic-native/device/ngx */ "./node_modules/@ionic-native/device/ngx/index.js");
+/* harmony import */ var _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/screen-orientation/ngx */ "./node_modules/@ionic-native/screen-orientation/ngx/index.js");
+/* harmony import */ var _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @ionic-native/keyboard/ngx */ "./node_modules/@ionic-native/keyboard/ngx/index.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./image-preview/image-preview.component */ "./src/app/image-preview/image-preview.component.ts");
+/* harmony import */ var _auth_guard_service__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./auth-guard.service */ "./src/app/auth-guard.service.ts");
+/* harmony import */ var _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./main-menu/main-menu.component */ "./src/app/main-menu/main-menu.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -325,39 +324,37 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
-            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_19__["AppComponent"], _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_21__["ImagePreviewComponent"], _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_23__["MainMenuComponent"]],
-            entryComponents: [_image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_21__["ImagePreviewComponent"], _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_23__["MainMenuComponent"]],
+            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_18__["AppComponent"], _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_20__["ImagePreviewComponent"], _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_22__["MainMenuComponent"]],
+            entryComponents: [_image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_20__["ImagePreviewComponent"], _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_22__["MainMenuComponent"]],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot({ mode: 'md', scrollAssist: 'DISABLED' }),
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_20__["AppRoutingModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_19__["AppRoutingModule"],
                 _ngx_progressbar_core__WEBPACK_IMPORTED_MODULE_8__["NgProgressModule"].forRoot(),
-                _ionic_storage__WEBPACK_IMPORTED_MODULE_15__["IonicStorageModule"].forRoot(),
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClientModule"],
+                _ionic_storage__WEBPACK_IMPORTED_MODULE_14__["IonicStorageModule"].forRoot(),
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_12__["HttpClientModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"]
             ],
             providers: [
-                _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
+                _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_7__["StatusBar"],
                 _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
-                _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_7__["Camera"],
-                _ionic_native_image_resizer_ngx__WEBPACK_IMPORTED_MODULE_10__["ImageResizer"],
+                _ionic_native_camera_preview_ngx__WEBPACK_IMPORTED_MODULE_6__["CameraPreview"],
                 _ionic_native_base64_ngx__WEBPACK_IMPORTED_MODULE_9__["Base64"],
-                _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_11__["FileTransfer"],
-                _auth_guard_service__WEBPACK_IMPORTED_MODULE_22__["AuthGuardService"],
-                _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_12__["InAppBrowser"],
-                _ionic_native_http_ngx__WEBPACK_IMPORTED_MODULE_14__["HTTP"],
-                _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_16__["Device"],
-                _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_17__["ScreenOrientation"],
-                _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_18__["Keyboard"],
+                _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_10__["FileTransfer"],
+                _auth_guard_service__WEBPACK_IMPORTED_MODULE_21__["AuthGuardService"],
+                _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_11__["InAppBrowser"],
+                _ionic_native_http_ngx__WEBPACK_IMPORTED_MODULE_13__["HTTP"],
+                _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_15__["Device"],
+                _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_16__["ScreenOrientation"],
+                _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_17__["Keyboard"],
                 { provide: _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] }
             ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_19__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_18__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -747,8 +744,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
 /* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
 /* harmony import */ var _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/keyboard/ngx */ "./node_modules/@ionic-native/keyboard/ngx/index.js");
-/* harmony import */ var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/camera/ngx */ "./node_modules/@ionic-native/camera/ngx/index.js");
-/* harmony import */ var _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/file-transfer/ngx */ "./node_modules/@ionic-native/file-transfer/ngx/index.js");
+/* harmony import */ var _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/file-transfer/ngx */ "./node_modules/@ionic-native/file-transfer/ngx/index.js");
+/* harmony import */ var _ionic_native_camera_preview_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/camera-preview/ngx */ "./node_modules/@ionic-native/camera-preview/ngx/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -800,8 +797,20 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+var cameraPreviewOpts = {
+    x: 0,
+    y: 0,
+    width: window.screen.width,
+    height: window.screen.height,
+    camera: 'rear',
+    tapPhoto: false,
+    tapToFocus: false,
+    previewDrag: false,
+    toBack: true,
+    alpha: 1
+};
 var RestService = /** @class */ (function () {
-    function RestService(http, loadingController, alertController, toastController, modalCtrl, storage, navCtrl, keyboard, camera, transfer) {
+    function RestService(http, loadingController, alertController, toastController, modalCtrl, storage, navCtrl, keyboard, transfer, cameraPreview) {
         var _this = this;
         this.http = http;
         this.loadingController = loadingController;
@@ -811,8 +820,8 @@ var RestService = /** @class */ (function () {
         this.storage = storage;
         this.navCtrl = navCtrl;
         this.keyboard = keyboard;
-        this.camera = camera;
         this.transfer = transfer;
+        this.cameraPreview = cameraPreview;
         this.apiUrl = 'https://simplypermits.com/API/rest.php';
         this.cityApiUrl = '';
         this.isKeyBoardHide = false;
@@ -1195,96 +1204,128 @@ var RestService = /** @class */ (function () {
             });
         });
     };
-    RestService.prototype.takePicture = function (property) {
+    RestService.prototype.openCameraSinglePic = function (property) {
         if (property === void 0) { property = 0; }
         return __awaiter(this, void 0, void 0, function () {
-            var options;
-            return __generator(this, function (_a) {
-                if (property == 0 || property == undefined) {
-                    this.showToast("Please select property");
-                }
-                else {
-                    options = {
-                        quality: 100,
-                        destinationType: this.camera.DestinationType.FILE_URI,
-                        encodingType: this.camera.EncodingType.JPEG,
-                        mediaType: this.camera.MediaType.PICTURE,
-                        correctOrientation: true
-                    };
-                    options['sourceType'] = 1;
-                    this.launchProgram(options, property);
-                }
-                return [2 /*return*/];
-            });
-        });
-    };
-    RestService.prototype.launchProgram = function (options, property) {
-        var _this = this;
-        this.camera.getPicture(options).then(function (imageData) {
-            _this.selectedImage = imageData;
-            _this.scanPlate(property);
-        }, function (err) {
-            _this.showAlert("Notice", JSON.stringify(err));
-        });
-    };
-    RestService.prototype.scanPlate = function (property) {
-        return __awaiter(this, void 0, void 0, function () {
-            var _this = this;
-            var options, fileTransfer, sessionId, userId;
+            var error_4;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        options = {
-                            fileKey: 'uploadFileName',
-                            fileName: 'name.jpg',
-                            chunkedMode: false,
-                            mimeType: "multipart/form-data"
-                        };
-                        fileTransfer = this.transfer.create();
-                        this.showLoader('Sending Image');
-                        return [4 /*yield*/, this.getStorage('session_id')];
-                    case 1:
-                        sessionId = _a.sent();
-                        return [4 /*yield*/, this.getStorage('userInfo')];
+                        _a.trys.push([0, 4, , 5]);
+                        if (!(property == 0 || property == undefined)) return [3 /*break*/, 1];
+                        this.showToast("Please select property");
+                        return [3 /*break*/, 3];
+                    case 1: return [4 /*yield*/, this.cameraPreview.startCamera(cameraPreviewOpts)];
                     case 2:
-                        userId = _a.sent();
-                        fileTransfer.upload(this.selectedImage, this.cityApiUrl + "?sp_action=sp_permit_check_vehicle_image&selected_cat=" + property + "&session_id=" + sessionId + "&user_id=" + userId['user_id'], options)
-                            .then(function (result) { return __awaiter(_this, void 0, void 0, function () {
-                            var response, response;
-                            return __generator(this, function (_a) {
-                                switch (_a.label) {
-                                    case 0:
-                                        this.hideLoader();
-                                        result = JSON.parse(result.response);
-                                        if (!(result['json'].length > 0)) return [3 /*break*/, 3];
-                                        return [4 /*yield*/, this.setStorage("userData", [])];
-                                    case 1:
-                                        _a.sent();
-                                        return [4 /*yield*/, this.setStorage("vehicleData", result['json'])];
-                                    case 2:
-                                        response = _a.sent();
-                                        if (response) {
-                                            this.navCtrl.goForward("/property-list");
-                                        }
-                                        return [3 /*break*/, 5];
-                                    case 3: return [4 /*yield*/, this.setStorage("plateData", result['plateData'])];
-                                    case 4:
-                                        response = _a.sent();
-                                        if (response) {
-                                            this.navCtrl.goForward("/no-permit-result");
-                                        }
-                                        _a.label = 5;
-                                    case 5: return [2 /*return*/];
-                                }
-                            });
-                        }); }, function (err) {
-                            _this.hideLoader();
-                            _this.showAlert("Notice", JSON.stringify(err));
-                        });
+                        _a.sent();
+                        _a.label = 3;
+                    case 3: return [3 /*break*/, 5];
+                    case 4:
+                        error_4 = _a.sent();
+                        this.showAlert("Notice", JSON.stringify(error_4));
+                        return [3 /*break*/, 5];
+                    case 5: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    RestService.prototype.takePicture = function (property) {
+        if (property === void 0) { property = 0; }
+        return __awaiter(this, void 0, void 0, function () {
+            var pic, blobData;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.cameraPreview.takeSnapshot()];
+                    case 1:
+                        pic = _a.sent();
+                        pic = 'data:image/jpeg;base64,' + pic;
+                        console.log(pic);
+                        blobData = this.convertBase64ToBlob(pic);
+                        this.sendImageToServer(blobData, property);
+                        this.cameraPreview.stopCamera();
                         return [2 /*return*/];
                 }
             });
         });
+    };
+    RestService.prototype.sendImageToServer = function (blob, property) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            var requestData;
+            return __generator(this, function (_a) {
+                this.showLoader('Sending Image');
+                requestData = {
+                    sp_action: "sp_permit_check_vehicle_image",
+                    selected_cat: property,
+                    uploadFileName: blob
+                };
+                this.showLoader('Sending Image');
+                this.makePostRequest(requestData).then(function (result) { return __awaiter(_this, void 0, void 0, function () {
+                    var response, response;
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0:
+                                this.hideLoader();
+                                if (!(result['json'].length > 0)) return [3 /*break*/, 3];
+                                return [4 /*yield*/, this.setStorage("userData", [])];
+                            case 1:
+                                _a.sent();
+                                return [4 /*yield*/, this.setStorage("vehicleData", result['json'])];
+                            case 2:
+                                response = _a.sent();
+                                if (response) {
+                                    this.navCtrl.goForward("/property-list");
+                                }
+                                return [3 /*break*/, 5];
+                            case 3: return [4 /*yield*/, this.setStorage("plateData", result['plateData'])];
+                            case 4:
+                                response = _a.sent();
+                                if (response) {
+                                    this.navCtrl.goForward("/no-permit-result");
+                                }
+                                _a.label = 5;
+                            case 5: return [2 /*return*/];
+                        }
+                    });
+                }); }, function (err) {
+                    _this.hideLoader();
+                    if (err.error) {
+                        _this.showAlert("Notice", _this.setErrorMessageArray(err.error.message));
+                    }
+                    else {
+                        _this.showAlert("Notice", err.statusText);
+                    }
+                });
+                return [2 /*return*/];
+            });
+        });
+    };
+    RestService.prototype.convertBase64ToBlob = function (base64) {
+        var info = this.getInfoFromBase64(base64);
+        var sliceSize = 512;
+        var byteCharacters = window.atob(info.rawBase64);
+        var byteArrays = [];
+        for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+            var slice = byteCharacters.slice(offset, offset + sliceSize);
+            var byteNumbers = new Array(slice.length);
+            for (var i = 0; i < slice.length; i++) {
+                byteNumbers[i] = slice.charCodeAt(i);
+            }
+            byteArrays.push(new Uint8Array(byteNumbers));
+        }
+        return new Blob(byteArrays, { type: info.mime });
+    };
+    RestService.prototype.getInfoFromBase64 = function (base64) {
+        var meta = base64.split(',')[0];
+        var rawBase64 = base64.split(',')[1].replace(/\s/g, '');
+        var mime = /:([^;]+);/.exec(meta)[1];
+        var extension = /\/([^;]+);/.exec(meta)[1];
+        return {
+            mime: mime,
+            extension: extension,
+            meta: meta,
+            rawBase64: rawBase64
+        };
     };
     RestService.prototype.viewVehicleSearchForm = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -1324,8 +1365,8 @@ var RestService = /** @class */ (function () {
             _ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"],
             _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_4__["Keyboard"],
-            _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_5__["Camera"],
-            _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_6__["FileTransfer"]])
+            _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_5__["FileTransfer"],
+            _ionic_native_camera_preview_ngx__WEBPACK_IMPORTED_MODULE_6__["CameraPreview"]])
     ], RestService);
     return RestService;
 }());
