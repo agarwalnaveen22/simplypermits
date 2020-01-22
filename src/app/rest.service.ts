@@ -377,38 +377,50 @@ export class RestService {
 
   async sendImageToServer(blob) {
     let fd = new FormData();
-    fd.append("uploadFileName", blob, "name.jpg");
+    fd.append("image", blob, "image.jpg");
     this.showLoader('Sending Image');
     this.stopCamera();
-    let sessionId = await this.getStorage('session_id');
-    let response = await this.getStorage('userInfo');
-    let userId = response['user_id'];
-    this.http.post(this.cityApiUrl +
-      "?sp_action=sp_permit_check_vehicle_image&selected_cat=" +
-      this.selectedProperty + "&session_id=" + sessionId + "&user_id=" +
-      userId + "&img_latitude=" + this.latitude + "&img_longitude=" + this.longitude, fd)
-      .subscribe(async result => {
+    try {
+      let resp: any = await this.scanPlateNumber(fd);
+      if (resp.results.length > 0) {
+        let lprNumber = resp.results[0].plate;
+        let requestParams: any = {
+          sp_action: "sp_permit_check_vehicle_image_upload",
+          selected_cat: this.selectedProperty,
+          img_latitude: this.latitude,
+          img_longitude: this.longitude,
+          plate_value: lprNumber
+        }
+        let pictureResult: any = await this.makePostRequest(requestParams);
         this.hideLoader();
-        if (!result['sp_error'] && result['json'].length > 0) {
+        if(pictureResult['json'].length > 0) {
           await this.setStorage("userData", []);
-          let response = await this.setStorage("vehicleData", result['json']);
+          let response = await this.setStorage("vehicleData", pictureResult['json']);
           if (response) {
             this.navCtrl.goForward("/property-list");
           }
         } else {
-          let response = await this.setStorage("plateData", result['plateData']);
+          let response = await this.setStorage("plateData", pictureResult['plateData']);
           if (response) {
             this.navCtrl.goForward("/no-permit-result");
           }
         }
-      }, (err) => {
+      } else {
         this.hideLoader();
-        if (err.error) {
-          this.showAlert("Notice", this.setErrorMessageArray(err.error.message));
-        } else {
-          this.showAlert("Notice", err.statusText);
+        let plateResp: any = {
+          plateData: {
+            plateNumber: "NO PLATE FOUND"
+          }
+        };
+        let response = await this.setStorage("plateData", plateResp['plateData']);
+        if (response) {
+          this.navCtrl.goForward("/no-permit-result");
         }
-      });
+      }
+    } catch (error) {
+      this.hideLoader();
+      this.showAlert('Notice', error.statusText);
+    }
   }
 
   convertBase64ToBlob(base64: string) {
