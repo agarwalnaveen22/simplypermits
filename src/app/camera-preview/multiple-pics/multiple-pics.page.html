@@ -1,22 +1,67 @@
-<ion-content class="active">
-  <ion-card>
+<ion-content> <!-- [ngClass]="pictureData.status? 'active': 'inactive'" -->
+  <!-- <ion-card *ngIf="scanStatus && pictureData.status">
     <ion-item>
-      <ion-label>PERMIT TITLE</ion-label>
-      <ion-label text-end slot="end">STATUS</ion-label>
+      <ion-label>{{pictureData.data.permitId}}</ion-label>
+      <ion-label text-end slot="end">{{pictureData.data.status}}</ion-label>
+    </ion-item>
+
+    <ion-card-content text-center>
+      <ion-item *ngFor="let licenseInfo of pictureData.data.permits_info">
+        <ion-label start>License Plate</ion-label>
+        <ion-label end color="medium">{{licenseInfo.Plate}} ({{licenseInfo.State_plate}})</ion-label>
+      </ion-item>
+      <ion-item *ngFor="let attributeData of pictureData.data.attribute_data">
+        <ion-label start>{{attributeData.attribute_name}}</ion-label>
+        <ion-label end color="medium" text-wrap>{{attributeData.attribute_value}}</ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="scanStatus && !pictureData.status">
+    <ion-item text-center>
+      <ion-label start>No Permits Found</ion-label>
+      <ion-label end>{{pictureData.data.plateNumber}}</ion-label>
+    </ion-item>
+  </ion-card> -->
+<ion-row class="result-outer">
+  <ion-card class="active">
+    <ion-item class="title_bar">
+      <ion-label>Permit Title</ion-label>
+      <ion-label text-end slot="end">Active</ion-label>
     </ion-item>
 
     <ion-card-content text-center>
       <ion-item>
-        <ion-label start>LICENSE PLATE</ion-label>
-        <ion-label end color="medium">PLATE NUMBER</ion-label>
+        <ion-label start>License Plate</ion-label>
+        <ion-label end color="medium">License Plate</ion-label>
       </ion-item>
       <ion-item>
-        <ion-label start>ATTRIBUTE NAME</ion-label>
-        <ion-label end color="medium" text-wrap>ATTRIBUTE VALUE</ion-label>
+        <ion-label start>Variable Label</ion-label>
+        <ion-label end color="medium" text-wrap>Variable Value</ion-label>
       </ion-item>
     </ion-card-content>
   </ion-card>
+
+  <ion-card class="inactive">
+    <ion-item class="title_bar">
+      <ion-label>Permit Title</ion-label>
+      <ion-label text-end slot="end">Active</ion-label>
+    </ion-item>
+
+    <ion-card-content text-center>
+      <ion-item>
+        <ion-label start>License Plate</ion-label>
+        <ion-label end color="medium">License Plate</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label start>Variable Label</ion-label>
+        <ion-label end color="medium" text-wrap>Variable Value</ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-row>
 </ion-content>
+
 <ion-footer>
   <ion-toolbar class="footer_multiple_pics">
     <ion-buttons class="multiple_pics_btn_cancel" (click)="goBack()" text-center slot="start">

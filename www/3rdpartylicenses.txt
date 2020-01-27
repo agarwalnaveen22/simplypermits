@@ -137,7 +137,15 @@ MIT
 MIT
 MIT
 
+@ionic-native/diagnostic@5.19.1
+MIT
+MIT
+
 @ionic-native/file-transfer@5.0.0-beta.17
+MIT
+MIT
+
+@ionic-native/geolocation@5.19.1
 MIT
 MIT
 
@@ -150,6 +158,10 @@ MIT
 MIT
 
 @ionic-native/keyboard@5.13.0
+MIT
+MIT
+
+@ionic-native/location-accuracy@5.19.1
 MIT
 MIT
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { LoadingController, AlertController, ToastController, NavController, ModalController, Platform } from '@ionic/angular';
+import { LoadingController, AlertController, ToastController, NavController, ModalController, Platform, Events } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
 import { FileTransfer, FileTransferObject, FileUploadOptions } from '@ionic-native/file-transfer/ngx';
@@ -52,7 +52,8 @@ export class RestService {
     private diagnostic: Diagnostic,
     private platform: Platform,
     private locationAccuracy: LocationAccuracy,
-    private geolocation: Geolocation
+    private geolocation: Geolocation,
+    private events: Events
   ) { }
 
   async showLoader(message) {
@@ -305,9 +306,7 @@ export class RestService {
         this.navCtrl.goForward('/multiple-pics');
         await this.cameraPreview.startCamera(cameraPreviewOpts);
         this.cameraPreview.setFocusMode('continuous-picture');
-        // setTimeout(async () => {
-        //   await this.takeMultiplePictures();
-        // }, 2000);
+        await this.takeMultiplePictures();
       }
     } catch (error) {
       this.hideLoader();
@@ -316,10 +315,12 @@ export class RestService {
   }
 
   async takeMultiplePictures() {
-    var pic = await this.cameraPreview.takeSnapshot();
-    pic = 'data:image/jpeg;base64,' + pic;
-    let blobData = this.convertBase64ToBlob(pic);
-    await this.checkPermitDetails(blobData);
+    setTimeout(async () => {
+      var pic = await this.cameraPreview.takeSnapshot();
+      pic = 'data:image/jpeg;base64,' + pic;
+      let blobData = this.convertBase64ToBlob(pic);
+      await this.checkPermitDetails(blobData);
+    }, 2000);
   }
 
   async checkPermitDetails(blob) {
@@ -327,7 +328,34 @@ export class RestService {
       let fd = new FormData();
       fd.append("image", blob, "image.jpg");
       let resp: any = await this.scanPlateNumber(fd);
-      alert(resp.results[0].plate);
+      if (resp.results.length > 0) {
+        let lprNumber = resp.results[0].plate;
+        let requestParams: any = {
+          sp_action: "sp_permit_check_vehicle_image_upload",
+          selected_cat: this.selectedProperty,
+          img_latitude: this.latitude,
+          img_longitude: this.longitude,
+          plate_value: lprNumber
+        }
+        let pictureResult: any = await this.makePostRequest(requestParams);
+        if (pictureResult['json'].length > 0) {
+          let pictureData: any = {
+            status: true,
+            data: pictureResult['json']
+          };
+          this.events.publish('pictureData', pictureData);
+          await this.takeMultiplePictures();
+        } else {
+          let pictureData: any = {
+            status: false,
+            data: pictureResult['plateData']
+          };
+          this.events.publish('pictureData', pictureData);
+          await this.takeMultiplePictures();
+        }
+      } else {
+        await this.takeMultiplePictures();
+      }
     } catch (error) {
       await this.takeMultiplePictures();
     }
@@ -349,11 +377,11 @@ export class RestService {
       if (this.selectedProperty == 0 || this.selectedProperty == undefined) {
         this.showToast("Please select property");
       } else {
-        this.showLoader('Fetching location');
-        let coordinates = await this.getCurrentLocation();
-        this.latitude = coordinates.latitude;
-        this.longitude = coordinates.longitude;
-        this.hideLoader();
+        // this.showLoader('Fetching location');
+        // let coordinates = await this.getCurrentLocation();
+        // this.latitude = coordinates.latitude;
+        // this.longitude = coordinates.longitude;
+        // this.hideLoader();
         this.navCtrl.goForward('/single-pic');
         await this.cameraPreview.startCamera(cameraPreviewOpts);
       }
@@ -393,7 +421,7 @@ export class RestService {
         }
         let pictureResult: any = await this.makePostRequest(requestParams);
         this.hideLoader();
-        if(pictureResult['json'].length > 0) {
+        if (pictureResult['json'].length > 0) {
           await this.setStorage("userData", []);
           let response = await this.setStorage("vehicleData", pictureResult['json']);
           if (response) {

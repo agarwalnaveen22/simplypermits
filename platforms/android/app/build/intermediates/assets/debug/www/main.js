@@ -14,6 +14,14 @@ var map = {
 		"common",
 		"add-note-add-note-module"
 	],
+	"./camera-preview/multiple-pics/multiple-pics.module": [
+		"./src/app/camera-preview/multiple-pics/multiple-pics.module.ts",
+		"camera-preview-multiple-pics-multiple-pics-module"
+	],
+	"./camera-preview/single-pic/single-pic.module": [
+		"./src/app/camera-preview/single-pic/single-pic.module.ts",
+		"camera-preview-single-pic-single-pic-module"
+	],
 	"./forgot-password/forgot-password.module": [
 		"./src/app/forgot-password/forgot-password.module.ts",
 		"forgot-password-forgot-password-module"
@@ -119,6 +127,8 @@ var routes = [
     { path: 'add-note/:permitId', loadChildren: './add-note/add-note.module#AddNotePageModule' },
     { path: 'search-by-user', loadChildren: './search-by-user/search-by-user.module#SearchByUserPageModule' },
     { path: 'search-by-vehicle', loadChildren: './search-by-vehicle/search-by-vehicle.module#SearchByVehiclePageModule' },
+    { path: 'single-pic', loadChildren: './camera-preview/single-pic/single-pic.module#SinglePicPageModule' },
+    { path: 'multiple-pics', loadChildren: './camera-preview/multiple-pics/multiple-pics.module#MultiplePicsPageModule' },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -290,11 +300,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ionic-native/device/ngx */ "./node_modules/@ionic-native/device/ngx/index.js");
 /* harmony import */ var _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/screen-orientation/ngx */ "./node_modules/@ionic-native/screen-orientation/ngx/index.js");
 /* harmony import */ var _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @ionic-native/keyboard/ngx */ "./node_modules/@ionic-native/keyboard/ngx/index.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./image-preview/image-preview.component */ "./src/app/image-preview/image-preview.component.ts");
-/* harmony import */ var _auth_guard_service__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./auth-guard.service */ "./src/app/auth-guard.service.ts");
-/* harmony import */ var _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./main-menu/main-menu.component */ "./src/app/main-menu/main-menu.component.ts");
+/* harmony import */ var _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @ionic-native/diagnostic/ngx */ "./node_modules/@ionic-native/diagnostic/ngx/index.js");
+/* harmony import */ var _ionic_native_location_accuracy_ngx__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @ionic-native/location-accuracy/ngx */ "./node_modules/@ionic-native/location-accuracy/ngx/index.js");
+/* harmony import */ var _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @ionic-native/geolocation/ngx */ "./node_modules/@ionic-native/geolocation/ngx/index.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./image-preview/image-preview.component */ "./src/app/image-preview/image-preview.component.ts");
+/* harmony import */ var _auth_guard_service__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./auth-guard.service */ "./src/app/auth-guard.service.ts");
+/* harmony import */ var _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./main-menu/main-menu.component */ "./src/app/main-menu/main-menu.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -324,17 +337,20 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
-            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_18__["AppComponent"], _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_20__["ImagePreviewComponent"], _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_22__["MainMenuComponent"]],
-            entryComponents: [_image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_20__["ImagePreviewComponent"], _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_22__["MainMenuComponent"]],
+            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_21__["AppComponent"], _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_23__["ImagePreviewComponent"], _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_25__["MainMenuComponent"]],
+            entryComponents: [_image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_23__["ImagePreviewComponent"], _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_25__["MainMenuComponent"]],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot({ mode: 'md', scrollAssist: 'DISABLED' }),
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_19__["AppRoutingModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_22__["AppRoutingModule"],
                 _ngx_progressbar_core__WEBPACK_IMPORTED_MODULE_8__["NgProgressModule"].forRoot(),
                 _ionic_storage__WEBPACK_IMPORTED_MODULE_14__["IonicStorageModule"].forRoot(),
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_12__["HttpClientModule"],
@@ -344,9 +360,12 @@ var AppModule = /** @class */ (function () {
                 _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_7__["StatusBar"],
                 _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
                 _ionic_native_camera_preview_ngx__WEBPACK_IMPORTED_MODULE_6__["CameraPreview"],
+                _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_18__["Diagnostic"],
+                _ionic_native_location_accuracy_ngx__WEBPACK_IMPORTED_MODULE_19__["LocationAccuracy"],
+                _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_20__["Geolocation"],
                 _ionic_native_base64_ngx__WEBPACK_IMPORTED_MODULE_9__["Base64"],
                 _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_10__["FileTransfer"],
-                _auth_guard_service__WEBPACK_IMPORTED_MODULE_21__["AuthGuardService"],
+                _auth_guard_service__WEBPACK_IMPORTED_MODULE_24__["AuthGuardService"],
                 _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_11__["InAppBrowser"],
                 _ionic_native_http_ngx__WEBPACK_IMPORTED_MODULE_13__["HTTP"],
                 _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_15__["Device"],
@@ -354,7 +373,7 @@ var AppModule = /** @class */ (function () {
                 _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_17__["Keyboard"],
                 { provide: _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] }
             ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_18__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_21__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -680,7 +699,7 @@ var MainMenuComponent = /** @class */ (function () {
                     case 0: return [4 /*yield*/, this.popoverCtrl.dismiss()];
                     case 1:
                         _a.sent();
-                        this.restService.takePicture(this.restService.selectedProperty);
+                        this.restService.openCameraSinglePic();
                         return [2 /*return*/];
                 }
             });
@@ -746,6 +765,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/keyboard/ngx */ "./node_modules/@ionic-native/keyboard/ngx/index.js");
 /* harmony import */ var _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/file-transfer/ngx */ "./node_modules/@ionic-native/file-transfer/ngx/index.js");
 /* harmony import */ var _ionic_native_camera_preview_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/camera-preview/ngx */ "./node_modules/@ionic-native/camera-preview/ngx/index.js");
+/* harmony import */ var _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic-native/diagnostic/ngx */ "./node_modules/@ionic-native/diagnostic/ngx/index.js");
+/* harmony import */ var _ionic_native_location_accuracy_ngx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic-native/location-accuracy/ngx */ "./node_modules/@ionic-native/location-accuracy/ngx/index.js");
+/* harmony import */ var _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic-native/geolocation/ngx */ "./node_modules/@ionic-native/geolocation/ngx/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -797,6 +819,9 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
+
+
 var cameraPreviewOpts = {
     x: 0,
     y: 0,
@@ -810,7 +835,7 @@ var cameraPreviewOpts = {
     alpha: 1
 };
 var RestService = /** @class */ (function () {
-    function RestService(http, loadingController, alertController, toastController, modalCtrl, storage, navCtrl, keyboard, transfer, cameraPreview) {
+    function RestService(http, loadingController, alertController, toastController, modalCtrl, storage, navCtrl, keyboard, transfer, cameraPreview, diagnostic, platform, locationAccuracy, geolocation, events) {
         var _this = this;
         this.http = http;
         this.loadingController = loadingController;
@@ -822,11 +847,18 @@ var RestService = /** @class */ (function () {
         this.keyboard = keyboard;
         this.transfer = transfer;
         this.cameraPreview = cameraPreview;
+        this.diagnostic = diagnostic;
+        this.platform = platform;
+        this.locationAccuracy = locationAccuracy;
+        this.geolocation = geolocation;
+        this.events = events;
         this.apiUrl = 'https://simplypermits.com/API/rest.php';
         this.cityApiUrl = '';
         this.isKeyBoardHide = false;
         this.selectedImage = '';
         this.selectedProperty = 0;
+        this.latitude = 0;
+        this.longitude = 0;
         this.logout = function (type) { return __awaiter(_this, void 0, void 0, function () {
             var requestData, error_1;
             return __generator(this, function (_a) {
@@ -1204,24 +1236,38 @@ var RestService = /** @class */ (function () {
             });
         });
     };
-    RestService.prototype.openCameraSinglePic = function (property) {
-        if (property === void 0) { property = 0; }
+    RestService.prototype.openCameraMultiplePics = function () {
         return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
             var error_4;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 4, , 5]);
-                        if (!(property == 0 || property == undefined)) return [3 /*break*/, 1];
+                        if (!(this.selectedProperty == 0 || this.selectedProperty == undefined)) return [3 /*break*/, 1];
                         this.showToast("Please select property");
                         return [3 /*break*/, 3];
-                    case 1: return [4 /*yield*/, this.cameraPreview.startCamera(cameraPreviewOpts)];
+                    case 1:
+                        this.navCtrl.goForward('/multiple-pics');
+                        return [4 /*yield*/, this.cameraPreview.startCamera(cameraPreviewOpts)];
                     case 2:
                         _a.sent();
+                        this.cameraPreview.setFocusMode('continuous-picture');
+                        setTimeout(function () { return __awaiter(_this, void 0, void 0, function () {
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, this.takeMultiplePictures()];
+                                    case 1:
+                                        _a.sent();
+                                        return [2 /*return*/];
+                                }
+                            });
+                        }); }, 2000);
                         _a.label = 3;
                     case 3: return [3 /*break*/, 5];
                     case 4:
                         error_4 = _a.sent();
+                        this.hideLoader();
                         this.showAlert("Notice", JSON.stringify(error_4));
                         return [3 /*break*/, 5];
                     case 5: return [2 /*return*/];
@@ -1229,8 +1275,7 @@ var RestService = /** @class */ (function () {
             });
         });
     };
-    RestService.prototype.takePicture = function (property) {
-        if (property === void 0) { property = 0; }
+    RestService.prototype.takeMultiplePictures = function () {
         return __awaiter(this, void 0, void 0, function () {
             var pic, blobData;
             return __generator(this, function (_a) {
@@ -1239,64 +1284,215 @@ var RestService = /** @class */ (function () {
                     case 1:
                         pic = _a.sent();
                         pic = 'data:image/jpeg;base64,' + pic;
-                        console.log(pic);
                         blobData = this.convertBase64ToBlob(pic);
-                        this.sendImageToServer(blobData, property);
-                        this.cameraPreview.stopCamera();
+                        return [4 /*yield*/, this.checkPermitDetails(blobData)];
+                    case 2:
+                        _a.sent();
                         return [2 /*return*/];
                 }
             });
         });
     };
-    RestService.prototype.sendImageToServer = function (blob, property) {
+    RestService.prototype.checkPermitDetails = function (blob) {
+        return __awaiter(this, void 0, void 0, function () {
+            var fd, resp, lprNumber, requestParams, pictureResult, pictureData, pictureData, error_5;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 10, , 12]);
+                        fd = new FormData();
+                        fd.append("image", blob, "image.jpg");
+                        return [4 /*yield*/, this.scanPlateNumber(fd)];
+                    case 1:
+                        resp = _a.sent();
+                        if (!(resp.results.length > 0)) return [3 /*break*/, 7];
+                        lprNumber = resp.results[0].plate;
+                        requestParams = {
+                            sp_action: "sp_permit_check_vehicle_image_upload",
+                            selected_cat: this.selectedProperty,
+                            img_latitude: this.latitude,
+                            img_longitude: this.longitude,
+                            plate_value: lprNumber
+                        };
+                        return [4 /*yield*/, this.makePostRequest(requestParams)];
+                    case 2:
+                        pictureResult = _a.sent();
+                        if (!(pictureResult['json'].length > 0)) return [3 /*break*/, 4];
+                        pictureData = {
+                            status: true,
+                            data: pictureResult['json']
+                        };
+                        this.events.publish('pictureData', pictureData);
+                        return [4 /*yield*/, this.takeMultiplePictures()];
+                    case 3:
+                        _a.sent();
+                        return [3 /*break*/, 6];
+                    case 4:
+                        pictureData = {
+                            status: false,
+                            data: pictureResult['plateData']
+                        };
+                        this.events.publish('pictureData', pictureData);
+                        return [4 /*yield*/, this.takeMultiplePictures()];
+                    case 5:
+                        _a.sent();
+                        _a.label = 6;
+                    case 6: return [3 /*break*/, 9];
+                    case 7: return [4 /*yield*/, this.takeMultiplePictures()];
+                    case 8:
+                        _a.sent();
+                        _a.label = 9;
+                    case 9: return [3 /*break*/, 12];
+                    case 10:
+                        error_5 = _a.sent();
+                        return [4 /*yield*/, this.takeMultiplePictures()];
+                    case 11:
+                        _a.sent();
+                        return [3 /*break*/, 12];
+                    case 12: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    RestService.prototype.scanPlateNumber = function (data) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
-            var requestData;
             return __generator(this, function (_a) {
-                this.showLoader('Sending Image');
-                requestData = {
-                    sp_action: "sp_permit_check_vehicle_image",
-                    selected_cat: property,
-                    uploadFileName: blob
-                };
-                this.showLoader('Sending Image');
-                this.makePostRequest(requestData).then(function (result) { return __awaiter(_this, void 0, void 0, function () {
-                    var response, response;
-                    return __generator(this, function (_a) {
-                        switch (_a.label) {
-                            case 0:
-                                this.hideLoader();
-                                if (!(result['json'].length > 0)) return [3 /*break*/, 3];
-                                return [4 /*yield*/, this.setStorage("userData", [])];
-                            case 1:
-                                _a.sent();
-                                return [4 /*yield*/, this.setStorage("vehicleData", result['json'])];
-                            case 2:
-                                response = _a.sent();
-                                if (response) {
-                                    this.navCtrl.goForward("/property-list");
-                                }
-                                return [3 /*break*/, 5];
-                            case 3: return [4 /*yield*/, this.setStorage("plateData", result['plateData'])];
-                            case 4:
-                                response = _a.sent();
-                                if (response) {
-                                    this.navCtrl.goForward("/no-permit-result");
-                                }
-                                _a.label = 5;
-                            case 5: return [2 /*return*/];
+                return [2 /*return*/, new Promise(function (resolve, reject) {
+                        _this.http.post('https://api.openalpr.com/v2/recognize?secret_key=sk_e643a005c52cdd50198cfd5c&country=us', data)
+                            .subscribe(function (res) {
+                            resolve(res);
+                        }, function (err) {
+                            reject(err);
+                        });
+                    })];
+            });
+        });
+    };
+    RestService.prototype.openCameraSinglePic = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var coordinates, error_6;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 5, , 6]);
+                        if (!(this.selectedProperty == 0 || this.selectedProperty == undefined)) return [3 /*break*/, 1];
+                        this.showToast("Please select property");
+                        return [3 /*break*/, 4];
+                    case 1:
+                        this.showLoader('Fetching location');
+                        return [4 /*yield*/, this.getCurrentLocation()];
+                    case 2:
+                        coordinates = _a.sent();
+                        this.latitude = coordinates.latitude;
+                        this.longitude = coordinates.longitude;
+                        this.hideLoader();
+                        this.navCtrl.goForward('/single-pic');
+                        return [4 /*yield*/, this.cameraPreview.startCamera(cameraPreviewOpts)];
+                    case 3:
+                        _a.sent();
+                        _a.label = 4;
+                    case 4: return [3 /*break*/, 6];
+                    case 5:
+                        error_6 = _a.sent();
+                        this.hideLoader();
+                        this.showAlert("Notice", JSON.stringify(error_6));
+                        return [3 /*break*/, 6];
+                    case 6: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    RestService.prototype.stopCamera = function () {
+        this.cameraPreview.stopCamera();
+        this.navCtrl.goBack('/home');
+    };
+    RestService.prototype.takePicture = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var pic, blobData;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.cameraPreview.takeSnapshot()];
+                    case 1:
+                        pic = _a.sent();
+                        pic = 'data:image/jpeg;base64,' + pic;
+                        blobData = this.convertBase64ToBlob(pic);
+                        this.sendImageToServer(blobData);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    RestService.prototype.sendImageToServer = function (blob) {
+        return __awaiter(this, void 0, void 0, function () {
+            var fd, resp, lprNumber, requestParams, pictureResult, response, response, plateResp, response, error_7;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        fd = new FormData();
+                        fd.append("image", blob, "image.jpg");
+                        this.showLoader('Sending Image');
+                        this.stopCamera();
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 12, , 13]);
+                        return [4 /*yield*/, this.scanPlateNumber(fd)];
+                    case 2:
+                        resp = _a.sent();
+                        if (!(resp.results.length > 0)) return [3 /*break*/, 9];
+                        lprNumber = resp.results[0].plate;
+                        requestParams = {
+                            sp_action: "sp_permit_check_vehicle_image_upload",
+                            selected_cat: this.selectedProperty,
+                            img_latitude: this.latitude,
+                            img_longitude: this.longitude,
+                            plate_value: lprNumber
+                        };
+                        return [4 /*yield*/, this.makePostRequest(requestParams)];
+                    case 3:
+                        pictureResult = _a.sent();
+                        this.hideLoader();
+                        if (!(pictureResult['json'].length > 0)) return [3 /*break*/, 6];
+                        return [4 /*yield*/, this.setStorage("userData", [])];
+                    case 4:
+                        _a.sent();
+                        return [4 /*yield*/, this.setStorage("vehicleData", pictureResult['json'])];
+                    case 5:
+                        response = _a.sent();
+                        if (response) {
+                            this.navCtrl.goForward("/property-list");
                         }
-                    });
-                }); }, function (err) {
-                    _this.hideLoader();
-                    if (err.error) {
-                        _this.showAlert("Notice", _this.setErrorMessageArray(err.error.message));
-                    }
-                    else {
-                        _this.showAlert("Notice", err.statusText);
-                    }
-                });
-                return [2 /*return*/];
+                        return [3 /*break*/, 8];
+                    case 6: return [4 /*yield*/, this.setStorage("plateData", pictureResult['plateData'])];
+                    case 7:
+                        response = _a.sent();
+                        if (response) {
+                            this.navCtrl.goForward("/no-permit-result");
+                        }
+                        _a.label = 8;
+                    case 8: return [3 /*break*/, 11];
+                    case 9:
+                        this.hideLoader();
+                        plateResp = {
+                            plateData: {
+                                plateNumber: "NO PLATE FOUND"
+                            }
+                        };
+                        return [4 /*yield*/, this.setStorage("plateData", plateResp['plateData'])];
+                    case 10:
+                        response = _a.sent();
+                        if (response) {
+                            this.navCtrl.goForward("/no-permit-result");
+                        }
+                        _a.label = 11;
+                    case 11: return [3 /*break*/, 13];
+                    case 12:
+                        error_7 = _a.sent();
+                        this.hideLoader();
+                        this.showAlert('Notice', error_7.statusText);
+                        return [3 /*break*/, 13];
+                    case 13: return [2 /*return*/];
+                }
             });
         });
     };
@@ -1353,6 +1549,134 @@ var RestService = /** @class */ (function () {
             });
         });
     };
+    RestService.prototype.requestLocationAccuracy = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var locationAuthorizationStatus, _a, error_8;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _b.trys.push([0, 13, , 14]);
+                        return [4 /*yield*/, this.diagnostic.getLocationAuthorizationStatus()];
+                    case 1:
+                        locationAuthorizationStatus = _b.sent();
+                        _a = locationAuthorizationStatus;
+                        switch (_a) {
+                            case this.diagnostic.permissionStatus.GRANTED: return [3 /*break*/, 2];
+                            case this.diagnostic.permissionStatus.NOT_REQUESTED: return [3 /*break*/, 5];
+                            case this.diagnostic.permissionStatus.DENIED: return [3 /*break*/, 7];
+                            case this.diagnostic.permissionStatus.DENIED_ALWAYS: return [3 /*break*/, 11];
+                        }
+                        return [3 /*break*/, 12];
+                    case 2:
+                        if (!!this.platform.is('ios')) return [3 /*break*/, 4];
+                        return [4 /*yield*/, this.makeRequest()];
+                    case 3:
+                        _b.sent();
+                        _b.label = 4;
+                    case 4: return [3 /*break*/, 12];
+                    case 5: return [4 /*yield*/, this.requestLocationAuthorization()];
+                    case 6:
+                        _b.sent();
+                        return [3 /*break*/, 12];
+                    case 7:
+                        if (!this.platform.is('android')) return [3 /*break*/, 8];
+                        this.showToast("User denied permission to use location");
+                        return [3 /*break*/, 10];
+                    case 8: return [4 /*yield*/, this.makeRequest()];
+                    case 9:
+                        _b.sent();
+                        _b.label = 10;
+                    case 10: return [3 /*break*/, 12];
+                    case 11:
+                        // Android only
+                        this.showToast("User denied permission to use location");
+                        return [3 /*break*/, 12];
+                    case 12: return [3 /*break*/, 14];
+                    case 13:
+                        error_8 = _b.sent();
+                        this.showToast("Error: " + error_8);
+                        return [3 /*break*/, 14];
+                    case 14: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    RestService.prototype.requestLocationAuthorization = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var error_9;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, this.diagnostic.requestLocationAuthorization()];
+                    case 1:
+                        _a.sent();
+                        this.requestLocationAccuracy();
+                        return [3 /*break*/, 3];
+                    case 2:
+                        error_9 = _a.sent();
+                        this.showToast("Error: " + error_9);
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    RestService.prototype.makeRequest = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var canRequest, error_10;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 5, , 6]);
+                        return [4 /*yield*/, this.locationAccuracy.canRequest()];
+                    case 1:
+                        canRequest = _a.sent();
+                        if (!canRequest) return [3 /*break*/, 3];
+                        return [4 /*yield*/, this.locationAccuracy.request(this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY)];
+                    case 2:
+                        _a.sent();
+                        return [3 /*break*/, 4];
+                    case 3:
+                        this.showToast("Location service is currently in use or app does not have authorization to use location");
+                        _a.label = 4;
+                    case 4: return [3 /*break*/, 6];
+                    case 5:
+                        error_10 = _a.sent();
+                        this.showToast("Error: " + error_10);
+                        return [3 /*break*/, 6];
+                    case 6: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    RestService.prototype.getCurrentLocation = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var options, coordinates, error_11;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 3, , 4]);
+                        return [4 /*yield*/, this.requestLocationAccuracy()];
+                    case 1:
+                        _a.sent();
+                        options = {
+                            maximumAge: 3000,
+                            timeout: 2000
+                        };
+                        return [4 /*yield*/, this.geolocation.getCurrentPosition(options)];
+                    case 2:
+                        coordinates = _a.sent();
+                        return [2 /*return*/, coordinates.coords];
+                    case 3:
+                        error_11 = _a.sent();
+                        this.showToast("Error: " + error_11);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
     RestService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
@@ -1366,7 +1690,12 @@ var RestService = /** @class */ (function () {
             _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"],
             _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_4__["Keyboard"],
             _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_5__["FileTransfer"],
-            _ionic_native_camera_preview_ngx__WEBPACK_IMPORTED_MODULE_6__["CameraPreview"]])
+            _ionic_native_camera_preview_ngx__WEBPACK_IMPORTED_MODULE_6__["CameraPreview"],
+            _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_7__["Diagnostic"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"],
+            _ionic_native_location_accuracy_ngx__WEBPACK_IMPORTED_MODULE_8__["LocationAccuracy"],
+            _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_9__["Geolocation"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Events"]])
     ], RestService);
     return RestService;
 }());
