@@ -88,8 +88,7 @@ module.exports = "ion-content {\n  --background: transparent;\n  background: tra
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SinglePicPage", function() { return SinglePicPage; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
-/* harmony import */ var _rest_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../rest.service */ "./src/app/rest.service.ts");
+/* harmony import */ var _rest_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../rest.service */ "./src/app/rest.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -101,10 +100,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
-
 var SinglePicPage = /** @class */ (function () {
-    function SinglePicPage(navCtrl, restService) {
-        this.navCtrl = navCtrl;
+    function SinglePicPage(restService) {
         this.restService = restService;
     }
     SinglePicPage.prototype.ngOnInit = function () {
@@ -121,8 +118,7 @@ var SinglePicPage = /** @class */ (function () {
             template: __webpack_require__(/*! ./single-pic.page.html */ "./src/app/camera-preview/single-pic/single-pic.page.html"),
             styles: [__webpack_require__(/*! ./single-pic.page.scss */ "./src/app/camera-preview/single-pic/single-pic.page.scss")],
         }),
-        __metadata("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_1__["NavController"],
-            _rest_service__WEBPACK_IMPORTED_MODULE_2__["RestService"]])
+        __metadata("design:paramtypes", [_rest_service__WEBPACK_IMPORTED_MODULE_1__["RestService"]])
     ], SinglePicPage);
     return SinglePicPage;
 }());

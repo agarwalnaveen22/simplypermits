@@ -90,6 +90,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
 /* harmony import */ var _rest_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../rest.service */ "./src/app/rest.service.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -137,11 +138,13 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var NoPermitResultPage = /** @class */ (function () {
-    function NoPermitResultPage(navCtrl, restService, zone) {
+    function NoPermitResultPage(navCtrl, restService, zone, location) {
         this.navCtrl = navCtrl;
         this.restService = restService;
         this.zone = zone;
+        this.location = location;
         this.appLogo = 'assets/icon/round_logo.png';
         this.plateData = {};
         this.getData();
@@ -168,7 +171,7 @@ var NoPermitResultPage = /** @class */ (function () {
         });
     };
     NoPermitResultPage.prototype.goBack = function () {
-        this.navCtrl.goBack('/home');
+        this.location.back();
     };
     NoPermitResultPage.prototype.goToHome = function () {
         this.navCtrl.goRoot("/home");
@@ -181,7 +184,8 @@ var NoPermitResultPage = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_1__["NavController"],
             _rest_service__WEBPACK_IMPORTED_MODULE_2__["RestService"],
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"]])
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"],
+            _angular_common__WEBPACK_IMPORTED_MODULE_3__["Location"]])
     ], NoPermitResultPage);
     return NoPermitResultPage;
 }());

@@ -63,6 +63,10 @@
             {
               "xml": "<feature name=\"Geolocation\"><param name=\"android-package\" value=\"org.apache.cordova.geolocation.Geolocation\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"Flashlight\"><param name=\"android-package\" value=\"nl.xservices.plugins.Flashlight\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -107,7 +111,7 @@
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.CAMERA\" />",
-              "count": 1
+              "count": 2
             }
           ],
           "/manifest/application": [
@@ -248,6 +252,9 @@
     },
     "cordova-android-support-gradle-release": {
       "ANDROID_SUPPORT_VERSION": "27.+",
+      "PACKAGE_NAME": "com.simplypermits"
+    },
+    "cordova-plugin-flashlight": {
       "PACKAGE_NAME": "com.simplypermits"
     }
   },
@@ -668,6 +675,14 @@
       "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
       "pluginId": "cordova-plugin-geolocation",
       "runs": true
+    },
+    {
+      "id": "cordova-plugin-flashlight.Flashlight",
+      "file": "plugins/cordova-plugin-flashlight/www/Flashlight.js",
+      "pluginId": "cordova-plugin-flashlight",
+      "clobbers": [
+        "window.plugins.flashlight"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -688,6 +703,7 @@
     "cordova.plugins.diagnostic": "5.0.1",
     "cordova-plugin-request-location-accuracy": "2.3.0",
     "cordova-plugin-geolocation": "4.0.2",
-    "cordova-android-support-gradle-release": "3.0.1"
+    "cordova-android-support-gradle-release": "3.0.1",
+    "cordova-plugin-flashlight": "3.2.0"
   }
 }

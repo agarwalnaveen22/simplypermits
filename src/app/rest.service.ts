@@ -8,20 +8,7 @@ import { CameraPreview, CameraPreviewOptions } from '@ionic-native/camera-previe
 import { Diagnostic } from '@ionic-native/diagnostic/ngx';
 import { LocationAccuracy } from '@ionic-native/location-accuracy/ngx';
 import { Geolocation, GeolocationOptions } from '@ionic-native/geolocation/ngx';
-
-
-const cameraPreviewOpts: CameraPreviewOptions = {
-  x: 0,
-  y: 0,
-  width: window.screen.width,
-  height: window.screen.height,
-  camera: 'rear',
-  tapPhoto: false,
-  tapToFocus: false,
-  previewDrag: false,
-  toBack: true,
-  alpha: 1
-};
+import { Location } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +24,7 @@ export class RestService {
   selectedProperty: number = 0;
   latitude: any = 0;
   longitude: any = 0;
+  lastLprNumber: string = '';
 
   constructor(
     public http: HttpClient,
@@ -53,7 +41,8 @@ export class RestService {
     private platform: Platform,
     private locationAccuracy: LocationAccuracy,
     private geolocation: Geolocation,
-    private events: Events
+    private events: Events,
+    private location: Location
   ) { }
 
   async showLoader(message) {
@@ -304,23 +293,19 @@ export class RestService {
         this.showToast("Please select property");
       } else {
         this.navCtrl.goForward('/multiple-pics');
-        await this.cameraPreview.startCamera(cameraPreviewOpts);
-        this.cameraPreview.setFocusMode('continuous-picture');
-        await this.takeMultiplePictures();
+        await this.startCameraPreview();
+        await this.cameraPreview.setFocusMode('continuous-picture');
       }
     } catch (error) {
       this.hideLoader();
-      this.showAlert("Notice", JSON.stringify(error));
     }
   }
 
   async takeMultiplePictures() {
-    setTimeout(async () => {
-      var pic = await this.cameraPreview.takeSnapshot();
-      pic = 'data:image/jpeg;base64,' + pic;
-      let blobData = this.convertBase64ToBlob(pic);
-      await this.checkPermitDetails(blobData);
-    }, 2000);
+    var pic = await this.cameraPreview.takeSnapshot();
+    pic = 'data:image/jpeg;base64,' + pic;
+    let blobData = this.convertBase64ToBlob(pic);
+    await this.checkPermitDetails(blobData);
   }
 
   async checkPermitDetails(blob) {
@@ -330,27 +315,32 @@ export class RestService {
       let resp: any = await this.scanPlateNumber(fd);
       if (resp.results.length > 0) {
         let lprNumber = resp.results[0].plate;
-        let requestParams: any = {
-          sp_action: "sp_permit_check_vehicle_image_upload",
-          selected_cat: this.selectedProperty,
-          img_latitude: this.latitude,
-          img_longitude: this.longitude,
-          plate_value: lprNumber
-        }
-        let pictureResult: any = await this.makePostRequest(requestParams);
-        if (pictureResult['json'].length > 0) {
-          let pictureData: any = {
-            status: true,
-            data: pictureResult['json']
-          };
-          this.events.publish('pictureData', pictureData);
-          await this.takeMultiplePictures();
+        if (lprNumber != this.lastLprNumber) {
+          this.lastLprNumber = lprNumber;
+          let requestParams: any = {
+            sp_action: "sp_permit_check_vehicle_image_upload",
+            selected_cat: this.selectedProperty,
+            img_latitude: this.latitude,
+            img_longitude: this.longitude,
+            plate_value: lprNumber
+          }
+          let pictureResult: any = await this.makePostRequest(requestParams);
+          if (pictureResult['json'].length > 0) {
+            let pictureData: any = {
+              status: true,
+              data: pictureResult['json'][0]
+            };
+            this.events.publish('pictureData', pictureData);
+            await this.takeMultiplePictures();
+          } else {
+            let pictureData: any = {
+              status: false,
+              data: pictureResult['plateData']
+            };
+            this.events.publish('pictureData', pictureData);
+            await this.takeMultiplePictures();
+          }
         } else {
-          let pictureData: any = {
-            status: false,
-            data: pictureResult['plateData']
-          };
-          this.events.publish('pictureData', pictureData);
           await this.takeMultiplePictures();
         }
       } else {
@@ -383,7 +373,7 @@ export class RestService {
         // this.longitude = coordinates.longitude;
         // this.hideLoader();
         this.navCtrl.goForward('/single-pic');
-        await this.cameraPreview.startCamera(cameraPreviewOpts);
+        await this.startCameraPreview();
       }
     } catch (error) {
       this.hideLoader();
@@ -391,12 +381,38 @@ export class RestService {
     }
   }
 
-  stopCamera() {
-    this.cameraPreview.stopCamera();
-    this.navCtrl.goBack('/home');
+  async stopCamera() {
+    this.lastLprNumber = '';
+    await this.stopCameraPreview();
+    this.location.back();
+  }
+
+  async stopCameraPreview() {
+    await this.cameraPreview.stopCamera();
+  }
+
+  async startCameraPreview() {
+    const cameraPreviewOpts: CameraPreviewOptions = {
+      x: 0,
+      y: 0,
+      width: window.screen.width,
+      height: window.screen.height,
+      camera: 'rear',
+      tapPhoto: false,
+      tapToFocus: false,
+      previewDrag: false,
+      toBack: true,
+      alpha: 1
+    };
+    await this.cameraPreview.startCamera(cameraPreviewOpts);
   }
 
   async takePicture() {
+    if(this.platform.is('ios')){
+      await this.cameraPreview.setFlashMode('auto');
+    } else {
+      await this.cameraPreview.setFlashMode('torch');
+    }
     var pic = await this.cameraPreview.takeSnapshot();
     pic = 'data:image/jpeg;base64,' + pic;
     let blobData = this.convertBase64ToBlob(pic);
@@ -563,6 +579,52 @@ export class RestService {
       return coordinates.coords;
     } catch (error) {
       this.showToast("Error: " + error);
+    }
+  }
+
+  async askLprMode() {
+    const alert = await this.alertController.create({
+      header: 'Select a LPR mode...',
+      inputs: [
+        {
+          name: 'automatic',
+          type: 'radio',
+          label: 'Automatic',
+          value: 'automatic',
+          checked: true
+        },
+        {
+          name: 'manual',
+          type: 'radio',
+          label: 'Manual',
+          value: 'manual'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        }, {
+          text: 'Ok',
+          handler: () => {
+            console.log('Confirm Ok');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  async manageFlashMode(mode) {
+    if (mode === 1) {
+      await this.cameraPreview.setFlashMode('on');
+    } else {
+      await this.cameraPreview.setFlashMode('off');
     }
   }
 

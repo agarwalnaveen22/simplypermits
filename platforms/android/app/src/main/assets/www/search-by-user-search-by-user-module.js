@@ -93,6 +93,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _rest_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../rest.service */ "./src/app/rest.service.ts");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -140,10 +141,12 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var SearchByUserPage = /** @class */ (function () {
-    function SearchByUserPage(restService, navCtrl) {
+    function SearchByUserPage(restService, navCtrl, location) {
         this.restService = restService;
         this.navCtrl = navCtrl;
+        this.location = location;
         this.firstName = '';
         this.lastName = '';
         this.residentUnit = '';
@@ -155,7 +158,7 @@ var SearchByUserPage = /** @class */ (function () {
     SearchByUserPage.prototype.ngOnInit = function () {
     };
     SearchByUserPage.prototype.goToBack = function () {
-        this.navCtrl.goBack('/home');
+        this.location.back();
     };
     SearchByUserPage.prototype.submitForm = function () {
         if (this.firstName == '' && this.lastName == '' && this.residentUnit == '' && this.email == '' && this.phone == '') {
@@ -234,7 +237,8 @@ var SearchByUserPage = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./search-by-user.page.scss */ "./src/app/search-by-user/search-by-user.page.scss")],
         }),
         __metadata("design:paramtypes", [_rest_service__WEBPACK_IMPORTED_MODULE_1__["RestService"],
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"]])
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"],
+            _angular_common__WEBPACK_IMPORTED_MODULE_3__["Location"]])
     ], SearchByUserPage);
     return SearchByUserPage;
 }());

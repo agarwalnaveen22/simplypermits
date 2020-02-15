@@ -13,6 +13,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/animations": "^8.2.14",
     "@angular/common": "~6.1.1",
     "@angular/core": "~6.1.1",
     "@angular/forms": "~6.1.1",
@@ -38,14 +39,16 @@
     "@ionic/storage": "^2.2.0",
     "@ngx-progressbar/core": "^5.1.2",
     "com-badrit-base64": "^0.2.0",
-    "cordova-android": "7.0.0",
+    "cordova-android": "^6.3.0",
     "cordova-android-support-gradle-release": "^3.0.1",
     "cordova-ios": "^4.5.5",
     "cordova-plugin-advanced-http": "^2.0.1",
     "cordova-plugin-camera-preview": "^0.11.1",
+    "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-file": "^6.0.1",
     "cordova-plugin-file-transfer": "^1.7.1",
+    "cordova-plugin-flashlight": "^3.2.0",
     "cordova-plugin-geolocation": "^4.0.2",
     "cordova-plugin-inappbrowser": "^3.0.0",
     "cordova-plugin-ionic-keyboard": "^2.1.3",
@@ -122,7 +125,8 @@
       "cordova-plugin-geolocation": {},
       "cordova-android-support-gradle-release": {
         "ANDROID_SUPPORT_VERSION": "27.+"
-      }
+      },
+      "cordova-plugin-flashlight": {}
     },
     "platforms": [
       "android",

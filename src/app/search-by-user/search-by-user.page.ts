@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
 import { NavController } from '@ionic/angular';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-search-by-user',
@@ -17,14 +18,15 @@ export class SearchByUserPage implements OnInit {
   pageName: string = 'SEARCH BY USER';
   constructor(
     private restService: RestService,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private location: Location
   ) { }
 
   ngOnInit() {
   }
 
   goToBack() {
-    this.navCtrl.goBack('/home');
+    this.location.back();
   }
 
   submitForm() {

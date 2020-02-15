@@ -30,7 +30,8 @@ export class MainMenuComponent implements OnInit {
 
   async scanImage() {
     await this.popoverCtrl.dismiss();
-    this.restService.openCameraSinglePic();
+    this.restService.askLprMode();
+    // this.restService.openCameraSinglePic();
   }
 
   async viewVehicleSearchForm() {

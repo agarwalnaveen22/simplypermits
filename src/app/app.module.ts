@@ -20,6 +20,7 @@ import { Keyboard } from '@ionic-native/keyboard/ngx';
 import { Diagnostic } from '@ionic-native/diagnostic/ngx';
 import { LocationAccuracy } from '@ionic-native/location-accuracy/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations"
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -37,7 +38,8 @@ import { MainMenuComponent } from './main-menu/main-menu.component';
     NgProgressModule.forRoot(),
     IonicStorageModule.forRoot(), 
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     StatusBar,

@@ -151,7 +151,7 @@ ion-content {
 }
 
 .logoHeader {
-  width: 10%;
+  width: 11%;
 }
 
 ion-toolbar {
@@ -355,4 +355,20 @@ ion-select.header-dropdown {
   margin-top: -11px;
   transform: rotate(60deg);
   right: 10px;
+}
+
+.alert-radio-label {
+  color: #fff !important;
+}
+
+.alert-radio-group {
+  border-color: rgba(0, 0, 0, .5) !important;
+}
+
+.alert-radio-icon{
+  border-color: #860088 !important;
+}
+
+.alert-radio-inner{
+  background-color: #860087 !important;
 }

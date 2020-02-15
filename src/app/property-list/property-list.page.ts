@@ -1,6 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { RestService } from '../rest.service';
 import { NavController } from '@ionic/angular';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-property-list',
@@ -15,25 +16,27 @@ export class PropertyListPage implements OnInit {
   constructor(
     private restService: RestService,
     private navCtrl: NavController,
-    private zone: NgZone
+    private zone: NgZone,
+    private location: Location
   ) {
-    this.getData();
   }
 
   ngOnInit() {
   }
 
+  ionViewDidEnter() {
+    this.getData();
+  }
+
   async getData() {
-    this.zone.run(async () => {
-      this.vehicleData = await this.restService.getStorage("vehicleData");
-      this.userData = await this.restService.getStorage("userData");
-      this.vehicleData = this.vehicleData == null ? [] : this.vehicleData;
-      this.userData = this.userData == null ? [] : this.userData;
-    });
+    this.vehicleData = await this.restService.getStorage("vehicleData");
+    this.userData = await this.restService.getStorage("userData");
+    this.vehicleData = this.vehicleData == null ? [] : this.vehicleData;
+    this.userData = this.userData == null ? [] : this.userData;
   }
 
   goBack() {
-    this.navCtrl.goBack('/home');
+    this.goToHome();
   }
 
   goToHome() {

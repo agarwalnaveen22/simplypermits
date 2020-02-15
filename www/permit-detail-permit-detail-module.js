@@ -94,6 +94,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
 /* harmony import */ var _rest_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../rest.service */ "./src/app/rest.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -142,13 +143,15 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var PermitDetailPage = /** @class */ (function () {
-    function PermitDetailPage(modalController, restService, route, navCtrl) {
+    function PermitDetailPage(modalController, restService, route, navCtrl, location) {
         var _this = this;
         this.modalController = modalController;
         this.restService = restService;
         this.route = route;
         this.navCtrl = navCtrl;
+        this.location = location;
         this.permitData = [];
         this.permitId = 0;
         this.isEnforcement = false;
@@ -252,7 +255,8 @@ var PermitDetailPage = /** @class */ (function () {
         __metadata("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_1__["ModalController"],
             _rest_service__WEBPACK_IMPORTED_MODULE_2__["RestService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["NavController"]])
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["NavController"],
+            _angular_common__WEBPACK_IMPORTED_MODULE_4__["Location"]])
     ], PermitDetailPage);
     return PermitDetailPage;
 }());

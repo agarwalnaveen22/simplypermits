@@ -35,6 +35,7 @@ export class HomePage {
     private navCtrl: NavController,
     screenOrientation: ScreenOrientation
   ) {
+    this.restService.selectedProperty = 0;
     this.checkRole();
     this.deviceMode = screenOrientation.type;
     if (this.deviceMode == 'landscape-primary' || this.deviceMode == 'landscape-secondary') {
@@ -84,6 +85,7 @@ export class HomePage {
 
   takePicture() {
     this.restService.selectedProperty = this.property;
+    // this.navCtrl.goForward('/single-pic');
     this.restService.openCameraSinglePic();
   }
 

@@ -1,6 +1,7 @@
 import { Component, NgZone } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { RestService } from '../rest.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-no-permit-result',
@@ -13,7 +14,8 @@ export class NoPermitResultPage {
   constructor(
     private navCtrl: NavController,
     private restService: RestService,
-    private zone: NgZone
+    private zone: NgZone,
+    private location: Location
   ) {
     this.getData();
    }
@@ -25,7 +27,7 @@ export class NoPermitResultPage {
   }
 
   goBack() {
-    this.navCtrl.goBack('/home');
+    this.location.back();
   }
 
   goToHome() {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
 import { RestService } from '../../rest.service';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
 @Component({
   selector: 'app-single-pic',
@@ -8,13 +8,20 @@ import { RestService } from '../../rest.service';
   styleUrls: ['./single-pic.page.scss'],
 })
 export class SinglePicPage implements OnInit {
-
   constructor(
-    private navCtrl: NavController,
-    private restService: RestService
-  ) { }
+    private restService: RestService,
+    private screenOrientation: ScreenOrientation,
+  ) {
+    this.screenOrientation.onChange().subscribe(
+      async () => {
+        await this.restService.stopCameraPreview();
+        await this.restService.startCameraPreview();
+      }
+    );
+  }
 
   ngOnInit() {
+    this.restService.manageFlashMode(1);
   }
 
   goBack() {
@@ -24,5 +31,6 @@ export class SinglePicPage implements OnInit {
   capture() {
     this.restService.takePicture();
   }
+
 
 }

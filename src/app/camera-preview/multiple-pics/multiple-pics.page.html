@@ -1,65 +1,34 @@
-<ion-content> <!-- [ngClass]="pictureData.status? 'active': 'inactive'" -->
-  <!-- <ion-card *ngIf="scanStatus && pictureData.status">
-    <ion-item>
-      <ion-label>{{pictureData.data.permitId}}</ion-label>
-      <ion-label text-end slot="end">{{pictureData.data.status}}</ion-label>
-    </ion-item>
+<ion-content>
+  <ion-row class="result-outer">
+    <div *ngFor="let plateData of pictureData; let i = index" [ngClass]="plateData.data.status === 'Expired' ? 'inactive' : 'active'">
+      <ion-card *ngIf="scanStatus && plateData.status" (click)="goToDetail(i)"
+        [@fadeAnimation]="plateData.animationType">
+        <ion-item class="title_bar">
+          <ion-label>{{plateData.data.permit_id}}</ion-label>
+          <ion-label text-end slot="end">{{plateData.data.status}}</ion-label>
+        </ion-item>
 
-    <ion-card-content text-center>
-      <ion-item *ngFor="let licenseInfo of pictureData.data.permits_info">
-        <ion-label start>License Plate</ion-label>
-        <ion-label end color="medium">{{licenseInfo.Plate}} ({{licenseInfo.State_plate}})</ion-label>
-      </ion-item>
-      <ion-item *ngFor="let attributeData of pictureData.data.attribute_data">
-        <ion-label start>{{attributeData.attribute_name}}</ion-label>
-        <ion-label end color="medium" text-wrap>{{attributeData.attribute_value}}</ion-label>
-      </ion-item>
-    </ion-card-content>
-  </ion-card>
+        <ion-card-content text-center>
+          <ion-item *ngFor="let licenseInfo of plateData.data.vehicle_info">
+            <ion-label start>License Plate</ion-label>
+            <ion-label end color="medium">{{licenseInfo.license_plate}} ({{licenseInfo.license_plate_state}})</ion-label>
+          </ion-item>
+          <ion-item *ngFor="let attributeData of plateData.data.attribute_data">
+            <ion-label start>{{attributeData.attribute_name}}</ion-label>
+            <ion-label end color="medium" text-wrap>{{attributeData.attribute_value}}</ion-label>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
 
-  <ion-card *ngIf="scanStatus && !pictureData.status">
-    <ion-item text-center>
-      <ion-label start>No Permits Found</ion-label>
-      <ion-label end>{{pictureData.data.plateNumber}}</ion-label>
-    </ion-item>
-  </ion-card> -->
-<ion-row class="result-outer">
-  <ion-card class="active">
-    <ion-item class="title_bar">
-      <ion-label>Permit Title</ion-label>
-      <ion-label text-end slot="end">Active</ion-label>
-    </ion-item>
-
-    <ion-card-content text-center>
-      <ion-item>
-        <ion-label start>License Plate</ion-label>
-        <ion-label end color="medium">License Plate</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label start>Variable Label</ion-label>
-        <ion-label end color="medium" text-wrap>Variable Value</ion-label>
-      </ion-item>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card class="inactive">
-    <ion-item class="title_bar">
-      <ion-label>Permit Title</ion-label>
-      <ion-label text-end slot="end">Active</ion-label>
-    </ion-item>
-
-    <ion-card-content text-center>
-      <ion-item>
-        <ion-label start>License Plate</ion-label>
-        <ion-label end color="medium">License Plate</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label start>Variable Label</ion-label>
-        <ion-label end color="medium" text-wrap>Variable Value</ion-label>
-      </ion-item>
-    </ion-card-content>
-  </ion-card>
-</ion-row>
+      <ion-card class="inactive-no-permit" *ngIf="scanStatus && !plateData.status"
+        [@fadeAnimation]="plateData.animationType">
+        <ion-item text-center>
+          <ion-label start>No Permits Found</ion-label>
+          <ion-label end>{{plateData.data.plateNumber}}</ion-label>
+        </ion-item>
+      </ion-card>
+    </div>
+  </ion-row>
 </ion-content>
 
 <ion-footer>
@@ -70,7 +39,13 @@
       </ion-button>
     </ion-buttons>
 
-    <ion-buttons class="multiple_pics_btn_submit" text-center slot="end" (click)="stop()">
+    <ion-buttons *ngIf="!scanStatus" class="multiple_pics_btn_submit start-camera" text-center slot="end" (click)="start()">
+      <ion-button>
+        <ion-label>START SCANNING</ion-label>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons *ngIf="scanStatus" class="multiple_pics_btn_submit" text-center slot="end" (click)="stop()">
       <ion-button>
         <ion-label>STOP SCANNING</ion-label>
       </ion-button>

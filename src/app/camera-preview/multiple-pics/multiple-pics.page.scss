@@ -83,6 +83,10 @@ ion-row.result-outer {
     }
 }
 
+.inactive-no-permit {
+    background: #9b1f60;
+}
+
 .footer_multiple_pics {
     --padding-end: 0;
     --padding-start: 0;
@@ -103,6 +107,9 @@ ion-row.result-outer {
     }
     ion-buttons.multiple_pics_btn_submit{
         background: #9b1f60;
+    }
+    ion-buttons.multiple_pics_btn_submit.start-camera{
+        background: #c8212a;
     }
     ion-buttons.multiple_pics_btn_cancel{
         background: #191242;

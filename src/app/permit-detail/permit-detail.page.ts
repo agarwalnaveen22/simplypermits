@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController } from '@ionic/angular';
 import { RestService } from '../rest.service';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-permit-detail',
@@ -18,7 +19,8 @@ export class PermitDetailPage implements OnInit {
     private modalController: ModalController,
     private restService: RestService,
     private route: ActivatedRoute,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private location: Location
   ) {
     this.route.params.subscribe((params: Params) => {
       this.permitId = params['id'];
