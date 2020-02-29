@@ -27,6 +27,7 @@
     "@ionic-native/device": "^5.0.0-beta.23",
     "@ionic-native/diagnostic": "^5.19.1",
     "@ionic-native/file-transfer": "^5.0.0-beta.17",
+    "@ionic-native/flashlight": "^5.21.5",
     "@ionic-native/geolocation": "^5.19.1",
     "@ionic-native/http": "^5.0.0-beta.21",
     "@ionic-native/in-app-browser": "^5.0.0-beta.21",
@@ -39,16 +40,15 @@
     "@ionic/storage": "^2.2.0",
     "@ngx-progressbar/core": "^5.1.2",
     "com-badrit-base64": "^0.2.0",
-    "cordova-android": "^6.3.0",
+    "cordova-android": "^7.1.4",
     "cordova-android-support-gradle-release": "^3.0.1",
     "cordova-ios": "^4.5.5",
     "cordova-plugin-advanced-http": "^2.0.1",
     "cordova-plugin-camera-preview": "^0.11.1",
-    "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-file": "^6.0.1",
     "cordova-plugin-file-transfer": "^1.7.1",
-    "cordova-plugin-flashlight": "^3.2.0",
+    "cordova-plugin-flashlight": "git+https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin.git",
     "cordova-plugin-geolocation": "^4.0.2",
     "cordova-plugin-inappbrowser": "^3.0.0",
     "cordova-plugin-ionic-keyboard": "^2.1.3",
@@ -129,8 +129,8 @@
       "cordova-plugin-flashlight": {}
     },
     "platforms": [
-      "android",
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }

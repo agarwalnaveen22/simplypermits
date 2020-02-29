@@ -21,7 +21,6 @@ export class SinglePicPage implements OnInit {
   }
 
   ngOnInit() {
-    this.restService.manageFlashMode(1);
   }
 
   goBack() {

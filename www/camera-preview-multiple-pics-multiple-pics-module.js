@@ -62,7 +62,7 @@ var MultiplePicsPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-content>\n  <ion-row class=\"result-outer\">\n    <div *ngFor=\"let plateData of pictureData; let i = index\" [ngClass]=\"plateData.data.status === 'Expired' ? 'inactive' : 'active'\">\n      <ion-card *ngIf=\"scanStatus && plateData.status\" (click)=\"goToDetail(i)\"\n        [@fadeAnimation]=\"plateData.animationType\">\n        <ion-item class=\"title_bar\">\n          <ion-label>{{plateData.data.permit_id}}</ion-label>\n          <ion-label text-end slot=\"end\">{{plateData.data.status}}</ion-label>\n        </ion-item>\n\n        <ion-card-content text-center>\n          <ion-item *ngFor=\"let licenseInfo of plateData.data.vehicle_info\">\n            <ion-label start>License Plate</ion-label>\n            <ion-label end color=\"medium\">{{licenseInfo.license_plate}} ({{licenseInfo.license_plate_state}})</ion-label>\n          </ion-item>\n          <ion-item *ngFor=\"let attributeData of plateData.data.attribute_data\">\n            <ion-label start>{{attributeData.attribute_name}}</ion-label>\n            <ion-label end color=\"medium\" text-wrap>{{attributeData.attribute_value}}</ion-label>\n          </ion-item>\n        </ion-card-content>\n      </ion-card>\n\n      <ion-card class=\"inactive-no-permit\" *ngIf=\"scanStatus && !plateData.status\"\n        [@fadeAnimation]=\"plateData.animationType\">\n        <ion-item text-center>\n          <ion-label start>No Permits Found</ion-label>\n          <ion-label end>{{plateData.data.plateNumber}}</ion-label>\n        </ion-item>\n      </ion-card>\n    </div>\n  </ion-row>\n</ion-content>\n\n<ion-footer>\n  <ion-toolbar class=\"footer_multiple_pics\">\n    <ion-buttons class=\"multiple_pics_btn_cancel\" (click)=\"goBack()\" text-center slot=\"start\">\n      <ion-button>\n        <ion-label>CANCEL</ion-label>\n      </ion-button>\n    </ion-buttons>\n\n    <ion-buttons class=\"multiple_pics_btn_submit\" text-center slot=\"end\" (click)=\"stop()\">\n      <ion-button>\n        <ion-label>STOP SCANNING</ion-label>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-footer>"
+module.exports = "<ion-content>\n  <ion-button *ngIf=\"isFlashOn\" class=\"flash\" (click)=\"manageFlashMode()\">\n    <ion-icon slot=\"icon-only\" name=\"flash\"></ion-icon>\n  </ion-button>\n  <ion-button *ngIf=\"!isFlashOn\" class=\"flash\" (click)=\"manageFlashMode()\">\n    <ion-icon slot=\"icon-only\" name=\"flash-off\"></ion-icon>\n  </ion-button>\n  <ion-row class=\"result-outer\">\n    <div *ngFor=\"let plateData of pictureData; let i = index\" [ngClass]=\"plateData.data.status === 'Expired' ? 'inactive' : 'active'\">\n      <ion-card *ngIf=\"scanStatus && plateData.status\" (click)=\"goToDetail(i)\"\n        [@fadeAnimation]=\"plateData.animationType\">\n        <ion-item class=\"title_bar\">\n          <ion-label>{{plateData.data.permit_id}}</ion-label>\n          <ion-label text-end slot=\"end\">{{plateData.data.status}}</ion-label>\n        </ion-item>\n\n        <ion-card-content text-center>\n          <ion-item *ngFor=\"let licenseInfo of plateData.data.vehicle_info\">\n            <ion-label start>License Plate</ion-label>\n            <ion-label end color=\"medium\">{{licenseInfo.license_plate}} ({{licenseInfo.license_plate_state}})</ion-label>\n          </ion-item>\n          <ion-item *ngFor=\"let attributeData of plateData.data.attribute_data\">\n            <ion-label start>{{attributeData.attribute_name}}</ion-label>\n            <ion-label end color=\"medium\" text-wrap>{{attributeData.attribute_value}}</ion-label>\n          </ion-item>\n        </ion-card-content>\n      </ion-card>\n\n      <ion-card class=\"inactive-no-permit\" *ngIf=\"scanStatus && !plateData.status\"\n        [@fadeAnimation]=\"plateData.animationType\">\n        <ion-item text-center>\n          <ion-label start>No Permits Found</ion-label>\n          <ion-label end>{{plateData.data.plateNumber}}</ion-label>\n        </ion-item>\n      </ion-card>\n    </div>\n  </ion-row>\n</ion-content>\n\n<ion-footer>\n  <ion-toolbar class=\"footer_multiple_pics\">\n    <ion-buttons class=\"multiple_pics_btn_cancel\" (click)=\"goBack()\" text-center slot=\"start\">\n      <ion-button>\n        <ion-label>CANCEL</ion-label>\n      </ion-button>\n    </ion-buttons>\n\n    <ion-buttons *ngIf=\"!scanStatus\" class=\"multiple_pics_btn_submit start-camera\" text-center slot=\"end\" (click)=\"start()\">\n      <ion-button>\n        <ion-label>START SCANNING</ion-label>\n      </ion-button>\n    </ion-buttons>\n\n    <ion-buttons *ngIf=\"scanStatus\" class=\"multiple_pics_btn_submit\" text-center slot=\"end\" (click)=\"stop()\">\n      <ion-button>\n        <ion-label>STOP SCANNING</ion-label>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-footer>"
 
 /***/ }),
 
@@ -73,7 +73,7 @@ module.exports = "<ion-content>\n  <ion-row class=\"result-outer\">\n    <div *n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-content {\n  --background: transparent;\n  background: transparent;\n  vertical-align: bottom;\n  display: flex; }\n\nion-row.result-outer {\n  display: block;\n  padding: 0 2.5em;\n  position: absolute;\n  bottom: .5em;\n  width: 100%; }\n\nion-row.result-outer ion-card-content {\n    padding: 0; }\n\n.active {\n  margin-bottom: .75em;\n  margin-top: 0; }\n\n.active ion-item.title_bar {\n    background: #f26825;\n    --min-height: 2.5em; }\n\n.active ion-item.title_bar ion-label {\n      color: #FFFFFF;\n      margin: 0; }\n\n.active ion-item.title_bar ion-label:nth-child(2) {\n        text-transform: uppercase; }\n\n.active ion-card-content ion-item {\n    background: rgba(242, 102, 37, 0.75);\n    --min-height: 1.5em; }\n\n.active ion-card-content ion-item ion-label {\n      color: #FFFFFF;\n      margin: 0; }\n\n.active ion-card-content ion-item:first-child {\n      padding-top: 5px; }\n\n.active ion-card-content ion-item:nth-child(2) {\n      padding-bottom: 5px; }\n\n.inactive {\n  margin-bottom: .75em;\n  margin-top: 0; }\n\n.inactive ion-item.title_bar {\n    background: #9b1f60;\n    --min-height: 2.5em; }\n\n.inactive ion-item.title_bar ion-label {\n      color: #FFFFFF;\n      margin: 0; }\n\n.inactive ion-item.title_bar ion-label:nth-child(2) {\n        text-transform: uppercase; }\n\n.inactive ion-card-content ion-item {\n    background: rgba(155, 31, 96, 0.75);\n    --min-height: 1.5em; }\n\n.inactive ion-card-content ion-item ion-label {\n      color: #FFFFFF;\n      margin: 0; }\n\n.inactive ion-card-content ion-item:first-child {\n      padding-top: 5px; }\n\n.inactive ion-card-content ion-item:nth-child(2) {\n      padding-bottom: 5px; }\n\n.inactive-no-permit {\n  background: #9b1f60; }\n\n.footer_multiple_pics {\n  --padding-end: 0;\n  --padding-start: 0;\n  --padding-bottom: 0;\n  --padding-top: 0;\n  --min-height: aut0; }\n\n.footer_multiple_pics ion-buttons {\n    width: 50%;\n    float: left;\n    --padding-end: 0;\n    --padding-start: 0;\n    margin-left: 0;\n    margin-right: 0; }\n\n.footer_multiple_pics ion-buttons ion-button {\n      width: 100%;\n      text-align: center; }\n\n.footer_multiple_pics ion-buttons.multiple_pics_btn_submit {\n    background: #9b1f60; }\n\n.footer_multiple_pics ion-buttons.multiple_pics_btn_cancel {\n    background: #191242; }\n\n@media only screen and (min-width: 480px) {\n  ion-row.result-outer {\n    display: block;\n    padding: 0 2.5em;\n    position: absolute;\n    bottom: .5em;\n    width: 70%;\n    left: 0;\n    right: 0;\n    margin: 0 auto; } }\n"
+module.exports = "ion-content {\n  --background: transparent;\n  background: transparent;\n  vertical-align: bottom;\n  display: flex; }\n\nion-row.result-outer {\n  display: block;\n  padding: 0 2.5em;\n  position: absolute;\n  bottom: .5em;\n  width: 100%; }\n\nion-row.result-outer ion-card-content {\n    padding: 0; }\n\n.active {\n  margin-bottom: .75em;\n  margin-top: 0; }\n\n.active ion-item.title_bar {\n    background: #f26825;\n    --min-height: 2.5em; }\n\n.active ion-item.title_bar ion-label {\n      color: #FFFFFF;\n      margin: 0; }\n\n.active ion-item.title_bar ion-label:nth-child(2) {\n        text-transform: uppercase; }\n\n.active ion-card-content ion-item {\n    background: rgba(242, 102, 37, 0.75);\n    --min-height: 1.5em; }\n\n.active ion-card-content ion-item ion-label {\n      color: #FFFFFF;\n      margin: 0; }\n\n.active ion-card-content ion-item:first-child {\n      padding-top: 5px; }\n\n.active ion-card-content ion-item:nth-child(2) {\n      padding-bottom: 5px; }\n\n.inactive {\n  margin-bottom: .75em;\n  margin-top: 0; }\n\n.inactive ion-item.title_bar {\n    background: #9b1f60;\n    --min-height: 2.5em; }\n\n.inactive ion-item.title_bar ion-label {\n      color: #FFFFFF;\n      margin: 0; }\n\n.inactive ion-item.title_bar ion-label:nth-child(2) {\n        text-transform: uppercase; }\n\n.inactive ion-card-content ion-item {\n    background: rgba(155, 31, 96, 0.75);\n    --min-height: 1.5em; }\n\n.inactive ion-card-content ion-item ion-label {\n      color: #FFFFFF;\n      margin: 0; }\n\n.inactive ion-card-content ion-item:first-child {\n      padding-top: 5px; }\n\n.inactive ion-card-content ion-item:nth-child(2) {\n      padding-bottom: 5px; }\n\n.inactive-no-permit {\n  background: #9b1f60; }\n\n.footer_multiple_pics {\n  --padding-end: 0;\n  --padding-start: 0;\n  --padding-bottom: 0;\n  --padding-top: 0;\n  --min-height: aut0; }\n\n.footer_multiple_pics ion-buttons {\n    width: 50%;\n    float: left;\n    --padding-end: 0;\n    --padding-start: 0;\n    margin-left: 0;\n    margin-right: 0; }\n\n.footer_multiple_pics ion-buttons ion-button {\n      width: 100%;\n      text-align: center; }\n\n.footer_multiple_pics ion-buttons.multiple_pics_btn_submit {\n    background: #9b1f60; }\n\n.footer_multiple_pics ion-buttons.multiple_pics_btn_submit.start-camera {\n    background: #c8212a; }\n\n.footer_multiple_pics ion-buttons.multiple_pics_btn_cancel {\n    background: #191242; }\n\n@media only screen and (min-width: 480px) {\n  ion-row.result-outer {\n    display: block;\n    padding: 0 2.5em;\n    position: absolute;\n    bottom: .5em;\n    width: 70%;\n    left: 0;\n    right: 0;\n    margin: 0 auto; } }\n\n.flash {\n  --background: transparent;\n  position: absolute;\n  right: 0.1em;\n  top: 0.5em;\n  --box-shadow: none; }\n"
 
 /***/ }),
 
@@ -149,8 +149,9 @@ var MultiplePicsPage = /** @class */ (function () {
         this.screenOrientation = screenOrientation;
         this.navCtrl = navCtrl;
         this.pictureData = [];
-        this.scanStatus = true;
+        this.scanStatus = false;
         this.plateDataCounter = -1;
+        this.isFlashMode = true;
         this.events.subscribe('pictureData', function (data) {
             _this.plateDataCounter++;
             var plateData = data;
@@ -192,6 +193,20 @@ var MultiplePicsPage = /** @class */ (function () {
             });
         });
     };
+    MultiplePicsPage.prototype.start = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        this.scanStatus = true;
+                        return [4 /*yield*/, this.restService.takeMultiplePictures()];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
     MultiplePicsPage.prototype.stop = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
@@ -213,6 +228,7 @@ var MultiplePicsPage = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         this.scanStatus = false;
+                        this.restService.lastLprNumber = '';
                         return [4 /*yield*/, this.restService.stopCameraPreview()];
                     case 1:
                         _a.sent();
@@ -225,6 +241,25 @@ var MultiplePicsPage = /** @class */ (function () {
                         if (response) {
                             this.navCtrl.goForward("/permit-detail/" + this.pictureData[serialNumber].data.permit_id);
                         }
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    MultiplePicsPage.prototype.manageFlashMode = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (this.isFlashMode) {
+                            this.isFlashMode = false;
+                        }
+                        else {
+                            this.isFlashMode = true;
+                        }
+                        return [4 /*yield*/, this.restService.manageFlashMode()];
+                    case 1:
+                        _a.sent();
                         return [2 /*return*/];
                 }
             });

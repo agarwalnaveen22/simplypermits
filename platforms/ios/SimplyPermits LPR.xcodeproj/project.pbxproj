@@ -73,7 +73,7 @@
 		0F2B4548F1A94144AC33ACA1 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9B86B74BA846E6B8250EDC /* CoreMotion.framework */; };
 		3038F55A8C764E4EAC70BDBE /* RequestLocationAccuracy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D74031A2B4FE49BD3FD16 /* RequestLocationAccuracy.m */; };
 		40D8871348144BFC82965018 /* CDVLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 771587FD7E034691A12E5775 /* CDVLocation.m */; };
-		0F000E05E1CA4230ADA5DD26 /* Flashlight.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D1CD58B92349B3B5ED386F /* Flashlight.m */; };
+		3CDBCC385AD04BA2AFF57103 /* Flashlight.m in Sources */ = {isa = PBXBuildFile; fileRef = 33DC072AA65E46F086A1969F /* Flashlight.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -224,8 +224,8 @@
 		38114D333B114189895C5860 /* RequestLocationAccuracy.h */ = {isa = PBXFileReference; name = "RequestLocationAccuracy.h"; path = "cordova-plugin-request-location-accuracy/RequestLocationAccuracy.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		771587FD7E034691A12E5775 /* CDVLocation.m */ = {isa = PBXFileReference; name = "CDVLocation.m"; path = "cordova-plugin-geolocation/CDVLocation.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		244CDD3A4725441F9DA95BFC /* CDVLocation.h */ = {isa = PBXFileReference; name = "CDVLocation.h"; path = "cordova-plugin-geolocation/CDVLocation.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
-		04D1CD58B92349B3B5ED386F /* Flashlight.m */ = {isa = PBXFileReference; name = "Flashlight.m"; path = "cordova-plugin-flashlight/Flashlight.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
-		001F2EA49FD44A28AE182572 /* Flashlight.h */ = {isa = PBXFileReference; name = "Flashlight.h"; path = "cordova-plugin-flashlight/Flashlight.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		33DC072AA65E46F086A1969F /* Flashlight.m */ = {isa = PBXFileReference; name = "Flashlight.m"; path = "cordova-plugin-flashlight/Flashlight.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		4294F7CCE8A54C98BA32AA2D /* Flashlight.h */ = {isa = PBXFileReference; name = "Flashlight.h"; path = "cordova-plugin-flashlight/Flashlight.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -451,8 +451,8 @@
 				38114D333B114189895C5860 /* RequestLocationAccuracy.h */,
 				771587FD7E034691A12E5775 /* CDVLocation.m */,
 				244CDD3A4725441F9DA95BFC /* CDVLocation.h */,
-				04D1CD58B92349B3B5ED386F /* Flashlight.m */,
-				001F2EA49FD44A28AE182572 /* Flashlight.h */,
+				33DC072AA65E46F086A1969F /* Flashlight.m */,
+				4294F7CCE8A54C98BA32AA2D /* Flashlight.h */,
 			);
 			name = Plugins;
 			path = "SimplyPermits LPR/Plugins";
@@ -623,7 +623,7 @@
 				816A9B0B70FA40AEADFF5C82 /* Diagnostic_Motion.m in Sources */,
 				3038F55A8C764E4EAC70BDBE /* RequestLocationAccuracy.m in Sources */,
 				40D8871348144BFC82965018 /* CDVLocation.m in Sources */,
-				0F000E05E1CA4230ADA5DD26 /* Flashlight.m in Sources */,
+				3CDBCC385AD04BA2AFF57103 /* Flashlight.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

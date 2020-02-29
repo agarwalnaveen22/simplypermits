@@ -4,7 +4,7 @@
             "outputFile": "/Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v26/values-v26.xml",
             "map": [
                 {
-                    "source": "/Users/baps/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/f357f76a630a03be4ff5bd5f322453cb/res/values-v26/values-v26.xml",
+                    "source": "/Users/baps/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/8836cf9520145bae39451d41b1f6acb4/res/values-v26/values-v26.xml",
                     "from": {
                         "startLines": "2,3,4,8,12,16",
                         "startColumns": "4,4,4,4,4,4",

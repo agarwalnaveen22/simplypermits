@@ -128,3 +128,11 @@ ion-row.result-outer {
         margin: 0 auto;
     }
 }
+
+.flash {
+    --background: transparent;
+    position: absolute;
+    right: 0.1em;
+    top: 0.5em;
+    --box-shadow: none;
+}

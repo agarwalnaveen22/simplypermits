@@ -85,8 +85,7 @@ export class HomePage {
 
   takePicture() {
     this.restService.selectedProperty = this.property;
-    // this.navCtrl.goForward('/single-pic');
-    this.restService.openCameraSinglePic();
+    this.restService.askLprMode();
   }
 
 

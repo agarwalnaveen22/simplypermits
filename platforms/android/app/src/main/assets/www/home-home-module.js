@@ -170,6 +170,7 @@ var HomePage = /** @class */ (function () {
         this.getPropertyId = function (event) {
             _this.property = event;
         };
+        this.restService.selectedProperty = 0;
         this.checkRole();
         this.deviceMode = screenOrientation.type;
         if (this.deviceMode == 'landscape-primary' || this.deviceMode == 'landscape-secondary') {
@@ -221,6 +222,7 @@ var HomePage = /** @class */ (function () {
     };
     HomePage.prototype.takePicture = function () {
         this.restService.selectedProperty = this.property;
+        // this.navCtrl.goForward('/single-pic');
         this.restService.openCameraSinglePic();
     };
     HomePage = __decorate([

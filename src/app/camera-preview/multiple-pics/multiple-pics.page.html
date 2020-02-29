@@ -1,4 +1,10 @@
 <ion-content>
+  <ion-button *ngIf="isFlashMode" class="flash" (click)="manageFlashMode()">
+    <ion-icon slot="icon-only" name="flash"></ion-icon>
+  </ion-button>
+  <ion-button *ngIf="!isFlashMode" class="flash" (click)="manageFlashMode()">
+    <ion-icon slot="icon-only" name="flash-off"></ion-icon>
+  </ion-button>
   <ion-row class="result-outer">
     <div *ngFor="let plateData of pictureData; let i = index" [ngClass]="plateData.data.status === 'Expired' ? 'inactive' : 'active'">
       <ion-card *ngIf="scanStatus && plateData.status" (click)="goToDetail(i)"

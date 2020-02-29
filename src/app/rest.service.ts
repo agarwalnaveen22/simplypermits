@@ -9,6 +9,7 @@ import { Diagnostic } from '@ionic-native/diagnostic/ngx';
 import { LocationAccuracy } from '@ionic-native/location-accuracy/ngx';
 import { Geolocation, GeolocationOptions } from '@ionic-native/geolocation/ngx';
 import { Location } from '@angular/common';
+import { Flashlight } from '@ionic-native/flashlight/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -42,7 +43,8 @@ export class RestService {
     private locationAccuracy: LocationAccuracy,
     private geolocation: Geolocation,
     private events: Events,
-    private location: Location
+    private location: Location,
+    private flashlight: Flashlight,
   ) { }
 
   async showLoader(message) {
@@ -408,7 +410,7 @@ export class RestService {
   }
 
   async takePicture() {
-    if(this.platform.is('ios')){
+    if (this.platform.is('ios')) {
       await this.cameraPreview.setFlashMode('auto');
     } else {
       await this.cameraPreview.setFlashMode('torch');
@@ -610,8 +612,13 @@ export class RestService {
           }
         }, {
           text: 'Ok',
-          handler: () => {
-            console.log('Confirm Ok');
+          handler: async (value) => {
+            console.log('Confirm Ok', value);
+            if(value === 'automatic') {
+              await this.openCameraMultiplePics();
+            } else {
+              await this.openCameraSinglePic();
+            }
           }
         }
       ]
@@ -620,11 +627,20 @@ export class RestService {
     await alert.present();
   }
 
-  async manageFlashMode(mode) {
-    if (mode === 1) {
-      await this.cameraPreview.setFlashMode('on');
-    } else {
-      await this.cameraPreview.setFlashMode('off');
+  async manageFlashMode() {
+    try {
+      let status = await this.flashlight.available();
+      if (status) {
+        await this.flashlight.toggle();
+        // let flashStatus = await this.flashlight.isSwitchedOn();
+        // if (!flashStatus) {
+        //   await this.flashlight.switchOn();
+        // } else {
+        //   await this.flashlight.switchOff();
+        // }
+      }
+    } catch (error) {
+      await this.showToast(error);
     }
   }
 

@@ -1,27 +1,24 @@
 {
-  "_from": "cordova-plugin-flashlight",
+  "_from": "git+https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin.git",
   "_id": "cordova-plugin-flashlight@3.2.0",
   "_inBundle": false,
-  "_integrity": "sha1-0JpAzjCtNqnwBAUBJLboFSgfu7I=",
+  "_integrity": "",
   "_location": "/cordova-plugin-flashlight",
   "_phantomChildren": {},
   "_requested": {
-    "type": "tag",
-    "registry": true,
-    "raw": "cordova-plugin-flashlight",
-    "name": "cordova-plugin-flashlight",
-    "escapedName": "cordova-plugin-flashlight",
-    "rawSpec": "",
-    "saveSpec": null,
-    "fetchSpec": "latest"
+    "type": "git",
+    "raw": "https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin",
+    "rawSpec": "https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin",
+    "saveSpec": "git+https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin.git",
+    "fetchSpec": "https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin.git",
+    "gitCommittish": null
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/cordova-plugin-flashlight/-/cordova-plugin-flashlight-3.2.0.tgz",
-  "_shasum": "d09a40ce30ad36a9f004050124b6e815281fbbb2",
-  "_spec": "cordova-plugin-flashlight",
+  "_resolved": "git+https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin.git#08ddc47c98ab727b9829271ac2b692d3c3e3acd8",
+  "_spec": "https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin",
   "_where": "/Users/baps/Projects/ionic/SimplyPermits-LPR",
   "author": {
     "name": "Eddy Verbruggen",

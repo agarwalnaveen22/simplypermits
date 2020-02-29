@@ -7,7 +7,7 @@
 
     <uses-sdk
         android:minSdkVersion="19"
-        android:targetSdkVersion="26" />
+        android:targetSdkVersion="27" />
 
     <supports-screens
         android:anyDensity="true"
@@ -26,11 +26,12 @@
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <uses-feature android:name="android.hardware.location.gps" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
 
     <application
         android:debuggable="true"

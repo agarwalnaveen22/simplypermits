@@ -3,7 +3,7 @@
     <name>SimplyPermits LPR</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="http://localhost:8100" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -99,7 +99,6 @@
         <variable name="ANDROID_SUPPORT_VERSION" value="27.+" />
     </plugin>
     <allow-navigation href="http://192.168.1.102:8100" sessionid="90a9c9c3" />
-    <engine name="android" spec="7.0.0" />
     <engine name="ios" spec="^4.5.5" />
-    <plugin name="cordova-plugin-flashlight" spec="^3.2.0" />
+    <engine name="android" spec="^7.1.4" />
 </widget>

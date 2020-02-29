@@ -21,6 +21,7 @@ export class MultiplePicsPage implements OnInit {
   pictureData: any = [];
   scanStatus: boolean = false;
   plateDataCounter: number = -1;
+  isFlashMode: boolean = true;
   constructor(
     private restService: RestService,
     private events: Events,
@@ -76,8 +77,13 @@ export class MultiplePicsPage implements OnInit {
     }
   }
 
-  async manageFlashMode(mode) {
-    await this.restService.manageFlashMode(mode);
+  async manageFlashMode() {
+    if(this.isFlashMode){
+      this.isFlashMode = false;
+    } else {
+      this.isFlashMode = true;
+    }
+    await this.restService.manageFlashMode();
   }
 
 }

@@ -149,6 +149,10 @@ MIT
 MIT
 MIT
 
+@ionic-native/flashlight@5.21.5
+MIT
+MIT
+
 @ionic-native/geolocation@5.19.1
 MIT
 MIT

@@ -69,7 +69,7 @@ export class HeaderComponent implements OnInit {
   }
 
   async openVideoScanner() {
-    await this.restService.openCameraMultiplePics();
+    await this.restService.askLprMode();
   }
 
 }
