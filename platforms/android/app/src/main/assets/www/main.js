@@ -1734,6 +1734,7 @@ var RestService = /** @class */ (function () {
     };
     RestService.prototype.askLprMode = function () {
         return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
             var alert;
             return __generator(this, function (_a) {
                 switch (_a.label) {
@@ -1764,9 +1765,24 @@ var RestService = /** @class */ (function () {
                                     }
                                 }, {
                                     text: 'Ok',
-                                    handler: function () {
-                                        console.log('Confirm Ok');
-                                    }
+                                    handler: function (value) { return __awaiter(_this, void 0, void 0, function () {
+                                        return __generator(this, function (_a) {
+                                            switch (_a.label) {
+                                                case 0:
+                                                    console.log('Confirm Ok', value);
+                                                    if (!(value === 'automatic')) return [3 /*break*/, 2];
+                                                    return [4 /*yield*/, this.openCameraMultiplePics()];
+                                                case 1:
+                                                    _a.sent();
+                                                    return [3 /*break*/, 4];
+                                                case 2: return [4 /*yield*/, this.openCameraSinglePic()];
+                                                case 3:
+                                                    _a.sent();
+                                                    _a.label = 4;
+                                                case 4: return [2 /*return*/];
+                                            }
+                                        });
+                                    }); }
                                 }
                             ]
                         })];
@@ -1782,19 +1798,27 @@ var RestService = /** @class */ (function () {
     };
     RestService.prototype.manageFlashMode = function () {
         return __awaiter(this, void 0, void 0, function () {
+            var status_1, error_12;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (!!this.flashlight.isSwitchedOn()) return [3 /*break*/, 2];
-                        return [4 /*yield*/, this.flashlight.switchOn()];
+                        _a.trys.push([0, 4, , 6]);
+                        return [4 /*yield*/, this.flashlight.available()];
                     case 1:
+                        status_1 = _a.sent();
+                        if (!status_1) return [3 /*break*/, 3];
+                        return [4 /*yield*/, this.flashlight.toggle()];
+                    case 2:
                         _a.sent();
-                        return [3 /*break*/, 4];
-                    case 2: return [4 /*yield*/, this.flashlight.switchOff()];
-                    case 3:
+                        _a.label = 3;
+                    case 3: return [3 /*break*/, 6];
+                    case 4:
+                        error_12 = _a.sent();
+                        return [4 /*yield*/, this.showToast(error_12)];
+                    case 5:
                         _a.sent();
-                        _a.label = 4;
-                    case 4: return [2 /*return*/];
+                        return [3 /*break*/, 6];
+                    case 6: return [2 /*return*/];
                 }
             });
         });

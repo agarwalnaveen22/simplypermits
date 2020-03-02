@@ -222,8 +222,7 @@ var HomePage = /** @class */ (function () {
     };
     HomePage.prototype.takePicture = function () {
         this.restService.selectedProperty = this.property;
-        // this.navCtrl.goForward('/single-pic');
-        this.restService.openCameraSinglePic();
+        this.restService.askLprMode();
     };
     HomePage = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
