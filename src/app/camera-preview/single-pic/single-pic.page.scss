@@ -30,3 +30,10 @@ ion-content
     }
 }
 
+.flash {
+    --background: transparent;
+    position: absolute;
+    right: 0.1em;
+    top: 0.5em;
+    --box-shadow: none;
+}

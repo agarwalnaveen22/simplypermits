@@ -45,13 +45,13 @@
       </ion-button>
     </ion-buttons>
 
-    <ion-buttons *ngIf="!scanStatus" class="multiple_pics_btn_submit start-camera" text-center slot="end" (click)="start()">
+    <ion-buttons *ngIf="!scanStatus" class="multiple_pics_btn_submit" text-center slot="end" (click)="start()">
       <ion-button>
         <ion-label>START SCANNING</ion-label>
       </ion-button>
     </ion-buttons>
 
-    <ion-buttons *ngIf="scanStatus" class="multiple_pics_btn_submit" text-center slot="end" (click)="stop()">
+    <ion-buttons *ngIf="scanStatus" class="multiple_pics_btn_submit start-camera" text-center slot="end" (click)="stop()">
       <ion-button>
         <ion-label>STOP SCANNING</ion-label>
       </ion-button>

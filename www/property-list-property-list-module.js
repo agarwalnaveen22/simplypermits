@@ -93,7 +93,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _rest_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../rest.service */ "./src/app/rest.service.ts");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -141,13 +140,11 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
-
 var PropertyListPage = /** @class */ (function () {
-    function PropertyListPage(restService, navCtrl, zone, location) {
+    function PropertyListPage(restService, navCtrl, zone) {
         this.restService = restService;
         this.navCtrl = navCtrl;
         this.zone = zone;
-        this.location = location;
         this.vehicleData = [];
         this.userData = [];
         this.showProperty = false;
@@ -160,22 +157,28 @@ var PropertyListPage = /** @class */ (function () {
     };
     PropertyListPage.prototype.getData = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, _b;
-            return __generator(this, function (_c) {
-                switch (_c.label) {
-                    case 0:
-                        _a = this;
-                        return [4 /*yield*/, this.restService.getStorage("vehicleData")];
-                    case 1:
-                        _a.vehicleData = _c.sent();
-                        _b = this;
-                        return [4 /*yield*/, this.restService.getStorage("userData")];
-                    case 2:
-                        _b.userData = _c.sent();
-                        this.vehicleData = this.vehicleData == null ? [] : this.vehicleData;
-                        this.userData = this.userData == null ? [] : this.userData;
-                        return [2 /*return*/];
-                }
+            var _this = this;
+            return __generator(this, function (_a) {
+                this.zone.run(function () { return __awaiter(_this, void 0, void 0, function () {
+                    var _a, _b;
+                    return __generator(this, function (_c) {
+                        switch (_c.label) {
+                            case 0:
+                                _a = this;
+                                return [4 /*yield*/, this.restService.getStorage("vehicleData")];
+                            case 1:
+                                _a.vehicleData = _c.sent();
+                                _b = this;
+                                return [4 /*yield*/, this.restService.getStorage("userData")];
+                            case 2:
+                                _b.userData = _c.sent();
+                                this.vehicleData = this.vehicleData == null ? [] : this.vehicleData;
+                                this.userData = this.userData == null ? [] : this.userData;
+                                return [2 /*return*/];
+                        }
+                    });
+                }); });
+                return [2 /*return*/];
             });
         });
     };
@@ -199,8 +202,7 @@ var PropertyListPage = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [_rest_service__WEBPACK_IMPORTED_MODULE_1__["RestService"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"],
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"],
-            _angular_common__WEBPACK_IMPORTED_MODULE_3__["Location"]])
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"]])
     ], PropertyListPage);
     return PropertyListPage;
 }());

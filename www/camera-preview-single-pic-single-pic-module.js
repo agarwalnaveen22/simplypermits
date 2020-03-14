@@ -62,7 +62,7 @@ var SinglePicPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-content>\n  \n</ion-content>\n<ion-footer>\n  <ion-toolbar class=\"footer_single_pic\" >\n    <ion-buttons class=\"single_pic_btn_cancel\" (click)=\"goBack()\"  text-center slot=\"start\">\n      <ion-button>\n        <ion-label>CANCEL</ion-label>\n      </ion-button>\n    </ion-buttons>\n    \n    <ion-buttons class=\"single_pic_btn_submit\" text-center slot=\"end\" (click)=\"capture()\">\n      <ion-button>\n        <ion-label>SCAN PLATE</ion-label>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-footer>"
+module.exports = "<ion-content>\n  <ion-button *ngIf=\"isFlashMode\" class=\"flash\" (click)=\"manageFlashMode()\">\n    <ion-icon slot=\"icon-only\" name=\"flash\"></ion-icon>\n  </ion-button>\n  <ion-button *ngIf=\"!isFlashMode\" class=\"flash\" (click)=\"manageFlashMode()\">\n    <ion-icon slot=\"icon-only\" name=\"flash-off\"></ion-icon>\n  </ion-button>\n</ion-content>\n<ion-footer>\n  <ion-toolbar class=\"footer_single_pic\">\n    <ion-buttons class=\"single_pic_btn_cancel\" (click)=\"goBack()\" text-center slot=\"start\">\n      <ion-button>\n        <ion-label>CANCEL</ion-label>\n      </ion-button>\n    </ion-buttons>\n\n    <ion-buttons class=\"single_pic_btn_submit\" text-center slot=\"end\" (click)=\"capture()\">\n      <ion-button>\n        <ion-label>SCAN PLATE</ion-label>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-footer>"
 
 /***/ }),
 
@@ -73,7 +73,7 @@ module.exports = "<ion-content>\n  \n</ion-content>\n<ion-footer>\n  <ion-toolba
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-content {\n  --background: transparent;\n  background: transparent; }\n\n.footer_single_pic {\n  --padding-end: 0;\n  --padding-start: 0;\n  --padding-bottom: 0;\n  --padding-top: 0;\n  --min-height: aut0; }\n\n.footer_single_pic ion-buttons {\n    width: 50%;\n    float: left;\n    --padding-end: 0;\n    --padding-start: 0;\n    margin-left: 0;\n    margin-right: 0; }\n\n.footer_single_pic ion-buttons ion-button {\n      width: 100%;\n      text-align: center; }\n\n.footer_single_pic ion-buttons.single_pic_btn_submit {\n    background: #9b1f60; }\n\n.footer_single_pic ion-buttons.single_pic_btn_cancel {\n    background: #191242; }\n"
+module.exports = "ion-content {\n  --background: transparent;\n  background: transparent; }\n\n.footer_single_pic {\n  --padding-end: 0;\n  --padding-start: 0;\n  --padding-bottom: 0;\n  --padding-top: 0;\n  --min-height: aut0; }\n\n.footer_single_pic ion-buttons {\n    width: 50%;\n    float: left;\n    --padding-end: 0;\n    --padding-start: 0;\n    margin-left: 0;\n    margin-right: 0; }\n\n.footer_single_pic ion-buttons ion-button {\n      width: 100%;\n      text-align: center; }\n\n.footer_single_pic ion-buttons.single_pic_btn_submit {\n    background: #9b1f60; }\n\n.footer_single_pic ion-buttons.single_pic_btn_cancel {\n    background: #191242; }\n\n.flash {\n  --background: transparent;\n  position: absolute;\n  right: 0.1em;\n  top: 0.5em;\n  --box-shadow: none; }\n"
 
 /***/ }),
 
@@ -142,6 +142,7 @@ var SinglePicPage = /** @class */ (function () {
         var _this = this;
         this.restService = restService;
         this.screenOrientation = screenOrientation;
+        this.isFlashMode = false;
         this.screenOrientation.onChange().subscribe(function () { return __awaiter(_this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
@@ -162,7 +163,34 @@ var SinglePicPage = /** @class */ (function () {
         this.restService.stopCamera();
     };
     SinglePicPage.prototype.capture = function () {
-        this.restService.takePicture();
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                this.restService.takePicture();
+                return [2 /*return*/];
+            });
+        });
+    };
+    SinglePicPage.prototype.manageFlashMode = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!this.isFlashMode) return [3 /*break*/, 2];
+                        this.isFlashMode = false;
+                        return [4 /*yield*/, this.restService.manageFlashMode(2)];
+                    case 1:
+                        _a.sent();
+                        return [3 /*break*/, 4];
+                    case 2:
+                        this.isFlashMode = true;
+                        return [4 /*yield*/, this.restService.manageFlashMode(1)];
+                    case 3:
+                        _a.sent();
+                        _a.label = 4;
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
     };
     SinglePicPage = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({

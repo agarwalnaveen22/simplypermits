@@ -9,7 +9,6 @@ import { Diagnostic } from '@ionic-native/diagnostic/ngx';
 import { LocationAccuracy } from '@ionic-native/location-accuracy/ngx';
 import { Geolocation, GeolocationOptions } from '@ionic-native/geolocation/ngx';
 import { Location } from '@angular/common';
-import { Flashlight } from '@ionic-native/flashlight/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -44,7 +43,6 @@ export class RestService {
     private geolocation: Geolocation,
     private events: Events,
     private location: Location,
-    private flashlight: Flashlight,
   ) { }
 
   async showLoader(message) {
@@ -410,11 +408,6 @@ export class RestService {
   }
 
   async takePicture() {
-    if (this.platform.is('ios')) {
-      await this.cameraPreview.setFlashMode('auto');
-    } else {
-      await this.cameraPreview.setFlashMode('torch');
-    }
     var pic = await this.cameraPreview.takeSnapshot();
     pic = 'data:image/jpeg;base64,' + pic;
     let blobData = this.convertBase64ToBlob(pic);
@@ -614,7 +607,7 @@ export class RestService {
           text: 'Ok',
           handler: async (value) => {
             console.log('Confirm Ok', value);
-            if(value === 'automatic') {
+            if (value === 'automatic') {
               await this.openCameraMultiplePics();
             } else {
               await this.openCameraSinglePic();
@@ -627,17 +620,16 @@ export class RestService {
     await alert.present();
   }
 
-  async manageFlashMode() {
+  async manageFlashMode(mode = 1) {
     try {
-      let status = await this.flashlight.available();
-      if (status) {
-        await this.flashlight.toggle();
-        // let flashStatus = await this.flashlight.isSwitchedOn();
-        // if (!flashStatus) {
-        //   await this.flashlight.switchOn();
-        // } else {
-        //   await this.flashlight.switchOff();
-        // }
+      if(mode === 1) {
+        if(this.platform.is('android')){
+          await this.cameraPreview.setFlashMode('torch');
+        } else {
+          await this.cameraPreview.setFlashMode('on');
+        }
+      } else {
+        await this.cameraPreview.setFlashMode('off');
       }
     } catch (error) {
       await this.showToast(error);

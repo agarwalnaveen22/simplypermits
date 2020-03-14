@@ -57,9 +57,6 @@
     },
     "cordova-android-support-gradle-release": {
       "PACKAGE_NAME": "com.simplypermits"
-    },
-    "cordova-plugin-flashlight": {
-      "PACKAGE_NAME": "com.simplypermits"
     }
   },
   "dependent_plugins": {

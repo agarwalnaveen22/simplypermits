@@ -304,12 +304,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_location_accuracy_ngx__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @ionic-native/location-accuracy/ngx */ "./node_modules/@ionic-native/location-accuracy/ngx/index.js");
 /* harmony import */ var _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @ionic-native/geolocation/ngx */ "./node_modules/@ionic-native/geolocation/ngx/index.js");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
-/* harmony import */ var _ionic_native_flashlight_ngx__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @ionic-native/flashlight/ngx */ "./node_modules/@ionic-native/flashlight/ngx/index.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./image-preview/image-preview.component */ "./src/app/image-preview/image-preview.component.ts");
-/* harmony import */ var _auth_guard_service__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./auth-guard.service */ "./src/app/auth-guard.service.ts");
-/* harmony import */ var _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./main-menu/main-menu.component */ "./src/app/main-menu/main-menu.component.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./image-preview/image-preview.component */ "./src/app/image-preview/image-preview.component.ts");
+/* harmony import */ var _auth_guard_service__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./auth-guard.service */ "./src/app/auth-guard.service.ts");
+/* harmony import */ var _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./main-menu/main-menu.component */ "./src/app/main-menu/main-menu.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -343,18 +342,17 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
-            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_23__["AppComponent"], _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_25__["ImagePreviewComponent"], _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_27__["MainMenuComponent"]],
-            entryComponents: [_image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_25__["ImagePreviewComponent"], _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_27__["MainMenuComponent"]],
+            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_22__["AppComponent"], _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_24__["ImagePreviewComponent"], _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_26__["MainMenuComponent"]],
+            entryComponents: [_image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_24__["ImagePreviewComponent"], _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_26__["MainMenuComponent"]],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot({ mode: 'md', scrollAssist: 'DISABLED' }),
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_24__["AppRoutingModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_23__["AppRoutingModule"],
                 _ngx_progressbar_core__WEBPACK_IMPORTED_MODULE_8__["NgProgressModule"].forRoot(),
                 _ionic_storage__WEBPACK_IMPORTED_MODULE_14__["IonicStorageModule"].forRoot(),
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_12__["HttpClientModule"],
@@ -370,16 +368,15 @@ var AppModule = /** @class */ (function () {
                 _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_20__["Geolocation"],
                 _ionic_native_base64_ngx__WEBPACK_IMPORTED_MODULE_9__["Base64"],
                 _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_10__["FileTransfer"],
-                _auth_guard_service__WEBPACK_IMPORTED_MODULE_26__["AuthGuardService"],
+                _auth_guard_service__WEBPACK_IMPORTED_MODULE_25__["AuthGuardService"],
                 _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_11__["InAppBrowser"],
                 _ionic_native_http_ngx__WEBPACK_IMPORTED_MODULE_13__["HTTP"],
                 _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_15__["Device"],
                 _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_16__["ScreenOrientation"],
                 _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_17__["Keyboard"],
-                _ionic_native_flashlight_ngx__WEBPACK_IMPORTED_MODULE_22__["Flashlight"],
                 { provide: _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] }
             ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_23__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_22__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -775,7 +772,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_location_accuracy_ngx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic-native/location-accuracy/ngx */ "./node_modules/@ionic-native/location-accuracy/ngx/index.js");
 /* harmony import */ var _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic-native/geolocation/ngx */ "./node_modules/@ionic-native/geolocation/ngx/index.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _ionic_native_flashlight_ngx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ionic-native/flashlight/ngx */ "./node_modules/@ionic-native/flashlight/ngx/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -831,9 +827,8 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
-
 var RestService = /** @class */ (function () {
-    function RestService(http, loadingController, alertController, toastController, modalCtrl, storage, navCtrl, keyboard, transfer, cameraPreview, diagnostic, platform, locationAccuracy, geolocation, events, location, flashlight) {
+    function RestService(http, loadingController, alertController, toastController, modalCtrl, storage, navCtrl, keyboard, transfer, cameraPreview, diagnostic, platform, locationAccuracy, geolocation, events, location) {
         var _this = this;
         this.http = http;
         this.loadingController = loadingController;
@@ -851,7 +846,6 @@ var RestService = /** @class */ (function () {
         this.geolocation = geolocation;
         this.events = events;
         this.location = location;
-        this.flashlight = flashlight;
         this.apiUrl = 'https://simplypermits.com/API/rest.php';
         this.cityApiUrl = '';
         this.isKeyBoardHide = false;
@@ -1457,18 +1451,8 @@ var RestService = /** @class */ (function () {
             var pic, blobData;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        if (!this.platform.is('ios')) return [3 /*break*/, 2];
-                        return [4 /*yield*/, this.cameraPreview.setFlashMode('auto')];
+                    case 0: return [4 /*yield*/, this.cameraPreview.takeSnapshot()];
                     case 1:
-                        _a.sent();
-                        return [3 /*break*/, 4];
-                    case 2: return [4 /*yield*/, this.cameraPreview.setFlashMode('torch')];
-                    case 3:
-                        _a.sent();
-                        _a.label = 4;
-                    case 4: return [4 /*yield*/, this.cameraPreview.takeSnapshot()];
-                    case 5:
                         pic = _a.sent();
                         pic = 'data:image/jpeg;base64,' + pic;
                         blobData = this.convertBase64ToBlob(pic);
@@ -1796,29 +1780,37 @@ var RestService = /** @class */ (function () {
             });
         });
     };
-    RestService.prototype.manageFlashMode = function () {
+    RestService.prototype.manageFlashMode = function (mode) {
+        if (mode === void 0) { mode = 1; }
         return __awaiter(this, void 0, void 0, function () {
-            var status_1, error_12;
+            var error_12;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 4, , 6]);
-                        return [4 /*yield*/, this.flashlight.available()];
+                        _a.trys.push([0, 8, , 10]);
+                        if (!(mode === 1)) return [3 /*break*/, 5];
+                        if (!this.platform.is('android')) return [3 /*break*/, 2];
+                        return [4 /*yield*/, this.cameraPreview.setFlashMode('torch')];
                     case 1:
-                        status_1 = _a.sent();
-                        if (!status_1) return [3 /*break*/, 3];
-                        return [4 /*yield*/, this.flashlight.toggle()];
-                    case 2:
                         _a.sent();
-                        _a.label = 3;
-                    case 3: return [3 /*break*/, 6];
-                    case 4:
+                        return [3 /*break*/, 4];
+                    case 2: return [4 /*yield*/, this.cameraPreview.setFlashMode('on')];
+                    case 3:
+                        _a.sent();
+                        _a.label = 4;
+                    case 4: return [3 /*break*/, 7];
+                    case 5: return [4 /*yield*/, this.cameraPreview.setFlashMode('off')];
+                    case 6:
+                        _a.sent();
+                        _a.label = 7;
+                    case 7: return [3 /*break*/, 10];
+                    case 8:
                         error_12 = _a.sent();
                         return [4 /*yield*/, this.showToast(error_12)];
-                    case 5:
+                    case 9:
                         _a.sent();
-                        return [3 /*break*/, 6];
-                    case 6: return [2 /*return*/];
+                        return [3 /*break*/, 10];
+                    case 10: return [2 /*return*/];
                 }
             });
         });
@@ -1842,8 +1834,7 @@ var RestService = /** @class */ (function () {
             _ionic_native_location_accuracy_ngx__WEBPACK_IMPORTED_MODULE_8__["LocationAccuracy"],
             _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_9__["Geolocation"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Events"],
-            _angular_common__WEBPACK_IMPORTED_MODULE_10__["Location"],
-            _ionic_native_flashlight_ngx__WEBPACK_IMPORTED_MODULE_11__["Flashlight"]])
+            _angular_common__WEBPACK_IMPORTED_MODULE_10__["Location"]])
     ], RestService);
     return RestService;
 }());

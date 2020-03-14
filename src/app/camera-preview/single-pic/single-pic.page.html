@@ -1,14 +1,19 @@
 <ion-content>
-  
+  <ion-button *ngIf="isFlashMode" class="flash" (click)="manageFlashMode()">
+    <ion-icon slot="icon-only" name="flash"></ion-icon>
+  </ion-button>
+  <ion-button *ngIf="!isFlashMode" class="flash" (click)="manageFlashMode()">
+    <ion-icon slot="icon-only" name="flash-off"></ion-icon>
+  </ion-button>
 </ion-content>
 <ion-footer>
-  <ion-toolbar class="footer_single_pic" >
-    <ion-buttons class="single_pic_btn_cancel" (click)="goBack()"  text-center slot="start">
+  <ion-toolbar class="footer_single_pic">
+    <ion-buttons class="single_pic_btn_cancel" (click)="goBack()" text-center slot="start">
       <ion-button>
         <ion-label>CANCEL</ion-label>
       </ion-button>
     </ion-buttons>
-    
+
     <ion-buttons class="single_pic_btn_submit" text-center slot="end" (click)="capture()">
       <ion-button>
         <ion-label>SCAN PLATE</ion-label>

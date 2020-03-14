@@ -62,7 +62,7 @@ var MultiplePicsPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-content>\n  <ion-button *ngIf=\"isFlashMode\" class=\"flash\" (click)=\"manageFlashMode()\">\n    <ion-icon slot=\"icon-only\" name=\"flash\"></ion-icon>\n  </ion-button>\n  <ion-button *ngIf=\"!isFlashMode\" class=\"flash\" (click)=\"manageFlashMode()\">\n    <ion-icon slot=\"icon-only\" name=\"flash-off\"></ion-icon>\n  </ion-button>\n  <ion-row class=\"result-outer\">\n    <div *ngFor=\"let plateData of pictureData; let i = index\" [ngClass]=\"plateData.data.status === 'Expired' ? 'inactive' : 'active'\">\n      <ion-card *ngIf=\"scanStatus && plateData.status\" (click)=\"goToDetail(i)\"\n        [@fadeAnimation]=\"plateData.animationType\">\n        <ion-item class=\"title_bar\">\n          <ion-label>{{plateData.data.permit_id}}</ion-label>\n          <ion-label text-end slot=\"end\">{{plateData.data.status}}</ion-label>\n        </ion-item>\n\n        <ion-card-content text-center>\n          <ion-item *ngFor=\"let licenseInfo of plateData.data.vehicle_info\">\n            <ion-label start>License Plate</ion-label>\n            <ion-label end color=\"medium\">{{licenseInfo.license_plate}} ({{licenseInfo.license_plate_state}})</ion-label>\n          </ion-item>\n          <ion-item *ngFor=\"let attributeData of plateData.data.attribute_data\">\n            <ion-label start>{{attributeData.attribute_name}}</ion-label>\n            <ion-label end color=\"medium\" text-wrap>{{attributeData.attribute_value}}</ion-label>\n          </ion-item>\n        </ion-card-content>\n      </ion-card>\n\n      <ion-card class=\"inactive-no-permit\" *ngIf=\"scanStatus && !plateData.status\"\n        [@fadeAnimation]=\"plateData.animationType\">\n        <ion-item text-center>\n          <ion-label start>No Permits Found</ion-label>\n          <ion-label end>{{plateData.data.plateNumber}}</ion-label>\n        </ion-item>\n      </ion-card>\n    </div>\n  </ion-row>\n</ion-content>\n\n<ion-footer>\n  <ion-toolbar class=\"footer_multiple_pics\">\n    <ion-buttons class=\"multiple_pics_btn_cancel\" (click)=\"goBack()\" text-center slot=\"start\">\n      <ion-button>\n        <ion-label>CANCEL</ion-label>\n      </ion-button>\n    </ion-buttons>\n\n    <ion-buttons *ngIf=\"!scanStatus\" class=\"multiple_pics_btn_submit start-camera\" text-center slot=\"end\" (click)=\"start()\">\n      <ion-button>\n        <ion-label>START SCANNING</ion-label>\n      </ion-button>\n    </ion-buttons>\n\n    <ion-buttons *ngIf=\"scanStatus\" class=\"multiple_pics_btn_submit\" text-center slot=\"end\" (click)=\"stop()\">\n      <ion-button>\n        <ion-label>STOP SCANNING</ion-label>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-footer>"
+module.exports = "<ion-content>\n  <ion-button *ngIf=\"isFlashMode\" class=\"flash\" (click)=\"manageFlashMode()\">\n    <ion-icon slot=\"icon-only\" name=\"flash\"></ion-icon>\n  </ion-button>\n  <ion-button *ngIf=\"!isFlashMode\" class=\"flash\" (click)=\"manageFlashMode()\">\n    <ion-icon slot=\"icon-only\" name=\"flash-off\"></ion-icon>\n  </ion-button>\n  <ion-row class=\"result-outer\">\n    <div *ngFor=\"let plateData of pictureData; let i = index\" [ngClass]=\"plateData.data.status === 'Expired' ? 'inactive' : 'active'\">\n      <ion-card *ngIf=\"scanStatus && plateData.status\" (click)=\"goToDetail(i)\"\n        [@fadeAnimation]=\"plateData.animationType\">\n        <ion-item class=\"title_bar\">\n          <ion-label>{{plateData.data.permit_id}}</ion-label>\n          <ion-label text-end slot=\"end\">{{plateData.data.status}}</ion-label>\n        </ion-item>\n\n        <ion-card-content text-center>\n          <ion-item *ngFor=\"let licenseInfo of plateData.data.vehicle_info\">\n            <ion-label start>License Plate</ion-label>\n            <ion-label end color=\"medium\">{{licenseInfo.license_plate}} ({{licenseInfo.license_plate_state}})</ion-label>\n          </ion-item>\n          <ion-item *ngFor=\"let attributeData of plateData.data.attribute_data\">\n            <ion-label start>{{attributeData.attribute_name}}</ion-label>\n            <ion-label end color=\"medium\" text-wrap>{{attributeData.attribute_value}}</ion-label>\n          </ion-item>\n        </ion-card-content>\n      </ion-card>\n\n      <ion-card class=\"inactive-no-permit\" *ngIf=\"scanStatus && !plateData.status\"\n        [@fadeAnimation]=\"plateData.animationType\">\n        <ion-item text-center>\n          <ion-label start>No Permits Found</ion-label>\n          <ion-label end>{{plateData.data.plateNumber}}</ion-label>\n        </ion-item>\n      </ion-card>\n    </div>\n  </ion-row>\n</ion-content>\n\n<ion-footer>\n  <ion-toolbar class=\"footer_multiple_pics\">\n    <ion-buttons class=\"multiple_pics_btn_cancel\" (click)=\"goBack()\" text-center slot=\"start\">\n      <ion-button>\n        <ion-label>CANCEL</ion-label>\n      </ion-button>\n    </ion-buttons>\n\n    <ion-buttons *ngIf=\"!scanStatus\" class=\"multiple_pics_btn_submit\" text-center slot=\"end\" (click)=\"start()\">\n      <ion-button>\n        <ion-label>START SCANNING</ion-label>\n      </ion-button>\n    </ion-buttons>\n\n    <ion-buttons *ngIf=\"scanStatus\" class=\"multiple_pics_btn_submit start-camera\" text-center slot=\"end\" (click)=\"stop()\">\n      <ion-button>\n        <ion-label>STOP SCANNING</ion-label>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-footer>"
 
 /***/ }),
 
@@ -151,7 +151,7 @@ var MultiplePicsPage = /** @class */ (function () {
         this.pictureData = [];
         this.scanStatus = false;
         this.plateDataCounter = -1;
-        this.isFlashMode = true;
+        this.isFlashMode = false;
         this.events.subscribe('pictureData', function (data) {
             _this.plateDataCounter++;
             var plateData = data;
@@ -251,16 +251,19 @@ var MultiplePicsPage = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (this.isFlashMode) {
-                            this.isFlashMode = false;
-                        }
-                        else {
-                            this.isFlashMode = true;
-                        }
-                        return [4 /*yield*/, this.restService.manageFlashMode()];
+                        if (!this.isFlashMode) return [3 /*break*/, 2];
+                        this.isFlashMode = false;
+                        return [4 /*yield*/, this.restService.manageFlashMode(2)];
                     case 1:
                         _a.sent();
-                        return [2 /*return*/];
+                        return [3 /*break*/, 4];
+                    case 2:
+                        this.isFlashMode = true;
+                        return [4 /*yield*/, this.restService.manageFlashMode(1)];
+                    case 3:
+                        _a.sent();
+                        _a.label = 4;
+                    case 4: return [2 /*return*/];
                 }
             });
         });

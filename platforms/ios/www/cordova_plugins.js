@@ -441,14 +441,6 @@ module.exports = [
     "clobbers": [
       "navigator.geolocation"
     ]
-  },
-  {
-    "id": "cordova-plugin-flashlight.Flashlight",
-    "file": "plugins/cordova-plugin-flashlight/www/Flashlight.js",
-    "pluginId": "cordova-plugin-flashlight",
-    "clobbers": [
-      "window.plugins.flashlight"
-    ]
   }
 ];
 module.exports.metadata = 
@@ -471,8 +463,7 @@ module.exports.metadata =
   "cordova.plugins.diagnostic": "5.0.1",
   "cordova-plugin-request-location-accuracy": "2.3.0",
   "cordova-plugin-geolocation": "4.0.2",
-  "cordova-android-support-gradle-release": "3.0.1",
-  "cordova-plugin-flashlight": "3.2.0"
+  "cordova-android-support-gradle-release": "3.0.1"
 };
 // BOTTOM OF METADATA
 });

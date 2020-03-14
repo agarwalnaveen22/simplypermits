@@ -62,9 +62,6 @@
     "cordova.plugins.diagnostic": {
       "ANDROID_SUPPORT_VERSION": "28.+",
       "PACKAGE_NAME": "com.simplypermits"
-    },
-    "cordova-plugin-flashlight": {
-      "PACKAGE_NAME": "com.simplypermits"
     }
   },
   "dependent_plugins": {

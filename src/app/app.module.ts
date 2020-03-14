@@ -21,7 +21,6 @@ import { Diagnostic } from '@ionic-native/diagnostic/ngx';
 import { LocationAccuracy } from '@ionic-native/location-accuracy/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations"
-import { Flashlight } from '@ionic-native/flashlight/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -57,7 +56,6 @@ import { MainMenuComponent } from './main-menu/main-menu.component';
     Device,
     ScreenOrientation,
     Keyboard,
-    Flashlight,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
