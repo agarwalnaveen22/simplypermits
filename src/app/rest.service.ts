@@ -175,9 +175,12 @@ export class RestService {
   }
 
   checkLoginStatus = async () => {
+    await this.getCurrentLocation();
     this.checkSession = setInterval(async () => {
       let requestData = {
-        sp_action: "sp_check_session"
+        sp_action: "sp_check_session",
+        user_latitude: this.latitude,
+        user_longitude: this.longitude
       }
       try {
         await this.makePostRequest(requestData);
@@ -576,7 +579,11 @@ export class RestService {
       let coordinates = await this.geolocation.getCurrentPosition(options);
       return coordinates.coords;
     } catch (error) {
-      this.showToast("Error: " + error);
+      return {
+        latitude: this.latitude,
+        longitude: this.longitude
+      };
+      // this.showToast("Error: " + error);
     }
   }
 

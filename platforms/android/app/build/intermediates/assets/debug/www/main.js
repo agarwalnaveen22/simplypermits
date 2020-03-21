@@ -854,6 +854,7 @@ var RestService = /** @class */ (function () {
         this.latitude = 0;
         this.longitude = 0;
         this.lastLprNumber = '';
+        this.isTakeMultiplePics = false;
         this.logout = function (type) { return __awaiter(_this, void 0, void 0, function () {
             var requestData, error_1;
             return __generator(this, function (_a) {
@@ -920,30 +921,37 @@ var RestService = /** @class */ (function () {
         this.checkLoginStatus = function () { return __awaiter(_this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                this.checkSession = setInterval(function () { return __awaiter(_this, void 0, void 0, function () {
-                    var requestData, error_3;
-                    return __generator(this, function (_a) {
-                        switch (_a.label) {
-                            case 0:
-                                requestData = {
-                                    sp_action: "sp_check_session"
-                                };
-                                _a.label = 1;
-                            case 1:
-                                _a.trys.push([1, 3, , 4]);
-                                return [4 /*yield*/, this.makePostRequest(requestData)];
-                            case 2:
-                                _a.sent();
-                                return [3 /*break*/, 4];
-                            case 3:
-                                error_3 = _a.sent();
-                                this.logout(2);
-                                return [3 /*break*/, 4];
-                            case 4: return [2 /*return*/];
-                        }
-                    });
-                }); }, 30000);
-                return [2 /*return*/];
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.getCurrentLocation()];
+                    case 1:
+                        _a.sent();
+                        this.checkSession = setInterval(function () { return __awaiter(_this, void 0, void 0, function () {
+                            var requestData, error_3;
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0:
+                                        requestData = {
+                                            sp_action: "sp_check_session",
+                                            user_latitude: this.latitude,
+                                            user_longitude: this.longitude
+                                        };
+                                        _a.label = 1;
+                                    case 1:
+                                        _a.trys.push([1, 3, , 4]);
+                                        return [4 /*yield*/, this.makePostRequest(requestData)];
+                                    case 2:
+                                        _a.sent();
+                                        return [3 /*break*/, 4];
+                                    case 3:
+                                        error_3 = _a.sent();
+                                        this.logout(2);
+                                        return [3 /*break*/, 4];
+                                    case 4: return [2 /*return*/];
+                                }
+                            });
+                        }); }, 30000);
+                        return [2 /*return*/];
+                }
             });
         }); };
         this.keyBoardHide = function () { return __awaiter(_this, void 0, void 0, function () {
@@ -1265,7 +1273,9 @@ var RestService = /** @class */ (function () {
             var pic, blobData;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.cameraPreview.takeSnapshot()];
+                    case 0:
+                        if (!this.isTakeMultiplePics) return [3 /*break*/, 3];
+                        return [4 /*yield*/, this.cameraPreview.takeSnapshot()];
                     case 1:
                         pic = _a.sent();
                         pic = 'data:image/jpeg;base64,' + pic;
@@ -1273,7 +1283,8 @@ var RestService = /** @class */ (function () {
                         return [4 /*yield*/, this.checkPermitDetails(blobData)];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/];
+                        _a.label = 3;
+                    case 3: return [2 /*return*/];
                 }
             });
         });
@@ -1709,8 +1720,10 @@ var RestService = /** @class */ (function () {
                         return [2 /*return*/, coordinates.coords];
                     case 3:
                         error_11 = _a.sent();
-                        this.showToast("Error: " + error_11);
-                        return [3 /*break*/, 4];
+                        return [2 /*return*/, {
+                                latitude: this.latitude,
+                                longitude: this.longitude
+                            }];
                     case 4: return [2 /*return*/];
                 }
             });
