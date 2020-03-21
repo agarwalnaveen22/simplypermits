@@ -53,17 +53,19 @@ export class MultiplePicsPage implements OnInit {
 
   async goBack() {
     this.scanStatus = false;
+    this.restService.isTakeMultiplePics = false;
     await this.restService.stopCamera();
   }
 
   async start() {
     this.scanStatus = true;
+    this.restService.isTakeMultiplePics = true;
     await this.restService.takeMultiplePictures();
   }
 
   async stop() {
     this.scanStatus = false;
-    await this.restService.stopCamera();
+    this.restService.isTakeMultiplePics = false;
   }
 
   async goToDetail(serialNumber) {

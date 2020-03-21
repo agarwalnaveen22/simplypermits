@@ -854,6 +854,7 @@ var RestService = /** @class */ (function () {
         this.latitude = 0;
         this.longitude = 0;
         this.lastLprNumber = '';
+        this.isTakeMultiplePics = false;
         this.logout = function (type) { return __awaiter(_this, void 0, void 0, function () {
             var requestData, error_1;
             return __generator(this, function (_a) {
@@ -1265,7 +1266,9 @@ var RestService = /** @class */ (function () {
             var pic, blobData;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.cameraPreview.takeSnapshot()];
+                    case 0:
+                        if (!this.isTakeMultiplePics) return [3 /*break*/, 3];
+                        return [4 /*yield*/, this.cameraPreview.takeSnapshot()];
                     case 1:
                         pic = _a.sent();
                         pic = 'data:image/jpeg;base64,' + pic;
@@ -1273,7 +1276,8 @@ var RestService = /** @class */ (function () {
                         return [4 /*yield*/, this.checkPermitDetails(blobData)];
                     case 2:
                         _a.sent();
-                        return [2 /*return*/];
+                        _a.label = 3;
+                    case 3: return [2 /*return*/];
                 }
             });
         });

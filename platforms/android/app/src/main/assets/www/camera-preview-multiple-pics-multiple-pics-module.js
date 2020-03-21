@@ -185,6 +185,7 @@ var MultiplePicsPage = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         this.scanStatus = false;
+                        this.restService.isTakeMultiplePics = false;
                         return [4 /*yield*/, this.restService.stopCamera()];
                     case 1:
                         _a.sent();
@@ -199,6 +200,7 @@ var MultiplePicsPage = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         this.scanStatus = true;
+                        this.restService.isTakeMultiplePics = true;
                         return [4 /*yield*/, this.restService.takeMultiplePictures()];
                     case 1:
                         _a.sent();
@@ -210,14 +212,9 @@ var MultiplePicsPage = /** @class */ (function () {
     MultiplePicsPage.prototype.stop = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        this.scanStatus = false;
-                        return [4 /*yield*/, this.restService.stopCamera()];
-                    case 1:
-                        _a.sent();
-                        return [2 /*return*/];
-                }
+                this.scanStatus = false;
+                this.restService.isTakeMultiplePics = false;
+                return [2 /*return*/];
             });
         });
     };

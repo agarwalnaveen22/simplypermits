@@ -25,6 +25,7 @@ export class RestService {
   latitude: any = 0;
   longitude: any = 0;
   lastLprNumber: string = '';
+  isTakeMultiplePics: boolean = false;
 
   constructor(
     public http: HttpClient,
@@ -302,10 +303,12 @@ export class RestService {
   }
 
   async takeMultiplePictures() {
-    var pic = await this.cameraPreview.takeSnapshot();
-    pic = 'data:image/jpeg;base64,' + pic;
-    let blobData = this.convertBase64ToBlob(pic);
-    await this.checkPermitDetails(blobData);
+    if (this.isTakeMultiplePics) {
+      var pic = await this.cameraPreview.takeSnapshot();
+      pic = 'data:image/jpeg;base64,' + pic;
+      let blobData = this.convertBase64ToBlob(pic);
+      await this.checkPermitDetails(blobData);
+    }
   }
 
   async checkPermitDetails(blob) {
@@ -622,8 +625,8 @@ export class RestService {
 
   async manageFlashMode(mode = 1) {
     try {
-      if(mode === 1) {
-        if(this.platform.is('android')){
+      if (mode === 1) {
+        if (this.platform.is('android')) {
           await this.cameraPreview.setFlashMode('torch');
         } else {
           await this.cameraPreview.setFlashMode('on');
