@@ -73,6 +73,10 @@
 		0F2B4548F1A94144AC33ACA1 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9B86B74BA846E6B8250EDC /* CoreMotion.framework */; };
 		3038F55A8C764E4EAC70BDBE /* RequestLocationAccuracy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D74031A2B4FE49BD3FD16 /* RequestLocationAccuracy.m */; };
 		40D8871348144BFC82965018 /* CDVLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 771587FD7E034691A12E5775 /* CDVLocation.m */; };
+		D40C127EB5E542D3B08DDE6E /* NativeAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7C6376AA2543818E63C37E /* NativeAudio.m */; };
+		00FC0FA5AF444930AFE49047 /* NativeAudioAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C3110D8B8446DF81553B9C /* NativeAudioAsset.m */; };
+		D7E897DADFA24AADA71A2193 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ECE23E9F89D4E2E8140F0BE /* Foundation.framework */; };
+		8E1B5DCFDC944C31AC17C5E4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8D04D090C4443AA49611C8 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -223,6 +227,12 @@
 		38114D333B114189895C5860 /* RequestLocationAccuracy.h */ = {isa = PBXFileReference; name = "RequestLocationAccuracy.h"; path = "cordova-plugin-request-location-accuracy/RequestLocationAccuracy.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		771587FD7E034691A12E5775 /* CDVLocation.m */ = {isa = PBXFileReference; name = "CDVLocation.m"; path = "cordova-plugin-geolocation/CDVLocation.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		244CDD3A4725441F9DA95BFC /* CDVLocation.h */ = {isa = PBXFileReference; name = "CDVLocation.h"; path = "cordova-plugin-geolocation/CDVLocation.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		2C7C6376AA2543818E63C37E /* NativeAudio.m */ = {isa = PBXFileReference; name = "NativeAudio.m"; path = "cordova-plugin-nativeaudio/NativeAudio.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		09C3110D8B8446DF81553B9C /* NativeAudioAsset.m */ = {isa = PBXFileReference; name = "NativeAudioAsset.m"; path = "cordova-plugin-nativeaudio/NativeAudioAsset.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		92DAEC5E04F04C209BECA7CF /* NativeAudio.h */ = {isa = PBXFileReference; name = "NativeAudio.h"; path = "cordova-plugin-nativeaudio/NativeAudio.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		214FA43733834CFD9E474EE4 /* NativeAudioAsset.h */ = {isa = PBXFileReference; name = "NativeAudioAsset.h"; path = "cordova-plugin-nativeaudio/NativeAudioAsset.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		6ECE23E9F89D4E2E8140F0BE /* Foundation.framework */ = {isa = PBXFileReference; name = "Foundation.framework"; path = "System/Library/Frameworks/Foundation.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		AF8D04D090C4443AA49611C8 /* AudioToolbox.framework */ = {isa = PBXFileReference; name = "AudioToolbox.framework"; path = "System/Library/Frameworks/AudioToolbox.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +259,8 @@
 				1F52DA1BE45F4D309B5A154B /* AddressBook.framework in Frameworks */,
 				AE3CC16045BE49B1AE610DE9 /* EventKit.framework in Frameworks */,
 				0F2B4548F1A94144AC33ACA1 /* CoreMotion.framework in Frameworks */,
+				D7E897DADFA24AADA71A2193 /* Foundation.framework in Frameworks */,
+				8E1B5DCFDC944C31AC17C5E4 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +349,8 @@
 				CF3260F658EA48FFA82EC513 /* AddressBook.framework */,
 				35F2F634B3164579BF9C756D /* EventKit.framework */,
 				9F9B86B74BA846E6B8250EDC /* CoreMotion.framework */,
+				6ECE23E9F89D4E2E8140F0BE /* Foundation.framework */,
+				AF8D04D090C4443AA49611C8 /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -448,6 +462,10 @@
 				38114D333B114189895C5860 /* RequestLocationAccuracy.h */,
 				771587FD7E034691A12E5775 /* CDVLocation.m */,
 				244CDD3A4725441F9DA95BFC /* CDVLocation.h */,
+				2C7C6376AA2543818E63C37E /* NativeAudio.m */,
+				09C3110D8B8446DF81553B9C /* NativeAudioAsset.m */,
+				92DAEC5E04F04C209BECA7CF /* NativeAudio.h */,
+				214FA43733834CFD9E474EE4 /* NativeAudioAsset.h */,
 			);
 			name = Plugins;
 			path = "SimplyPermits LPR/Plugins";
@@ -618,6 +636,8 @@
 				816A9B0B70FA40AEADFF5C82 /* Diagnostic_Motion.m in Sources */,
 				3038F55A8C764E4EAC70BDBE /* RequestLocationAccuracy.m in Sources */,
 				40D8871348144BFC82965018 /* CDVLocation.m in Sources */,
+				D40C127EB5E542D3B08DDE6E /* NativeAudio.m in Sources */,
+				00FC0FA5AF444930AFE49047 /* NativeAudioAsset.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

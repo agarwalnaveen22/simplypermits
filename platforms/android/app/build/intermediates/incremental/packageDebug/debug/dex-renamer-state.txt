@@ -1,4 +1,4 @@
-#Sat Mar 21 15:46:36 IST 2020
+#Sat Apr 11 17:06:57 IST 2020
 base.0=/Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex

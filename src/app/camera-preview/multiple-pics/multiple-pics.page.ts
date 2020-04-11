@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, NgZone } from '@angular/core';
 import { RestService } from '../../rest.service';
 import { Events, NavController } from '@ionic/angular';
 import { trigger, state, style, transition, animate } from '@angular/animations';
@@ -26,7 +26,8 @@ export class MultiplePicsPage implements OnInit {
     private restService: RestService,
     private events: Events,
     private screenOrientation: ScreenOrientation,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private zone: NgZone
   ) {
     this.events.subscribe('pictureData', (data) => {
       this.plateDataCounter++;
@@ -52,20 +53,26 @@ export class MultiplePicsPage implements OnInit {
   }
 
   async goBack() {
-    this.scanStatus = false;
-    this.restService.isTakeMultiplePics = false;
-    await this.restService.stopCamera();
+    this.zone.run(async () => {
+      this.scanStatus = false;
+      this.restService.isTakeMultiplePics = false;
+      await this.restService.stopCamera();
+    });
   }
 
   async start() {
-    this.scanStatus = true;
-    this.restService.isTakeMultiplePics = true;
-    await this.restService.takeMultiplePictures();
+    this.zone.run(async () => {
+      this.scanStatus = true;
+      this.restService.isTakeMultiplePics = true;
+      await this.restService.takeMultiplePictures();
+    });
   }
 
   async stop() {
-    this.scanStatus = false;
-    this.restService.isTakeMultiplePics = false;
+    this.zone.run(async () => {
+      this.scanStatus = false;
+      this.restService.isTakeMultiplePics = false;
+    });
   }
 
   async goToDetail(serialNumber) {

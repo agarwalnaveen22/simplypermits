@@ -62,6 +62,9 @@
     "cordova.plugins.diagnostic": {
       "ANDROID_SUPPORT_VERSION": "28.+",
       "PACKAGE_NAME": "com.simplypermits"
+    },
+    "cordova-plugin-nativeaudio": {
+      "PACKAGE_NAME": "com.simplypermits"
     }
   },
   "dependent_plugins": {

@@ -57,6 +57,9 @@
     },
     "cordova-android-support-gradle-release": {
       "PACKAGE_NAME": "com.simplypermits"
+    },
+    "cordova-plugin-nativeaudio": {
+      "PACKAGE_NAME": "com.simplypermits"
     }
   },
   "dependent_plugins": {

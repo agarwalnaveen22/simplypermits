@@ -15,6 +15,7 @@ export class AuthGuardService implements CanActivate {
       let resp = await this.restService.getStorage("userInfo");
       console.log(resp);
       if (resp != null) {
+        await this.restService.checkLoginStatus();
         return true;
       } else {
         this.router.navigate(['/login']);

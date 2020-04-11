@@ -441,6 +441,14 @@ module.exports = [
     "clobbers": [
       "navigator.geolocation"
     ]
+  },
+  {
+    "id": "cordova-plugin-nativeaudio.nativeaudio",
+    "file": "plugins/cordova-plugin-nativeaudio/www/nativeaudio.js",
+    "pluginId": "cordova-plugin-nativeaudio",
+    "clobbers": [
+      "window.plugins.NativeAudio"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -463,7 +471,8 @@ module.exports.metadata =
   "cordova.plugins.diagnostic": "5.0.1",
   "cordova-plugin-request-location-accuracy": "2.3.0",
   "cordova-plugin-geolocation": "4.0.2",
-  "cordova-android-support-gradle-release": "3.0.1"
+  "cordova-android-support-gradle-release": "3.0.1",
+  "cordova-plugin-nativeaudio": "3.0.9"
 };
 // BOTTOM OF METADATA
 });

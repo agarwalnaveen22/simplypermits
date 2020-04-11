@@ -417,19 +417,11 @@ module.exports = [
     ]
   },
   {
-    "id": "cordova-plugin-flashlight.Flashlight",
-    "file": "plugins/cordova-plugin-flashlight/www/Flashlight.js",
-    "pluginId": "cordova-plugin-flashlight",
+    "id": "cordova-plugin-nativeaudio.nativeaudio",
+    "file": "plugins/cordova-plugin-nativeaudio/www/nativeaudio.js",
+    "pluginId": "cordova-plugin-nativeaudio",
     "clobbers": [
-      "window.plugins.flashlight"
-    ]
-  },
-  {
-    "id": "cordova-plugin-backlight.Backlight",
-    "file": "plugins/cordova-plugin-backlight/www/Backlight.js",
-    "pluginId": "cordova-plugin-backlight",
-    "clobbers": [
-      "cordova.plugins.Backlight"
+      "window.plugins.NativeAudio"
     ]
   }
 ];
@@ -454,8 +446,7 @@ module.exports.metadata =
   "cordova-plugin-statusbar": "2.4.2",
   "cordova-plugin-whitelist": "1.3.3",
   "cordova.plugins.diagnostic": "5.0.1",
-  "cordova-plugin-flashlight": "3.2.0",
-  "cordova-plugin-backlight": "0.0.1"
+  "cordova-plugin-nativeaudio": "3.0.9"
 };
 // BOTTOM OF METADATA
 });

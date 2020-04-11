@@ -142,12 +142,13 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 var MultiplePicsPage = /** @class */ (function () {
-    function MultiplePicsPage(restService, events, screenOrientation, navCtrl) {
+    function MultiplePicsPage(restService, events, screenOrientation, navCtrl, zone) {
         var _this = this;
         this.restService = restService;
         this.events = events;
         this.screenOrientation = screenOrientation;
         this.navCtrl = navCtrl;
+        this.zone = zone;
         this.pictureData = [];
         this.scanStatus = false;
         this.plateDataCounter = -1;
@@ -181,39 +182,57 @@ var MultiplePicsPage = /** @class */ (function () {
     };
     MultiplePicsPage.prototype.goBack = function () {
         return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
             return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        this.scanStatus = false;
-                        this.restService.isTakeMultiplePics = false;
-                        return [4 /*yield*/, this.restService.stopCamera()];
-                    case 1:
-                        _a.sent();
-                        return [2 /*return*/];
-                }
+                this.zone.run(function () { return __awaiter(_this, void 0, void 0, function () {
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0:
+                                this.scanStatus = false;
+                                this.restService.isTakeMultiplePics = false;
+                                return [4 /*yield*/, this.restService.stopCamera()];
+                            case 1:
+                                _a.sent();
+                                return [2 /*return*/];
+                        }
+                    });
+                }); });
+                return [2 /*return*/];
             });
         });
     };
     MultiplePicsPage.prototype.start = function () {
         return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
             return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        this.scanStatus = true;
-                        this.restService.isTakeMultiplePics = true;
-                        return [4 /*yield*/, this.restService.takeMultiplePictures()];
-                    case 1:
-                        _a.sent();
-                        return [2 /*return*/];
-                }
+                this.zone.run(function () { return __awaiter(_this, void 0, void 0, function () {
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0:
+                                this.scanStatus = true;
+                                this.restService.isTakeMultiplePics = true;
+                                return [4 /*yield*/, this.restService.takeMultiplePictures()];
+                            case 1:
+                                _a.sent();
+                                return [2 /*return*/];
+                        }
+                    });
+                }); });
+                return [2 /*return*/];
             });
         });
     };
     MultiplePicsPage.prototype.stop = function () {
         return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
             return __generator(this, function (_a) {
-                this.scanStatus = false;
-                this.restService.isTakeMultiplePics = false;
+                this.zone.run(function () { return __awaiter(_this, void 0, void 0, function () {
+                    return __generator(this, function (_a) {
+                        this.scanStatus = false;
+                        this.restService.isTakeMultiplePics = false;
+                        return [2 /*return*/];
+                    });
+                }); });
                 return [2 /*return*/];
             });
         });
@@ -282,7 +301,8 @@ var MultiplePicsPage = /** @class */ (function () {
         __metadata("design:paramtypes", [_rest_service__WEBPACK_IMPORTED_MODULE_1__["RestService"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Events"],
             _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_4__["ScreenOrientation"],
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"]])
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"],
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"]])
     ], MultiplePicsPage);
     return MultiplePicsPage;
 }());

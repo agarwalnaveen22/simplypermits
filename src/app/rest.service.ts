@@ -8,6 +8,7 @@ import { CameraPreview, CameraPreviewOptions } from '@ionic-native/camera-previe
 import { Diagnostic } from '@ionic-native/diagnostic/ngx';
 import { LocationAccuracy } from '@ionic-native/location-accuracy/ngx';
 import { Geolocation, GeolocationOptions } from '@ionic-native/geolocation/ngx';
+import { NativeAudio } from '@ionic-native/native-audio/ngx';
 import { Location } from '@angular/common';
 
 @Injectable({
@@ -26,6 +27,8 @@ export class RestService {
   longitude: any = 0;
   lastLprNumber: string = '';
   isTakeMultiplePics: boolean = false;
+  permitFoundReady: boolean = false;
+  permitNotFoundReady: boolean = false;
 
   constructor(
     public http: HttpClient,
@@ -44,6 +47,7 @@ export class RestService {
     private geolocation: Geolocation,
     private events: Events,
     private location: Location,
+    private nativeAudio: NativeAudio
   ) { }
 
   async showLoader(message) {
@@ -299,6 +303,7 @@ export class RestService {
         this.navCtrl.goForward('/multiple-pics');
         await this.startCameraPreview();
         await this.cameraPreview.setFocusMode('continuous-picture');
+        await this.cameraPreview.setExposureMode('continuous');
       }
     } catch (error) {
       this.hideLoader();
@@ -337,6 +342,9 @@ export class RestService {
               data: pictureResult['json'][0]
             };
             this.events.publish('pictureData', pictureData);
+            if(this.permitFoundReady){
+              await this.nativeAudio.play('permitFound');
+            }
             await this.takeMultiplePictures();
           } else {
             let pictureData: any = {
@@ -344,6 +352,9 @@ export class RestService {
               data: pictureResult['plateData']
             };
             this.events.publish('pictureData', pictureData);
+            if(this.permitNotFoundReady){
+              await this.nativeAudio.play('permitNotFound');
+            }
             await this.takeMultiplePictures();
           }
         } else {
@@ -543,7 +554,7 @@ export class RestService {
           break;
       }
     } catch (error) {
-      this.showToast("Error: " + error);
+      this.showToast("Error: " + JSON.stringify(error));
     }
   }
 
@@ -552,7 +563,7 @@ export class RestService {
       await this.diagnostic.requestLocationAuthorization();
       this.requestLocationAccuracy();
     } catch (error) {
-      this.showToast("Error: " + error);
+      this.showToast("Error: " + JSON.stringify(error));
     }
   }
 
@@ -574,9 +585,12 @@ export class RestService {
       await this.requestLocationAccuracy();
       let options: GeolocationOptions = {
         maximumAge: 3000,
-        timeout: 2000
+        timeout: 10000,
+        enableHighAccuracy: true
       }
       let coordinates = await this.geolocation.getCurrentPosition(options);
+      this.latitude = coordinates.coords.latitude;
+      this.longitude = coordinates.coords.longitude;
       return coordinates.coords;
     } catch (error) {
       return {
