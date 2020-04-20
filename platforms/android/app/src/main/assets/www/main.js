@@ -352,11 +352,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @ionic-native/geolocation/ngx */ "./node_modules/@ionic-native/geolocation/ngx/index.js");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
 /* harmony import */ var _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @ionic-native/native-audio/ngx */ "./node_modules/@ionic-native/native-audio/ngx/index.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./image-preview/image-preview.component */ "./src/app/image-preview/image-preview.component.ts");
-/* harmony import */ var _auth_guard_service__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./auth-guard.service */ "./src/app/auth-guard.service.ts");
-/* harmony import */ var _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./main-menu/main-menu.component */ "./src/app/main-menu/main-menu.component.ts");
+/* harmony import */ var _ionic_native_power_management_ngx__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @ionic-native/power-management/ngx */ "./node_modules/@ionic-native/power-management/ngx/index.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./image-preview/image-preview.component */ "./src/app/image-preview/image-preview.component.ts");
+/* harmony import */ var _auth_guard_service__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./auth-guard.service */ "./src/app/auth-guard.service.ts");
+/* harmony import */ var _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./main-menu/main-menu.component */ "./src/app/main-menu/main-menu.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -391,17 +392,18 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
-            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_23__["AppComponent"], _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_25__["ImagePreviewComponent"], _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_27__["MainMenuComponent"]],
-            entryComponents: [_image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_25__["ImagePreviewComponent"], _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_27__["MainMenuComponent"]],
+            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_24__["AppComponent"], _image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_26__["ImagePreviewComponent"], _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_28__["MainMenuComponent"]],
+            entryComponents: [_image_preview_image_preview_component__WEBPACK_IMPORTED_MODULE_26__["ImagePreviewComponent"], _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_28__["MainMenuComponent"]],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot({ mode: 'md', scrollAssist: 'DISABLED' }),
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_24__["AppRoutingModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_25__["AppRoutingModule"],
                 _ngx_progressbar_core__WEBPACK_IMPORTED_MODULE_8__["NgProgressModule"].forRoot(),
                 _ionic_storage__WEBPACK_IMPORTED_MODULE_14__["IonicStorageModule"].forRoot(),
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_12__["HttpClientModule"],
@@ -417,16 +419,17 @@ var AppModule = /** @class */ (function () {
                 _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_20__["Geolocation"],
                 _ionic_native_base64_ngx__WEBPACK_IMPORTED_MODULE_9__["Base64"],
                 _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_10__["FileTransfer"],
-                _auth_guard_service__WEBPACK_IMPORTED_MODULE_26__["AuthGuardService"],
+                _auth_guard_service__WEBPACK_IMPORTED_MODULE_27__["AuthGuardService"],
                 _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_11__["InAppBrowser"],
                 _ionic_native_http_ngx__WEBPACK_IMPORTED_MODULE_13__["HTTP"],
                 _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_15__["Device"],
                 _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_16__["ScreenOrientation"],
                 _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_17__["Keyboard"],
                 _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_22__["NativeAudio"],
+                _ionic_native_power_management_ngx__WEBPACK_IMPORTED_MODULE_23__["PowerManagement"],
                 { provide: _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] }
             ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_23__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_24__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;

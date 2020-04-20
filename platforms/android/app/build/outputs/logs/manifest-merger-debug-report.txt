@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/src/main/AndroidManifest.xml:2:1-25:12
-INJECTED from /Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/src/main/AndroidManifest.xml:2:1-25:12
-INJECTED from /Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/src/main/AndroidManifest.xml:2:1-25:12
-INJECTED from /Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/src/main/AndroidManifest.xml:2:1-25:12
+ADDED from /Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/src/main/AndroidManifest.xml:2:1-26:12
 MERGED from [com.android.support:exifinterface:27.1.1] /private/var/root/.gradle/caches/transforms-1/files-1.1/exifinterface-27.1.1.aar/95db9d8c12684f439c75237c0b3fd629/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:appcompat-v7:27.1.1] /private/var/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/46e9651259f0fec5473725a167c68730/AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.gms:play-services-location:16.0.0] /private/var/root/.gradle/caches/transforms-1/files-1.1/play-services-location-16.0.0.aar/1cca00fc4e855b41fac5c39e8c0e1a1c/AndroidManifest.xml:2:1-9:12
@@ -24,9 +24,9 @@ MERGED from [android.arch.lifecycle:runtime:1.1.0] /private/var/root/.gradle/cac
 MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /private/var/root/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/c912a831c3fdfc5ac1411f95e6596637/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /private/var/root/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/f5033a4ccbfa97180407c45ff0ca14cf/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.0] /private/var/root/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/689116e59719b8a43846dbe3f9f53e2a/AndroidManifest.xml:17:1-22:12
-INJECTED from /Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/src/main/AndroidManifest.xml:2:1-25:12
-INJECTED from /Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/src/main/AndroidManifest.xml:2:1-25:12
-INJECTED from /Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/src/main/AndroidManifest.xml:2:1-25:12
+INJECTED from /Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/src/main/AndroidManifest.xml:2:1-26:12
 	package
 		ADDED from /Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/src/main/AndroidManifest.xml:2:102-129
 		INJECTED from /Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/src/main/AndroidManifest.xml
@@ -207,6 +207,10 @@ uses-permission#android.permission.READ_PHONE_STATE
 ADDED from /Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/src/main/AndroidManifest.xml:24:5-75
 	android:name
 		ADDED from /Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/src/main/AndroidManifest.xml:24:22-72
+uses-permission#android.permission.WAKE_LOCK
+ADDED from /Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/src/main/AndroidManifest.xml:25:5-68
+	android:name
+		ADDED from /Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/src/main/AndroidManifest.xml:25:22-65
 activity#com.google.android.gms.common.api.GoogleApiActivity
 ADDED from [com.google.android.gms:play-services-base:16.0.1] /private/var/root/.gradle/caches/transforms-1/files-1.1/play-services-base-16.0.1.aar/3e86acecc606e65619432fe4e305a563/AndroidManifest.xml:23:9-26:75
 	android:exported

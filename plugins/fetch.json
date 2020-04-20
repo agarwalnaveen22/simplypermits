@@ -152,5 +152,13 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "at.gofg.sportscomputer.powermanagement": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-powermanagement-orig"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

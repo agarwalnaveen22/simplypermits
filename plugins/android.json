@@ -65,6 +65,9 @@
     },
     "cordova-plugin-nativeaudio": {
       "PACKAGE_NAME": "com.simplypermits"
+    },
+    "at.gofg.sportscomputer.powermanagement": {
+      "PACKAGE_NAME": "com.simplypermits"
     }
   },
   "dependent_plugins": {

@@ -63,6 +63,10 @@
             {
               "xml": "<feature name=\"NativeAudio\"><param name=\"android-package\" value=\"com.rjfun.cordova.plugin.nativeaudio.NativeAudio\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"PowerManagement\"><param name=\"android-package\" value=\"org.apache.cordova.powermanagement.PowerManagement\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -96,6 +100,10 @@
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.WAKE_LOCK\" />",
               "count": 1
             }
           ],
@@ -254,6 +262,9 @@
       "PACKAGE_NAME": "com.simplypermits"
     },
     "cordova-plugin-nativeaudio": {
+      "PACKAGE_NAME": "com.simplypermits"
+    },
+    "at.gofg.sportscomputer.powermanagement": {
       "PACKAGE_NAME": "com.simplypermits"
     }
   },
@@ -682,6 +693,14 @@
       "clobbers": [
         "window.plugins.NativeAudio"
       ]
+    },
+    {
+      "id": "at.gofg.sportscomputer.powermanagement.device",
+      "file": "plugins/at.gofg.sportscomputer.powermanagement/www/powermanagement.js",
+      "pluginId": "at.gofg.sportscomputer.powermanagement",
+      "clobbers": [
+        "window.powerManagement"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -703,6 +722,7 @@
     "cordova-plugin-statusbar": "2.4.2",
     "cordova-plugin-whitelist": "1.3.3",
     "cordova.plugins.diagnostic": "5.0.1",
-    "cordova-plugin-nativeaudio": "3.0.9"
+    "cordova-plugin-nativeaudio": "3.0.9",
+    "at.gofg.sportscomputer.powermanagement": "1.1.2"
   }
 }

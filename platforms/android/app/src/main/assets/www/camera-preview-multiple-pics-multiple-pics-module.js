@@ -92,6 +92,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
 /* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm5/animations.js");
 /* harmony import */ var _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/screen-orientation/ngx */ "./node_modules/@ionic-native/screen-orientation/ngx/index.js");
+/* harmony import */ var _ionic_native_power_management_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/power-management/ngx */ "./node_modules/@ionic-native/power-management/ngx/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -141,14 +142,16 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var MultiplePicsPage = /** @class */ (function () {
-    function MultiplePicsPage(restService, events, screenOrientation, navCtrl, zone) {
+    function MultiplePicsPage(restService, events, screenOrientation, navCtrl, zone, powerManagement) {
         var _this = this;
         this.restService = restService;
         this.events = events;
         this.screenOrientation = screenOrientation;
         this.navCtrl = navCtrl;
         this.zone = zone;
+        this.powerManagement = powerManagement;
         this.pictureData = [];
         this.scanStatus = false;
         this.plateDataCounter = -1;
@@ -185,15 +188,27 @@ var MultiplePicsPage = /** @class */ (function () {
             var _this = this;
             return __generator(this, function (_a) {
                 this.zone.run(function () { return __awaiter(_this, void 0, void 0, function () {
+                    var error_1;
                     return __generator(this, function (_a) {
                         switch (_a.label) {
                             case 0:
                                 this.scanStatus = false;
                                 this.restService.isTakeMultiplePics = false;
-                                return [4 /*yield*/, this.restService.stopCamera()];
+                                _a.label = 1;
                             case 1:
+                                _a.trys.push([1, 4, , 5]);
+                                return [4 /*yield*/, this.restService.stopCamera()];
+                            case 2:
                                 _a.sent();
-                                return [2 /*return*/];
+                                return [4 /*yield*/, this.powerManagement.release()];
+                            case 3:
+                                _a.sent();
+                                return [3 /*break*/, 5];
+                            case 4:
+                                error_1 = _a.sent();
+                                console.log(JSON.stringify(error_1));
+                                return [3 /*break*/, 5];
+                            case 5: return [2 /*return*/];
                         }
                     });
                 }); });
@@ -206,15 +221,27 @@ var MultiplePicsPage = /** @class */ (function () {
             var _this = this;
             return __generator(this, function (_a) {
                 this.zone.run(function () { return __awaiter(_this, void 0, void 0, function () {
+                    var error_2;
                     return __generator(this, function (_a) {
                         switch (_a.label) {
                             case 0:
                                 this.scanStatus = true;
                                 this.restService.isTakeMultiplePics = true;
-                                return [4 /*yield*/, this.restService.takeMultiplePictures()];
+                                _a.label = 1;
                             case 1:
+                                _a.trys.push([1, 4, , 5]);
+                                return [4 /*yield*/, this.powerManagement.acquire()];
+                            case 2:
                                 _a.sent();
-                                return [2 /*return*/];
+                                return [4 /*yield*/, this.restService.takeMultiplePictures()];
+                            case 3:
+                                _a.sent();
+                                return [3 /*break*/, 5];
+                            case 4:
+                                error_2 = _a.sent();
+                                this.restService.showToast(JSON.stringify(error_2));
+                                return [3 /*break*/, 5];
+                            case 5: return [2 /*return*/];
                         }
                     });
                 }); });
@@ -227,10 +254,25 @@ var MultiplePicsPage = /** @class */ (function () {
             var _this = this;
             return __generator(this, function (_a) {
                 this.zone.run(function () { return __awaiter(_this, void 0, void 0, function () {
+                    var error_3;
                     return __generator(this, function (_a) {
-                        this.scanStatus = false;
-                        this.restService.isTakeMultiplePics = false;
-                        return [2 /*return*/];
+                        switch (_a.label) {
+                            case 0:
+                                this.scanStatus = false;
+                                this.restService.isTakeMultiplePics = false;
+                                _a.label = 1;
+                            case 1:
+                                _a.trys.push([1, 3, , 4]);
+                                return [4 /*yield*/, this.powerManagement.release()];
+                            case 2:
+                                _a.sent();
+                                return [3 /*break*/, 4];
+                            case 3:
+                                error_3 = _a.sent();
+                                this.restService.showToast(JSON.stringify(error_3));
+                                return [3 /*break*/, 4];
+                            case 4: return [2 /*return*/];
+                        }
                     });
                 }); });
                 return [2 /*return*/];
@@ -302,7 +344,8 @@ var MultiplePicsPage = /** @class */ (function () {
             _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Events"],
             _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_4__["ScreenOrientation"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"],
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"]])
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"],
+            _ionic_native_power_management_ngx__WEBPACK_IMPORTED_MODULE_5__["PowerManagement"]])
     ], MultiplePicsPage);
     return MultiplePicsPage;
 }());

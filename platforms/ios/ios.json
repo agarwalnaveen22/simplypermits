@@ -128,6 +128,12 @@
               "xml": "<feature name=\"NativeAudio\"><param name=\"ios-package\" value=\"NativeAudio\" /></feature>",
               "count": 1
             }
+          ],
+          "/widget": [
+            {
+              "xml": "<feature name=\"PowerManagement\"><param name=\"ios-package\" value=\"PowerManagement\" /></feature>",
+              "count": 1
+            }
           ]
         }
       },
@@ -265,6 +271,9 @@
       "PACKAGE_NAME": "com.simplypermits"
     },
     "cordova-plugin-nativeaudio": {
+      "PACKAGE_NAME": "com.simplypermits"
+    },
+    "at.gofg.sportscomputer.powermanagement": {
       "PACKAGE_NAME": "com.simplypermits"
     }
   },
@@ -719,6 +728,14 @@
       "clobbers": [
         "window.plugins.NativeAudio"
       ]
+    },
+    {
+      "id": "at.gofg.sportscomputer.powermanagement.device",
+      "file": "plugins/at.gofg.sportscomputer.powermanagement/www/powermanagement.js",
+      "pluginId": "at.gofg.sportscomputer.powermanagement",
+      "clobbers": [
+        "window.powerManagement"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -740,6 +757,7 @@
     "cordova-plugin-request-location-accuracy": "2.3.0",
     "cordova-plugin-geolocation": "4.0.2",
     "cordova-android-support-gradle-release": "3.0.1",
-    "cordova-plugin-nativeaudio": "3.0.9"
+    "cordova-plugin-nativeaudio": "3.0.9",
+    "at.gofg.sportscomputer.powermanagement": "1.1.2"
   }
 }

@@ -423,6 +423,14 @@ module.exports = [
     "clobbers": [
       "window.plugins.NativeAudio"
     ]
+  },
+  {
+    "id": "at.gofg.sportscomputer.powermanagement.device",
+    "file": "plugins/at.gofg.sportscomputer.powermanagement/www/powermanagement.js",
+    "pluginId": "at.gofg.sportscomputer.powermanagement",
+    "clobbers": [
+      "window.powerManagement"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -446,7 +454,8 @@ module.exports.metadata =
   "cordova-plugin-statusbar": "2.4.2",
   "cordova-plugin-whitelist": "1.3.3",
   "cordova.plugins.diagnostic": "5.0.1",
-  "cordova-plugin-nativeaudio": "3.0.9"
+  "cordova-plugin-nativeaudio": "3.0.9",
+  "at.gofg.sportscomputer.powermanagement": "1.1.2"
 };
 // BOTTOM OF METADATA
 });

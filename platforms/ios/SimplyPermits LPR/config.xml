@@ -180,4 +180,7 @@
     <feature name="NativeAudio">
         <param name="ios-package" value="NativeAudio" />
     </feature>
+    <feature name="PowerManagement">
+        <param name="ios-package" value="PowerManagement" />
+    </feature>
 </widget>

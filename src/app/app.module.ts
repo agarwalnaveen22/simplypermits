@@ -22,6 +22,7 @@ import { LocationAccuracy } from '@ionic-native/location-accuracy/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NativeAudio } from '@ionic-native/native-audio/ngx';
+import { PowerManagement } from '@ionic-native/power-management/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -58,6 +59,7 @@ import { MainMenuComponent } from './main-menu/main-menu.component';
     ScreenOrientation,
     Keyboard,
     NativeAudio,
+    PowerManagement,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
