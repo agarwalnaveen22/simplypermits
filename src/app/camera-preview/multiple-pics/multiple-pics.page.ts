@@ -23,6 +23,7 @@ export class MultiplePicsPage implements OnInit {
   scanStatus: boolean = false;
   plateDataCounter: number = -1;
   isFlashMode: boolean = false;
+  isPowerAcquired: boolean = false;
   constructor(
     private restService: RestService,
     private events: Events,
@@ -45,8 +46,7 @@ export class MultiplePicsPage implements OnInit {
 
     this.screenOrientation.onChange().subscribe(
       async () => {
-        await this.restService.stopCameraPreview();
-        await this.restService.startCameraPreview();
+        await this.reStartCamera();
       }
     );
   }
@@ -54,17 +54,21 @@ export class MultiplePicsPage implements OnInit {
   ngOnInit() {
   }
 
+  async reStartCamera() {
+    try {
+      await this.restService.stopCameraPreview();
+      await this.restService.startCameraPreview();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   async goBack() {
     this.zone.run(async () => {
       this.scanStatus = false;
       this.restService.isTakeMultiplePics = false;
-      try {
-        await this.restService.stopCamera();
-        await this.powerManagement.release();
-      } catch (error) {
-        console.log(JSON.stringify(error));
-      }
-      
+      await this.stopCamera();
+      await this.disablePowerManagement();
     });
   }
 
@@ -72,36 +76,77 @@ export class MultiplePicsPage implements OnInit {
     this.zone.run(async () => {
       this.scanStatus = true;
       this.restService.isTakeMultiplePics = true;
-      try {
-        await this.powerManagement.acquire();
-        await this.restService.takeMultiplePictures();
-      } catch (error) {
-        this.restService.showToast(JSON.stringify(error));
-      }
+      await this.enablePowerManagement();
+      await this.startCamera();
     });
+  }
+
+  async enablePowerManagement() {
+    if (!this.isPowerAcquired) {
+      try {
+        let resp = await this.powerManagement.acquire();
+        if (resp === 'OK') {
+          this.isPowerAcquired = true;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+
+  async startCamera() {
+    try {
+      await this.restService.takeMultiplePictures();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async stopCamera() {
+    try {
+      await this.restService.stopCamera();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async disablePowerManagement() {
+    if (this.isPowerAcquired) {
+      try {
+        let resp = await this.powerManagement.release();
+        if (resp === 'OK') {
+          this.isPowerAcquired = false;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
   }
 
   async stop() {
     this.zone.run(async () => {
       this.scanStatus = false;
       this.restService.isTakeMultiplePics = false;
-      try {
-        await this.powerManagement.release();
-      } catch (error) {
-        this.restService.showToast(JSON.stringify(error));
-      }
+      await this.disablePowerManagement();
     });
   }
 
   async goToDetail(serialNumber) {
-    this.scanStatus = false;
-    this.restService.lastLprNumber = '';
-    await this.restService.stopCameraPreview();
-    await this.restService.setStorage("userData", []);
-    let response = await this.restService.setStorage("vehicleData", [this.pictureData[serialNumber].data]);
-    if (response) {
-      this.navCtrl.goForward("/permit-detail/" + this.pictureData[serialNumber].data.permit_id);
-    }
+    this.zone.run(async () => {
+      this.scanStatus = false;
+      this.restService.lastLprNumber = '';
+      this.restService.isTakeMultiplePics = false;
+      await this.stopCamera();
+      await this.disablePowerManagement();
+      let cthis = this;
+      setTimeout( async () => {
+        await cthis.restService.setStorage("userData", []);
+        let response = await cthis.restService.setStorage("vehicleData", [cthis.pictureData[serialNumber].data]);
+        if (response) {
+          cthis.navCtrl.goForward("/permit-detail/" + cthis.pictureData[serialNumber].data.permit_id);
+        }
+      }, 1000);
+    });
   }
 
   async manageFlashMode() {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { ModalController, NavController } from '@ionic/angular';
 import { RestService } from '../rest.service';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -20,7 +20,8 @@ export class PermitDetailPage implements OnInit {
     private restService: RestService,
     private route: ActivatedRoute,
     private navCtrl: NavController,
-    private location: Location
+    private location: Location,
+    private zone: NgZone,
   ) {
     this.route.params.subscribe((params: Params) => {
       this.permitId = params['id'];
@@ -46,15 +47,17 @@ export class PermitDetailPage implements OnInit {
     }
     await this.restService.keyBoardHide();
     this.restService.showLoader('Getting Permit Details');
-    this.restService.makeGetRequest(requestData).then( async (result) => {
+    this.restService.makeGetRequest(requestData).then(async (result) => {
       this.restService.hideLoader();
       if (result['PermitDetail']) {
-        this.permitData = result['PermitDetail'];
-        let response = await this.restService.getStorage("userInfo");
-        let userRoles = response["roles"];
-        if (userRoles.indexOf("enforcement") !== -1) {
-          this.isEnforcement = true;
-        }
+        this.zone.run(async () => {
+          this.permitData = result['PermitDetail'];
+          let response = await this.restService.getStorage("userInfo");
+          let userRoles = response["roles"];
+          if (userRoles.indexOf("enforcement") !== -1) {
+            this.isEnforcement = true;
+          }
+        });
       }
 
     }, (err) => {
@@ -68,12 +71,12 @@ export class PermitDetailPage implements OnInit {
   }
 
   async addNote() {
-    this.navCtrl.goForward('/add-note/'+this.permitId);
+    this.navCtrl.goForward('/add-note/' + this.permitId);
   }
 
   async viewNotes() {
     if (this.permitData.Notes) {
-      this.navCtrl.goForward('/view-notes/'+this.permitId);
+      this.navCtrl.goForward('/view-notes/' + this.permitId);
     } else {
       this.restService.showAlert("Notice", "There are no notes for this permit.");
     }

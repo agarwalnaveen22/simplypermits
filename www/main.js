@@ -1455,11 +1455,6 @@ var RestService = /** @class */ (function () {
                         this.showToast("Please select property");
                         return [3 /*break*/, 3];
                     case 1:
-                        // this.showLoader('Fetching location');
-                        // let coordinates = await this.getCurrentLocation();
-                        // this.latitude = coordinates.latitude;
-                        // this.longitude = coordinates.longitude;
-                        // this.hideLoader();
                         this.navCtrl.goForward('/single-pic');
                         return [4 /*yield*/, this.startCameraPreview()];
                     case 2:

@@ -156,6 +156,7 @@ var MultiplePicsPage = /** @class */ (function () {
         this.scanStatus = false;
         this.plateDataCounter = -1;
         this.isFlashMode = false;
+        this.isPowerAcquired = false;
         this.events.subscribe('pictureData', function (data) {
             _this.plateDataCounter++;
             var plateData = data;
@@ -170,11 +171,8 @@ var MultiplePicsPage = /** @class */ (function () {
         this.screenOrientation.onChange().subscribe(function () { return __awaiter(_this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.restService.stopCameraPreview()];
+                    case 0: return [4 /*yield*/, this.reStartCamera()];
                     case 1:
-                        _a.sent();
-                        return [4 /*yield*/, this.restService.startCameraPreview()];
-                    case 2:
                         _a.sent();
                         return [2 /*return*/];
                 }
@@ -183,32 +181,46 @@ var MultiplePicsPage = /** @class */ (function () {
     }
     MultiplePicsPage.prototype.ngOnInit = function () {
     };
+    MultiplePicsPage.prototype.reStartCamera = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var error_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 3, , 4]);
+                        return [4 /*yield*/, this.restService.stopCameraPreview()];
+                    case 1:
+                        _a.sent();
+                        return [4 /*yield*/, this.restService.startCameraPreview()];
+                    case 2:
+                        _a.sent();
+                        return [3 /*break*/, 4];
+                    case 3:
+                        error_1 = _a.sent();
+                        console.log(error_1);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
     MultiplePicsPage.prototype.goBack = function () {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
                 this.zone.run(function () { return __awaiter(_this, void 0, void 0, function () {
-                    var error_1;
                     return __generator(this, function (_a) {
                         switch (_a.label) {
                             case 0:
                                 this.scanStatus = false;
                                 this.restService.isTakeMultiplePics = false;
-                                _a.label = 1;
+                                return [4 /*yield*/, this.stopCamera()];
                             case 1:
-                                _a.trys.push([1, 4, , 5]);
-                                return [4 /*yield*/, this.restService.stopCamera()];
+                                _a.sent();
+                                return [4 /*yield*/, this.disablePowerManagement()];
                             case 2:
                                 _a.sent();
-                                return [4 /*yield*/, this.powerManagement.release()];
-                            case 3:
-                                _a.sent();
-                                return [3 /*break*/, 5];
-                            case 4:
-                                error_1 = _a.sent();
-                                console.log(JSON.stringify(error_1));
-                                return [3 /*break*/, 5];
-                            case 5: return [2 /*return*/];
+                                return [2 /*return*/];
                         }
                     });
                 }); });
@@ -221,31 +233,114 @@ var MultiplePicsPage = /** @class */ (function () {
             var _this = this;
             return __generator(this, function (_a) {
                 this.zone.run(function () { return __awaiter(_this, void 0, void 0, function () {
-                    var error_2;
                     return __generator(this, function (_a) {
                         switch (_a.label) {
                             case 0:
                                 this.scanStatus = true;
                                 this.restService.isTakeMultiplePics = true;
-                                _a.label = 1;
+                                return [4 /*yield*/, this.enablePowerManagement()];
                             case 1:
-                                _a.trys.push([1, 4, , 5]);
-                                return [4 /*yield*/, this.powerManagement.acquire()];
+                                _a.sent();
+                                return [4 /*yield*/, this.startCamera()];
                             case 2:
                                 _a.sent();
-                                return [4 /*yield*/, this.restService.takeMultiplePictures()];
-                            case 3:
-                                _a.sent();
-                                return [3 /*break*/, 5];
-                            case 4:
-                                error_2 = _a.sent();
-                                this.restService.showToast(JSON.stringify(error_2));
-                                return [3 /*break*/, 5];
-                            case 5: return [2 /*return*/];
+                                return [2 /*return*/];
                         }
                     });
                 }); });
                 return [2 /*return*/];
+            });
+        });
+    };
+    MultiplePicsPage.prototype.enablePowerManagement = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var resp, error_2;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!!this.isPowerAcquired) return [3 /*break*/, 4];
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, this.powerManagement.acquire()];
+                    case 2:
+                        resp = _a.sent();
+                        if (resp === 'OK') {
+                            this.isPowerAcquired = true;
+                        }
+                        return [3 /*break*/, 4];
+                    case 3:
+                        error_2 = _a.sent();
+                        console.log(error_2);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    MultiplePicsPage.prototype.startCamera = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var error_3;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, this.restService.takeMultiplePictures()];
+                    case 1:
+                        _a.sent();
+                        return [3 /*break*/, 3];
+                    case 2:
+                        error_3 = _a.sent();
+                        console.log(error_3);
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    MultiplePicsPage.prototype.stopCamera = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var error_4;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, this.restService.stopCamera()];
+                    case 1:
+                        _a.sent();
+                        return [3 /*break*/, 3];
+                    case 2:
+                        error_4 = _a.sent();
+                        console.log(error_4);
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    MultiplePicsPage.prototype.disablePowerManagement = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var resp, error_5;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!this.isPowerAcquired) return [3 /*break*/, 4];
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, this.powerManagement.release()];
+                    case 2:
+                        resp = _a.sent();
+                        if (resp === 'OK') {
+                            this.isPowerAcquired = false;
+                        }
+                        return [3 /*break*/, 4];
+                    case 3:
+                        error_5 = _a.sent();
+                        console.log(error_5);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
+                }
             });
         });
     };
@@ -254,24 +349,15 @@ var MultiplePicsPage = /** @class */ (function () {
             var _this = this;
             return __generator(this, function (_a) {
                 this.zone.run(function () { return __awaiter(_this, void 0, void 0, function () {
-                    var error_3;
                     return __generator(this, function (_a) {
                         switch (_a.label) {
                             case 0:
                                 this.scanStatus = false;
                                 this.restService.isTakeMultiplePics = false;
-                                _a.label = 1;
+                                return [4 /*yield*/, this.disablePowerManagement()];
                             case 1:
-                                _a.trys.push([1, 3, , 4]);
-                                return [4 /*yield*/, this.powerManagement.release()];
-                            case 2:
                                 _a.sent();
-                                return [3 /*break*/, 4];
-                            case 3:
-                                error_3 = _a.sent();
-                                this.restService.showToast(JSON.stringify(error_3));
-                                return [3 /*break*/, 4];
-                            case 4: return [2 /*return*/];
+                                return [2 /*return*/];
                         }
                     });
                 }); });
@@ -281,26 +367,46 @@ var MultiplePicsPage = /** @class */ (function () {
     };
     MultiplePicsPage.prototype.goToDetail = function (serialNumber) {
         return __awaiter(this, void 0, void 0, function () {
-            var response;
+            var _this = this;
             return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        this.scanStatus = false;
-                        this.restService.lastLprNumber = '';
-                        return [4 /*yield*/, this.restService.stopCameraPreview()];
-                    case 1:
-                        _a.sent();
-                        return [4 /*yield*/, this.restService.setStorage("userData", [])];
-                    case 2:
-                        _a.sent();
-                        return [4 /*yield*/, this.restService.setStorage("vehicleData", [this.pictureData[serialNumber].data])];
-                    case 3:
-                        response = _a.sent();
-                        if (response) {
-                            this.navCtrl.goForward("/permit-detail/" + this.pictureData[serialNumber].data.permit_id);
+                this.zone.run(function () { return __awaiter(_this, void 0, void 0, function () {
+                    var _this = this;
+                    var cthis;
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0:
+                                this.scanStatus = false;
+                                this.restService.lastLprNumber = '';
+                                this.restService.isTakeMultiplePics = false;
+                                return [4 /*yield*/, this.stopCamera()];
+                            case 1:
+                                _a.sent();
+                                return [4 /*yield*/, this.disablePowerManagement()];
+                            case 2:
+                                _a.sent();
+                                cthis = this;
+                                setTimeout(function () { return __awaiter(_this, void 0, void 0, function () {
+                                    var response;
+                                    return __generator(this, function (_a) {
+                                        switch (_a.label) {
+                                            case 0: return [4 /*yield*/, cthis.restService.setStorage("userData", [])];
+                                            case 1:
+                                                _a.sent();
+                                                return [4 /*yield*/, cthis.restService.setStorage("vehicleData", [cthis.pictureData[serialNumber].data])];
+                                            case 2:
+                                                response = _a.sent();
+                                                if (response) {
+                                                    cthis.navCtrl.goForward("/permit-detail/" + cthis.pictureData[serialNumber].data.permit_id);
+                                                }
+                                                return [2 /*return*/];
+                                        }
+                                    });
+                                }); }, 1000);
+                                return [2 /*return*/];
                         }
-                        return [2 /*return*/];
-                }
+                    });
+                }); });
+                return [2 /*return*/];
             });
         });
     };

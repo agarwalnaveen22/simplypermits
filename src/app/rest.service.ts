@@ -384,11 +384,6 @@ export class RestService {
       if (this.selectedProperty == 0 || this.selectedProperty == undefined) {
         this.showToast("Please select property");
       } else {
-        // this.showLoader('Fetching location');
-        // let coordinates = await this.getCurrentLocation();
-        // this.latitude = coordinates.latitude;
-        // this.longitude = coordinates.longitude;
-        // this.hideLoader();
         this.navCtrl.goForward('/single-pic');
         await this.startCameraPreview();
       }
