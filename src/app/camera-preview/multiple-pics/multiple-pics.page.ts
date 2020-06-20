@@ -56,8 +56,11 @@ export class MultiplePicsPage implements OnInit {
 
   async reStartCamera() {
     try {
-      await this.restService.stopCameraPreview();
-      await this.restService.startCameraPreview();
+      this.zone.run(async () => {
+        await this.restService.stopCameraPreview();
+        await this.restService.startCameraPreview();
+        await this.startCamera();
+      });
     } catch (error) {
       console.log(error);
     }
@@ -139,7 +142,7 @@ export class MultiplePicsPage implements OnInit {
       await this.stopCamera();
       await this.disablePowerManagement();
       let cthis = this;
-      setTimeout( async () => {
+      setTimeout(async () => {
         await cthis.restService.setStorage("userData", []);
         let response = await cthis.restService.setStorage("vehicleData", [cthis.pictureData[serialNumber].data]);
         if (response) {

@@ -1711,7 +1711,7 @@ var RestService = /** @class */ (function () {
                     case 12: return [3 /*break*/, 14];
                     case 13:
                         error_8 = _b.sent();
-                        this.showToast("Error: " + JSON.stringify(error_8));
+                        console.log("Error: " + JSON.stringify(error_8));
                         return [3 /*break*/, 14];
                     case 14: return [2 /*return*/];
                 }
@@ -1732,7 +1732,7 @@ var RestService = /** @class */ (function () {
                         return [3 /*break*/, 3];
                     case 2:
                         error_9 = _a.sent();
-                        this.showToast("Error: " + JSON.stringify(error_9));
+                        console.log("Error: " + JSON.stringify(error_9));
                         return [3 /*break*/, 3];
                     case 3: return [2 /*return*/];
                 }
@@ -1760,7 +1760,7 @@ var RestService = /** @class */ (function () {
                     case 4: return [3 /*break*/, 6];
                     case 5:
                         error_10 = _a.sent();
-                        this.showToast("Error: " + error_10);
+                        console.log("Error: " + error_10);
                         return [3 /*break*/, 6];
                     case 6: return [2 /*return*/];
                 }

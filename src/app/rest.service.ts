@@ -549,7 +549,7 @@ export class RestService {
           break;
       }
     } catch (error) {
-      this.showToast("Error: " + JSON.stringify(error));
+      console.log("Error: " + JSON.stringify(error));
     }
   }
 
@@ -558,7 +558,7 @@ export class RestService {
       await this.diagnostic.requestLocationAuthorization();
       this.requestLocationAccuracy();
     } catch (error) {
-      this.showToast("Error: " + JSON.stringify(error));
+      console.log("Error: " + JSON.stringify(error));
     }
   }
 
@@ -571,7 +571,7 @@ export class RestService {
         this.showToast("Location service is currently in use or app does not have authorization to use location");
       }
     } catch (error) {
-      this.showToast("Error: " + error);
+      console.log("Error: " + error);
     }
   }
 
