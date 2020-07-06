@@ -170,6 +170,7 @@ var HomePage = /** @class */ (function () {
         this.getPropertyId = function (event) {
             _this.property = event;
         };
+        this.restService.selectedProperty = 0;
         this.checkRole();
         this.deviceMode = screenOrientation.type;
         if (this.deviceMode == 'landscape-primary' || this.deviceMode == 'landscape-secondary') {
@@ -220,8 +221,8 @@ var HomePage = /** @class */ (function () {
         });
     };
     HomePage.prototype.takePicture = function () {
-        this.navCtrl.goForward("/no-permit-result");
-        // this.restService.takePicture(this.property);
+        this.restService.selectedProperty = this.property;
+        this.restService.askLprMode();
     };
     HomePage = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({

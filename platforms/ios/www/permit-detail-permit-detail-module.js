@@ -94,6 +94,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/index.js");
 /* harmony import */ var _rest_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../rest.service */ "./src/app/rest.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -142,13 +143,16 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var PermitDetailPage = /** @class */ (function () {
-    function PermitDetailPage(modalController, restService, route, navCtrl) {
+    function PermitDetailPage(modalController, restService, route, navCtrl, location, zone) {
         var _this = this;
         this.modalController = modalController;
         this.restService = restService;
         this.route = route;
         this.navCtrl = navCtrl;
+        this.location = location;
+        this.zone = zone;
         this.permitData = [];
         this.permitId = 0;
         this.isEnforcement = false;
@@ -184,23 +188,29 @@ var PermitDetailPage = /** @class */ (function () {
                         _a.sent();
                         this.restService.showLoader('Getting Permit Details');
                         this.restService.makeGetRequest(requestData).then(function (result) { return __awaiter(_this, void 0, void 0, function () {
-                            var response, userRoles;
+                            var _this = this;
                             return __generator(this, function (_a) {
-                                switch (_a.label) {
-                                    case 0:
-                                        this.restService.hideLoader();
-                                        if (!result['PermitDetail']) return [3 /*break*/, 2];
-                                        this.permitData = result['PermitDetail'];
-                                        return [4 /*yield*/, this.restService.getStorage("userInfo")];
-                                    case 1:
-                                        response = _a.sent();
-                                        userRoles = response["roles"];
-                                        if (userRoles.indexOf("enforcement") !== -1) {
-                                            this.isEnforcement = true;
-                                        }
-                                        _a.label = 2;
-                                    case 2: return [2 /*return*/];
+                                this.restService.hideLoader();
+                                if (result['PermitDetail']) {
+                                    this.zone.run(function () { return __awaiter(_this, void 0, void 0, function () {
+                                        var response, userRoles;
+                                        return __generator(this, function (_a) {
+                                            switch (_a.label) {
+                                                case 0:
+                                                    this.permitData = result['PermitDetail'];
+                                                    return [4 /*yield*/, this.restService.getStorage("userInfo")];
+                                                case 1:
+                                                    response = _a.sent();
+                                                    userRoles = response["roles"];
+                                                    if (userRoles.indexOf("enforcement") !== -1) {
+                                                        this.isEnforcement = true;
+                                                    }
+                                                    return [2 /*return*/];
+                                            }
+                                        });
+                                    }); });
                                 }
+                                return [2 /*return*/];
                             });
                         }); }, function (err) {
                             _this.restService.hideLoader();
@@ -252,7 +262,9 @@ var PermitDetailPage = /** @class */ (function () {
         __metadata("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_1__["ModalController"],
             _rest_service__WEBPACK_IMPORTED_MODULE_2__["RestService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["NavController"]])
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["NavController"],
+            _angular_common__WEBPACK_IMPORTED_MODULE_4__["Location"],
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"]])
     ], PermitDetailPage);
     return PermitDetailPage;
 }());

@@ -149,9 +149,11 @@ var PropertyListPage = /** @class */ (function () {
         this.userData = [];
         this.showProperty = false;
         this.pageName = 'SEARCH RESULTS';
-        this.getData();
     }
     PropertyListPage.prototype.ngOnInit = function () {
+    };
+    PropertyListPage.prototype.ionViewDidEnter = function () {
+        this.getData();
     };
     PropertyListPage.prototype.getData = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -181,7 +183,7 @@ var PropertyListPage = /** @class */ (function () {
         });
     };
     PropertyListPage.prototype.goBack = function () {
-        this.navCtrl.goBack('/home');
+        this.goToHome();
     };
     PropertyListPage.prototype.goToHome = function () {
         this.navCtrl.goRoot("/home");

@@ -54,7 +54,7 @@
     "cordova-plugin-ionic-keyboard": "^2.1.3",
     "cordova-plugin-ionic-webview": "^4.1.0",
     "cordova-plugin-nativeaudio": "^3.0.9",
-    "cordova-plugin-powermanagement-orig": "^1.1.2",
+    "cordova-plugin-powermanagement-orig": "git+https://github.com/Viras-/cordova-plugin-powermanagement.git",
     "cordova-plugin-request-location-accuracy": "^2.3.0",
     "cordova-plugin-screen-orientation": "3.0.1",
     "cordova-plugin-splashscreen": "^5.0.2",

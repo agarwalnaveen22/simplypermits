@@ -1,27 +1,24 @@
 {
-  "_from": "cordova-plugin-powermanagement-orig",
+  "_from": "git+https://github.com/Viras-/cordova-plugin-powermanagement.git",
   "_id": "cordova-plugin-powermanagement-orig@1.1.2",
   "_inBundle": false,
-  "_integrity": "sha1-hVuljKvnndWxECXkWG/ywe0YnOA=",
+  "_integrity": "",
   "_location": "/cordova-plugin-powermanagement-orig",
   "_phantomChildren": {},
   "_requested": {
-    "type": "tag",
-    "registry": true,
-    "raw": "cordova-plugin-powermanagement-orig",
-    "name": "cordova-plugin-powermanagement-orig",
-    "escapedName": "cordova-plugin-powermanagement-orig",
-    "rawSpec": "",
-    "saveSpec": null,
-    "fetchSpec": "latest"
+    "type": "git",
+    "raw": "https://github.com/Viras-/cordova-plugin-powermanagement.git",
+    "rawSpec": "https://github.com/Viras-/cordova-plugin-powermanagement.git",
+    "saveSpec": "git+https://github.com/Viras-/cordova-plugin-powermanagement.git",
+    "fetchSpec": "https://github.com/Viras-/cordova-plugin-powermanagement.git",
+    "gitCommittish": null
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/cordova-plugin-powermanagement-orig/-/cordova-plugin-powermanagement-orig-1.1.2.tgz",
-  "_shasum": "855ba58cabe79dd5b11025e4586ff2c1ed189ce0",
-  "_spec": "cordova-plugin-powermanagement-orig",
+  "_resolved": "git+https://github.com/Viras-/cordova-plugin-powermanagement.git#71c349a71042638069170063598a8c1b29630dd2",
+  "_spec": "https://github.com/Viras-/cordova-plugin-powermanagement.git",
   "_where": "/Users/baps/Projects/ionic/SimplyPermits-LPR",
   "author": {
     "name": "Viras-"

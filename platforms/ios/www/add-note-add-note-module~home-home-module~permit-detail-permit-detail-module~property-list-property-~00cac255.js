@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons class=\"logoHeader\" slot=\"start\">\n      <ion-button (click)=\"goToHome()\">\n        <img slot=\"start\" [src]=\"appLogo\" />\n      </ion-button>\n    </ion-buttons>\n    \n    <ion-buttons slot=\"end\">\n      <ion-button class=\"header-menu\" (click)=\"presentMainMenu()\">\n        <ion-icon slot=\"icon-only\" name=\"more\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n  <div class=\"property-dropdown\">\n    <ion-select *ngIf=\"showProperty\" class=\"header-dropdown\" interface=\"popover\" (ionChange)=\"selectProperty($event)\" placeholder=\"Select One\">\n      <ion-select-option *ngFor=\"let property of properties\" value=\"{{property.id}}\">{{property.name}}</ion-select-option>\n    </ion-select>\n    <img [src]=\"lprImage\" />\n    <ion-label *ngIf=\"!showProperty\">{{pageName}}</ion-label>\n  </div>\n  \n</ion-header>"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons class=\"logoHeader\" slot=\"start\">\n      <ion-button (click)=\"goToHome()\">\n        <img slot=\"start\" [src]=\"appLogo\" />\n      </ion-button>\n    </ion-buttons>\n    \n    <ion-buttons slot=\"end\">\n      <ion-button class=\"header-menu\" (click)=\"presentMainMenu()\">\n        <ion-icon slot=\"icon-only\" name=\"more\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n  <div class=\"property-dropdown\">\n    <ion-select *ngIf=\"showProperty\" class=\"header-dropdown\" interface=\"popover\" (ionChange)=\"selectProperty($event)\" placeholder=\"SELECT PROPERTY\">\n      <ion-select-option *ngFor=\"let property of properties\" value=\"{{property.id}}\">{{property.name}}</ion-select-option>\n    </ion-select>\n    <img (click)=\"openVideoScanner()\" [src]=\"lprImage\" />\n    <ion-label *ngIf=\"!showProperty\">{{pageName}}</ion-label>\n  </div>\n  \n</ion-header>"
 
 /***/ }),
 
@@ -162,6 +162,18 @@ var HeaderComponent = /** @class */ (function () {
     };
     HeaderComponent.prototype.goToHome = function () {
         this.navCtrl.goBack('/home');
+    };
+    HeaderComponent.prototype.openVideoScanner = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.restService.askLprMode()];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),

@@ -77,7 +77,7 @@
 		00FC0FA5AF444930AFE49047 /* NativeAudioAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C3110D8B8446DF81553B9C /* NativeAudioAsset.m */; };
 		D7E897DADFA24AADA71A2193 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ECE23E9F89D4E2E8140F0BE /* Foundation.framework */; };
 		8E1B5DCFDC944C31AC17C5E4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8D04D090C4443AA49611C8 /* AudioToolbox.framework */; };
-		2A1D48C6A51547B0A34177A3 /* PowerManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB5CB99361143F99C932963 /* PowerManagement.m */; };
+		12B61DACD89B46649806AB19 /* PowerManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A27D4336754D7C889EE45C /* PowerManagement.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -234,8 +234,8 @@
 		214FA43733834CFD9E474EE4 /* NativeAudioAsset.h */ = {isa = PBXFileReference; name = "NativeAudioAsset.h"; path = "cordova-plugin-nativeaudio/NativeAudioAsset.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		6ECE23E9F89D4E2E8140F0BE /* Foundation.framework */ = {isa = PBXFileReference; name = "Foundation.framework"; path = "System/Library/Frameworks/Foundation.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 		AF8D04D090C4443AA49611C8 /* AudioToolbox.framework */ = {isa = PBXFileReference; name = "AudioToolbox.framework"; path = "System/Library/Frameworks/AudioToolbox.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		7FB5CB99361143F99C932963 /* PowerManagement.m */ = {isa = PBXFileReference; name = "PowerManagement.m"; path = "at.gofg.sportscomputer.powermanagement/PowerManagement.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
-		B8EA46F017C94F28B0F50621 /* PowerManagement.h */ = {isa = PBXFileReference; name = "PowerManagement.h"; path = "at.gofg.sportscomputer.powermanagement/PowerManagement.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		35A27D4336754D7C889EE45C /* PowerManagement.m */ = {isa = PBXFileReference; name = "PowerManagement.m"; path = "at.gofg.sportscomputer.powermanagement/PowerManagement.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		6067A8EA005E4A9997ADAB8B /* PowerManagement.h */ = {isa = PBXFileReference; name = "PowerManagement.h"; path = "at.gofg.sportscomputer.powermanagement/PowerManagement.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -469,8 +469,8 @@
 				09C3110D8B8446DF81553B9C /* NativeAudioAsset.m */,
 				92DAEC5E04F04C209BECA7CF /* NativeAudio.h */,
 				214FA43733834CFD9E474EE4 /* NativeAudioAsset.h */,
-				7FB5CB99361143F99C932963 /* PowerManagement.m */,
-				B8EA46F017C94F28B0F50621 /* PowerManagement.h */,
+				35A27D4336754D7C889EE45C /* PowerManagement.m */,
+				6067A8EA005E4A9997ADAB8B /* PowerManagement.h */,
 			);
 			name = Plugins;
 			path = "SimplyPermits LPR/Plugins";
@@ -643,7 +643,7 @@
 				40D8871348144BFC82965018 /* CDVLocation.m in Sources */,
 				D40C127EB5E542D3B08DDE6E /* NativeAudio.m in Sources */,
 				00FC0FA5AF444930AFE49047 /* NativeAudioAsset.m in Sources */,
-				2A1D48C6A51547B0A34177A3 /* PowerManagement.m in Sources */,
+				12B61DACD89B46649806AB19 /* PowerManagement.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

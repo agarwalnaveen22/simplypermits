@@ -93,6 +93,10 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+@angular/animations@8.2.14
+MIT
+MIT
+
 @angular/common@6.1.4
 MIT
 MIT
@@ -125,7 +129,7 @@ MIT
 MIT
 MIT
 
-@ionic-native/camera@5.0.0-beta.14
+@ionic-native/camera-preview@5.19.1
 MIT
 MIT
 
@@ -137,15 +141,19 @@ MIT
 MIT
 MIT
 
+@ionic-native/diagnostic@5.19.1
+MIT
+MIT
+
 @ionic-native/file-transfer@5.0.0-beta.17
 MIT
 MIT
 
-@ionic-native/http@5.0.0-beta.21
+@ionic-native/geolocation@5.19.1
 MIT
 MIT
 
-@ionic-native/image-resizer@5.0.0-beta.17
+@ionic-native/http@5.0.0-beta.21
 MIT
 MIT
 
@@ -154,6 +162,18 @@ MIT
 MIT
 
 @ionic-native/keyboard@5.13.0
+MIT
+MIT
+
+@ionic-native/location-accuracy@5.19.1
+MIT
+MIT
+
+@ionic-native/native-audio@5.23.0
+MIT
+MIT
+
+@ionic-native/power-management@5.24.0
 MIT
 MIT
 

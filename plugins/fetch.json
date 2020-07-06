@@ -156,7 +156,7 @@
   "at.gofg.sportscomputer.powermanagement": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-powermanagement-orig"
+      "id": "https://github.com/Viras-/cordova-plugin-powermanagement.git"
     },
     "is_top_level": true,
     "variables": {}
