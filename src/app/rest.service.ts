@@ -10,6 +10,7 @@ import { LocationAccuracy } from '@ionic-native/location-accuracy/ngx';
 import { Geolocation, GeolocationOptions } from '@ionic-native/geolocation/ngx';
 import { NativeAudio } from '@ionic-native/native-audio/ngx';
 import { Location } from '@angular/common';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -47,7 +48,8 @@ export class RestService {
     private geolocation: Geolocation,
     private events: Events,
     private location: Location,
-    private nativeAudio: NativeAudio
+    private nativeAudio: NativeAudio,
+    private screenOrientation: ScreenOrientation,
   ) { }
 
   async showLoader(message) {
@@ -404,11 +406,22 @@ export class RestService {
   }
 
   async startCameraPreview() {
+    let deviceWidth = window.screen.width;
+    let deviceHeight = window.screen.height;
+    let setWidth = 0;
+    let setHeight = 0;
+    if(this.screenOrientation.type === 'landscape-primary' || this.screenOrientation.type === 'landscape-secondary'){
+      setWidth = deviceHeight;
+      setHeight = deviceWidth;
+    } else {
+      setWidth = deviceWidth;
+      setHeight = deviceHeight;
+    }
     const cameraPreviewOpts: CameraPreviewOptions = {
       x: 0,
       y: 0,
-      width: window.screen.width,
-      height: window.screen.height,
+      width: setWidth,
+      height: setHeight,
       camera: 'rear',
       tapPhoto: false,
       tapToFocus: false,
@@ -642,11 +655,7 @@ export class RestService {
   async manageFlashMode(mode = 1) {
     try {
       if (mode === 1) {
-        if (this.platform.is('android')) {
-          await this.cameraPreview.setFlashMode('torch');
-        } else {
-          await this.cameraPreview.setFlashMode('on');
-        }
+        await this.cameraPreview.setFlashMode('torch');
       } else {
         await this.cameraPreview.setFlashMode('off');
       }

@@ -34,14 +34,9 @@ export class AppComponent {
     if(resp!=null){
       this.restService.cityApiUrl = resp.toString();
     }
-    let permitFoundLoadStatus;
     try {
-      permitFoundLoadStatus = await this.nativeAudio.preloadSimple('permitFound', 'assets/sound/PermitFound.wav');
-      if(permitFoundLoadStatus === 'OK') {
-        this.restService.permitFoundReady = true;
-      } else {
-        this.restService.permitFoundReady = false;
-      }
+      await this.nativeAudio.preloadSimple('permitFound', 'assets/sound/PermitFound.wav');
+      this.restService.permitFoundReady = true;
     } catch(err) {
       if(err === 'A reference already exists for the specified audio id.') {
         this.restService.permitFoundReady = true;
@@ -50,14 +45,9 @@ export class AppComponent {
       }
     }
 
-    let permitNotFoundLoadStatus;
     try {
-      permitNotFoundLoadStatus = await this.nativeAudio.preloadSimple('permitNotFound', 'assets/sound/NoPermitFound.wav');
-      if(permitNotFoundLoadStatus === 'OK') {
-        this.restService.permitNotFoundReady = true;
-      } else {
-        this.restService.permitNotFoundReady = false;
-      }
+      await this.nativeAudio.preloadSimple('permitNotFound', 'assets/sound/NoPermitFound.wav');
+      this.restService.permitNotFoundReady = true;
     } catch(err) {
       if(err === 'A reference already exists for the specified audio id.') {
         this.restService.permitNotFoundReady = true;

@@ -232,7 +232,7 @@ var AppComponent = /** @class */ (function () {
         this.restService = restService;
         this.nativeAudio = nativeAudio;
         this.setUrl = function () { return __awaiter(_this, void 0, void 0, function () {
-            var resp, permitFoundLoadStatus, err_1, permitNotFoundLoadStatus, err_2;
+            var resp, err_1, err_2;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.restService.getStorage("cityApiUrl")];
@@ -246,13 +246,8 @@ var AppComponent = /** @class */ (function () {
                         _a.trys.push([2, 4, , 5]);
                         return [4 /*yield*/, this.nativeAudio.preloadSimple('permitFound', 'assets/sound/PermitFound.wav')];
                     case 3:
-                        permitFoundLoadStatus = _a.sent();
-                        if (permitFoundLoadStatus === 'OK') {
-                            this.restService.permitFoundReady = true;
-                        }
-                        else {
-                            this.restService.permitFoundReady = false;
-                        }
+                        _a.sent();
+                        this.restService.permitFoundReady = true;
                         return [3 /*break*/, 5];
                     case 4:
                         err_1 = _a.sent();
@@ -267,13 +262,8 @@ var AppComponent = /** @class */ (function () {
                         _a.trys.push([5, 7, , 8]);
                         return [4 /*yield*/, this.nativeAudio.preloadSimple('permitNotFound', 'assets/sound/NoPermitFound.wav')];
                     case 6:
-                        permitNotFoundLoadStatus = _a.sent();
-                        if (permitNotFoundLoadStatus === 'OK') {
-                            this.restService.permitNotFoundReady = true;
-                        }
-                        else {
-                            this.restService.permitNotFoundReady = false;
-                        }
+                        _a.sent();
+                        this.restService.permitNotFoundReady = true;
                         return [3 /*break*/, 8];
                     case 7:
                         err_2 = _a.sent();
@@ -827,6 +817,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic-native/geolocation/ngx */ "./node_modules/@ionic-native/geolocation/ngx/index.js");
 /* harmony import */ var _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic-native/native-audio/ngx */ "./node_modules/@ionic-native/native-audio/ngx/index.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @ionic-native/screen-orientation/ngx */ "./node_modules/@ionic-native/screen-orientation/ngx/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -883,8 +874,9 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var RestService = /** @class */ (function () {
-    function RestService(http, loadingController, alertController, toastController, modalCtrl, storage, navCtrl, keyboard, transfer, cameraPreview, diagnostic, platform, locationAccuracy, geolocation, events, location, nativeAudio) {
+    function RestService(http, loadingController, alertController, toastController, modalCtrl, storage, navCtrl, keyboard, transfer, cameraPreview, diagnostic, platform, locationAccuracy, geolocation, events, location, nativeAudio, screenOrientation) {
         var _this = this;
         this.http = http;
         this.loadingController = loadingController;
@@ -903,6 +895,7 @@ var RestService = /** @class */ (function () {
         this.events = events;
         this.location = location;
         this.nativeAudio = nativeAudio;
+        this.screenOrientation = screenOrientation;
         this.apiUrl = 'https://simplypermits.com/API/rest.php';
         this.cityApiUrl = '';
         this.isKeyBoardHide = false;
@@ -1500,15 +1493,27 @@ var RestService = /** @class */ (function () {
     };
     RestService.prototype.startCameraPreview = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var cameraPreviewOpts;
+            var deviceWidth, deviceHeight, setWidth, setHeight, cameraPreviewOpts;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
+                        deviceWidth = window.screen.width;
+                        deviceHeight = window.screen.height;
+                        setWidth = 0;
+                        setHeight = 0;
+                        if (this.screenOrientation.type === 'landscape-primary' || this.screenOrientation.type === 'landscape-secondary') {
+                            setWidth = deviceHeight;
+                            setHeight = deviceWidth;
+                        }
+                        else {
+                            setWidth = deviceWidth;
+                            setHeight = deviceHeight;
+                        }
                         cameraPreviewOpts = {
                             x: 0,
                             y: 0,
-                            width: window.screen.width,
-                            height: window.screen.height,
+                            width: setWidth,
+                            height: setHeight,
                             camera: 'rear',
                             tapPhoto: false,
                             tapToFocus: false,
@@ -1870,30 +1875,24 @@ var RestService = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 8, , 10]);
-                        if (!(mode === 1)) return [3 /*break*/, 5];
-                        if (!this.platform.is('android')) return [3 /*break*/, 2];
+                        _a.trys.push([0, 5, , 7]);
+                        if (!(mode === 1)) return [3 /*break*/, 2];
                         return [4 /*yield*/, this.cameraPreview.setFlashMode('torch')];
                     case 1:
                         _a.sent();
                         return [3 /*break*/, 4];
-                    case 2: return [4 /*yield*/, this.cameraPreview.setFlashMode('on')];
+                    case 2: return [4 /*yield*/, this.cameraPreview.setFlashMode('off')];
                     case 3:
                         _a.sent();
                         _a.label = 4;
                     case 4: return [3 /*break*/, 7];
-                    case 5: return [4 /*yield*/, this.cameraPreview.setFlashMode('off')];
-                    case 6:
-                        _a.sent();
-                        _a.label = 7;
-                    case 7: return [3 /*break*/, 10];
-                    case 8:
+                    case 5:
                         error_12 = _a.sent();
                         return [4 /*yield*/, this.showToast(error_12)];
-                    case 9:
+                    case 6:
                         _a.sent();
-                        return [3 /*break*/, 10];
-                    case 10: return [2 /*return*/];
+                        return [3 /*break*/, 7];
+                    case 7: return [2 /*return*/];
                 }
             });
         });
@@ -1918,7 +1917,8 @@ var RestService = /** @class */ (function () {
             _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_9__["Geolocation"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Events"],
             _angular_common__WEBPACK_IMPORTED_MODULE_11__["Location"],
-            _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_10__["NativeAudio"]])
+            _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_10__["NativeAudio"],
+            _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_12__["ScreenOrientation"]])
     ], RestService);
     return RestService;
 }());

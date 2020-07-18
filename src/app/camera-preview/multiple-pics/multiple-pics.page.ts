@@ -30,7 +30,7 @@ export class MultiplePicsPage implements OnInit {
     private screenOrientation: ScreenOrientation,
     private navCtrl: NavController,
     private zone: NgZone,
-    private powerManagement: PowerManagement
+    private powerManagement: PowerManagement,
   ) {
     this.events.subscribe('pictureData', (data) => {
       this.plateDataCounter++;
