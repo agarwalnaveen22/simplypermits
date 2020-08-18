@@ -443,7 +443,6 @@ export class RestService {
     let fd = new FormData();
     fd.append("image", blob, "image.jpg");
     this.showLoader('Sending Image');
-    this.stopCamera();
     try {
       let resp: any = await this.scanPlateNumber(fd);
       if (resp.results.length > 0) {
@@ -462,6 +461,7 @@ export class RestService {
           let response = await this.setStorage("vehicleData", pictureResult['json']);
           if (response) {
             this.navCtrl.goForward("/property-list");
+            this.stopCameraPreview();
           }
         } else {
           let response = await this.setStorage("plateData", pictureResult['plateData']);
