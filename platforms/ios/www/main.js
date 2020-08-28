@@ -1554,7 +1554,6 @@ var RestService = /** @class */ (function () {
                         fd = new FormData();
                         fd.append("image", blob, "image.jpg");
                         this.showLoader('Sending Image');
-                        this.stopCamera();
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 12, , 13]);
@@ -1583,6 +1582,7 @@ var RestService = /** @class */ (function () {
                         response = _a.sent();
                         if (response) {
                             this.navCtrl.goForward("/property-list");
+                            this.stopCameraPreview();
                         }
                         return [3 /*break*/, 8];
                     case 6: return [4 /*yield*/, this.setStorage("plateData", pictureResult['plateData'])];

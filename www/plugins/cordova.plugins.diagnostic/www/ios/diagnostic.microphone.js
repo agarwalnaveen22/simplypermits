@@ -2,7 +2,7 @@ cordova.define("cordova.plugins.diagnostic.Diagnostic_Microphone", function(requ
 /* globals cordova, require, exports, module */
 
 /**
- *  Diagnostic Microphone plugin for Android
+ *  Diagnostic Microphone plugin for iOS
  *
  *  Copyright (c) 2015 Working Edge Ltd.
  *  Copyright (c) 2012 AVANTIC ESTUDIO DE INGENIEROS
@@ -22,19 +22,19 @@ var Diagnostic_Microphone = (function(){
      * Public properties
      *
      ********************/
-
+    
     /********************
      *
      * Internal functions
      *
      ********************/
 
-
     /*****************************
      *
      * Protected member functions
      *
      ****************************/
+
 
     /**********************
      *
@@ -51,39 +51,50 @@ var Diagnostic_Microphone = (function(){
      * This callback function is passed a single string parameter containing the error message.
      */
     Diagnostic_Microphone.isMicrophoneAuthorized = function(successCallback, errorCallback) {
-        function onSuccess(status){
-            successCallback(status === Diagnostic.permissionStatus.GRANTED);
-        }
-        Diagnostic_Microphone.getMicrophoneAuthorizationStatus(onSuccess, errorCallback);
+        return cordova.exec(Diagnostic._ensureBoolean(successCallback),
+            errorCallback,
+            'Diagnostic_Microphone',
+            'isMicrophoneAuthorized',
+            []);
     };
 
     /**
      * Returns the authorization status for the application to use the microphone for recording audio.
      *
      * @param {Function} successCallback - The callback which will be called when operation is successful.
-     * This callback function is passed a single string parameter which indicates the authorization status.
-     * Possible values are:
-     * `cordova.plugins.diagnostic.permissionStatus.NOT_REQUESTED`
-     * `cordova.plugins.diagnostic.permissionStatus.DENIED_ONCE`
-     * `cordova.plugins.diagnostic.permissionStatus.DENIED_ALWAYS`
-     * `cordova.plugins.diagnostic.permissionStatus.GRANTED`
+     * This callback function is passed a single string parameter which indicates the authorization status as a constant in `cordova.plugins.diagnostic.permissionStatus`.
      * @param {Function} errorCallback -  The callback which will be called when operation encounters an error.
      * This callback function is passed a single string parameter containing the error message.
      */
     Diagnostic_Microphone.getMicrophoneAuthorizationStatus = function(successCallback, errorCallback) {
-        Diagnostic.getPermissionAuthorizationStatus(successCallback, errorCallback, Diagnostic.permission.RECORD_AUDIO);
+        return cordova.exec(successCallback,
+            errorCallback,
+            'Diagnostic_Microphone',
+            'getMicrophoneAuthorizationStatus',
+            []);
     };
 
     /**
      * Requests access to microphone if authorization was never granted nor denied, will only return access status otherwise.
      *
-     * @param {Function} successCallback - The callback which will be called when authorization request is successful.
+     * @param {Function} successCallback - The callback which will be called when operation is successful.
+     * This callback function is passed a single string parameter indicating whether access to the microphone was granted or denied:
+     * `cordova.plugins.diagnostic.permissionStatus.GRANTED` or `cordova.plugins.diagnostic.permissionStatus.DENIED_ALWAYS`
      * @param {Function} errorCallback - The callback which will be called when an error occurs.
      * This callback function is passed a single string parameter containing the error message.
+     * This works only on iOS 7+.
      */
     Diagnostic_Microphone.requestMicrophoneAuthorization = function(successCallback, errorCallback) {
-        Diagnostic.requestRuntimePermission(successCallback, errorCallback, Diagnostic.permission.RECORD_AUDIO);
+        return cordova.exec(function(isGranted){
+                successCallback(isGranted ? Diagnostic.permissionStatus.GRANTED : Diagnostic.permissionStatus.DENIED_ALWAYS);
+            },
+            errorCallback,
+            'Diagnostic_Microphone',
+            'requestMicrophoneAuthorization',
+            []);
     };
+
+
 
     return Diagnostic_Microphone;
 });

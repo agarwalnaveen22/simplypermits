@@ -2,7 +2,7 @@ cordova.define("cordova.plugins.diagnostic.Diagnostic_Calendar", function(requir
 /* globals cordova, require, exports, module */
 
 /**
- *  Diagnostic Calendar plugin for Android
+ *  Diagnostic Calendar plugin for iOS
  *
  *  Copyright (c) 2015 Working Edge Ltd.
  *  Copyright (c) 2012 AVANTIC ESTUDIO DE INGENIEROS
@@ -22,13 +22,12 @@ var Diagnostic_Calendar = (function(){
      * Public properties
      *
      ********************/
-
+    
     /********************
      *
      * Internal functions
      *
      ********************/
-
 
     /*****************************
      *
@@ -36,54 +35,62 @@ var Diagnostic_Calendar = (function(){
      *
      ****************************/
 
+
     /**********************
      *
      * Public API functions
      *
      **********************/
-
     /**
-     *Checks if the application is authorized to use calendar.
+     * Checks if the application is authorized to use calendar.
      *
      * @param {Function} successCallback - The callback which will be called when operation is successful.
-     * This callback function is passed a single boolean parameter which is TRUE if access to microphone is authorized.
+     * This callback function is passed a single boolean parameter which is TRUE if calendar is authorized for use.
      * @param {Function} errorCallback -  The callback which will be called when operation encounters an error.
      * This callback function is passed a single string parameter containing the error message.
      */
     Diagnostic_Calendar.isCalendarAuthorized = function(successCallback, errorCallback) {
-        function onSuccess(status){
-            successCallback(status === Diagnostic.permissionStatus.GRANTED);
-        }
-        Diagnostic_Calendar.getCalendarAuthorizationStatus(onSuccess, errorCallback);
+        return cordova.exec(Diagnostic._ensureBoolean(successCallback),
+            errorCallback,
+            'Diagnostic_Calendar',
+            'isCalendarAuthorized',
+            []);
     };
 
     /**
-     * Returns the calendar authorization status for the application.
+     * Returns the calendar event authorization status for the application.
      *
      * @param {Function} successCallback - The callback which will be called when operation is successful.
-     * This callback function is passed a single string parameter which indicates the authorization status.
-     * Possible values are:
-     * `cordova.plugins.diagnostic.permissionStatus.NOT_REQUESTED`
-     * `cordova.plugins.diagnostic.permissionStatus.DENIED_ONCE`
-     * `cordova.plugins.diagnostic.permissionStatus.DENIED_ALWAYS`
-     * `cordova.plugins.diagnostic.permissionStatus.GRANTED`
+     * This callback function is passed a single string parameter which indicates the authorization status as a constant in `cordova.plugins.diagnostic.permissionStatus`.
      * @param {Function} errorCallback -  The callback which will be called when operation encounters an error.
      * This callback function is passed a single string parameter containing the error message.
      */
     Diagnostic_Calendar.getCalendarAuthorizationStatus = function(successCallback, errorCallback) {
-        Diagnostic.getPermissionAuthorizationStatus(successCallback, errorCallback, Diagnostic.permission.READ_CALENDAR);
+        return cordova.exec(successCallback,
+            errorCallback,
+            'Diagnostic_Calendar',
+            'getCalendarAuthorizationStatus',
+            []);
     };
 
     /**
-     *  Requests calendar authorization for the application.
-     *  Should only be called if authorization status is NOT_REQUESTED. Calling it when in any other state will have no effect.
+     * Requests calendar event authorization for the application.
+     * Should only be called if authorization status is NOT_REQUESTED. Calling it when in any other state will have no effect.
      *
-     * @param {Function} successCallback - The callback which will be called when authorization request is successful.
-     * @param {Function} errorCallback - The callback which will be called when an error occurs.
+     * @param {Function} successCallback - The callback which will be called when operation is successful.
+     * This callback function is passed a single string parameter indicating whether access to calendar was granted or denied:
+     * `cordova.plugins.diagnostic.permissionStatus.GRANTED` or `cordova.plugins.diagnostic.permissionStatus.DENIED_ALWAYS`
+     * @param {Function} errorCallback -  The callback which will be called when operation encounters an error.
      * This callback function is passed a single string parameter containing the error message.
      */
     Diagnostic_Calendar.requestCalendarAuthorization = function(successCallback, errorCallback) {
-        Diagnostic.requestRuntimePermission(successCallback, errorCallback, Diagnostic.permission.READ_CALENDAR);
+        return cordova.exec(function(isGranted){
+                successCallback(isGranted ? Diagnostic.permissionStatus.GRANTED : Diagnostic.permissionStatus.DENIED_ALWAYS);
+            },
+            errorCallback,
+            'Diagnostic_Calendar',
+            'requestCalendarAuthorization',
+            []);
     };
 
     return Diagnostic_Calendar;
