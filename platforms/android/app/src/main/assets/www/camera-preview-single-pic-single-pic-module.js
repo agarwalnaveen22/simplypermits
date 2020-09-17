@@ -73,7 +73,7 @@ module.exports = "<ion-content>\n  <ion-button *ngIf=\"isFlashMode\" class=\"fla
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-content {\n  --background: transparent;\n  background: transparent; }\n\n.footer_single_pic {\n  --padding-end: 0;\n  --padding-start: 0;\n  --padding-bottom: 0;\n  --padding-top: 0;\n  --min-height: aut0; }\n\n.footer_single_pic ion-buttons {\n    width: 50%;\n    float: left;\n    --padding-end: 0;\n    --padding-start: 0;\n    margin-left: 0;\n    margin-right: 0; }\n\n.footer_single_pic ion-buttons ion-button {\n      width: 100%;\n      text-align: center; }\n\n.footer_single_pic ion-buttons.single_pic_btn_submit {\n    background: #9b1f60; }\n\n.footer_single_pic ion-buttons.single_pic_btn_cancel {\n    background: #191242; }\n\n.flash {\n  --background: transparent;\n  position: absolute;\n  right: 0.1em;\n  top: 0.5em;\n  --box-shadow: none; }\n"
+module.exports = "ion-content {\n  --background: transparent;\n  background: transparent; }\n\n.footer_single_pic {\n  --padding-end: 0;\n  --padding-start: 0;\n  --padding-bottom: 0;\n  --padding-top: 0;\n  --min-height: aut0; }\n\n.footer_single_pic ion-buttons {\n    width: 50%;\n    float: left;\n    --padding-end: 0;\n    --padding-start: 0;\n    margin-left: 0;\n    margin-right: 0; }\n\n.footer_single_pic ion-buttons ion-button {\n      width: 100%;\n      text-align: center; }\n\n.footer_single_pic ion-buttons.single_pic_btn_submit {\n    background: #9b1f60; }\n\n.footer_single_pic ion-buttons.single_pic_btn_cancel {\n    background: #191242; }\n\n.flash {\n  --background: transparent;\n  position: absolute;\n  right: 0.1em;\n  top: 1.5em;\n  --box-shadow: none; }\n"
 
 /***/ }),
 
