@@ -28,7 +28,7 @@
     "@ionic-native/diagnostic": "^5.19.1",
     "@ionic-native/file-transfer": "^5.0.0-beta.17",
     "@ionic-native/geolocation": "^5.19.1",
-    "@ionic-native/http": "^5.0.0-beta.21",
+    "@ionic-native/http": "^5.28.0",
     "@ionic-native/in-app-browser": "^5.0.0-beta.21",
     "@ionic-native/keyboard": "^5.13.0",
     "@ionic-native/location-accuracy": "^5.19.1",

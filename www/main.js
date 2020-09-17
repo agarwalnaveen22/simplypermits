@@ -818,6 +818,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic-native/native-audio/ngx */ "./node_modules/@ionic-native/native-audio/ngx/index.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @ionic-native/screen-orientation/ngx */ "./node_modules/@ionic-native/screen-orientation/ngx/index.js");
+/* harmony import */ var _ionic_native_http_ngx__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @ionic-native/http/ngx */ "./node_modules/@ionic-native/http/ngx/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -875,8 +876,9 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var RestService = /** @class */ (function () {
-    function RestService(http, loadingController, alertController, toastController, modalCtrl, storage, navCtrl, keyboard, transfer, cameraPreview, diagnostic, platform, locationAccuracy, geolocation, events, location, nativeAudio, screenOrientation) {
+    function RestService(http, loadingController, alertController, toastController, modalCtrl, storage, navCtrl, keyboard, transfer, cameraPreview, diagnostic, platform, locationAccuracy, geolocation, events, location, nativeAudio, screenOrientation, nhttp) {
         var _this = this;
         this.http = http;
         this.loadingController = loadingController;
@@ -896,6 +898,7 @@ var RestService = /** @class */ (function () {
         this.location = location;
         this.nativeAudio = nativeAudio;
         this.screenOrientation = screenOrientation;
+        this.nhttp = nhttp;
         this.apiUrl = 'https://simplypermits.com/API/rest.php';
         this.cityApiUrl = '';
         this.isKeyBoardHide = false;
@@ -1325,7 +1328,7 @@ var RestService = /** @class */ (function () {
     };
     RestService.prototype.takeMultiplePictures = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var pic, blobData;
+            var pic;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -1333,9 +1336,7 @@ var RestService = /** @class */ (function () {
                         return [4 /*yield*/, this.cameraPreview.takeSnapshot()];
                     case 1:
                         pic = _a.sent();
-                        pic = 'data:image/jpeg;base64,' + pic;
-                        blobData = this.convertBase64ToBlob(pic);
-                        return [4 /*yield*/, this.checkPermitDetails(blobData)];
+                        return [4 /*yield*/, this.checkPermitDetails(pic)];
                     case 2:
                         _a.sent();
                         _a.label = 3;
@@ -1346,16 +1347,18 @@ var RestService = /** @class */ (function () {
     };
     RestService.prototype.checkPermitDetails = function (blob) {
         return __awaiter(this, void 0, void 0, function () {
-            var fd, resp, lprNumber, requestParams, pictureResult, pictureData, pictureData, error_5;
+            var request, resp, lprNumber, requestParams, pictureResult, pictureData, pictureData, error_5;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 17, , 19]);
-                        fd = new FormData();
-                        fd.append("image", blob, "image.jpg");
-                        return [4 /*yield*/, this.scanPlateNumber(fd)];
+                        request = {
+                            upload: blob
+                        };
+                        return [4 /*yield*/, this.scanPlateNumber(request)];
                     case 1:
                         resp = _a.sent();
+                        resp = JSON.parse(resp.data);
                         if (!(resp.results.length > 0)) return [3 /*break*/, 14];
                         lprNumber = resp.results[0].plate;
                         if (!(lprNumber != this.lastLprNumber)) return [3 /*break*/, 11];
@@ -1426,20 +1429,31 @@ var RestService = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, new Promise(function (resolve, reject) {
-                        _this.http.post('https://api.openalpr.com/v2/recognize?secret_key=sk_e643a005c52cdd50198cfd5c&country=us', data)
-                            .subscribe(function (res) {
-                            resolve(res);
-                        }, function (err) {
-                            reject(err);
+                return [2 /*return*/, new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
+                        var resp, error_6;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    _a.trys.push([0, 2, , 3]);
+                                    return [4 /*yield*/, this.nhttp.post('https://api.platerecognizer.com/v1/plate-reader/', data, { Authorization: 'Token e6ccde48a93495cd13a3e8fd0ceed83bb488f3d8' })];
+                                case 1:
+                                    resp = _a.sent();
+                                    resolve(resp);
+                                    return [3 /*break*/, 3];
+                                case 2:
+                                    error_6 = _a.sent();
+                                    reject(error_6);
+                                    return [3 /*break*/, 3];
+                                case 3: return [2 /*return*/];
+                            }
                         });
-                    })];
+                    }); })];
             });
         });
     };
     RestService.prototype.openCameraSinglePic = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var error_6;
+            var error_7;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -1455,9 +1469,9 @@ var RestService = /** @class */ (function () {
                         _a.label = 3;
                     case 3: return [3 /*break*/, 5];
                     case 4:
-                        error_6 = _a.sent();
+                        error_7 = _a.sent();
                         this.hideLoader();
-                        this.showAlert("Notice", JSON.stringify(error_6));
+                        this.showAlert("Notice", JSON.stringify(error_7));
                         return [3 /*break*/, 5];
                     case 5: return [2 /*return*/];
                 }
@@ -1531,15 +1545,13 @@ var RestService = /** @class */ (function () {
     };
     RestService.prototype.takePicture = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var pic, blobData;
+            var pic;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.cameraPreview.takeSnapshot()];
                     case 1:
                         pic = _a.sent();
-                        pic = 'data:image/jpeg;base64,' + pic;
-                        blobData = this.convertBase64ToBlob(pic);
-                        this.sendImageToServer(blobData);
+                        this.sendImageToServer(pic);
                         return [2 /*return*/];
                 }
             });
@@ -1547,19 +1559,21 @@ var RestService = /** @class */ (function () {
     };
     RestService.prototype.sendImageToServer = function (blob) {
         return __awaiter(this, void 0, void 0, function () {
-            var fd, resp, lprNumber, requestParams, pictureResult, response, response, plateResp, response, error_7;
+            var request, resp, lprNumber, requestParams, pictureResult, response, response, plateResp, response, error_8;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        fd = new FormData();
-                        fd.append("image", blob, "image.jpg");
+                        request = {
+                            upload: blob
+                        };
                         this.showLoader('Sending Image');
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 12, , 13]);
-                        return [4 /*yield*/, this.scanPlateNumber(fd)];
+                        return [4 /*yield*/, this.scanPlateNumber(request)];
                     case 2:
                         resp = _a.sent();
+                        resp = JSON.parse(resp.data);
                         if (!(resp.results.length > 0)) return [3 /*break*/, 9];
                         lprNumber = resp.results[0].plate;
                         requestParams = {
@@ -1609,9 +1623,9 @@ var RestService = /** @class */ (function () {
                         _a.label = 11;
                     case 11: return [3 /*break*/, 13];
                     case 12:
-                        error_7 = _a.sent();
+                        error_8 = _a.sent();
                         this.hideLoader();
-                        this.showAlert('Notice', error_7.statusText);
+                        this.showAlert('Notice', error_8.error);
                         return [3 /*break*/, 13];
                     case 13: return [2 /*return*/];
                 }
@@ -1673,7 +1687,7 @@ var RestService = /** @class */ (function () {
     };
     RestService.prototype.requestLocationAccuracy = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var locationAuthorizationStatus, _a, error_8;
+            var locationAuthorizationStatus, _a, error_9;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
@@ -1715,8 +1729,8 @@ var RestService = /** @class */ (function () {
                         return [3 /*break*/, 12];
                     case 12: return [3 /*break*/, 14];
                     case 13:
-                        error_8 = _b.sent();
-                        console.log("Error: " + JSON.stringify(error_8));
+                        error_9 = _b.sent();
+                        console.log("Error: " + JSON.stringify(error_9));
                         return [3 /*break*/, 14];
                     case 14: return [2 /*return*/];
                 }
@@ -1725,7 +1739,7 @@ var RestService = /** @class */ (function () {
     };
     RestService.prototype.requestLocationAuthorization = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var error_9;
+            var error_10;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -1736,8 +1750,8 @@ var RestService = /** @class */ (function () {
                         this.requestLocationAccuracy();
                         return [3 /*break*/, 3];
                     case 2:
-                        error_9 = _a.sent();
-                        console.log("Error: " + JSON.stringify(error_9));
+                        error_10 = _a.sent();
+                        console.log("Error: " + JSON.stringify(error_10));
                         return [3 /*break*/, 3];
                     case 3: return [2 /*return*/];
                 }
@@ -1746,7 +1760,7 @@ var RestService = /** @class */ (function () {
     };
     RestService.prototype.makeRequest = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var canRequest, error_10;
+            var canRequest, error_11;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -1764,8 +1778,8 @@ var RestService = /** @class */ (function () {
                         _a.label = 4;
                     case 4: return [3 /*break*/, 6];
                     case 5:
-                        error_10 = _a.sent();
-                        console.log("Error: " + error_10);
+                        error_11 = _a.sent();
+                        console.log("Error: " + error_11);
                         return [3 /*break*/, 6];
                     case 6: return [2 /*return*/];
                 }
@@ -1774,7 +1788,7 @@ var RestService = /** @class */ (function () {
     };
     RestService.prototype.getCurrentLocation = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var options, coordinates, error_11;
+            var options, coordinates, error_12;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -1794,7 +1808,7 @@ var RestService = /** @class */ (function () {
                         this.longitude = coordinates.coords.longitude;
                         return [2 /*return*/, coordinates.coords];
                     case 3:
-                        error_11 = _a.sent();
+                        error_12 = _a.sent();
                         return [2 /*return*/, {
                                 latitude: this.latitude,
                                 longitude: this.longitude
@@ -1871,7 +1885,7 @@ var RestService = /** @class */ (function () {
     RestService.prototype.manageFlashMode = function (mode) {
         if (mode === void 0) { mode = 1; }
         return __awaiter(this, void 0, void 0, function () {
-            var error_12;
+            var error_13;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -1887,8 +1901,8 @@ var RestService = /** @class */ (function () {
                         _a.label = 4;
                     case 4: return [3 /*break*/, 7];
                     case 5:
-                        error_12 = _a.sent();
-                        return [4 /*yield*/, this.showToast(error_12)];
+                        error_13 = _a.sent();
+                        return [4 /*yield*/, this.showToast(error_13)];
                     case 6:
                         _a.sent();
                         return [3 /*break*/, 7];
@@ -1918,7 +1932,8 @@ var RestService = /** @class */ (function () {
             _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Events"],
             _angular_common__WEBPACK_IMPORTED_MODULE_11__["Location"],
             _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_10__["NativeAudio"],
-            _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_12__["ScreenOrientation"]])
+            _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_12__["ScreenOrientation"],
+            _ionic_native_http_ngx__WEBPACK_IMPORTED_MODULE_13__["HTTP"]])
     ], RestService);
     return RestService;
 }());

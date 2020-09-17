@@ -11,6 +11,7 @@ import { Geolocation, GeolocationOptions } from '@ionic-native/geolocation/ngx';
 import { NativeAudio } from '@ionic-native/native-audio/ngx';
 import { Location } from '@angular/common';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+import { HTTP } from '@ionic-native/http/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -50,6 +51,7 @@ export class RestService {
     private location: Location,
     private nativeAudio: NativeAudio,
     private screenOrientation: ScreenOrientation,
+    private nhttp: HTTP
   ) { }
 
   async showLoader(message) {
@@ -315,17 +317,17 @@ export class RestService {
   async takeMultiplePictures() {
     if (this.isTakeMultiplePics) {
       var pic = await this.cameraPreview.takeSnapshot();
-      pic = 'data:image/jpeg;base64,' + pic;
-      let blobData = this.convertBase64ToBlob(pic);
-      await this.checkPermitDetails(blobData);
+      await this.checkPermitDetails(pic);
     }
   }
 
   async checkPermitDetails(blob) {
     try {
-      let fd = new FormData();
-      fd.append("image", blob, "image.jpg");
-      let resp: any = await this.scanPlateNumber(fd);
+      let request = {
+        upload: blob
+      }
+      let resp: any = await this.scanPlateNumber(request);
+      resp = JSON.parse(resp.data);
       if (resp.results.length > 0) {
         let lprNumber = resp.results[0].plate;
         if (lprNumber != this.lastLprNumber) {
@@ -371,13 +373,13 @@ export class RestService {
   }
 
   async scanPlateNumber(data) {
-    return new Promise((resolve, reject) => {
-      this.http.post('https://api.openalpr.com/v2/recognize?secret_key=sk_e643a005c52cdd50198cfd5c&country=us', data)
-        .subscribe(res => {
-          resolve(res);
-        }, (err) => {
-          reject(err);
-        });
+    return new Promise(async (resolve, reject) => {
+      try {
+        let resp = await this.nhttp.post('https://api.platerecognizer.com/v1/plate-reader/', data, {Authorization: 'Token e6ccde48a93495cd13a3e8fd0ceed83bb488f3d8'});
+        resolve(resp);
+      } catch (error) {
+        reject(error);
+      }
     });
   }
 
@@ -434,17 +436,17 @@ export class RestService {
 
   async takePicture() {
     var pic = await this.cameraPreview.takeSnapshot();
-    pic = 'data:image/jpeg;base64,' + pic;
-    let blobData = this.convertBase64ToBlob(pic);
-    this.sendImageToServer(blobData);
+    this.sendImageToServer(pic);
   }
 
   async sendImageToServer(blob) {
-    let fd = new FormData();
-    fd.append("image", blob, "image.jpg");
+    let request = {
+      upload: blob
+    }
     this.showLoader('Sending Image');
     try {
-      let resp: any = await this.scanPlateNumber(fd);
+      let resp: any = await this.scanPlateNumber(request);
+      resp = JSON.parse(resp.data);
       if (resp.results.length > 0) {
         let lprNumber = resp.results[0].plate;
         let requestParams: any = {
@@ -483,7 +485,7 @@ export class RestService {
       }
     } catch (error) {
       this.hideLoader();
-      this.showAlert('Notice', error.statusText);
+      this.showAlert('Notice', error.error);
     }
   }
 
