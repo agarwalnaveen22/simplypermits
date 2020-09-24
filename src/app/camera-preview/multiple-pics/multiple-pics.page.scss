@@ -85,6 +85,11 @@ ion-row.result-outer {
 
 .inactive-no-permit {
     background: #9b1f60;
+    ion-item {
+        ion-label {
+            text-transform: uppercase;
+        }
+    }
 }
 
 .footer_multiple_pics {

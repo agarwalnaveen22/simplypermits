@@ -1353,7 +1353,7 @@ var RestService = /** @class */ (function () {
                     case 0:
                         _a.trys.push([0, 17, , 19]);
                         request = {
-                            upload: blob
+                            upload: blob[0]
                         };
                         return [4 /*yield*/, this.scanPlateNumber(request)];
                     case 1:
@@ -1564,7 +1564,7 @@ var RestService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         request = {
-                            upload: blob
+                            upload: blob[0]
                         };
                         this.showLoader('Sending Image');
                         _a.label = 1;

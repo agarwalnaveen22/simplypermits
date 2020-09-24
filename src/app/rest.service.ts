@@ -324,7 +324,7 @@ export class RestService {
   async checkPermitDetails(blob) {
     try {
       let request = {
-        upload: blob
+        upload: blob[0]
       }
       let resp: any = await this.scanPlateNumber(request);
       resp = JSON.parse(resp.data);
@@ -441,7 +441,7 @@ export class RestService {
 
   async sendImageToServer(blob) {
     let request = {
-      upload: blob
+      upload: blob[0]
     }
     this.showLoader('Sending Image');
     try {
