@@ -10,6 +10,7 @@ import { NavController } from '@ionic/angular';
 })
 export class AddNotePage implements OnInit {
   description: string = '';
+  category: string = 'notice';
   permitId: number = 0;
   showProperty: boolean = false;
   pageName: string = 'ADD NOTE';
@@ -33,12 +34,15 @@ export class AddNotePage implements OnInit {
   async addNotes() {
     if (this.description == '') {
       this.restService.showAlert('Error', 'Please enter description');
+    } else if (this.category == '') {
+      this.restService.showAlert('Error', 'Please select category');
     } else {
       let requestData = {
         sp_action: "sp_permit_add_note",
         permit_id: this.permitId,
         page_id: "Permit Detail",
-        add_note: this.description
+        add_note: this.description,
+        note_category: this.category
       }
       await this.restService.keyBoardHide();
       this.restService.showLoader('Saving notes');

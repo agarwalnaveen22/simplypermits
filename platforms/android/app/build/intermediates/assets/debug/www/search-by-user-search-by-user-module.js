@@ -65,7 +65,7 @@ var SearchByUserPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header [showProperty]=\"showProperty\" [pageName]=\"pageName\"></app-header>\n\n<ion-content padding text-center>\n\n  <ion-item class=\"margin-bottom\" margin-top>\n    <ion-icon slot=\"start\" name=\"contact\"></ion-icon>\n    <ion-input [(ngModel)]=\"firstName\" placeholder=\"First Name\"></ion-input>\n  </ion-item>\n\n  <ion-item class=\"margin-bottom\">\n    <ion-icon slot=\"start\" name=\"contact\"></ion-icon>\n    <ion-input [(ngModel)]=\"lastName\" placeholder=\"Last Name\"></ion-input>\n  </ion-item>\n\n  <ion-item class=\"margin-bottom\">\n    <ion-icon slot=\"start\" name=\"home\"></ion-icon>\n    <ion-input [(ngModel)]=\"residentUnit\" placeholder=\"Resident Unit\"></ion-input>\n  </ion-item>\n\n  <ion-item class=\"margin-bottom\">\n    <ion-icon slot=\"start\" name=\"mail\"></ion-icon>\n    <ion-input [(ngModel)]=\"email\" type=\"email\" placeholder=\"Email Address\"></ion-input>\n  </ion-item>\n\n  <ion-item class=\"margin-bottom\">\n    <ion-icon slot=\"start\" name=\"call\"></ion-icon>\n    <ion-input [(ngModel)]=\"phone\" type=\"tel\" placeholder=\"Phone Number\"></ion-input>\n  </ion-item>\n\n  <ion-button class=\"loginButton\" expand=\"block\" size=\"large\" (click)=\"submitForm()\">Search</ion-button>\n\n</ion-content>\n\n<ion-footer (click)=\"goToBack()\">\n  <ion-toolbar>\n    <ion-title text-center>BACK</ion-title>\n  </ion-toolbar>\n</ion-footer>"
+module.exports = "<app-header [showProperty]=\"showProperty\" [pageName]=\"pageName\"></app-header>\n\n<ion-content padding text-center>\n\n  <ion-item class=\"margin-bottom\" margin-top>\n    <ion-icon slot=\"start\" name=\"contact\"></ion-icon>\n    <ion-input [(ngModel)]=\"firstName\" placeholder=\"First Name\"></ion-input>\n  </ion-item>\n\n  <ion-item class=\"margin-bottom\">\n    <ion-icon slot=\"start\" name=\"contact\"></ion-icon>\n    <ion-input [(ngModel)]=\"lastName\" placeholder=\"Last Name\"></ion-input>\n  </ion-item>\n\n  <ion-item class=\"margin-bottom\">\n    <ion-icon slot=\"end\" src=\"assets/icon/Second-Billing-Address.svg\"></ion-icon>\n    <ion-input [(ngModel)]=\"residentUnit\" placeholder=\"{{dynamic_field}}\"></ion-input>\n  </ion-item>\n\n  <ion-item class=\"margin-bottom\">\n    <ion-icon slot=\"start\" name=\"mail\"></ion-icon>\n    <ion-input [(ngModel)]=\"email\" type=\"email\" placeholder=\"Email Address\"></ion-input>\n  </ion-item>\n\n  <ion-item class=\"margin-bottom\">\n    <ion-icon slot=\"start\" name=\"call\"></ion-icon>\n    <ion-input [(ngModel)]=\"phone\" type=\"tel\" placeholder=\"Phone Number\"></ion-input>\n  </ion-item>\n\n  <ion-button class=\"loginButton\" expand=\"block\" size=\"large\" (click)=\"submitForm()\">Search</ion-button>\n\n</ion-content>\n\n<ion-footer (click)=\"goToBack()\">\n  <ion-toolbar>\n    <ion-title text-center>BACK</ion-title>\n  </ion-toolbar>\n</ion-footer>"
 
 /***/ }),
 
@@ -152,10 +152,46 @@ var SearchByUserPage = /** @class */ (function () {
         this.residentUnit = '';
         this.email = '';
         this.phone = '';
+        this.dynamic_field = '';
         this.showProperty = false;
         this.pageName = 'SEARCH BY USER';
     }
     SearchByUserPage.prototype.ngOnInit = function () {
+        this.getDynamicField();
+    };
+    SearchByUserPage.prototype.getDynamicField = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            var requestData;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        requestData = {
+                            sp_action: "sp_lpr_custom_option"
+                        };
+                        return [4 /*yield*/, this.restService.keyBoardHide()];
+                    case 1:
+                        _a.sent();
+                        this.restService.showLoader('Loading...');
+                        this.restService.makeGetRequest(requestData).then(function (result) { return __awaiter(_this, void 0, void 0, function () {
+                            return __generator(this, function (_a) {
+                                this.restService.hideLoader();
+                                this.dynamic_field = result['second_billing_address'];
+                                return [2 /*return*/];
+                            });
+                        }); }, function (err) {
+                            _this.restService.hideLoader();
+                            if (err.error) {
+                                _this.restService.showAlert("Notice", _this.restService.setErrorMessageArray(err.error.message));
+                            }
+                            else {
+                                _this.restService.showAlert("Notice", err.statusText);
+                            }
+                        });
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
     SearchByUserPage.prototype.goToBack = function () {
         this.location.back();
@@ -211,7 +247,7 @@ var SearchByUserPage = /** @class */ (function () {
                                         }
                                         return [3 /*break*/, 4];
                                     case 3:
-                                        this.restService.showAlert("Notice", "No vehicles found");
+                                        this.restService.showAlert("Notice", "No users found");
                                         _a.label = 4;
                                     case 4: return [2 /*return*/];
                                 }

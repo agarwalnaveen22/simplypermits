@@ -14,6 +14,7 @@ export class SearchByUserPage implements OnInit {
   residentUnit: string = '';
   email: string = '';
   phone: string = '';
+  dynamic_field: string = '';
   showProperty: boolean = false;
   pageName: string = 'SEARCH BY USER';
   constructor(
@@ -23,6 +24,26 @@ export class SearchByUserPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getDynamicField();
+  }
+
+  async getDynamicField() {
+    let requestData = {
+      sp_action: "sp_lpr_custom_option"
+    }
+    await this.restService.keyBoardHide();
+    this.restService.showLoader('Loading...');
+    this.restService.makeGetRequest(requestData).then(async (result) => {
+      this.restService.hideLoader();
+      this.dynamic_field = result['second_billing_address'];
+    }, (err) => {
+      this.restService.hideLoader();
+      if (err.error) {
+        this.restService.showAlert("Notice", this.restService.setErrorMessageArray(err.error.message));
+      } else {
+        this.restService.showAlert("Notice", err.statusText);
+      }
+    });
   }
 
   goToBack() {
@@ -63,7 +84,7 @@ export class SearchByUserPage implements OnInit {
           this.navCtrl.goForward("/property-list");
         }
       } else {
-        this.restService.showAlert("Notice", "No vehicles found");
+        this.restService.showAlert("Notice", "No users found");
       }
 
     }, (err) => {

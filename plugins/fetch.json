@@ -160,5 +160,13 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-cleartext": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-cleartext"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

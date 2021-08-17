@@ -65,7 +65,7 @@ var AddNotePageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header [showProperty]=\"showProperty\" [pageName]=\"pageName\"></app-header>\n\n<ion-content padding text-center>\n\n<ion-item class=\"description_area\">\n  <ion-textarea rows=\"21\" [(ngModel)]=\"description\" placeholder=\"Add note here...\"></ion-textarea>\n</ion-item>\n</ion-content>\n\n<ion-footer>\n  <ion-toolbar class=\"footer_add_note\" >\n    <ion-buttons class=\"add_note_btn_cancel\" (click)=\"goBack()\"  text-center slot=\"start\">\n      <ion-button>\n        <ion-label>CANCEL</ion-label>\n      </ion-button>\n    </ion-buttons>\n    \n    <ion-buttons class=\"add_note_btn_submit\" text-center slot=\"end\" (click)=\"addNotes()\">\n      <ion-button>\n        <ion-label>SUBMIT</ion-label>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-footer>"
+module.exports = "<app-header [showProperty]=\"showProperty\" [pageName]=\"pageName\"></app-header>\n\n<ion-content padding text-center>\n\n  <ion-item class=\"category_area\">\n    <ion-select [(ngModel)]=\"category\" interface=\"popover\" placeholder=\"SELECT CATEGORY\">\n      <ion-select-option value=\"notice\">Notice</ion-select-option>\n      <ion-select-option value=\"warning\">Warning</ion-select-option>\n      <ion-select-option value=\"violation\">Violation</ion-select-option>\n    </ion-select>\n  </ion-item>\n\n  <ion-item class=\"description_area\">\n    <ion-textarea rows=\"21\" [(ngModel)]=\"description\" placeholder=\"Add note here...\"></ion-textarea>\n  </ion-item>\n</ion-content>\n\n<ion-footer>\n  <ion-toolbar class=\"footer_add_note\">\n    <ion-buttons class=\"add_note_btn_cancel\" (click)=\"goBack()\" text-center slot=\"start\">\n      <ion-button>\n        <ion-label>CANCEL</ion-label>\n      </ion-button>\n    </ion-buttons>\n\n    <ion-buttons class=\"add_note_btn_submit\" text-center slot=\"end\" (click)=\"addNotes()\">\n      <ion-button>\n        <ion-label>SUBMIT</ion-label>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-footer>"
 
 /***/ }),
 
@@ -76,7 +76,7 @@ module.exports = "<app-header [showProperty]=\"showProperty\" [pageName]=\"pageN
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".description_area {\n  background: #191242;\n  height: 100%; }\n  .description_area ion-textarea {\n    color: #FFF;\n    height: 100%; }\n  .footer_add_note {\n  --padding-end: 0;\n  --padding-start: 0;\n  --padding-bottom: 0;\n  --padding-top: 0;\n  --min-height: aut0; }\n  .footer_add_note ion-buttons {\n    width: 50%;\n    float: left;\n    --padding-end: 0;\n    --padding-start: 0;\n    margin-left: 0;\n    margin-right: 0; }\n  .footer_add_note ion-buttons ion-button {\n      width: 100%;\n      text-align: center; }\n  .footer_add_note ion-buttons.add_note_btn_submit {\n    background: #9b1f60; }\n  .footer_add_note ion-buttons.add_note_btn_cancel {\n    background: #191242; }\n"
+module.exports = ".category_area {\n  --padding-start: 0;\n  --padding-end: 0;\n  --inner-padding-end: 0;\n  width: 100%; }\n  .category_area ion-select {\n    background: #191242;\n    width: 100%;\n    max-width: 100%; }\n  .description_area {\n  background: #191242;\n  height: 85%; }\n  .description_area ion-textarea {\n    color: #FFF;\n    height: 85%; }\n  .footer_add_note {\n  --padding-end: 0;\n  --padding-start: 0;\n  --padding-bottom: 0;\n  --padding-top: 0;\n  --min-height: aut0; }\n  .footer_add_note ion-buttons {\n    width: 50%;\n    float: left;\n    --padding-end: 0;\n    --padding-start: 0;\n    margin-left: 0;\n    margin-right: 0; }\n  .footer_add_note ion-buttons ion-button {\n      width: 100%;\n      text-align: center; }\n  .footer_add_note ion-buttons.add_note_btn_submit {\n    background: #9b1f60; }\n  .footer_add_note ion-buttons.add_note_btn_cancel {\n    background: #191242; }\n"
 
 /***/ }),
 
@@ -149,6 +149,7 @@ var AddNotePage = /** @class */ (function () {
         this.route = route;
         this.navCtrl = navCtrl;
         this.description = '';
+        this.category = 'notice';
         this.permitId = 0;
         this.showProperty = false;
         this.pageName = 'ADD NOTE';
@@ -170,16 +171,21 @@ var AddNotePage = /** @class */ (function () {
                     case 0:
                         if (!(this.description == '')) return [3 /*break*/, 1];
                         this.restService.showAlert('Error', 'Please enter description');
-                        return [3 /*break*/, 3];
+                        return [3 /*break*/, 4];
                     case 1:
+                        if (!(this.category == '')) return [3 /*break*/, 2];
+                        this.restService.showAlert('Error', 'Please select category');
+                        return [3 /*break*/, 4];
+                    case 2:
                         requestData = {
                             sp_action: "sp_permit_add_note",
                             permit_id: this.permitId,
                             page_id: "Permit Detail",
-                            add_note: this.description
+                            add_note: this.description,
+                            note_category: this.category
                         };
                         return [4 /*yield*/, this.restService.keyBoardHide()];
-                    case 2:
+                    case 3:
                         _a.sent();
                         this.restService.showLoader('Saving notes');
                         this.restService.makePostRequest(requestData).then(function (result) {
@@ -200,8 +206,8 @@ var AddNotePage = /** @class */ (function () {
                                 _this.restService.showAlert("Notice", err.statusText);
                             }
                         });
-                        _a.label = 3;
-                    case 3: return [2 /*return*/];
+                        _a.label = 4;
+                    case 4: return [2 /*return*/];
                 }
             });
         });

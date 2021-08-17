@@ -580,8 +580,8 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/baps/Projects/ionic/SimplyPermits-LPR/src/theme/variables.scss */"./src/theme/variables.scss");
-module.exports = __webpack_require__(/*! /Users/baps/Projects/ionic/SimplyPermits-LPR/src/global.scss */"./src/global.scss");
+__webpack_require__(/*! /Users/kunalladdha/Projects/react-native/simplypermits/src/theme/variables.scss */"./src/theme/variables.scss");
+module.exports = __webpack_require__(/*! /Users/kunalladdha/Projects/react-native/simplypermits/src/global.scss */"./src/global.scss");
 
 
 /***/ })

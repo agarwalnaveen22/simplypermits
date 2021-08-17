@@ -65,7 +65,7 @@ var ViewNotesPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header [showProperty]=\"showProperty\" [pageName]=\"pageName\"></app-header>\n\n<ion-content padding text-center>\n  <ion-refresher slot=\"fixed\" (ionRefresh)=\"refreshData($event)\">\n    <ion-refresher-content></ion-refresher-content>\n  </ion-refresher>\n  <ion-card *ngFor=\"let note of notes\" class=\"view_permit_notes\">\n    <ion-item class=\"header\">\n      <ion-label class=\"date_block\" text-wrap>{{note.notes_date}}</ion-label>\n      <ion-label text-end slot=\"end\">{{note.notes_time}}</ion-label>\n    </ion-item>\n    <ion-card-content [innerHtml]=\"note.notes_desc\">\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n\n<ion-footer (click)=\"goBack()\">\n  <ion-toolbar>\n    <ion-title text-center>BACK</ion-title>\n  </ion-toolbar>\n</ion-footer>"
+module.exports = "<app-header [showProperty]=\"showProperty\" [pageName]=\"pageName\"></app-header>\n\n<ion-content padding text-center>\n  <ion-refresher slot=\"fixed\" (ionRefresh)=\"refreshData($event)\">\n    <ion-refresher-content></ion-refresher-content>\n  </ion-refresher>\n  <ion-card *ngFor=\"let note of notes\" class=\"view_permit_notes\">\n    <ion-item class=\"header\" [ngStyle]=\"{'background-color': (note.note_category=='notice') ? '#5f2877' : (note.note_category=='warning' ? '#f26825' : '#c8202b')}\">\n      <ion-label class=\"note_category\">{{note.note_category}}</ion-label>\n    </ion-item>\n    <ion-item class=\"header\" [ngStyle]=\"{'background-color': (note.note_category=='notice') ? '#5f2877' : (note.note_category=='warning' ? '#f26825' : '#c8202b')}\">\n      <ion-label class=\"date_block\" text-wrap>{{note.notes_date}}</ion-label>\n      <ion-label text-end slot=\"end\">{{note.notes_time}}</ion-label>\n    </ion-item>\n    <ion-card-content [innerHtml]=\"note.notes_desc\">\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n\n<ion-footer (click)=\"goBack()\">\n  <ion-toolbar>\n    <ion-title text-center>BACK</ion-title>\n  </ion-toolbar>\n</ion-footer>"
 
 /***/ }),
 
@@ -76,7 +76,7 @@ module.exports = "<app-header [showProperty]=\"showProperty\" [pageName]=\"pageN
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-toolbar {\n  --background: #1a1142; }\n\n.view_permit_notes {\n  background: #17082d;\n  margin-bottom: 2em; }\n\n.view_permit_notes .header {\n    background: #1b1549; }\n\n.view_permit_notes .header .date_block {\n      margin: 0; }\n\n.view_permit_notes ion-card-content {\n    color: #FFFFFF;\n    text-align: left; }\n"
+module.exports = "ion-toolbar {\n  --background: #1a1142; }\n\n.view_permit_notes {\n  background: #17082d;\n  margin-bottom: 2em; }\n\n.view_permit_notes .header {\n    background: #1b1549; }\n\n.view_permit_notes .header .date_block {\n      margin: 0; }\n\n.view_permit_notes ion-card-content {\n    color: #FFFFFF;\n    text-align: left; }\n\n.note_category {\n  text-transform: capitalize;\n  text-align: center; }\n"
 
 /***/ }),
 
@@ -184,14 +184,14 @@ var ViewNotesPage = /** @class */ (function () {
                         return [4 /*yield*/, this.restService.keyBoardHide()];
                     case 1:
                         _a.sent();
-                        this.restService.showLoader('Getting Permit Notes');
+                        // this.restService.showLoader('Getting Permit Notes');
                         this.restService.makeGetRequest(requestData).then(function (result) {
-                            _this.restService.hideLoader();
+                            // this.restService.hideLoader();
                             if (result['PermitDetail']) {
                                 _this.notes = result['PermitDetail']['Notes'];
                             }
                         }, function (err) {
-                            _this.restService.hideLoader();
+                            // this.restService.hideLoader();
                             if (err.error) {
                                 _this.restService.showAlert("Notice", _this.restService.setErrorMessageArray(err.error.message));
                             }

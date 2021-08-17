@@ -1,6 +1,21 @@
 {
     "logs": [
         {
+            "outputFile": "/Users/kunalladdha/Projects/react-native/simplypermits/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-port/values-port.xml",
+            "map": [
+                {
+                    "source": "/Users/kunalladdha/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/36a68da23a850dbccc2fbc6d9e41a04f/res/values-port/values-port.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "55",
+                        "endOffsets": "106"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "/Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-port/values-port.xml",
             "map": [
                 {

@@ -457,6 +457,14 @@ module.exports = [
     "clobbers": [
       "window.powerManagement"
     ]
+  },
+  {
+    "id": "cordova-plugin-cleartext.CordovaPluginsCleartext",
+    "file": "plugins/cordova-plugin-cleartext/www/CordovaPluginsCleartext.js",
+    "pluginId": "cordova-plugin-cleartext",
+    "clobbers": [
+      "cordova.plugins.CordovaPluginsCleartext"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -481,7 +489,8 @@ module.exports.metadata =
   "cordova-plugin-geolocation": "4.0.2",
   "cordova-android-support-gradle-release": "3.0.1",
   "cordova-plugin-nativeaudio": "3.0.9",
-  "at.gofg.sportscomputer.powermanagement": "1.1.2"
+  "at.gofg.sportscomputer.powermanagement": "1.1.2",
+  "cordova-plugin-cleartext": "1.0.0"
 };
 // BOTTOM OF METADATA
 });

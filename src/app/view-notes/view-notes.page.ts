@@ -46,15 +46,15 @@ export class ViewNotesPage implements OnInit {
       permit_id: this.permitId
     }
     await this.restService.keyBoardHide();
-    this.restService.showLoader('Getting Permit Notes');
+    // this.restService.showLoader('Getting Permit Notes');
     this.restService.makeGetRequest(requestData).then((result) => {
-      this.restService.hideLoader();
+      // this.restService.hideLoader();
       if (result['PermitDetail']) {
         this.notes = result['PermitDetail']['Notes'];
       }
 
     }, (err) => {
-      this.restService.hideLoader();
+      // this.restService.hideLoader();
       if (err.error) {
         this.restService.showAlert("Notice", this.restService.setErrorMessageArray(err.error.message));
       } else {

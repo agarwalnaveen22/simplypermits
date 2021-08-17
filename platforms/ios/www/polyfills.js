@@ -5469,7 +5469,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/baps/Projects/ionic/SimplyPermits-LPR/src/polyfills.ts */"./src/polyfills.ts");
+module.exports = __webpack_require__(/*! /Users/kunalladdha/Projects/react-native/simplypermits/src/polyfills.ts */"./src/polyfills.ts");
 
 
 /***/ })

@@ -68,6 +68,9 @@
     },
     "at.gofg.sportscomputer.powermanagement": {
       "PACKAGE_NAME": "com.simplypermits"
+    },
+    "cordova-plugin-cleartext": {
+      "PACKAGE_NAME": "com.simplypermits"
     }
   },
   "dependent_plugins": {

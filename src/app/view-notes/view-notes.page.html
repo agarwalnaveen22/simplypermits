@@ -5,7 +5,10 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <ion-card *ngFor="let note of notes" class="view_permit_notes">
-    <ion-item class="header">
+    <ion-item class="header" [ngStyle]="{'background-color': (note.note_category=='notice') ? '#5f2877' : (note.note_category=='warning' ? '#f26825' : '#c8202b')}">
+      <ion-label class="note_category">{{note.note_category}}</ion-label>
+    </ion-item>
+    <ion-item class="header" [ngStyle]="{'background-color': (note.note_category=='notice') ? '#5f2877' : (note.note_category=='warning' ? '#f26825' : '#c8202b')}">
       <ion-label class="date_block" text-wrap>{{note.notes_date}}</ion-label>
       <ion-label text-end slot="end">{{note.notes_time}}</ion-label>
     </ion-item>
