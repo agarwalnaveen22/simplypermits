@@ -7,6 +7,9 @@
     "files": {}
   },
   "installed_plugins": {
+    "at.gofg.sportscomputer.powermanagement": {
+      "PACKAGE_NAME": "com.simplypermits"
+    },
     "com-badrit-base64": {
       "PACKAGE_NAME": "com.simplypermits"
     },
@@ -19,6 +22,9 @@
     },
     "cordova-plugin-camera-preview": {
       "ANDROID_SUPPORT_LIBRARY_VERSION": "26+",
+      "PACKAGE_NAME": "com.simplypermits"
+    },
+    "cordova-plugin-cleartext": {
       "PACKAGE_NAME": "com.simplypermits"
     },
     "cordova-plugin-device": {
@@ -43,6 +49,9 @@
       "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+",
       "PACKAGE_NAME": "com.simplypermits"
     },
+    "cordova-plugin-nativeaudio": {
+      "PACKAGE_NAME": "com.simplypermits"
+    },
     "cordova-plugin-request-location-accuracy": {
       "PLAY_SERVICES_LOCATION_VERSION": "16.+",
       "PACKAGE_NAME": "com.simplypermits"
@@ -61,15 +70,6 @@
     },
     "cordova.plugins.diagnostic": {
       "ANDROID_SUPPORT_VERSION": "28.+",
-      "PACKAGE_NAME": "com.simplypermits"
-    },
-    "cordova-plugin-nativeaudio": {
-      "PACKAGE_NAME": "com.simplypermits"
-    },
-    "at.gofg.sportscomputer.powermanagement": {
-      "PACKAGE_NAME": "com.simplypermits"
-    },
-    "cordova-plugin-cleartext": {
       "PACKAGE_NAME": "com.simplypermits"
     }
   },

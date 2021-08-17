@@ -9,6 +9,10 @@
         "parents": {
           "/*": [
             {
+              "xml": "<feature name=\"PowerManagement\"><param name=\"android-package\" value=\"org.apache.cordova.powermanagement.PowerManagement\" /></feature>",
+              "count": 1
+            },
+            {
               "xml": "<feature name=\"Base64\"><param name=\"android-package\" value=\"com.badrit.Base64.Base64Plugin\" /></feature>",
               "count": 1
             },
@@ -29,6 +33,10 @@
               "count": 1
             },
             {
+              "xml": "<feature name=\"CordovaPluginsCleartext\"><param name=\"android-package\" value=\"cordova.plugins.cleartext\" /></feature>",
+              "count": 1
+            },
+            {
               "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
               "count": 1
             },
@@ -42,6 +50,10 @@
             },
             {
               "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"NativeAudio\"><param name=\"android-package\" value=\"com.rjfun.cordova.plugin.nativeaudio.NativeAudio\" /></feature>",
               "count": 1
             },
             {
@@ -59,18 +71,6 @@
             {
               "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
-            },
-            {
-              "xml": "<feature name=\"NativeAudio\"><param name=\"android-package\" value=\"com.rjfun.cordova.plugin.nativeaudio.NativeAudio\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"PowerManagement\"><param name=\"android-package\" value=\"org.apache.cordova.powermanagement.PowerManagement\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"CordovaPluginsCleartext\"><param name=\"android-package\" value=\"cordova.plugins.cleartext\" /></feature>",
-              "count": 1
             }
           ]
         }
@@ -78,6 +78,10 @@
       "AndroidManifest.xml": {
         "parents": {
           "/*": [
+            {
+              "xml": "<uses-permission android:name=\"android.permission.WAKE_LOCK\" />",
+              "count": 1
+            },
             {
               "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
               "count": 3
@@ -95,10 +99,6 @@
               "count": 1
             },
             {
-              "xml": "<uses-permission android:name=\"android.permission.BLUETOOTH\" />",
-              "count": 1
-            },
-            {
               "xml": "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\" />",
               "count": 1
             },
@@ -107,7 +107,7 @@
               "count": 1
             },
             {
-              "xml": "<uses-permission android:name=\"android.permission.WAKE_LOCK\" />",
+              "xml": "<uses-permission android:name=\"android.permission.BLUETOOTH\" />",
               "count": 1
             }
           ],
@@ -133,6 +133,25 @@
             {
               "xml": "<activity android:name=\"com.cordovaplugincamerapreview.CameraActivity\" android:screenOrientation=\"portrait\" android:theme=\"@style/CameraPreviewTheme\" />",
               "count": 1
+            }
+          ]
+        }
+      },
+      "app/src/main/AndroidManifest.xml": {
+        "parents": {
+          "/manifest/application": [
+            {
+              "xml": "<application android:usesCleartextTraffic=\"true\" />",
+              "count": 1,
+              "mode": "merge",
+              "plugin": "cordova-plugin-cleartext",
+              "oldAttrib": {
+                "android:hardwareAccelerated": "true",
+                "android:icon": "@mipmap/ic_launcher",
+                "android:label": "@string/app_name",
+                "android:supportsRtl": "true",
+                "android:usesCleartextTraffic": "true"
+              }
             }
           ]
         }
@@ -202,29 +221,13 @@
             }
           ]
         }
-      },
-      "app/src/main/AndroidManifest.xml": {
-        "parents": {
-          "/manifest/application": [
-            {
-              "xml": "<application android:usesCleartextTraffic=\"true\" />",
-              "count": 1,
-              "mode": "merge",
-              "plugin": "cordova-plugin-cleartext",
-              "oldAttrib": {
-                "android:hardwareAccelerated": "true",
-                "android:icon": "@mipmap/icon",
-                "android:label": "@string/app_name",
-                "android:supportsRtl": "true",
-                "android:usesCleartextTraffic": "true"
-              }
-            }
-          ]
-        }
       }
     }
   },
   "installed_plugins": {
+    "at.gofg.sportscomputer.powermanagement": {
+      "PACKAGE_NAME": "com.simplypermits"
+    },
     "com-badrit-base64": {
       "PACKAGE_NAME": "com.simplypermits"
     },
@@ -240,6 +243,9 @@
     },
     "cordova-plugin-camera-preview": {
       "ANDROID_SUPPORT_LIBRARY_VERSION": "26+",
+      "PACKAGE_NAME": "com.simplypermits"
+    },
+    "cordova-plugin-cleartext": {
       "PACKAGE_NAME": "com.simplypermits"
     },
     "cordova-plugin-device": {
@@ -259,6 +265,9 @@
     },
     "cordova-plugin-ionic-webview": {
       "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+",
+      "PACKAGE_NAME": "com.simplypermits"
+    },
+    "cordova-plugin-nativeaudio": {
       "PACKAGE_NAME": "com.simplypermits"
     },
     "cordova-plugin-request-location-accuracy": {
@@ -283,19 +292,18 @@
     "cordova.plugins.diagnostic": {
       "ANDROID_SUPPORT_VERSION": "28.+",
       "PACKAGE_NAME": "com.simplypermits"
-    },
-    "cordova-plugin-nativeaudio": {
-      "PACKAGE_NAME": "com.simplypermits"
-    },
-    "at.gofg.sportscomputer.powermanagement": {
-      "PACKAGE_NAME": "com.simplypermits"
-    },
-    "cordova-plugin-cleartext": {
-      "PACKAGE_NAME": "com.simplypermits"
     }
   },
   "dependent_plugins": {},
   "modules": [
+    {
+      "id": "at.gofg.sportscomputer.powermanagement.device",
+      "file": "plugins/at.gofg.sportscomputer.powermanagement/www/powermanagement.js",
+      "pluginId": "at.gofg.sportscomputer.powermanagement",
+      "clobbers": [
+        "window.powerManagement"
+      ]
+    },
     {
       "id": "com-badrit-base64.Base64",
       "file": "plugins/com-badrit-base64/www/Base64.js",
@@ -524,6 +532,14 @@
       ]
     },
     {
+      "id": "cordova-plugin-cleartext.CordovaPluginsCleartext",
+      "file": "plugins/cordova-plugin-cleartext/www/CordovaPluginsCleartext.js",
+      "pluginId": "cordova-plugin-cleartext",
+      "clobbers": [
+        "cordova.plugins.CordovaPluginsCleartext"
+      ]
+    },
+    {
       "id": "cordova-plugin-device.device",
       "file": "plugins/cordova-plugin-device/www/device.js",
       "pluginId": "cordova-plugin-device",
@@ -584,6 +600,14 @@
       "pluginId": "cordova-plugin-ionic-webview",
       "clobbers": [
         "Ionic.WebView"
+      ]
+    },
+    {
+      "id": "cordova-plugin-nativeaudio.nativeaudio",
+      "file": "plugins/cordova-plugin-nativeaudio/www/nativeaudio.js",
+      "pluginId": "cordova-plugin-nativeaudio",
+      "clobbers": [
+        "window.plugins.NativeAudio"
       ]
     },
     {
@@ -711,53 +735,29 @@
       "merges": [
         "cordova.plugins.diagnostic.external_storage"
       ]
-    },
-    {
-      "id": "cordova-plugin-nativeaudio.nativeaudio",
-      "file": "plugins/cordova-plugin-nativeaudio/www/nativeaudio.js",
-      "pluginId": "cordova-plugin-nativeaudio",
-      "clobbers": [
-        "window.plugins.NativeAudio"
-      ]
-    },
-    {
-      "id": "at.gofg.sportscomputer.powermanagement.device",
-      "file": "plugins/at.gofg.sportscomputer.powermanagement/www/powermanagement.js",
-      "pluginId": "at.gofg.sportscomputer.powermanagement",
-      "clobbers": [
-        "window.powerManagement"
-      ]
-    },
-    {
-      "id": "cordova-plugin-cleartext.CordovaPluginsCleartext",
-      "file": "plugins/cordova-plugin-cleartext/www/CordovaPluginsCleartext.js",
-      "pluginId": "cordova-plugin-cleartext",
-      "clobbers": [
-        "cordova.plugins.CordovaPluginsCleartext"
-      ]
     }
   ],
   "plugin_metadata": {
+    "at.gofg.sportscomputer.powermanagement": "1.1.2",
     "com-badrit-base64": "0.2.0",
     "cordova-android-support-gradle-release": "3.0.1",
     "cordova-plugin-file": "6.0.1",
     "cordova-plugin-advanced-http": "2.0.1",
     "cordova-plugin-camera-preview": "0.11.1",
+    "cordova-plugin-cleartext": "1.0.0",
     "cordova-plugin-device": "2.0.2",
     "cordova-plugin-file-transfer": "1.7.1",
     "cordova-plugin-geolocation": "4.0.2",
     "cordova-plugin-inappbrowser": "3.0.0",
     "cordova-plugin-ionic-keyboard": "2.1.3",
     "cordova-plugin-ionic-webview": "4.1.0",
+    "cordova-plugin-nativeaudio": "3.0.9",
     "cordova-plugin-request-location-accuracy": "2.3.0",
     "es6-promise-plugin": "4.2.2",
     "cordova-plugin-screen-orientation": "3.0.1",
     "cordova-plugin-splashscreen": "5.0.2",
     "cordova-plugin-statusbar": "2.4.2",
     "cordova-plugin-whitelist": "1.3.3",
-    "cordova.plugins.diagnostic": "5.0.1",
-    "cordova-plugin-nativeaudio": "3.0.9",
-    "at.gofg.sportscomputer.powermanagement": "1.1.2",
-    "cordova-plugin-cleartext": "1.0.0"
+    "cordova.plugins.diagnostic": "5.0.1"
   }
 }
