@@ -1,25 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-land/values-land.xml",
-            "map": [
-                {
-                    "source": "/private/var/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/46e9651259f0fec5473725a167c68730/res/values-land/values-land.xml",
-                    "from": {
-                        "startLines": "2,3,4,5",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,125,189,260",
-                        "endColumns": "69,63,70,67",
-                        "endOffsets": "120,184,255,323"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "/Users/kunalladdha/Projects/react-native/simplypermits/platforms/android/app/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-land/values-land.xml",
             "map": [
                 {
-                    "source": "/Users/kunalladdha/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/36a68da23a850dbccc2fbc6d9e41a04f/res/values-land/values-land.xml",
+                    "source": "/Users/kunalladdha/.gradle/caches/transforms-2/files-2.1/7bf6c098d2a83ea4e3a1d52ccc4d1137/appcompat-v7-27.1.1/res/values-land/values-land.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

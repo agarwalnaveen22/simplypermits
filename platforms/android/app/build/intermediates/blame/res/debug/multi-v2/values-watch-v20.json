@@ -4,23 +4,7 @@
             "outputFile": "/Users/kunalladdha/Projects/react-native/simplypermits/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
-                    "source": "/Users/kunalladdha/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/36a68da23a850dbccc2fbc6d9e41a04f/res/values-watch-v20/values-watch-v20.xml",
-                    "from": {
-                        "startLines": "2,5,8",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "55,214,385",
-                        "endLines": "4,7,10",
-                        "endColumns": "12,12,12",
-                        "endOffsets": "209,380,553"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "/Users/baps/Projects/ionic/SimplyPermits-LPR/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-watch-v20/values-watch-v20.xml",
-            "map": [
-                {
-                    "source": "/private/var/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/46e9651259f0fec5473725a167c68730/res/values-watch-v20/values-watch-v20.xml",
+                    "source": "/Users/kunalladdha/.gradle/caches/transforms-2/files-2.1/7bf6c098d2a83ea4e3a1d52ccc4d1137/appcompat-v7-27.1.1/res/values-watch-v20/values-watch-v20.xml",
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",
