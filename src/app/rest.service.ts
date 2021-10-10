@@ -373,6 +373,8 @@ export class RestService {
   }
 
   async scanPlateNumber(data) {
+    let userInfo = await this.getStorage('userInfo');
+    data['regions'] = userInfo['region_code'];
     return new Promise(async (resolve, reject) => {
       try {
         let resp = await this.nhttp.post('https://api.platerecognizer.com/v1/plate-reader/', data, {Authorization: 'Token e6ccde48a93495cd13a3e8fd0ceed83bb488f3d8'});
