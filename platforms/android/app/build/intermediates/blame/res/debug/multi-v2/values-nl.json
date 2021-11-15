@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/kunalladdha/Projects/react-native/simplypermits/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-nl/values-nl.xml",
+            "outputFile": "/Users/naveenagarwal/Projects/ionic/simplypermits/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-nl/values-nl.xml",
             "map": [
                 {
-                    "source": "/Users/kunalladdha/.gradle/caches/transforms-2/files-2.1/7bf6c098d2a83ea4e3a1d52ccc4d1137/appcompat-v7-27.1.1/res/values-nl/values-nl.xml",
+                    "source": "/Users/naveenagarwal/.gradle/caches/transforms-2/files-2.1/7bf6c098d2a83ea4e3a1d52ccc4d1137/appcompat-v7-27.1.1/res/values-nl/values-nl.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -21,7 +21,24 @@
                     }
                 },
                 {
-                    "source": "/Users/kunalladdha/.gradle/caches/transforms-2/files-2.1/62effaa7bbc7d9104ffc97563454eb99/play-services-base-16.0.1/res/values-nl/values.xml",
+                    "source": "/Users/naveenagarwal/.gradle/caches/transforms-2/files-2.1/7be6204aac5de0d0681719ee2900ecfb/play-services-basement-16.0.1/res/values-nl/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "247",
+                        "endColumns": "201",
+                        "endOffsets": "448"
+                    },
+                    "to": {
+                        "startLines": "27",
+                        "startColumns": "4",
+                        "startOffsets": "3075",
+                        "endColumns": "201",
+                        "endOffsets": "3272"
+                    }
+                },
+                {
+                    "source": "/Users/naveenagarwal/.gradle/caches/transforms-2/files-2.1/62effaa7bbc7d9104ffc97563454eb99/play-services-base-16.0.1/res/values-nl/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -38,7 +55,7 @@
                     }
                 },
                 {
-                    "source": "/Users/kunalladdha/.gradle/caches/transforms-2/files-2.1/1571ccc0f7a263c23c091db147965d8b/support-compat-27.1.1/res/values-nl/values-nl.xml",
+                    "source": "/Users/naveenagarwal/.gradle/caches/transforms-2/files-2.1/1571ccc0f7a263c23c091db147965d8b/support-compat-27.1.1/res/values-nl/values-nl.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -52,23 +69,6 @@
                         "startOffsets": "4765",
                         "endColumns": "100",
                         "endOffsets": "4861"
-                    }
-                },
-                {
-                    "source": "/Users/kunalladdha/.gradle/caches/transforms-2/files-2.1/7be6204aac5de0d0681719ee2900ecfb/play-services-basement-16.0.1/res/values-nl/values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "247",
-                        "endColumns": "201",
-                        "endOffsets": "448"
-                    },
-                    "to": {
-                        "startLines": "27",
-                        "startColumns": "4",
-                        "startOffsets": "3075",
-                        "endColumns": "201",
-                        "endOffsets": "3272"
                     }
                 }
             ]

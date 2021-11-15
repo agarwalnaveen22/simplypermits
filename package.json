@@ -63,7 +63,6 @@
     "core-js": "^2.5.3",
     "es6-promise-plugin": "4.2.2",
     "ionic-angular": "^3.9.2",
-    "node-sass": "^6.0.1",
     "rxjs": "6.2.2",
     "rxjs-compat": "^6.3.3",
     "wants": "0.1.1",

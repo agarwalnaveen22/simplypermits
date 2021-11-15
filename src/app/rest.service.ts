@@ -164,7 +164,6 @@ export class RestService {
   }
 
   sessionExpireAction = () => {
-    clearInterval(this.checkSession);
     this.hideLoader();
     this.modalCtrl.dismiss();
     this.logout(2);
@@ -183,19 +182,16 @@ export class RestService {
   }
 
   checkLoginStatus = async () => {
-    await this.getCurrentLocation();
-    this.checkSession = setInterval(async () => {
-      let requestData = {
-        sp_action: "sp_check_session",
-        user_latitude: this.latitude,
-        user_longitude: this.longitude
-      }
-      try {
-        await this.makePostRequest(requestData);
-      } catch (error) {
-        this.logout(2);
-      }
-    }, 30000);
+    let requestData = {
+      sp_action: "sp_check_session",
+      user_latitude: this.latitude,
+      user_longitude: this.longitude
+    }
+    try {
+      await this.makePostRequest(requestData);
+    } catch (error) {
+      this.logout(2);
+    }
   }
 
 
@@ -283,7 +279,7 @@ export class RestService {
         if (this.isKeyBoardHide) {
           this.isKeyBoardHide = false;
           clearInterval(keyboardhideint);
-          resolve();
+          resolve(true);
         }
       }, 100);
     });
@@ -346,7 +342,7 @@ export class RestService {
               data: pictureResult['json'][0]
             };
             this.events.publish('pictureData', pictureData);
-            if(this.permitFoundReady){
+            if (this.permitFoundReady) {
               await this.nativeAudio.play('permitFound');
             }
             await this.takeMultiplePictures();
@@ -356,7 +352,7 @@ export class RestService {
               data: pictureResult['plateData']
             };
             this.events.publish('pictureData', pictureData);
-            if(this.permitNotFoundReady){
+            if (this.permitNotFoundReady) {
               await this.nativeAudio.play('permitNotFound');
             }
             await this.takeMultiplePictures();
@@ -377,7 +373,7 @@ export class RestService {
     data['regions'] = userInfo['region_code'];
     return new Promise(async (resolve, reject) => {
       try {
-        let resp = await this.nhttp.post('https://api.platerecognizer.com/v1/plate-reader/', data, {Authorization: 'Token e6ccde48a93495cd13a3e8fd0ceed83bb488f3d8'});
+        let resp = await this.nhttp.post('https://api.platerecognizer.com/v1/plate-reader/', data, { Authorization: 'Token e6ccde48a93495cd13a3e8fd0ceed83bb488f3d8' });
         resolve(resp);
       } catch (error) {
         reject(error);
@@ -414,7 +410,7 @@ export class RestService {
     let deviceHeight = window.screen.height;
     let setWidth = 0;
     let setHeight = 0;
-    if(this.screenOrientation.type === 'landscape-primary' || this.screenOrientation.type === 'landscape-secondary'){
+    if (this.screenOrientation.type === 'landscape-primary' || this.screenOrientation.type === 'landscape-secondary') {
       setWidth = deviceHeight;
       setHeight = deviceWidth;
     } else {

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/kunalladdha/Projects/react-native/simplypermits/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v24/values-v24.xml",
+            "outputFile": "/Users/naveenagarwal/Projects/ionic/simplypermits/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v24/values-v24.xml",
             "map": [
                 {
-                    "source": "/Users/kunalladdha/.gradle/caches/transforms-2/files-2.1/7bf6c098d2a83ea4e3a1d52ccc4d1137/appcompat-v7-27.1.1/res/values-v24/values-v24.xml",
+                    "source": "/Users/naveenagarwal/.gradle/caches/transforms-2/files-2.1/7bf6c098d2a83ea4e3a1d52ccc4d1137/appcompat-v7-27.1.1/res/values-v24/values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/Users/kunalladdha/.gradle/caches/transforms-2/files-2.1/f2bad2cd47cd16cf058ade4a8c249970/support-media-compat-27.1.1/res/values-v24/values-v24.xml",
+                    "source": "/Users/naveenagarwal/.gradle/caches/transforms-2/files-2.1/f2bad2cd47cd16cf058ade4a8c249970/support-media-compat-27.1.1/res/values-v24/values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
