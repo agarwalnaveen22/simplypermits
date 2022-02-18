@@ -26,6 +26,21 @@
         }
     }
 }
+
+.permitDetailsList {
+    ion-item {
+        --padding-start:0;
+        font-size: 14px;
+
+        ion-label:first-child{
+            width: 40%;
+            max-width: 40%;
+        }
+    }
+}
+.card-content-md {
+    padding: 10px;
+}
 .footer_permit_details {
     --padding-top: 0;
     --padding-bottom: 0;

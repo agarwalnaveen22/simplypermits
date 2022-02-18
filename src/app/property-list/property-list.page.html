@@ -1,6 +1,6 @@
 <app-header [showProperty]="showProperty" [pageName]="pageName"></app-header>
 
-<ion-content padding>
+<ion-content class="searchResultList">
   <ion-refresher slot="fixed" (ionRefresh)="refreshData($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>

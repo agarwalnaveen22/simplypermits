@@ -1,6 +1,6 @@
 <app-header [showProperty]="showProperty" [pageName]="pageName"></app-header>
 
-<ion-content [ngClass]="permitData.status=='Active'?'active':'inactive'" padding>
+<ion-content [ngClass]="permitData.status=='Active'?'active':'inactive'" >
   <ion-refresher slot="fixed" (ionRefresh)="refreshData($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
@@ -10,7 +10,7 @@
       <ion-label text-end slot="end">{{permitData.status}}</ion-label>
     </ion-item>
 
-    <ion-card-content text-center>
+    <ion-card-content class="permitDetailsList" text-center>
       <ion-item>
         <ion-label start>Start Date</ion-label>
         <ion-label end color="medium" text-wrap>{{permitData.start_date}}</ion-label>
@@ -30,13 +30,13 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card *ngFor="let licenseInfo of permitData.permits_info">
+  <ion-card *ngFor="let licenseInfo of permitData.permits_info" >
     <ion-item class="header">
       <ion-label text-wrap>{{licenseInfo.Permit_Name}}</ion-label>
       <ion-label text-end slot="end">{{permitData.order_total}}</ion-label>
     </ion-item>
 
-    <ion-card-content text-center>
+    <ion-card-content text-center class="permitDetailsList">
       <ion-item>
         <ion-label start text-wrap>License Plate (State)</ion-label>
         <ion-label end color="medium" text-wrap>{{licenseInfo.Plate}} ({{licenseInfo.State_plate}})</ion-label>
@@ -69,7 +69,7 @@
       </ion-label>
     </ion-item>
 
-    <ion-card-content text-center>
+    <ion-card-content text-center class="permitDetailsList">
       <ion-item>
         <ion-label start>Email Address</ion-label>
         <ion-label end color="medium" text-wrap>{{permitData.Customer.Email}}</ion-label>

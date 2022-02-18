@@ -9,7 +9,7 @@
     }
     .list-header ion-label:nth-child(2) {
         text-align: right;
-        font-size: 1.4em;
+        font-size: 1em;
         text-transform: uppercase;
     }
     ion-item.list-footer {
@@ -32,7 +32,9 @@
     }
     
 }
-
+.searchResultList {
+    padding: 15px;
+}
 .Active {
     background: #3e141a;
     ion-item.list-header {
@@ -44,7 +46,7 @@
     }
     .list-header ion-label:nth-child(2) {
         text-align: right;
-        font-size: 1.4em;
+        font-size: 1em;
         text-transform: uppercase;
         font-family: open sans;
     }
@@ -64,11 +66,17 @@
                 color: #FFF !important;
                 font-size: 0.8em;
             }
+            ion-label:first-child{
+                width: 40%;
+                max-width: 40%;
+            }
         }
     }
     
 }
-
+.card-content-md {
+    padding: 10px;
+}
 .footerBack {
     --background: #201553;
 }
