@@ -943,7 +943,6 @@ var RestService = /** @class */ (function () {
             });
         }); };
         this.sessionExpireAction = function () {
-            clearInterval(_this.checkSession);
             _this.hideLoader();
             _this.modalCtrl.dismiss();
             _this.logout(2);
@@ -974,38 +973,27 @@ var RestService = /** @class */ (function () {
             });
         }); };
         this.checkLoginStatus = function () { return __awaiter(_this, void 0, void 0, function () {
-            var _this = this;
+            var requestData, error_3;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.getCurrentLocation()];
+                    case 0:
+                        requestData = {
+                            sp_action: "sp_check_session",
+                            user_latitude: this.latitude,
+                            user_longitude: this.longitude
+                        };
+                        _a.label = 1;
                     case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, this.makePostRequest(requestData)];
+                    case 2:
                         _a.sent();
-                        this.checkSession = setInterval(function () { return __awaiter(_this, void 0, void 0, function () {
-                            var requestData, error_3;
-                            return __generator(this, function (_a) {
-                                switch (_a.label) {
-                                    case 0:
-                                        requestData = {
-                                            sp_action: "sp_check_session",
-                                            user_latitude: this.latitude,
-                                            user_longitude: this.longitude
-                                        };
-                                        _a.label = 1;
-                                    case 1:
-                                        _a.trys.push([1, 3, , 4]);
-                                        return [4 /*yield*/, this.makePostRequest(requestData)];
-                                    case 2:
-                                        _a.sent();
-                                        return [3 /*break*/, 4];
-                                    case 3:
-                                        error_3 = _a.sent();
-                                        this.logout(2);
-                                        return [3 /*break*/, 4];
-                                    case 4: return [2 /*return*/];
-                                }
-                            });
-                        }); }, 30000);
-                        return [2 /*return*/];
+                        return [3 /*break*/, 4];
+                    case 3:
+                        error_3 = _a.sent();
+                        this.logout(2);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
                 }
             });
         }); };
@@ -1020,7 +1008,7 @@ var RestService = /** @class */ (function () {
                                 if (this.isKeyBoardHide) {
                                     this.isKeyBoardHide = false;
                                     clearInterval(keyboardhideint);
-                                    resolve();
+                                    resolve(true);
                                 }
                                 return [2 /*return*/];
                             });

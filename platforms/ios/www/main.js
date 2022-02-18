@@ -943,7 +943,6 @@ var RestService = /** @class */ (function () {
             });
         }); };
         this.sessionExpireAction = function () {
-            clearInterval(_this.checkSession);
             _this.hideLoader();
             _this.modalCtrl.dismiss();
             _this.logout(2);
@@ -974,38 +973,27 @@ var RestService = /** @class */ (function () {
             });
         }); };
         this.checkLoginStatus = function () { return __awaiter(_this, void 0, void 0, function () {
-            var _this = this;
+            var requestData, error_3;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.getCurrentLocation()];
+                    case 0:
+                        requestData = {
+                            sp_action: "sp_check_session",
+                            user_latitude: this.latitude,
+                            user_longitude: this.longitude
+                        };
+                        _a.label = 1;
                     case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, this.makePostRequest(requestData)];
+                    case 2:
                         _a.sent();
-                        this.checkSession = setInterval(function () { return __awaiter(_this, void 0, void 0, function () {
-                            var requestData, error_3;
-                            return __generator(this, function (_a) {
-                                switch (_a.label) {
-                                    case 0:
-                                        requestData = {
-                                            sp_action: "sp_check_session",
-                                            user_latitude: this.latitude,
-                                            user_longitude: this.longitude
-                                        };
-                                        _a.label = 1;
-                                    case 1:
-                                        _a.trys.push([1, 3, , 4]);
-                                        return [4 /*yield*/, this.makePostRequest(requestData)];
-                                    case 2:
-                                        _a.sent();
-                                        return [3 /*break*/, 4];
-                                    case 3:
-                                        error_3 = _a.sent();
-                                        this.logout(2);
-                                        return [3 /*break*/, 4];
-                                    case 4: return [2 /*return*/];
-                                }
-                            });
-                        }); }, 30000);
-                        return [2 /*return*/];
+                        return [3 /*break*/, 4];
+                    case 3:
+                        error_3 = _a.sent();
+                        this.logout(2);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
                 }
             });
         }); };
@@ -1020,7 +1008,7 @@ var RestService = /** @class */ (function () {
                                 if (this.isKeyBoardHide) {
                                     this.isKeyBoardHide = false;
                                     clearInterval(keyboardhideint);
-                                    resolve();
+                                    resolve(true);
                                 }
                                 return [2 /*return*/];
                             });
@@ -1428,26 +1416,33 @@ var RestService = /** @class */ (function () {
     RestService.prototype.scanPlateNumber = function (data) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
+            var userInfo;
             return __generator(this, function (_a) {
-                return [2 /*return*/, new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
-                        var resp, error_6;
-                        return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0:
-                                    _a.trys.push([0, 2, , 3]);
-                                    return [4 /*yield*/, this.nhttp.post('https://api.platerecognizer.com/v1/plate-reader/', data, { Authorization: 'Token e6ccde48a93495cd13a3e8fd0ceed83bb488f3d8' })];
-                                case 1:
-                                    resp = _a.sent();
-                                    resolve(resp);
-                                    return [3 /*break*/, 3];
-                                case 2:
-                                    error_6 = _a.sent();
-                                    reject(error_6);
-                                    return [3 /*break*/, 3];
-                                case 3: return [2 /*return*/];
-                            }
-                        });
-                    }); })];
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.getStorage('userInfo')];
+                    case 1:
+                        userInfo = _a.sent();
+                        data['regions'] = userInfo['region_code'];
+                        return [2 /*return*/, new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
+                                var resp, error_6;
+                                return __generator(this, function (_a) {
+                                    switch (_a.label) {
+                                        case 0:
+                                            _a.trys.push([0, 2, , 3]);
+                                            return [4 /*yield*/, this.nhttp.post('https://api.platerecognizer.com/v1/plate-reader/', data, { Authorization: 'Token e6ccde48a93495cd13a3e8fd0ceed83bb488f3d8' })];
+                                        case 1:
+                                            resp = _a.sent();
+                                            resolve(resp);
+                                            return [3 /*break*/, 3];
+                                        case 2:
+                                            error_6 = _a.sent();
+                                            reject(error_6);
+                                            return [3 /*break*/, 3];
+                                        case 3: return [2 /*return*/];
+                                    }
+                                });
+                            }); })];
+                }
             });
         });
     };
@@ -2003,7 +1998,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/kunalladdha/Projects/react-native/simplypermits/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/naveenagarwal/Projects/ionic/simplypermits/src/main.ts */"./src/main.ts");
 
 
 /***/ })
