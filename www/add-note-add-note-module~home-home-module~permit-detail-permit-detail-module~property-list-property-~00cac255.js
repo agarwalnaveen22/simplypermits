@@ -148,7 +148,7 @@ var HeaderComponent = /** @class */ (function () {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.popoverController.create({
                             component: _main_menu_main_menu_component__WEBPACK_IMPORTED_MODULE_2__["MainMenuComponent"],
-                            event: ev,
+                            ev: ev,
                             translucent: true,
                             cssClass: 'main-menu'
                         })];

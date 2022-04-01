@@ -52,7 +52,7 @@ export class HeaderComponent implements OnInit {
   async presentMainMenu(ev: any) {
     const popover = await this.popoverController.create({
       component: MainMenuComponent,
-      event: ev,
+      ev: ev,
       translucent: true,
       cssClass: 'main-menu'
     });

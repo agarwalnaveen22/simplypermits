@@ -976,24 +976,26 @@ var RestService = /** @class */ (function () {
             var requestData, error_3;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
+                    case 0: return [4 /*yield*/, this.getCurrentLocation()];
+                    case 1:
+                        _a.sent();
                         requestData = {
                             sp_action: "sp_check_session",
                             user_latitude: this.latitude,
                             user_longitude: this.longitude
                         };
-                        _a.label = 1;
-                    case 1:
-                        _a.trys.push([1, 3, , 4]);
-                        return [4 /*yield*/, this.makePostRequest(requestData)];
+                        _a.label = 2;
                     case 2:
-                        _a.sent();
-                        return [3 /*break*/, 4];
+                        _a.trys.push([2, 4, , 5]);
+                        return [4 /*yield*/, this.makePostRequest(requestData)];
                     case 3:
+                        _a.sent();
+                        return [3 /*break*/, 5];
+                    case 4:
                         error_3 = _a.sent();
                         this.logout(2);
-                        return [3 /*break*/, 4];
-                    case 4: return [2 /*return*/];
+                        return [3 /*break*/, 5];
+                    case 5: return [2 /*return*/];
                 }
             });
         }); };

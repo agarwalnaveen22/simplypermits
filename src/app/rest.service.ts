@@ -182,6 +182,7 @@ export class RestService {
   }
 
   checkLoginStatus = async () => {
+    await this.getCurrentLocation();
     let requestData = {
       sp_action: "sp_check_session",
       user_latitude: this.latitude,

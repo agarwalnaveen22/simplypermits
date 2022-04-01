@@ -1,19 +1,40 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[93],{
 
-/***/ "./node_modules/@ionic/core/dist/esm/es5/chunk-f7b6af08.js":
+/***/ "./node_modules/@ionic/core/dist/esm/es5/9gfzhhlq.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm/es5/9gfzhhlq.js ***!
+  \***********************************************************/
+/*! exports provided: IonSpinner */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IonSpinner", function() { return Spinner; });
+/* harmony import */ var _ionic_core_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ionic.core.js */ "./node_modules/@ionic/core/dist/esm/es5/ionic.core.js");
+/* harmony import */ var _chunk_11949516_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./chunk-11949516.js */ "./node_modules/@ionic/core/dist/esm/es5/chunk-11949516.js");
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ * Built with http://stenciljs.com
+ */
+var SPINNERS={lines:{dur:1e3,lines:12,fn:function(e,n,t){return{y1:17,y2:29,style:{transform:"rotate("+(30*n+(n<6?180:-180))+"deg)","animation-delay":e*n/t-e+"ms"}}}},"lines-small":{dur:1e3,lines:12,fn:function(e,n,t){return{y1:12,y2:20,style:{transform:"rotate("+(30*n+(n<6?180:-180))+"deg)","animation-delay":e*n/t-e+"ms"}}}},bubbles:{dur:1e3,circles:9,fn:function(e,n,t){var r=e*n/t-e+"ms",i=2*Math.PI*n/t;return{r:5,style:{top:9*Math.sin(i)+"px",left:9*Math.cos(i)+"px","animation-delay":r}}}},circles:{dur:1e3,circles:8,fn:function(e,n,t){var r=n/t,i=e*r-e+"ms",s=2*Math.PI*r;return{r:5,style:{top:9*Math.sin(s)+"px",left:9*Math.cos(s)+"px","animation-delay":i}}}},crescent:{dur:750,circles:1,fn:function(){return{r:26,style:{}}}},dots:{dur:750,circles:3,fn:function(e,n){return{r:6,style:{left:9-9*n+"px","animation-delay":-110*n+"ms"}}}}},Spinner=function(){function e(){this.paused=!1}return e.prototype.getName=function(){var e=this.name||this.config.get("spinner");return e?("ios"===e?(console.warn('spinner "ios" has been renamed to "lines"'),e="lines"):"ios-small"===e&&(console.warn('spinner "ios-small" has been renamed to "lines-small"'),e="lines-small"),e):"md"===this.mode?"crescent":"lines"},e.prototype.hostData=function(){var e;return{class:Object.assign({},Object(_chunk_11949516_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this.color),(e={},e["spinner-"+this.getName()]=!0,e["spinner-paused"]=!!this.paused,e))}},e.prototype.render=function(){var e=this.getName(),n=SPINNERS[e]||SPINNERS.lines,t="number"==typeof this.duration&&this.duration>10?this.duration:n.dur,r=[];if(n.circles)for(var i=0;i<n.circles;i++)r.push(buildCircle(n,t,i,n.circles));else if(n.lines)for(i=0;i<n.lines;i++)r.push(buildLine(n,t,i,n.lines));return r},Object.defineProperty(e,"is",{get:function(){return"ion-spinner"},enumerable:!0,configurable:!0}),Object.defineProperty(e,"encapsulation",{get:function(){return"shadow"},enumerable:!0,configurable:!0}),Object.defineProperty(e,"properties",{get:function(){return{color:{type:String,attr:"color"},config:{context:"config"},duration:{type:Number,attr:"duration"},mode:{type:String,attr:"mode"},name:{type:String,attr:"name"},paused:{type:Boolean,attr:"paused"}}},enumerable:!0,configurable:!0}),Object.defineProperty(e,"style",{get:function(){return":host{display:inline-block;position:relative;width:28px;height:28px}:host(.ion-color){color:var(--ion-color-base)}svg{left:0;top:0;position:absolute;width:100%;height:100%;-webkit-transform:translateZ(0);transform:translateZ(0)}:host(.spinner-lines) line,:host(.spinner-lines-small) line{stroke-width:4px;stroke-linecap:round;stroke:currentColor}:host(.spinner-lines) svg,:host(.spinner-lines-small) svg{-webkit-animation:1s linear infinite spinner-fade-out;animation:1s linear infinite spinner-fade-out}:host(.spinner-bubbles) svg{-webkit-animation:1s linear infinite spinner-scale-out;animation:1s linear infinite spinner-scale-out;fill:currentColor}:host(.spinner-circles) svg{-webkit-animation:1s linear infinite spinner-fade-out;animation:1s linear infinite spinner-fade-out;fill:currentColor}:host(.spinner-crescent) circle{fill:transparent;stroke-width:4px;stroke-dasharray:128px;stroke-dashoffset:82px;stroke:currentColor}:host(.spinner-crescent) svg{-webkit-animation:1s linear infinite spinner-rotate;animation:1s linear infinite spinner-rotate}:host(.spinner-dots) circle{stroke-width:0;fill:currentColor}:host(.spinner-dots) svg{-webkit-transform-origin:center;transform-origin:center;-webkit-animation:1s linear infinite spinner-dots;animation:1s linear infinite spinner-dots}:host(.spinner-paused) svg{-webkit-animation-play-state:paused;animation-play-state:paused}\@-webkit-keyframes spinner-fade-out{0%{opacity:1}100%{opacity:0}}\@keyframes spinner-fade-out{0%{opacity:1}100%{opacity:0}}\@-webkit-keyframes spinner-scale-out{0%{-webkit-transform:scale(1,1);transform:scale(1,1)}100%{-webkit-transform:scale(0,0);transform:scale(0,0)}}\@keyframes spinner-scale-out{0%{-webkit-transform:scale(1,1);transform:scale(1,1)}100%{-webkit-transform:scale(0,0);transform:scale(0,0)}}\@-webkit-keyframes spinner-rotate{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}\@keyframes spinner-rotate{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}\@-webkit-keyframes spinner-dots{0%,100%{-webkit-transform:scale(1,1);transform:scale(1,1);opacity:.9}50%{-webkit-transform:scale(.4,.4);transform:scale(.4,.4);opacity:.3}}\@keyframes spinner-dots{0%,100%{-webkit-transform:scale(1,1);transform:scale(1,1);opacity:.9}50%{-webkit-transform:scale(.4,.4);transform:scale(.4,.4);opacity:.3}}:host(.spinner-lines){--ion-color-base:var(--ion-text-color-step-400, #666666)}:host(.spinner-bubbles){--ion-color-base:var(--ion-text-color, #000)}:host(.spinner-circles){--ion-color-base:var(--ion-text-color-step-400, #666666)}:host(.spinner-crescent){--ion-color-base:var(--ion-text-color, #000)}:host(.spinner-dots){--ion-color-base:var(--ion-text-color-step-300, #4d4d4d)}"},enumerable:!0,configurable:!0}),Object.defineProperty(e,"styleMode",{get:function(){return"ios"},enumerable:!0,configurable:!0}),e}();function buildCircle(e,n,t,r){var i=e.fn(n,t,r);return i.style["animation-duration"]=n+"ms",Object(_ionic_core_js__WEBPACK_IMPORTED_MODULE_0__["h"])("svg",{viewBox:"0 0 64 64",style:i.style},Object(_ionic_core_js__WEBPACK_IMPORTED_MODULE_0__["h"])("circle",{transform:"translate(32,32)",r:i.r}))}function buildLine(e,n,t,r){var i=e.fn(n,t,r);return i.style["animation-duration"]=n+"ms",Object(_ionic_core_js__WEBPACK_IMPORTED_MODULE_0__["h"])("svg",{viewBox:"0 0 64 64",style:i.style},Object(_ionic_core_js__WEBPACK_IMPORTED_MODULE_0__["h"])("line",{transform:"translate(32,32)",y1:i.y1,y2:i.y2}))}
+
+/***/ }),
+
+/***/ "./node_modules/@ionic/core/dist/esm/es5/chunk-11949516.js":
 /*!*****************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm/es5/chunk-f7b6af08.js ***!
+  !*** ./node_modules/@ionic/core/dist/esm/es5/chunk-11949516.js ***!
   \*****************************************************************/
-/*! exports provided: a, b, c, d, e */
+/*! exports provided: a, b, c, d, e, f */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return createThemedClasses; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return createColorClasses; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return openURL; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return hostContext; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getParentNode; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return openURL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return getClassMap; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return hostContext; });
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -54,7 +75,7 @@ function createColorClasses(e) { var _a; return e ? (_a = { "ion-color": !0 }, _
 function createThemedClasses(e, t) { var _a; return _a = {}, _a[t] = !0, _a[t + "-" + e] = !!e, _a; }
 function getClassList(e) { return e ? (Array.isArray(e) ? e : e.split(" ")).filter(function (e) { return null != e; }).map(function (e) { return e.trim(); }).filter(function (e) { return "" !== e; }) : []; }
 function getClassMap(e) { var t = {}; return getClassList(e).forEach(function (e) { return t[e] = !0; }), t; }
-function openURL(e, t, r, s) {
+function openURL(e, t, r, n) {
     return __awaiter(this, void 0, void 0, function () { var o; return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -63,34 +84,14 @@ function openURL(e, t, r, s) {
                 if (!o) return [3 /*break*/, 2];
                 r && r.preventDefault();
                 return [4 /*yield*/, o.componentOnReady()];
-            case 1: return [2 /*return*/, (_a.sent(), o.push(t, s))];
+            case 1: return [2 /*return*/, (_a.sent(), o.push(t, n))];
             case 2: return [2 /*return*/, Promise.resolve()];
         }
     }); });
 }
+function getParentNode(e) { var t = e.parentNode; return t && 11 === t.NODE_TYPE ? t.host : t; }
 
 
-
-/***/ }),
-
-/***/ "./node_modules/@ionic/core/dist/esm/es5/plvjbgp5.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm/es5/plvjbgp5.js ***!
-  \***********************************************************/
-/*! exports provided: IonSegment, IonSegmentButton */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IonSegment", function() { return Segment; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IonSegmentButton", function() { return SegmentButton; });
-/* harmony import */ var _ionic_core_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ionic.core.js */ "./node_modules/@ionic/core/dist/esm/es5/ionic.core.js");
-/* harmony import */ var _chunk_f7b6af08_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./chunk-f7b6af08.js */ "./node_modules/@ionic/core/dist/esm/es5/chunk-f7b6af08.js");
-/*!
- * (C) Ionic http://ionicframework.com - MIT License
- * Built with http://stenciljs.com
- */
-var Segment=function(){function e(){this.disabled=!1}return e.prototype.valueChanged=function(e){this.updateButtons(),this.ionChange.emit({value:e})},e.prototype.segmentClick=function(e){var t=e.target;this.value=t.value},e.prototype.componentDidLoad=function(){if(void 0===this.value){var e=this.getButtons().find(function(e){return e.checked});e&&(this.value=e.value)}this.updateButtons()},e.prototype.updateButtons=function(){for(var e=this.value,t=0,n=this.getButtons();t<n.length;t++){var o=n[t];o.checked=o.value===e}},e.prototype.getButtons=function(){return Array.from(this.el.querySelectorAll("ion-segment-button"))},e.prototype.hostData=function(){return{class:Object.assign({},Object(_chunk_f7b6af08_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this.color),{"segment-disabled":this.disabled,"in-toolbar":Object(_chunk_f7b6af08_js__WEBPACK_IMPORTED_MODULE_1__["d"])("ion-toolbar",this.el),"in-color-toolbar":Object(_chunk_f7b6af08_js__WEBPACK_IMPORTED_MODULE_1__["d"])("ion-toolbar.ion-color",this.el)})}},e.prototype.render=function(){return Object(_ionic_core_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot",null)},Object.defineProperty(e,"is",{get:function(){return"ion-segment"},enumerable:!0,configurable:!0}),Object.defineProperty(e,"encapsulation",{get:function(){return"shadow"},enumerable:!0,configurable:!0}),Object.defineProperty(e,"properties",{get:function(){return{color:{type:String,attr:"color"},disabled:{type:Boolean,attr:"disabled"},el:{elementRef:!0},mode:{type:String,attr:"mode"},value:{type:String,attr:"value",mutable:!0,watchCallbacks:["valueChanged"]}}},enumerable:!0,configurable:!0}),Object.defineProperty(e,"events",{get:function(){return[{name:"ionChange",method:"ionChange",bubbles:!0,cancelable:!0,composed:!0}]},enumerable:!0,configurable:!0}),Object.defineProperty(e,"listeners",{get:function(){return[{name:"ionSelect",method:"segmentClick"}]},enumerable:!0,configurable:!0}),Object.defineProperty(e,"style",{get:function(){return":host{--ion-color-base:var(--ion-color-primary, #3880ff);--ion-color-base-rgb:var(--ion-color-primary-rgb, 56, 128, 255);--ion-color-contrast:var(--ion-color-primary-contrast, #fff);--ion-color-shade:var(--ion-color-primary-shade, #3171e0);-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:1;-ms-flex:1;flex:1;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;width:100%;text-align:center;color:var(--ion-toolbar-color-active,#4a4a4a);font-family:var(--ion-font-family,inherit)}:host(.segment-disabled){pointer-events:none;opacity:.3}:host(.ion-color){color:var(--ion-color-base)!important}:host(.in-color-toolbar){color:inherit}::slotted(ion-segment-button){--padding-top:0;--padding-end:6px;--padding-bottom:0;--padding-start:6px;--background:transparent;--border-color:rgba(0, 0, 0, 0.1);--border-width:0 0 2px 0;--border-style:solid;--opacity:0.7;--transition:100ms all linear;--icon-size:26px;height:42px;color:inherit;font-size:12px;font-weight:500;line-height:40px;text-transform:uppercase;opacity:.7}::slotted(.activated),::slotted(.segment-checked){--border-color:currentColor;opacity:1}::slotted(.segment-button-disabled){pointer-events:none;opacity:.3}"},enumerable:!0,configurable:!0}),Object.defineProperty(e,"styleMode",{get:function(){return"md"},enumerable:!0,configurable:!0}),e}(),ids=0,SegmentButton=function(){function e(){this.checked=!1,this.disabled=!1,this.value="ion-sb-"+ids++}return e.prototype.checkedChanged=function(e,t){e&&!t&&this.ionSelect.emit()},e.prototype.hostData=function(){var e=this.disabled,t=this.checked,n=this.color;return{class:Object.assign({},Object(_chunk_f7b6af08_js__WEBPACK_IMPORTED_MODULE_1__["b"])(n),{"segment-button-disabled":e,"segment-checked":t}),"ion-activable":!0}},e.prototype.render=function(){var e=this;return[Object(_ionic_core_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button",{type:"button","aria-pressed":this.checked?"true":null,class:"segment-button-native",disabled:this.disabled,onClick:function(){return e.checked=!0}},Object(_ionic_core_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot",null),"md"===this.mode&&Object(_ionic_core_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect",{tapClick:!0,parent:this.el}))]},Object.defineProperty(e,"is",{get:function(){return"ion-segment-button"},enumerable:!0,configurable:!0}),Object.defineProperty(e,"encapsulation",{get:function(){return"shadow"},enumerable:!0,configurable:!0}),Object.defineProperty(e,"properties",{get:function(){return{checked:{type:Boolean,attr:"checked",mutable:!0,watchCallbacks:["checkedChanged"]},color:{type:String,attr:"color"},disabled:{type:Boolean,attr:"disabled"},el:{elementRef:!0},mode:{type:String,attr:"mode"},value:{type:String,attr:"value"}}},enumerable:!0,configurable:!0}),Object.defineProperty(e,"events",{get:function(){return[{name:"ionSelect",method:"ionSelect",bubbles:!0,cancelable:!0,composed:!0}]},enumerable:!0,configurable:!0}),Object.defineProperty(e,"style",{get:function(){return":host{--padding-start:0;--padding-end:0;--padding-top:0;--padding-bottom:0;--icon-size:1em;-webkit-box-flex:1;-ms-flex:1;flex:1;color:var(--color);text-decoration:none;text-overflow:ellipsis;white-space:nowrap;-webkit-font-kerning:none;font-kerning:none}:host(:first-of-type) .segment-button-native{--padding-end:0;border-top-left-radius:var(--border-radius);border-top-right-radius:0;border-bottom-right-radius:0;border-bottom-left-radius:var(--border-radius)}:host(:not(:first-of-type)) .segment-button-native{border-left-width:0}:host(:last-of-type) .segment-button-native{--padding-start:0;border-top-left-radius:0;border-top-right-radius:var(--border-radius);border-bottom-right-radius:var(--border-radius);border-bottom-left-radius:0}.segment-button-native{font-family:inherit;font-size:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;margin:var(--margin-top) var(--margin-end) var(--margin-bottom) var(--margin-start);padding:var(--padding-top) var(--padding-end) var(--padding-bottom) var(--padding-start);display:block;position:relative;width:100%;height:100%;-webkit-transition:var(--transition);transition:var(--transition);border-width:var(--border-width);border-style:var(--border-style);border-color:var(--border-color);background:var(--background);color:inherit;contain:content;cursor:pointer;overflow:hidden}.segment-button-native:active,.segment-button-native:focus{outline:0}::slotted(ion-icon){font-size:var(--icon-size)}"},enumerable:!0,configurable:!0}),e}();
 
 /***/ })
 

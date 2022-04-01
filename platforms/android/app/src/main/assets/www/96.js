@@ -1,39 +1,20 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[96],{
 
-/***/ "./node_modules/@ionic/core/dist/esm/es5/8pn4wfyx.sc.js":
-/*!**************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm/es5/8pn4wfyx.sc.js ***!
-  \**************************************************************/
-/*! exports provided: IonSpinner */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IonSpinner", function() { return Spinner; });
-/* harmony import */ var _ionic_core_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ionic.core.js */ "./node_modules/@ionic/core/dist/esm/es5/ionic.core.js");
-/* harmony import */ var _chunk_f7b6af08_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./chunk-f7b6af08.js */ "./node_modules/@ionic/core/dist/esm/es5/chunk-f7b6af08.js");
-/*!
- * (C) Ionic http://ionicframework.com - MIT License
- * Built with http://stenciljs.com
- */
-var SPINNERS={lines:{dur:1e3,lines:12,fn:function(e,n,t){return{y1:17,y2:29,style:{transform:"rotate("+(30*n+(n<6?180:-180))+"deg)","animation-delay":e*n/t-e+"ms"}}}},"lines-small":{dur:1e3,lines:12,fn:function(e,n,t){return{y1:12,y2:20,style:{transform:"rotate("+(30*n+(n<6?180:-180))+"deg)","animation-delay":e*n/t-e+"ms"}}}},bubbles:{dur:1e3,circles:9,fn:function(e,n,t){var r=e*n/t-e+"ms",i=2*Math.PI*n/t;return{r:5,style:{top:9*Math.sin(i)+"px",left:9*Math.cos(i)+"px","animation-delay":r}}}},circles:{dur:1e3,circles:8,fn:function(e,n,t){var r=n/t,i=e*r-e+"ms",s=2*Math.PI*r;return{r:5,style:{top:9*Math.sin(s)+"px",left:9*Math.cos(s)+"px","animation-delay":i}}}},crescent:{dur:750,circles:1,fn:function(){return{r:26,style:{}}}},dots:{dur:750,circles:3,fn:function(e,n){return{r:6,style:{left:9-9*n+"px","animation-delay":-110*n+"ms"}}}}},Spinner=function(){function e(){this.paused=!1}return e.prototype.getName=function(){var e=this.name||this.config.get("spinner");return e?("ios"===e?(console.warn('spinner "ios" has been renamed to "lines"'),e="lines"):"ios-small"===e&&(console.warn('spinner "ios-small" has been renamed to "lines-small"'),e="lines-small"),e):"md"===this.mode?"crescent":"lines"},e.prototype.hostData=function(){var e;return{class:Object.assign({},Object(_chunk_f7b6af08_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this.color),(e={},e["spinner-"+this.getName()]=!0,e["spinner-paused"]=!!this.paused,e))}},e.prototype.render=function(){var e=this.getName(),n=SPINNERS[e]||SPINNERS.lines,t="number"==typeof this.duration&&this.duration>10?this.duration:n.dur,r=[];if(n.circles)for(var i=0;i<n.circles;i++)r.push(buildCircle(n,t,i,n.circles));else if(n.lines)for(i=0;i<n.lines;i++)r.push(buildLine(n,t,i,n.lines));return r},Object.defineProperty(e,"is",{get:function(){return"ion-spinner"},enumerable:!0,configurable:!0}),Object.defineProperty(e,"encapsulation",{get:function(){return"shadow"},enumerable:!0,configurable:!0}),Object.defineProperty(e,"properties",{get:function(){return{color:{type:String,attr:"color"},config:{context:"config"},duration:{type:Number,attr:"duration"},mode:{type:String,attr:"mode"},name:{type:String,attr:"name"},paused:{type:Boolean,attr:"paused"}}},enumerable:!0,configurable:!0}),Object.defineProperty(e,"style",{get:function(){return".sc-ion-spinner-ios-h{display:inline-block;position:relative;width:28px;height:28px;color:var(--color);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.ion-color.sc-ion-spinner-ios-h{color:var(--ion-color-base)}svg.sc-ion-spinner-ios{left:0;top:0;position:absolute;width:100%;height:100%;-webkit-transform:translateZ(0);transform:translateZ(0)}.spinner-lines.sc-ion-spinner-ios-h   line.sc-ion-spinner-ios, .spinner-lines-small.sc-ion-spinner-ios-h   line.sc-ion-spinner-ios{stroke-width:4px;stroke-linecap:round;stroke:currentColor}.spinner-lines.sc-ion-spinner-ios-h   svg.sc-ion-spinner-ios, .spinner-lines-small.sc-ion-spinner-ios-h   svg.sc-ion-spinner-ios{-webkit-animation:1s linear infinite spinner-fade-out;animation:1s linear infinite spinner-fade-out}.spinner-bubbles.sc-ion-spinner-ios-h   svg.sc-ion-spinner-ios{-webkit-animation:1s linear infinite spinner-scale-out;animation:1s linear infinite spinner-scale-out;fill:currentColor}.spinner-circles.sc-ion-spinner-ios-h   svg.sc-ion-spinner-ios{-webkit-animation:1s linear infinite spinner-fade-out;animation:1s linear infinite spinner-fade-out;fill:currentColor}.spinner-crescent.sc-ion-spinner-ios-h   circle.sc-ion-spinner-ios{fill:transparent;stroke-width:4px;stroke-dasharray:128px;stroke-dashoffset:82px;stroke:currentColor}.spinner-crescent.sc-ion-spinner-ios-h   svg.sc-ion-spinner-ios{-webkit-animation:1s linear infinite spinner-rotate;animation:1s linear infinite spinner-rotate}.spinner-dots.sc-ion-spinner-ios-h   circle.sc-ion-spinner-ios{stroke-width:0;fill:currentColor}.spinner-dots.sc-ion-spinner-ios-h   svg.sc-ion-spinner-ios{-webkit-transform-origin:center;transform-origin:center;-webkit-animation:1s linear infinite spinner-dots;animation:1s linear infinite spinner-dots}.spinner-paused.sc-ion-spinner-ios-h   svg.sc-ion-spinner-ios{-webkit-animation-play-state:paused;animation-play-state:paused}\@-webkit-keyframes spinner-fade-out{0%{opacity:1}100%{opacity:0}}\@keyframes spinner-fade-out{0%{opacity:1}100%{opacity:0}}\@-webkit-keyframes spinner-scale-out{0%{-webkit-transform:scale(1,1);transform:scale(1,1)}100%{-webkit-transform:scale(0,0);transform:scale(0,0)}}\@keyframes spinner-scale-out{0%{-webkit-transform:scale(1,1);transform:scale(1,1)}100%{-webkit-transform:scale(0,0);transform:scale(0,0)}}\@-webkit-keyframes spinner-rotate{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}\@keyframes spinner-rotate{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}\@-webkit-keyframes spinner-dots{0%,100%{-webkit-transform:scale(1,1);transform:scale(1,1);opacity:.9}50%{-webkit-transform:scale(.4,.4);transform:scale(.4,.4);opacity:.3}}\@keyframes spinner-dots{0%,100%{-webkit-transform:scale(1,1);transform:scale(1,1);opacity:.9}50%{-webkit-transform:scale(.4,.4);transform:scale(.4,.4);opacity:.3}}"},enumerable:!0,configurable:!0}),Object.defineProperty(e,"styleMode",{get:function(){return"ios"},enumerable:!0,configurable:!0}),e}();function buildCircle(e,n,t,r){var i=e.fn(n,t,r);return i.style["animation-duration"]=n+"ms",Object(_ionic_core_js__WEBPACK_IMPORTED_MODULE_0__["h"])("svg",{viewBox:"0 0 64 64",style:i.style},Object(_ionic_core_js__WEBPACK_IMPORTED_MODULE_0__["h"])("circle",{transform:"translate(32,32)",r:i.r}))}function buildLine(e,n,t,r){var i=e.fn(n,t,r);return i.style["animation-duration"]=n+"ms",Object(_ionic_core_js__WEBPACK_IMPORTED_MODULE_0__["h"])("svg",{viewBox:"0 0 64 64",style:i.style},Object(_ionic_core_js__WEBPACK_IMPORTED_MODULE_0__["h"])("line",{transform:"translate(32,32)",y1:i.y1,y2:i.y2}))}
-
-/***/ }),
-
-/***/ "./node_modules/@ionic/core/dist/esm/es5/chunk-f7b6af08.js":
+/***/ "./node_modules/@ionic/core/dist/esm/es5/chunk-11949516.js":
 /*!*****************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm/es5/chunk-f7b6af08.js ***!
+  !*** ./node_modules/@ionic/core/dist/esm/es5/chunk-11949516.js ***!
   \*****************************************************************/
-/*! exports provided: a, b, c, d, e */
+/*! exports provided: a, b, c, d, e, f */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return createThemedClasses; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return createColorClasses; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return openURL; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return hostContext; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getParentNode; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return openURL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return getClassMap; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return hostContext; });
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -74,7 +55,7 @@ function createColorClasses(e) { var _a; return e ? (_a = { "ion-color": !0 }, _
 function createThemedClasses(e, t) { var _a; return _a = {}, _a[t] = !0, _a[t + "-" + e] = !!e, _a; }
 function getClassList(e) { return e ? (Array.isArray(e) ? e : e.split(" ")).filter(function (e) { return null != e; }).map(function (e) { return e.trim(); }).filter(function (e) { return "" !== e; }) : []; }
 function getClassMap(e) { var t = {}; return getClassList(e).forEach(function (e) { return t[e] = !0; }), t; }
-function openURL(e, t, r, s) {
+function openURL(e, t, r, n) {
     return __awaiter(this, void 0, void 0, function () { var o; return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -83,13 +64,33 @@ function openURL(e, t, r, s) {
                 if (!o) return [3 /*break*/, 2];
                 r && r.preventDefault();
                 return [4 /*yield*/, o.componentOnReady()];
-            case 1: return [2 /*return*/, (_a.sent(), o.push(t, s))];
+            case 1: return [2 /*return*/, (_a.sent(), o.push(t, n))];
             case 2: return [2 /*return*/, Promise.resolve()];
         }
     }); });
 }
+function getParentNode(e) { var t = e.parentNode; return t && 11 === t.NODE_TYPE ? t.host : t; }
 
 
+
+/***/ }),
+
+/***/ "./node_modules/@ionic/core/dist/esm/es5/fmtdx8uu.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm/es5/fmtdx8uu.js ***!
+  \***********************************************************/
+/*! exports provided: IonSplitPane */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IonSplitPane", function() { return SplitPane; });
+/* harmony import */ var _chunk_11949516_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./chunk-11949516.js */ "./node_modules/@ionic/core/dist/esm/es5/chunk-11949516.js");
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ * Built with http://stenciljs.com
+ */
+var SPLIT_PANE_MAIN="split-pane-main",SPLIT_PANE_SIDE="split-pane-side",QUERY={xs:"(min-width: 0px)",sm:"(min-width: 576px)",md:"(min-width: 768px)",lg:"(min-width: 992px)",xl:"(min-width: 1200px)",never:""},SplitPane=function(){function e(){this.visible=!1,this.disabled=!1,this.when=QUERY.md}return e.prototype.visibleChanged=function(e){var i={visible:e};this.ionChange.emit(i),this.ionSplitPaneVisible.emit(i)},e.prototype.componentDidLoad=function(){this._styleChildren(),this.whenChanged()},e.prototype.componentDidUnload=function(){this.rmL&&this.rmL(),this.rmL=null},e.prototype.whenChanged=function(){var e=this;if(!this.isServer)if(this.rmL&&this.rmL(),this.rmL=null,this.disabled)this.visible=!1;else{var i=this.when;if("boolean"!=typeof i){var t=QUERY[i]||i;if(t&&0!==t.length){var n=function(i){return e.visible=i.matches},s=this.win.matchMedia(t);s.addListener(n),this.rmL=function(){return s.removeListener(n)},this.visible=s.matches}else this.visible=!1}else this.visible=i}},e.prototype.isVisible=function(){return this.visible},e.prototype.isPane=function(e){return!!this.visible&&e.parentElement===this.el&&e.classList.contains(SPLIT_PANE_SIDE)},e.prototype._styleChildren=function(){if(!this.isServer){for(var e=this.el.children,i=this.el.childElementCount,t=!1,n=0;n<i;n++){var s=e[n],a=s.hasAttribute("main");if(a){if(t)return void console.warn("split pane can not have more than one main node");t=!0}setPaneClass(s,a)}t||console.warn("split pane could not found any main node")}},e.prototype.hostData=function(){return{class:Object.assign({},Object(_chunk_11949516_js__WEBPACK_IMPORTED_MODULE_0__["a"])(this.mode,"split-pane"),{"split-pane-visible":this.visible})}},Object.defineProperty(e,"is",{get:function(){return"ion-split-pane"},enumerable:!0,configurable:!0}),Object.defineProperty(e,"properties",{get:function(){return{disabled:{type:Boolean,attr:"disabled"},el:{elementRef:!0},isPane:{method:!0},isServer:{context:"isServer"},isVisible:{method:!0},visible:{state:!0,watchCallbacks:["visibleChanged"]},when:{type:"Any",attr:"when",watchCallbacks:["whenChanged"]},win:{context:"window"}}},enumerable:!0,configurable:!0}),Object.defineProperty(e,"events",{get:function(){return[{name:"ionChange",method:"ionChange",bubbles:!0,cancelable:!0,composed:!0},{name:"ionSplitPaneVisible",method:"ionSplitPaneVisible",bubbles:!0,cancelable:!0,composed:!0}]},enumerable:!0,configurable:!0}),Object.defineProperty(e,"style",{get:function(){return".split-pane{left:0;right:0;top:0;bottom:0;display:-webkit-box;display:-ms-flexbox;display:flex;position:absolute;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:nowrap;flex-wrap:nowrap;contain:strict}.split-pane-visible>.split-pane-main,.split-pane-visible>.split-pane-side{left:0;right:0;top:0;bottom:0;position:relative;-webkit-box-flex:1;-ms-flex:1;flex:1;-webkit-box-shadow:none!important;box-shadow:none!important;z-index:0}.split-pane-visible>.split-pane-side:not(ion-menu),.split-pane-visible>ion-menu.split-pane-side.menu-enabled{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-negative:0;flex-shrink:0;-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.split-pane-side:not(ion-menu){display:none}.split-pane-visible>.split-pane-side[side=start]{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.split-pane-visible>.split-pane-side[side=end]{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}.split-pane-visible>.split-pane-side[side=left]{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.split-pane-visible>.split-pane-side[side=right]{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}.split-pane-ios.split-pane-visible>.split-pane-side{min-width:270px;max-width:28%;border-right:.55px solid var(--ion-item-border-color,#c8c7cc);border-left:0}.split-pane-ios.split-pane-visible>.split-pane-side[side=right]{border-right:0;border-left:.55px solid var(--ion-item-border-color,#c8c7cc)}"},enumerable:!0,configurable:!0}),Object.defineProperty(e,"styleMode",{get:function(){return"ios"},enumerable:!0,configurable:!0}),e}();function setPaneClass(e,i){var t,n;i?(t=SPLIT_PANE_MAIN,n=SPLIT_PANE_SIDE):(t=SPLIT_PANE_SIDE,n=SPLIT_PANE_MAIN);var s=e.classList;s.add(t),s.remove(n)}
 
 /***/ })
 
