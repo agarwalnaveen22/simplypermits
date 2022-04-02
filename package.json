@@ -40,7 +40,6 @@
     "@ionic/angular": "4.0.0-beta.0",
     "@ionic/storage": "2.2.0",
     "@ngx-progressbar/core": "5.1.2",
-    "@types/lodash": "file:node_modules/@types/lodash",
     "com-badrit-base64": "0.2.0",
     "cordova-android-support-gradle-release": "3.0.1",
     "cordova-ios": "4.5.5",
@@ -64,8 +63,10 @@
     "core-js": "2.5.3",
     "es6-promise-plugin": "4.2.2",
     "ionic-angular": "3.9.2",
+    "lodash": "4.17.21",
     "rxjs": "6.2.2",
     "rxjs-compat": "6.3.3",
+    "sass": "^1.49.11",
     "wants": "0.1.1",
     "zone.js": "0.8.26"
   },
