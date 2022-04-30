@@ -107,8 +107,8 @@ export class LoginPage implements OnInit {
           await this.restService.setStorage("session_id", result['session_id']);
           let response = await this.restService.setStorage("userInfo", result['sp_user']);
           if (response) {
-            this.restService.checkLoginStatus();
             this.navCtrl.goRoot("/home");
+            this.restService.checkLoginStatus();
           }
         } else {
           this.restService.showAlert('Error', result['sp_error']);

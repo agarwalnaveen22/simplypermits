@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { LoadingController, AlertController, ToastController, NavController, ModalController, Platform, Events } from '@ionic/angular';
+import { LoadingController, AlertController, ToastController, NavController, ModalController, Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
 import { FileTransfer, FileTransferObject, FileUploadOptions } from '@ionic-native/file-transfer/ngx';
@@ -12,6 +12,7 @@ import { NativeAudio } from '@ionic-native/native-audio/ngx';
 import { Location } from '@angular/common';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { HTTP } from '@ionic-native/http/ngx';
+import {Events} from './event.service';
 
 @Injectable({
   providedIn: 'root'
@@ -190,6 +191,9 @@ export class RestService {
     }
     try {
       await this.makePostRequest(requestData);
+      setTimeout(() => {
+        this.checkLoginStatus();
+      }, 60000);
     } catch (error) {
       this.logout(2);
     }

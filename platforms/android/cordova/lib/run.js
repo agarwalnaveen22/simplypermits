@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /*
        Licensed to the Apache Software Foundation (ASF) under one
        or more contributor license agreements.  See the NOTICE file
@@ -17,32 +19,26 @@
        under the License.
 */
 
+/* jshint loopfunc:true */
+
 var path = require('path');
+var build = require('./build');
 var emulator = require('./emulator');
-const target = require('./target');
-var PackageType = require('./PackageType');
-const { events } = require('cordova-common');
+var device = require('./device');
+var Q = require('q');
+var events = require('cordova-common').events;
 
-/**
- * Builds a target spec from a runOptions object
- *
- * @param {{target?: string, device?: boolean, emulator?: boolean}} runOptions
- * @return {target.TargetSpec}
- */
-function buildTargetSpec (runOptions) {
-    const spec = {};
+function getInstallTarget (runOptions) {
+    var install_target;
     if (runOptions.target) {
-        spec.id = runOptions.target;
+        install_target = runOptions.target;
     } else if (runOptions.device) {
-        spec.type = 'device';
+        install_target = '--device';
     } else if (runOptions.emulator) {
-        spec.type = 'emulator';
+        install_target = '--emulator';
     }
-    return spec;
-}
 
-function formatResolvedTarget ({ id, type }) {
-    return `${type} ${id}`;
+    return install_target;
 }
 
 /**
@@ -56,31 +52,68 @@ function formatResolvedTarget ({ id, type }) {
  * @return  {Promise}
  */
 module.exports.run = function (runOptions) {
-    runOptions = runOptions || {};
 
     var self = this;
-    const spec = buildTargetSpec(runOptions);
+    var install_target = getInstallTarget(runOptions);
 
-    return target.resolve(spec).then(function (resolvedTarget) {
-        events.emit('log', `Deploying to ${formatResolvedTarget(resolvedTarget)}`);
-
-        return new Promise((resolve) => {
-            const buildOptions = require('./build').parseBuildOptions(runOptions, null, self.root);
-
-            // Android app bundles cannot be deployed directly to the device
-            if (buildOptions.packageType === PackageType.BUNDLE) {
-                const packageTypeErrorMessage = 'Package type "bundle" is not supported during cordova run.';
-                events.emit('error', packageTypeErrorMessage);
-                throw packageTypeErrorMessage;
+    return Q().then(function () {
+        if (!install_target) {
+            // no target given, deploy to device if available, otherwise use the emulator.
+            return device.list().then(function (device_list) {
+                if (device_list.length > 0) {
+                    events.emit('warn', 'No target specified, deploying to device \'' + device_list[0] + '\'.');
+                    install_target = device_list[0];
+                } else {
+                    events.emit('warn', 'No target specified and no devices found, deploying to emulator');
+                    install_target = '--emulator';
+                }
+            });
+        }
+    }).then(function () {
+        if (install_target === '--device') {
+            return device.resolveTarget(null);
+        } else if (install_target === '--emulator') {
+            // Give preference to any already started emulators. Else, start one.
+            return emulator.list_started().then(function (started) {
+                return started && started.length > 0 ? started[0] : emulator.start();
+            }).then(function (emulatorId) {
+                return emulator.resolveTarget(emulatorId);
+            });
+        }
+        // They specified a specific device/emulator ID.
+        return device.list().then(function (devices) {
+            if (devices.indexOf(install_target) > -1) {
+                return device.resolveTarget(install_target);
             }
-
-            resolve(self._builder.fetchBuildResults(buildOptions.buildType, buildOptions.arch));
-        }).then(async function (buildResults) {
-            if (resolvedTarget.type === 'emulator') {
-                await emulator.wait_for_boot(resolvedTarget.id);
+            return emulator.list_started().then(function (started_emulators) {
+                if (started_emulators.indexOf(install_target) > -1) {
+                    return emulator.resolveTarget(install_target);
+                }
+                return emulator.list_images().then(function (avds) {
+                    // if target emulator isn't started, then start it.
+                    for (var avd in avds) {
+                        if (avds[avd].name === install_target) {
+                            return emulator.start(install_target).then(function (emulatorId) {
+                                return emulator.resolveTarget(emulatorId);
+                            });
+                        }
+                    }
+                    return Q.reject('Target \'' + install_target + '\' not found, unable to run project');
+                });
+            });
+        });
+    }).then(function (resolvedTarget) {
+        // Better just call self.build, but we're doing some processing of
+        // build results (according to platformApi spec) so they are in different
+        // format than emulator.install expects.
+        // TODO: Update emulator/device.install to handle this change
+        return build.run.call(self, runOptions, resolvedTarget).then(function (buildResults) {
+            if (resolvedTarget.isEmulator) {
+                return emulator.wait_for_boot(resolvedTarget.target).then(function () {
+                    return emulator.install(resolvedTarget, buildResults);
+                });
             }
-
-            return target.install(resolvedTarget, buildResults);
+            return device.install(resolvedTarget, buildResults);
         });
     });
 };

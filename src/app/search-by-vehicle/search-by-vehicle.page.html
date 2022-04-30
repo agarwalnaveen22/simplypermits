@@ -4,27 +4,32 @@
 
   <ion-item class="margin-bottom" margin-top>
     <ion-icon slot="start" name="car"></ion-icon>
-    <ion-input [(ngModel)]="make" placeholder="Make"></ion-input>
+    <!-- <ion-input [(ngModel)]="make" placeholder="Make"></ion-input> -->
+    <input type="text" [(ngModel)]="make" placeholder="Make" />
   </ion-item>
 
   <ion-item class="margin-bottom">
     <ion-icon slot="start" name="car"></ion-icon>
-    <ion-input [(ngModel)]="model" placeholder="Model"></ion-input>
+    <!-- <ion-input [(ngModel)]="model" placeholder="Model"></ion-input> -->
+    <input type="text" [(ngModel)]="model" placeholder="Model" />
   </ion-item>
 
   <ion-item class="margin-bottom">
     <ion-icon slot="start" name="time"></ion-icon>
-    <ion-input [(ngModel)]="year" type="number" placeholder="Year"></ion-input>
+    <!-- <ion-input [(ngModel)]="year" type="number" placeholder="Year"></ion-input> -->
+    <input [(ngModel)]="year" type="number" placeholder="Year" />
   </ion-item>
 
   <ion-item class="margin-bottom">
     <ion-icon slot="start" name="disc"></ion-icon>
-    <ion-input [(ngModel)]="vin" placeholder="Vin"></ion-input>
+    <!-- <ion-input [(ngModel)]="vin" placeholder="Vin"></ion-input> -->
+    <input type="text" [(ngModel)]="vin" placeholder="Vin" />
   </ion-item>
 
   <ion-item class="margin-bottom">
     <ion-icon slot="start" name="car"></ion-icon>
-    <ion-input [(ngModel)]="plate" placeholder="Plate"></ion-input>
+    <!-- <ion-input [(ngModel)]="plate" placeholder="Plate"></ion-input> -->
+    <input type="text" [(ngModel)]="plate" placeholder="Plate" />
   </ion-item>
 
   <ion-button class="loginButton" expand="block" size="large" (click)="submitForm()">Search</ion-button>

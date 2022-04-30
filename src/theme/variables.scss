@@ -87,23 +87,43 @@ $inputselect-bg: #292340;
 $text-input-md-margin-left: 0.8em;
 
 ion-input, ion-label, ion-select{
-  color: $text-color;
+  color: #fff !important;
+  --color: #fff !important;
+  --placeholder-color: #fff;
   --ion-text-color-step-600: #fff;
   --ion-text-color-step-650: #fff;
 }
 
  ion-input, ion-select {
-  background: $inputselect-bg;
+  background: #292340;
   --placeholder-opacity: 1;
 }
 
+ion-item.activated {
+  --background: transparent;
+}
+input {
+  background: transparent;
+  color: #fff !important;
+  --color: #fff !important;
+  width: 100%;
+  border: none;
+  padding-left: 50px;
+}
+input::placeholder{
+  color: #fff;
+}
+input:focus {
+    border: none;
+    outline: none;
+}
 ion-item.item-select ion-label {
-  background: $inputselect-bg;
+  background: #292340;
   padding: 11px 8px 11px 0;
   margin:  11px 0px !important;
 }
 ion-radio-group ion-label {
-  color: $select-option-color;
+  color: #000;
 }
 
 ion-content {
@@ -159,7 +179,7 @@ ion-toolbar {
 }
 
 .logoutIcon {
-  color: $text-color;
+  color: #fff;
 }
 
 ion-header{
@@ -167,11 +187,11 @@ ion-header{
 }
 
 ion-back-button {
-  color: $text-color !important;
+  color: #fff !important;
 }
 
 ion-title {
-  color: $text-color;
+  color: #fff;
 }
 
 .loading-wrapper {
@@ -183,7 +203,7 @@ ion-title {
 
 .loading-content {
   background: #000;
-  color: $text-color;
+  color: #fff;
 }
 
 .loading-ios .loading-content {
@@ -191,7 +211,7 @@ ion-title {
 }
 
 a.forget-link {
-  color: $text-color;
+  color: #fff;
   display: block;
   margin: .8em auto;
   text-align: center;
@@ -244,11 +264,11 @@ a.forget-link {
 }
 
 ion-refresher {
-  color: $text-color;
+  color: #fff;
 }
 
 .refresher-md .refresher-pulling-icon, .refresher-md .refresher-pulling-text, .refresher-md .refresher-refreshing-icon, .refresher-md .refresher-refreshing-text {
-  --ion-text-color: $text-color;
+  --ion-text-color: #fff;
 }
 
 ion-select-popover {
@@ -260,17 +280,44 @@ ion-select-popover {
   }
   background: #150e35;
 }
-
+.dropdownLebal {
+  padding-left: 50px;
+}
+textarea {
+  background: transparent;
+  outline: none;
+  border: none;
+  height: -moz-fit-content;
+  height: 100% !important;
+  width: 100%;
+  color: #ffffff !important;
+  display: flex;
+}
+.description_area[_ngcontent-c0] {
+  background: #191242;
+  height: 85%;
+  overflow: hidden;
+  display: flex;
+}
 @media screen and (min-width : 576px) {
   .logoHeader {
     img {
       max-width: 60%;
     }
   }
-}
+  input {
+    padding-left: 40px;
+  }
 
+}
+.alert-wrapper[data-ion-alert-md] {
+  background: #150e35 !important;
+}
+.alert-title[data-ion-alert-md] {
+  color: #ffffff;
+}
 .alert-wrapper.sc-ion-alert-md {
-  background-color: #150e35;
+  --background: #150e35;
 }
 
 .alert-title.sc-ion-alert-md {
@@ -278,11 +325,11 @@ ion-select-popover {
 }
 
 .alert-message.sc-ion-alert-md {
-  color: $text-color;
+  color: #fff;
 }
 
 .alert-button-inner.sc-ion-alert-md {
-  color: $text-color;
+  color: #fff;
 }
 
 ion-row {

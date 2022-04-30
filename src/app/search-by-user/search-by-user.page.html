@@ -4,27 +4,32 @@
 
   <ion-item class="margin-bottom" margin-top>
     <ion-icon slot="start" name="contact"></ion-icon>
-    <ion-input [(ngModel)]="firstName" placeholder="First Name"></ion-input>
+    <!-- <ion-input [(ngModel)]="firstName" placeholder="First Name"></ion-input> -->
+    <input type="text" [(ngModel)]="firstName" placeholder="First Name" />
   </ion-item>
 
   <ion-item class="margin-bottom">
     <ion-icon slot="start" name="contact"></ion-icon>
-    <ion-input [(ngModel)]="lastName" placeholder="Last Name"></ion-input>
+    <!-- <ion-input [(ngModel)]="lastName" placeholder="Last Name"></ion-input> -->
+    <input type="text" [(ngModel)]="lastName" placeholder="Last Name" />
   </ion-item>
 
   <ion-item class="margin-bottom">
     <ion-icon slot="end" src="assets/icon/Second-Billing-Address.svg"></ion-icon>
-    <ion-input [(ngModel)]="residentUnit" placeholder="{{dynamic_field}}"></ion-input>
+    <!-- <ion-input [(ngModel)]="residentUnit" placeholder="{{dynamic_field}}"></ion-input> -->
+    <input type="text" [(ngModel)]="residentUnit" placeholder="{{dynamic_field}}" />
   </ion-item>
 
   <ion-item class="margin-bottom">
     <ion-icon slot="start" name="mail"></ion-icon>
-    <ion-input [(ngModel)]="email" type="email" placeholder="Email Address"></ion-input>
+    <!-- <ion-input [(ngModel)]="email" type="email" placeholder="Email Address"></ion-input> -->
+    <input type="text" [(ngModel)]="email" type="email" placeholder="Email Address" />
   </ion-item>
 
   <ion-item class="margin-bottom">
     <ion-icon slot="start" name="call"></ion-icon>
-    <ion-input [(ngModel)]="phone" type="tel" placeholder="Phone Number"></ion-input>
+    <!-- <ion-input [(ngModel)]="phone" type="tel" placeholder="Phone Number"></ion-input> -->
+    <input [(ngModel)]="phone" type="tel" placeholder="Phone Number" />
   </ion-item>
 
   <ion-button class="loginButton" expand="block" size="large" (click)="submitForm()">Search</ion-button>

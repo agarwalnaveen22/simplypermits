@@ -125,9 +125,6 @@ public class CordovaActivity extends Activity {
             // (as was the case in previous cordova versions)
             if (!preferences.getBoolean("FullscreenNotImmersive", false)) {
                 immersiveMode = true;
-                // The splashscreen plugin needs the flags set before we're focused to prevent
-                // the nav and title bars from flashing in.
-                setImmersiveUiVisibility();
             } else {
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                         WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -271,11 +268,9 @@ public class CordovaActivity extends Activity {
         if (this.appView == null) {
             return;
         }
-        if (! this.getWindow().getDecorView().hasFocus()) {
-            // Force window to have focus, so application always
-            // receive user input. Workaround for some devices (Samsung Galaxy Note 3 at least)
-            this.getWindow().getDecorView().requestFocus();
-        }
+        // Force window to have focus, so application always
+        // receive user input. Workaround for some devices (Samsung Galaxy Note 3 at least)
+        this.getWindow().getDecorView().requestFocus();
 
         this.appView.handleResume(this.keepRunning);
     }
@@ -324,24 +319,20 @@ public class CordovaActivity extends Activity {
     /**
      * Called when view focus is changed
      */
+    @SuppressLint("InlinedApi")
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         if (hasFocus && immersiveMode) {
-            setImmersiveUiVisibility();
+            final int uiOptions = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+
+            getWindow().getDecorView().setSystemUiVisibility(uiOptions);
         }
-    }
-
-    @SuppressLint("InlinedApi")
-    protected void setImmersiveUiVisibility() {
-        final int uiOptions = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
-
-        getWindow().getDecorView().setSystemUiVisibility(uiOptions);
     }
 
     @SuppressLint("NewApi")

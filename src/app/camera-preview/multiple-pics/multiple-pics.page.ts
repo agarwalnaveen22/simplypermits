@@ -1,9 +1,10 @@
 import { Component, OnInit, Input, NgZone } from '@angular/core';
 import { RestService } from '../../rest.service';
-import { Events, NavController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { PowerManagement } from '@ionic-native/power-management/ngx';
+import {Events} from '../../event.service';
 
 @Component({
   selector: 'app-multiple-pics',
@@ -33,6 +34,7 @@ export class MultiplePicsPage implements OnInit {
     private powerManagement: PowerManagement,
   ) {
     this.events.subscribe('pictureData', (data) => {
+      console.log('pictureData', data);
       this.plateDataCounter++;
       let plateData = data;
       plateData['animationType'] = 'in';

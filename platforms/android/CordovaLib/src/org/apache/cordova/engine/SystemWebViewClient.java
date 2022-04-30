@@ -48,7 +48,7 @@ import java.util.Hashtable;
 /**
  * This class is the WebViewClient that implements callbacks for our web view.
  * The kind of callbacks that happen here are regarding the rendering of the
- * document instead of the chrome surrounding it, such as onPageStarted(),
+ * document instead of the chrome surrounding it, such as onPageStarted(), 
  * shouldOverrideUrlLoading(), etc. Related to but different than
  * CordovaChromeClient.
  */
@@ -74,8 +74,7 @@ public class SystemWebViewClient extends WebViewClient {
      * @param url           The url to be loaded.
      * @return              true to override, false for default behavior
      */
-    @Override
-    @SuppressWarnings("deprecation")
+	@Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
         return parentEngine.client.onNavigationAttempt(url);
     }
@@ -104,7 +103,7 @@ public class SystemWebViewClient extends WebViewClient {
         // By default handle 401 like we'd normally do!
         super.onReceivedHttpAuthRequest(view, handler, host, realm);
     }
-
+    
     /**
      * On received client cert request.
      * The method forwards the request to any running plugins before using the default implementation.
@@ -113,6 +112,7 @@ public class SystemWebViewClient extends WebViewClient {
      * @param request
      */
     @Override
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void onReceivedClientCertRequest (WebView view, ClientCertRequest request)
     {
 
@@ -186,7 +186,6 @@ public class SystemWebViewClient extends WebViewClient {
      * @param failingUrl    The url that failed to load.
      */
     @Override
-    @SuppressWarnings("deprecation")
     public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
         // Ignore error due to stopLoading().
         if (!isCurrentlyLoading) {
@@ -317,7 +316,6 @@ public class SystemWebViewClient extends WebViewClient {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
     public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
         try {
             // Check the against the whitelist and lock out access to the WebView directory
@@ -333,7 +331,7 @@ public class SystemWebViewClient extends WebViewClient {
             // Allow plugins to intercept WebView requests.
             Uri remappedUri = resourceApi.remapUri(origUri);
 
-            if (!origUri.equals(remappedUri) || needsSpecialsInAssetUrlFix(origUri) || needsContentUrlFix(origUri)) {
+            if (!origUri.equals(remappedUri) || needsSpecialsInAssetUrlFix(origUri) || needsKitKatContentUrlFix(origUri)) {
                 CordovaResourceApi.OpenForReadResult result = resourceApi.openForRead(remappedUri, true);
                 return new WebResourceResponse(result.mimeType, "UTF-8", result.inputStream);
             }
@@ -348,7 +346,7 @@ public class SystemWebViewClient extends WebViewClient {
         }
     }
 
-    private static boolean needsContentUrlFix(Uri uri) {
+    private static boolean needsKitKatContentUrlFix(Uri uri) {
         return "content".equals(uri.getScheme());
     }
 

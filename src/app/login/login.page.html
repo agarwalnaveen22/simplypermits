@@ -11,12 +11,14 @@
       <ion-col size="12" [attr.size-sm]="colSize" [attr.size-md]="colSize" [attr.size-lg]="colSize" [attr.size-xl]="colSize">
         <ion-item class="margin-bottom" margin-top>
           <ion-icon slot="start" name="person"></ion-icon>
-          <ion-input [(ngModel)]="username" placeholder="USERNAME OR EMAIL ADDRESS"></ion-input>
+          <!-- <ion-input [(ngModel)]="username" placeholder="USERNAME OR EMAIL ADDRESS"></ion-input> -->
+          <input type="text" [(ngModel)]="username" placeholder="USERNAME OR EMAIL ADDRESS" />
         </ion-item>
 
         <ion-item class="margin-bottom">
           <ion-icon slot="start" name="lock"></ion-icon>
-          <ion-input [(ngModel)]="password" type="password" placeholder="PASSWORD"></ion-input>
+          <!-- <ion-input [(ngModel)]="password" type="password" placeholder="PASSWORD"></ion-input> -->
+          <input type="password" [(ngModel)]="password" type="password" placeholder="PASSWORD" />
 
         </ion-item>
 

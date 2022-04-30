@@ -24,6 +24,9 @@ ion-row.no-results-found.hydrated {
     height: 100%;
     align-items: center;
 }
+.no-results-found ion-label {
+    text-align: center;
+  }
 @media screen and (min-device-width: 768px) and (max-device-width: 1824px) and (orientation : portrait){
     .logoImgHeader img {
         max-width: 50%;
