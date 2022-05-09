@@ -6,7 +6,7 @@
     <ion-icon slot="icon-only" name="flash-off"></ion-icon>
   </ion-button>
   <ion-row class="result-outer">
-    <div *ngFor="let plateData of pictureData; let i = index" [ngClass]="plateData.data.status === 'Expired' ? 'inactive' : 'active'"> 
+    <div *ngFor="let plateData of pictureData; let i = index" [ngClass]="plateData.data.status === 'Expired' | 'Cancelled' ? 'inactive' : 'active'"> 
       <ion-card *ngIf="scanStatus && plateData.status" (click)="goToDetail(i)"
         [@fadeAnimation]="plateData.animationType">
         <ion-item class="title_bar">
