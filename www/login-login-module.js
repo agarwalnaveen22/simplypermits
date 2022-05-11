@@ -184,6 +184,7 @@ var LoginPage = /** @class */ (function () {
                             sp_user_password: this.password
                         };
                         this.restService.makePostRequest(requestData).then(function (result) { return __awaiter(_this, void 0, void 0, function () {
+                            var _this = this;
                             var response;
                             return __generator(this, function (_a) {
                                 switch (_a.label) {
@@ -197,7 +198,12 @@ var LoginPage = /** @class */ (function () {
                                     case 2:
                                         response = _a.sent();
                                         if (response) {
-                                            this.navCtrl.goRoot("/home");
+                                            this.zone.run(function () { return __awaiter(_this, void 0, void 0, function () {
+                                                return __generator(this, function (_a) {
+                                                    this.navCtrl.goRoot("/home");
+                                                    return [2 /*return*/];
+                                                });
+                                            }); });
                                             this.restService.checkLoginStatus();
                                         }
                                         return [3 /*break*/, 4];
