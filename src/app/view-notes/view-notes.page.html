@@ -1,7 +1,7 @@
 <app-header [showProperty]="showProperty" [pageName]="pageName"></app-header>
 
 <ion-content padding text-center>
-  <ion-refresher slot="fixed" (ionRefresh)="refreshData($event)">
+  <ion-refresher [disabled]="false" slot="fixed" (ionRefresh)="refreshData($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <ion-card *ngFor="let note of notes" class="view_permit_notes">

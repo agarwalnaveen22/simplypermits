@@ -35,7 +35,9 @@ export class HeaderComponent implements OnInit {
     await this.restService.keyBoardHide();
     this.restService.showLoader('Fetching Properties');
     this.restService.makePostRequest(requestData).then((result) => {
-      this.restService.hideLoader();
+      setTimeout(() => {
+        this.restService.hideLoader();
+      }, 2000);
       this.zone.run(async () => {
         this.properties = result['Properties'];
       });

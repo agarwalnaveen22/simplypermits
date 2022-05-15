@@ -299,6 +299,32 @@ textarea {
   overflow: hidden;
   display: flex;
 }
+ion-toolbar.footer_permit_details.hydrated, 
+ion-toolbar.footer_add_note.hydrated, 
+ion-toolbar.footerBack.hydrated {
+  padding: 0;
+  min-height: 45px;
+}
+ion-buttons.view_note_btn.hydrated {
+  background: #150e35;
+  margin: 0;
+}
+ion-buttons.add_note_btn.hydrated {
+  background: #5f2877;
+  margin: 0;
+}
+.alert-button[data-ion-alert-md], 
+.alert-input-group[data-ion-alert-md], 
+.alert-message[data-ion-alert-md] {
+  color: #fff !important;
+  background: transparent !important;
+}
+.alert-button[data-ion-alert-md]:focus, 
+.alert-input-group[data-ion-alert-md]:focus, 
+.alert-message[data-ion-alert-md]:focus {
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.3) !important;
+}
 @media screen and (min-width : 576px) {
   .logoHeader {
     img {

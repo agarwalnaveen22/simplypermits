@@ -1,7 +1,7 @@
 <app-header [showProperty]="showProperty" [pageName]="pageName"></app-header>
 
 <ion-content [ngClass]="permitData.status=='Active'?'active':'inactive'" >
-  <ion-refresher slot="fixed" (ionRefresh)="refreshData($event)">
+  <ion-refresher [disabled]="false" slot="fixed" (ionRefresh)="refreshData($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <ion-card>
@@ -62,23 +62,23 @@
 
   <ion-card *ngIf="!isEnforcement">
     <ion-item class="header">
-      <ion-label>{{permitData.Customer.First_Name}} {{permitData.Customer.Last_Name}}</ion-label>
+      <ion-label>{{permitData?.Customer?.First_Name}} {{permitData?.Customer?.Last_Name}}</ion-label>
       <ion-label text-end slot="end">
         <ion-icon src="assets/icon/Second-Billing-Address-alt.svg"></ion-icon>
-        {{permitData.Customer.Address2}}
+        {{permitData?.Customer?.Address2}}
       </ion-label>
     </ion-item>
 
     <ion-card-content text-center class="permitDetailsList">
       <ion-item>
         <ion-label start>Email Address</ion-label>
-        <ion-label end color="medium" text-wrap>{{permitData.Customer.Email}}</ion-label>
+        <ion-label end color="medium" text-wrap>{{permitData?.Customer?.Email}}</ion-label>
       </ion-item>
       <ion-item>
         <ion-label start>Address</ion-label>
-        <ion-label text-wrap end color="medium">{{permitData.Customer.Address1}} {{permitData.Customer.Address2}}
-          {{permitData.Customer.City}}
-          {{permitData.Customer.State}} {{permitData.Customer.Zip}}</ion-label>
+        <ion-label text-wrap end color="medium">{{permitData?.Customer?.Address1}} {{permitData?.Customer?.Address2}}
+          {{permitData?.Customer?.City}}
+          {{permitData?.Customer?.State}} {{permitData?.Customer?.Zip}}</ion-label>
       </ion-item>
     </ion-card-content>
   </ion-card>
