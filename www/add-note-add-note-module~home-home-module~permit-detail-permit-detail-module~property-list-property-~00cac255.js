@@ -120,7 +120,9 @@ var HeaderComponent = /** @class */ (function () {
                         _a.sent();
                         this.restService.showLoader('Fetching Properties');
                         this.restService.makePostRequest(requestData).then(function (result) {
-                            _this.restService.hideLoader();
+                            setTimeout(function () {
+                                _this.restService.hideLoader();
+                            }, 2000);
                             _this.zone.run(function () { return __awaiter(_this, void 0, void 0, function () {
                                 return __generator(this, function (_a) {
                                     this.properties = result['Properties'];
