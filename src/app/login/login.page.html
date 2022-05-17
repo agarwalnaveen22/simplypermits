@@ -9,25 +9,22 @@
         </ion-item>
       </ion-col>
       <ion-col size="12" [attr.size-sm]="colSize" [attr.size-md]="colSize" [attr.size-lg]="colSize" [attr.size-xl]="colSize">
-        <ion-item class="margin-bottom" margin-top>
-          <ion-icon slot="start" name="person"></ion-icon>
-          <!-- <ion-input [(ngModel)]="username" placeholder="USERNAME OR EMAIL ADDRESS"></ion-input> -->
+        <div class="margin-bottom icon_input_outer" margin-top>
+          <div class="icons_outer"><img src="assets/icon/person.svg"/></div>
           <input type="text" [(ngModel)]="username" placeholder="USERNAME OR EMAIL ADDRESS" />
-        </ion-item>
+        </div>
 
-        <ion-item class="margin-bottom">
-          <ion-icon slot="start" name="lock"></ion-icon>
-          <!-- <ion-input [(ngModel)]="password" type="password" placeholder="PASSWORD"></ion-input> -->
+        <div class="margin-bottom icon_input_outer" margin-top>
+          <div class="icons_outer"><img src="assets/icon/lock.svg"/></div>
           <input type="password" [(ngModel)]="password" type="password" placeholder="PASSWORD" />
+        </div>
 
-        </ion-item>
-
-        <ion-item class="margin-bottom">
-          <ion-icon class="select-pin" slot="start" name="pin"></ion-icon>
+        <div class="margin-bottom icon_input_outer" margin-top>
+          <div class="icons_outer"><img src="assets/icon/pin.svg"/></div>
           <ion-select [(ngModel)]="city" interface="popover" (ionChange)="changeApiUrl()" placeholder="SELECT CITY">
             <ion-select-option *ngFor="let city of cities" value="{{city.city_api_url}}|{{city.forgot_password_link}}">{{city.city_name}}</ion-select-option>
           </ion-select>
-        </ion-item>
+        </div>
 
         <ion-button class="loginButton" expand="block" size="large" (click)="login()">LOGIN</ion-button>
         <ion-button class="forget-link" (click)="openForgotPassword()">FORGOT YOUR PASSWORD?</ion-button>

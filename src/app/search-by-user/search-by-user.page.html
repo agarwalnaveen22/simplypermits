@@ -2,35 +2,30 @@
 
 <ion-content padding text-center>
 
-  <ion-item class="margin-bottom" margin-top>
-    <ion-icon slot="start" name="contact"></ion-icon>
-    <!-- <ion-input [(ngModel)]="firstName" placeholder="First Name"></ion-input> -->
+  <div class="margin-bottom icon_input_outer" margin-top>
+    <div class="icons_outer"><img src="assets/icon/contact.svg"/></div>
     <input type="text" [(ngModel)]="firstName" placeholder="First Name" />
-  </ion-item>
+  </div>
 
-  <ion-item class="margin-bottom">
-    <ion-icon slot="start" name="contact"></ion-icon>
-    <!-- <ion-input [(ngModel)]="lastName" placeholder="Last Name"></ion-input> -->
+  <div class="margin-bottom icon_input_outer" margin-top>
+    <div class="icons_outer"><img src="assets/icon/contact.svg"/></div>
     <input type="text" [(ngModel)]="lastName" placeholder="Last Name" />
-  </ion-item>
+  </div>
 
-  <ion-item class="margin-bottom">
-    <ion-icon slot="end" src="assets/icon/Second-Billing-Address.svg"></ion-icon>
-    <!-- <ion-input [(ngModel)]="residentUnit" placeholder="{{dynamic_field}}"></ion-input> -->
+  <div class="margin-bottom icon_input_outer" margin-top>
+    <div class="icons_outer"><img src="assets/icon/Second-Billing-Address.svg"/></div>
     <input type="text" [(ngModel)]="residentUnit" placeholder="{{dynamic_field}}" />
-  </ion-item>
+  </div>
 
-  <ion-item class="margin-bottom">
-    <ion-icon slot="start" name="mail"></ion-icon>
-    <!-- <ion-input [(ngModel)]="email" type="email" placeholder="Email Address"></ion-input> -->
+  <div class="margin-bottom icon_input_outer" margin-top>
+    <div class="icons_outer"><img src="assets/icon/mail.svg"/></div>
     <input type="text" [(ngModel)]="email" type="email" placeholder="Email Address" />
-  </ion-item>
+  </div>
 
-  <ion-item class="margin-bottom">
-    <ion-icon slot="start" name="call"></ion-icon>
-    <!-- <ion-input [(ngModel)]="phone" type="tel" placeholder="Phone Number"></ion-input> -->
+  <div class="margin-bottom icon_input_outer" margin-top>
+    <div class="icons_outer"><img src="assets/icon/call.svg"/></div>
     <input [(ngModel)]="phone" type="tel" placeholder="Phone Number" />
-  </ion-item>
+  </div>
 
   <ion-button class="loginButton" expand="block" size="large" (click)="submitForm()">Search</ion-button>
 

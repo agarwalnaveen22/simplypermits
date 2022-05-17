@@ -164,6 +164,36 @@ ion-content {
   }
 }
 
+.icons_outer {
+  width: 46px;
+  max-width: 46px;
+  text-align: center;
+  background: #5f2877;
+  height: 44px;
+  padding: 9px 0;
+  img{
+    width: 26px;
+    margin: 0 auto;
+  }
+}
+
+.icon_input_outer {
+  display: flex;
+  width: 100%;
+}
+.icon_input_outer input {
+  width: calc(100% - 46px);
+  margin-left: 0 !important;
+  padding: 0 10px;
+}
+.icon_input_outer ion-select {
+  width: calc(100% - 46px) !important;
+  margin-left: 0 !important;
+  padding: 10px 10px;
+}
+.icon_input_outer .dropdownLebal {
+  padding: 0 10px;
+}
 .loginButton {
   margin-top: 50px;
   --background: -webkit-linear-gradient(top, #ee6225 5%, #cb2629 100%);
