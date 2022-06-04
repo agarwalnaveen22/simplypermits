@@ -204,7 +204,8 @@ export class RestService {
     return new Promise((resolve, reject) => {
       this.http.get(this.apiUrl, {
         headers: new HttpHeaders({
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Cache-Control': 'no-cache',
         }),
         params: data
       })

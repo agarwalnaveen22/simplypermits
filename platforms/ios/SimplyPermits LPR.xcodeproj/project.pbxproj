@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00CCCC1153204387A2D5DBC9 /* Diagnostic_Location.m in Sources */ = {isa = PBXBuildFile; fileRef = D8146F83BEB4485D898ED84A /* Diagnostic_Location.m */; };
 		00FC0FA5AF444930AFE49047 /* NativeAudioAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C3110D8B8446DF81553B9C /* NativeAudioAsset.m */; };
@@ -682,7 +683,7 @@
 				INFOPLIST_FILE = "SimplyPermits LPR/SimplyPermits LPR-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				MARKETING_VERSION = 4.5.1;
+				MARKETING_VERSION = 6.0.0;
 				PRODUCT_NAME = "SimplyPermits LPR";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -710,7 +711,7 @@
 				INFOPLIST_FILE = "SimplyPermits LPR/SimplyPermits LPR-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				MARKETING_VERSION = 4.5.1;
+				MARKETING_VERSION = 6.0.0;
 				PRODUCT_NAME = "SimplyPermits LPR";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -62,7 +62,7 @@ var LoginPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-content padding>\n\n  <ion-grid>\n    <ion-row class=\"item-verticle-align-center\">\n\n      <ion-col size=\"12\" [attr.size-sm]=\"colSize\" [attr.size-md]=\"colSize\" [attr.size-lg]=\"colSize\" [attr.size-xl]=\"colSize\">\n        <ion-item>\n          <img class=\"logoImg\" [src]=\"appLogo\" />\n        </ion-item>\n      </ion-col>\n      <ion-col size=\"12\" [attr.size-sm]=\"colSize\" [attr.size-md]=\"colSize\" [attr.size-lg]=\"colSize\" [attr.size-xl]=\"colSize\">\n        <ion-item class=\"margin-bottom\" margin-top>\n          <ion-icon slot=\"start\" name=\"person\"></ion-icon>\n          <ion-input [(ngModel)]=\"username\" placeholder=\"USERNAME OR EMAIL ADDRESS\"></ion-input>\n        </ion-item>\n\n        <ion-item class=\"margin-bottom\">\n          <ion-icon slot=\"start\" name=\"lock\"></ion-icon>\n          <ion-input [(ngModel)]=\"password\" type=\"password\" placeholder=\"PASSWORD\"></ion-input>\n\n        </ion-item>\n\n        <ion-item class=\"margin-bottom\">\n          <ion-icon class=\"select-pin\" slot=\"start\" name=\"pin\"></ion-icon>\n          <ion-select [(ngModel)]=\"city\" interface=\"popover\" (ionChange)=\"changeApiUrl()\" placeholder=\"SELECT CITY\">\n            <ion-select-option *ngFor=\"let city of cities\" value=\"{{city.city_api_url}}|{{city.forgot_password_link}}\">{{city.city_name}}</ion-select-option>\n          </ion-select>\n        </ion-item>\n\n        <ion-button class=\"loginButton\" expand=\"block\" size=\"large\" (click)=\"login()\">LOGIN</ion-button>\n        <ion-button class=\"forget-link\" (click)=\"openForgotPassword()\">FORGOT YOUR PASSWORD?</ion-button>\n      </ion-col>\n\n    </ion-row>\n  </ion-grid>\n\n\n\n</ion-content>"
+module.exports = "<ion-content padding>\n\n  <ion-grid>\n    <ion-row class=\"item-verticle-align-center\">\n\n      <ion-col size=\"12\" [attr.size-sm]=\"colSize\" [attr.size-md]=\"colSize\" [attr.size-lg]=\"colSize\" [attr.size-xl]=\"colSize\">\n        <ion-item>\n          <img class=\"logoImg\" [src]=\"appLogo\" />\n        </ion-item>\n      </ion-col>\n      <ion-col size=\"12\" [attr.size-sm]=\"colSize\" [attr.size-md]=\"colSize\" [attr.size-lg]=\"colSize\" [attr.size-xl]=\"colSize\">\n        <div class=\"margin-bottom icon_input_outer\" margin-top>\n          <div class=\"icons_outer\"><img src=\"assets/icon/person.svg\"/></div>\n          <input type=\"text\" [(ngModel)]=\"username\" placeholder=\"USERNAME OR EMAIL ADDRESS\" />\n        </div>\n\n        <div class=\"margin-bottom icon_input_outer\" margin-top>\n          <div class=\"icons_outer\"><img src=\"assets/icon/lock.svg\"/></div>\n          <input type=\"password\" [(ngModel)]=\"password\" type=\"password\" placeholder=\"PASSWORD\" />\n        </div>\n\n        <div class=\"margin-bottom icon_input_outer\" margin-top>\n          <div class=\"icons_outer\"><img src=\"assets/icon/pin.svg\"/></div>\n          <ion-select [(ngModel)]=\"city\" interface=\"popover\" (ionChange)=\"changeApiUrl()\" placeholder=\"SELECT CITY\">\n            <ion-select-option *ngFor=\"let city of cities\" value=\"{{city.city_api_url}}|{{city.forgot_password_link}}\">{{city.city_name}}</ion-select-option>\n          </ion-select>\n        </div>\n\n        <ion-button class=\"loginButton\" expand=\"block\" size=\"large\" (click)=\"login()\">LOGIN</ion-button>\n        <ion-button class=\"forget-link\" (click)=\"openForgotPassword()\">FORGOT YOUR PASSWORD?</ion-button>\n      </ion-col>\n\n    </ion-row>\n  </ion-grid>\n\n\n\n</ion-content>"
 
 /***/ }),
 
@@ -184,6 +184,7 @@ var LoginPage = /** @class */ (function () {
                             sp_user_password: this.password
                         };
                         this.restService.makePostRequest(requestData).then(function (result) { return __awaiter(_this, void 0, void 0, function () {
+                            var _this = this;
                             var response;
                             return __generator(this, function (_a) {
                                 switch (_a.label) {
@@ -197,8 +198,13 @@ var LoginPage = /** @class */ (function () {
                                     case 2:
                                         response = _a.sent();
                                         if (response) {
+                                            this.zone.run(function () { return __awaiter(_this, void 0, void 0, function () {
+                                                return __generator(this, function (_a) {
+                                                    this.navCtrl.goRoot("/home");
+                                                    return [2 /*return*/];
+                                                });
+                                            }); });
                                             this.restService.checkLoginStatus();
-                                            this.navCtrl.goRoot("/home");
                                         }
                                         return [3 /*break*/, 4];
                                     case 3:

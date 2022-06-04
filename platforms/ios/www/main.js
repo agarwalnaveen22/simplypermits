@@ -500,25 +500,24 @@ var AuthGuardService = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 5, , 6]);
+                        _a.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, this.restService.getStorage("userInfo")];
                     case 1:
                         resp = _a.sent();
                         console.log(resp);
-                        if (!(resp != null)) return [3 /*break*/, 3];
-                        return [4 /*yield*/, this.restService.checkLoginStatus()];
+                        if (resp != null) {
+                            return [2 /*return*/, true];
+                        }
+                        else {
+                            this.router.navigate(['/login']);
+                            return [2 /*return*/, false];
+                        }
+                        return [3 /*break*/, 3];
                     case 2:
-                        _a.sent();
-                        return [2 /*return*/, true];
-                    case 3:
-                        this.router.navigate(['/login']);
-                        return [2 /*return*/, false];
-                    case 4: return [3 /*break*/, 6];
-                    case 5:
                         error_1 = _a.sent();
                         this.router.navigate(['/login']);
                         return [2 /*return*/, false];
-                    case 6: return [2 /*return*/];
+                    case 3: return [2 /*return*/];
                 }
             });
         });
@@ -529,6 +528,82 @@ var AuthGuardService = /** @class */ (function () {
             _rest_service__WEBPACK_IMPORTED_MODULE_2__["RestService"]])
     ], AuthGuardService);
     return AuthGuardService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/event.service.ts":
+/*!**********************************!*\
+  !*** ./src/app/event.service.ts ***!
+  \**********************************/
+/*! exports provided: Events */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Events", function() { return Events; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+var Events = /** @class */ (function () {
+    function Events() {
+        this.channels = {};
+    }
+    /**
+     * Subscribe to a topic and provide a single handler/observer.
+     * @param topic The name of the topic to subscribe to.
+     * @param observer The observer or callback function to listen when changes are published.
+     *
+     * @returns Subscription from which you can unsubscribe to release memory resources and to prevent memory leak.
+     */
+    Events.prototype.subscribe = function (topic, observer) {
+        if (!this.channels[topic]) {
+            // You can also use ReplaySubject with one concequence
+            this.channels[topic] = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        }
+        return this.channels[topic].subscribe(observer);
+    };
+    /**
+     * Publish some data to the subscribers of the given topic.
+     * @param topic The name of the topic to emit data to.
+     * @param data data in any format to pass on.
+     */
+    Events.prototype.publish = function (topic, data) {
+        var subject = this.channels[topic];
+        if (!subject) {
+            // Or you can create a new subject for future subscribers
+            return;
+        }
+        subject.next(data);
+    };
+    /**
+     * When you are sure that you are done with the topic and the subscribers no longer needs to listen to a particular topic, you can
+     * destroy the observable of the topic using this method.
+     * @param topic The name of the topic to destroy.
+     */
+    Events.prototype.destroy = function (topic) {
+        var subject = this.channels[topic];
+        if (!subject) {
+            return;
+        }
+        subject.complete();
+        delete this.channels[topic];
+    };
+    Events = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        })
+    ], Events);
+    return Events;
 }());
 
 
@@ -819,6 +894,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @ionic-native/screen-orientation/ngx */ "./node_modules/@ionic-native/screen-orientation/ngx/index.js");
 /* harmony import */ var _ionic_native_http_ngx__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @ionic-native/http/ngx */ "./node_modules/@ionic-native/http/ngx/index.js");
+/* harmony import */ var _event_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./event.service */ "./src/app/event.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -863,6 +939,7 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+
 
 
 
@@ -973,6 +1050,7 @@ var RestService = /** @class */ (function () {
             });
         }); };
         this.checkLoginStatus = function () { return __awaiter(_this, void 0, void 0, function () {
+            var _this = this;
             var requestData, error_3;
             return __generator(this, function (_a) {
                 switch (_a.label) {
@@ -990,6 +1068,9 @@ var RestService = /** @class */ (function () {
                         return [4 /*yield*/, this.makePostRequest(requestData)];
                     case 3:
                         _a.sent();
+                        setTimeout(function () {
+                            _this.checkLoginStatus();
+                        }, 60000);
                         return [3 /*break*/, 5];
                     case 4:
                         error_3 = _a.sent();
@@ -1195,7 +1276,8 @@ var RestService = /** @class */ (function () {
         return new Promise(function (resolve, reject) {
             _this.http.get(_this.apiUrl, {
                 headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Cache-Control': 'no-cache',
                 }),
                 params: data
             })
@@ -1926,7 +2008,7 @@ var RestService = /** @class */ (function () {
             _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"],
             _ionic_native_location_accuracy_ngx__WEBPACK_IMPORTED_MODULE_8__["LocationAccuracy"],
             _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_9__["Geolocation"],
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Events"],
+            _event_service__WEBPACK_IMPORTED_MODULE_14__["Events"],
             _angular_common__WEBPACK_IMPORTED_MODULE_11__["Location"],
             _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_10__["NativeAudio"],
             _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_12__["ScreenOrientation"],

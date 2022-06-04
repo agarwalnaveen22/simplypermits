@@ -65,7 +65,7 @@ var PermitDetailPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header [showProperty]=\"showProperty\" [pageName]=\"pageName\"></app-header>\n\n<ion-content [ngClass]=\"permitData.status=='Active'?'active':'inactive'\" >\n  <ion-refresher slot=\"fixed\" (ionRefresh)=\"refreshData($event)\">\n    <ion-refresher-content></ion-refresher-content>\n  </ion-refresher>\n  <ion-card>\n    <ion-item class=\"header\">\n      <ion-label>{{permitId}}</ion-label>\n      <ion-label text-end slot=\"end\">{{permitData.status}}</ion-label>\n    </ion-item>\n\n    <ion-card-content class=\"permitDetailsList\" text-center>\n      <ion-item>\n        <ion-label start>Start Date</ion-label>\n        <ion-label end color=\"medium\" text-wrap>{{permitData.start_date}}</ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label start>Last Order Date</ion-label>\n        <ion-label end color=\"medium\" text-wrap>{{permitData.last_order_date}}</ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label start>End Date</ion-label>\n        <ion-label end color=\"medium\" text-wrap>{{permitData.end_date}}</ion-label>\n      </ion-item>\n      <ion-item *ngFor=\"let attributeData of permitData.attribute_data\">\n        <ion-label start>{{attributeData.attribute_name}}</ion-label>\n        <ion-label end color=\"medium\" text-wrap>{{attributeData.attribute_value}}</ion-label>\n      </ion-item>\n    </ion-card-content>\n  </ion-card>\n\n  <ion-card *ngFor=\"let licenseInfo of permitData.permits_info\" >\n    <ion-item class=\"header\">\n      <ion-label text-wrap>{{licenseInfo.Permit_Name}}</ion-label>\n      <ion-label text-end slot=\"end\">{{permitData.order_total}}</ion-label>\n    </ion-item>\n\n    <ion-card-content text-center class=\"permitDetailsList\">\n      <ion-item>\n        <ion-label start text-wrap>License Plate (State)</ion-label>\n        <ion-label end color=\"medium\" text-wrap>{{licenseInfo.Plate}} ({{licenseInfo.State_plate}})</ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label start>VIN</ion-label>\n        <ion-label end color=\"medium\" text-wrap>{{licenseInfo.VIN}}</ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label start>Year</ion-label>\n        <ion-label end color=\"medium\">{{licenseInfo.Year}}</ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label start>Make</ion-label>\n        <ion-label end color=\"medium\">{{licenseInfo.Make}}</ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label start>Model</ion-label>\n        <ion-label end color=\"medium\">{{licenseInfo.Model}}</ion-label>\n      </ion-item>\n    </ion-card-content>\n  </ion-card>\n\n  <ion-card *ngIf=\"!isEnforcement\">\n    <ion-item class=\"header\">\n      <ion-label>{{permitData.Customer.First_Name}} {{permitData.Customer.Last_Name}}</ion-label>\n      <ion-label text-end slot=\"end\">\n        <ion-icon src=\"assets/icon/Second-Billing-Address-alt.svg\"></ion-icon>\n        {{permitData.Customer.Address2}}\n      </ion-label>\n    </ion-item>\n\n    <ion-card-content text-center class=\"permitDetailsList\">\n      <ion-item>\n        <ion-label start>Email Address</ion-label>\n        <ion-label end color=\"medium\" text-wrap>{{permitData.Customer.Email}}</ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label start>Address</ion-label>\n        <ion-label text-wrap end color=\"medium\">{{permitData.Customer.Address1}} {{permitData.Customer.Address2}}\n          {{permitData.Customer.City}}\n          {{permitData.Customer.State}} {{permitData.Customer.Zip}}</ion-label>\n      </ion-item>\n    </ion-card-content>\n  </ion-card>\n\n</ion-content>\n\n<ion-footer>\n  <ion-toolbar class=\"footer_permit_details\">\n    <ion-buttons class=\"view_note_btn\" (click)=\"goBack()\" text-center slot=\"start\">\n      <ion-button>\n        <ion-label>BACK</ion-label>\n      </ion-button>\n    </ion-buttons>\n\n    <ion-title text-center (click)=\"viewNotes()\">\n      <ion-label>VIEW NOTES\n        <ion-icon name=\"md-chatboxes\"></ion-icon>\n      </ion-label>\n    </ion-title>\n\n    <ion-buttons class=\"add_note_btn\" text-center slot=\"end\" (click)=\"addNote()\">\n      <ion-button>\n        <ion-label>ADD NOTE</ion-label>\n        <ion-icon name=\"add\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-footer>"
+module.exports = "<app-header [showProperty]=\"showProperty\" [pageName]=\"pageName\"></app-header>\n\n<ion-content [ngClass]=\"permitData.status=='Active'?'active':'inactive'\" >\n  <ion-refresher [disabled]=\"false\" slot=\"fixed\" (ionRefresh)=\"refreshData($event)\">\n    <ion-refresher-content></ion-refresher-content>\n  </ion-refresher>\n  <ion-card>\n    <ion-item class=\"header\">\n      <ion-label>{{permitId}}</ion-label>\n      <ion-label text-end slot=\"end\">{{permitData.status}}</ion-label>\n    </ion-item>\n\n    <ion-card-content class=\"permitDetailsList\" text-center>\n      <ion-item>\n        <ion-label start>Start Date</ion-label>\n        <ion-label end color=\"medium\" text-wrap>{{permitData.start_date}}</ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label start>Last Order Date</ion-label>\n        <ion-label end color=\"medium\" text-wrap>{{permitData.last_order_date}}</ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label start>End Date</ion-label>\n        <ion-label end color=\"medium\" text-wrap>{{permitData.end_date}}</ion-label>\n      </ion-item>\n      <ion-item *ngFor=\"let attributeData of permitData.attribute_data\">\n        <ion-label start>{{attributeData.attribute_name}}</ion-label>\n        <ion-label end color=\"medium\" text-wrap>{{attributeData.attribute_value}}</ion-label>\n      </ion-item>\n    </ion-card-content>\n  </ion-card>\n\n  <ion-card *ngFor=\"let licenseInfo of permitData.permits_info\" >\n    <ion-item class=\"header\">\n      <ion-label text-wrap>{{licenseInfo.Permit_Name}}</ion-label>\n      <ion-label text-end slot=\"end\">{{permitData.order_total}}</ion-label>\n    </ion-item>\n\n    <ion-card-content text-center class=\"permitDetailsList\">\n      <ion-item>\n        <ion-label start text-wrap>License Plate (State)</ion-label>\n        <ion-label end color=\"medium\" text-wrap text-uppercase>{{licenseInfo.Plate}} ({{licenseInfo.State_plate}})</ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label start>VIN</ion-label>\n        <ion-label end color=\"medium\" text-wrap>{{licenseInfo.VIN}}</ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label start>Year</ion-label>\n        <ion-label end color=\"medium\">{{licenseInfo.Year}}</ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label start>Make</ion-label>\n        <ion-label end color=\"medium\">{{licenseInfo.Make}}</ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label start>Model</ion-label>\n        <ion-label end color=\"medium\">{{licenseInfo.Model}}</ion-label>\n      </ion-item>\n    </ion-card-content>\n  </ion-card>\n\n  <ion-card *ngIf=\"!isEnforcement\">\n    <ion-item class=\"header\">\n      <ion-label>{{permitData?.Customer?.First_Name}} {{permitData?.Customer?.Last_Name}}</ion-label>\n      <ion-label text-end slot=\"end\">\n        <ion-icon src=\"assets/icon/Second-Billing-Address-alt.svg\"></ion-icon>\n        {{permitData?.Customer?.Address2}}\n      </ion-label>\n    </ion-item>\n\n    <ion-card-content text-center class=\"permitDetailsList\">\n      <ion-item>\n        <ion-label start>Email Address</ion-label>\n        <ion-label end color=\"medium\" text-wrap>{{permitData?.Customer?.Email}}</ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label start>Address</ion-label>\n        <ion-label text-wrap end color=\"medium\">{{permitData?.Customer?.Address1}} {{permitData?.Customer?.Address2}}\n          {{permitData?.Customer?.City}}\n          {{permitData?.Customer?.State}} {{permitData?.Customer?.Zip}}</ion-label>\n      </ion-item>\n    </ion-card-content>\n  </ion-card>\n\n</ion-content>\n\n<ion-footer>\n  <ion-toolbar class=\"footer_permit_details\">\n    <ion-buttons class=\"view_note_btn\" (click)=\"goBack()\" text-center slot=\"start\">\n      <ion-button>\n        <ion-label>BACK</ion-label>\n      </ion-button>\n    </ion-buttons>\n\n    <ion-title text-center (click)=\"viewNotes()\">\n      <ion-label>VIEW NOTES\n        <ion-icon name=\"md-chatboxes\"></ion-icon>\n      </ion-label>\n    </ion-title>\n\n    <ion-buttons class=\"add_note_btn\" text-center slot=\"end\" (click)=\"addNote()\">\n      <ion-button>\n        <ion-label>ADD NOTE</ion-label>\n        <ion-icon name=\"add\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-footer>"
 
 /***/ }),
 
@@ -157,9 +157,9 @@ var PermitDetailPage = /** @class */ (function () {
         this.permitId = 0;
         this.isEnforcement = false;
         this.showProperty = false;
-        this.pageName = 'PERMIT DETAILS';
+        this.pageName = "PERMIT DETAILS";
         this.route.params.subscribe(function (params) {
-            _this.permitId = params['id'];
+            _this.permitId = params["id"];
         });
     }
     PermitDetailPage.prototype.ngOnInit = function () {
@@ -171,57 +171,78 @@ var PermitDetailPage = /** @class */ (function () {
             event.target.complete();
         }, 2000);
     };
-    PermitDetailPage.prototype.getPermitDetail = function () {
+    PermitDetailPage.prototype.getPermitDetail = function (type) {
+        if (type === void 0) { type = 1; }
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
-            var requestData;
+            var requestData, result_1, err_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        this.permitData = [];
+                        if (type === 1) {
+                            this.permitData = [];
+                        }
                         requestData = {
                             sp_action: "sp_permit_detail",
-                            permit_id: this.permitId
+                            permit_id: this.permitId,
                         };
                         return [4 /*yield*/, this.restService.keyBoardHide()];
                     case 1:
                         _a.sent();
-                        this.restService.showLoader('Getting Permit Details');
-                        this.restService.makeGetRequest(requestData).then(function (result) { return __awaiter(_this, void 0, void 0, function () {
-                            var _this = this;
-                            return __generator(this, function (_a) {
-                                this.restService.hideLoader();
-                                if (result['PermitDetail']) {
-                                    this.zone.run(function () { return __awaiter(_this, void 0, void 0, function () {
-                                        var response, userRoles;
-                                        return __generator(this, function (_a) {
-                                            switch (_a.label) {
-                                                case 0:
-                                                    this.permitData = result['PermitDetail'];
-                                                    return [4 /*yield*/, this.restService.getStorage("userInfo")];
-                                                case 1:
-                                                    response = _a.sent();
-                                                    userRoles = response["roles"];
-                                                    if (userRoles.indexOf("enforcement") !== -1) {
-                                                        this.isEnforcement = true;
-                                                    }
-                                                    return [2 /*return*/];
-                                            }
-                                        });
-                                    }); });
-                                }
-                                return [2 /*return*/];
-                            });
-                        }); }, function (err) {
+                        if (type === 2) {
+                            this.restService.showLoader("Getting Notes");
+                        }
+                        else {
+                            this.restService.showLoader("Getting Permit Details");
+                        }
+                        _a.label = 2;
+                    case 2:
+                        _a.trys.push([2, 4, , 5]);
+                        return [4 /*yield*/, this.restService.makeGetRequest(requestData)];
+                    case 3:
+                        result_1 = _a.sent();
+                        setTimeout(function () {
                             _this.restService.hideLoader();
-                            if (err.error) {
-                                _this.restService.showAlert("Notice", _this.restService.setErrorMessageArray(err.error.message));
-                            }
-                            else {
-                                _this.restService.showAlert("Notice", err.statusText);
-                            }
-                        });
-                        return [2 /*return*/];
+                        }, 2000);
+                        if (result_1["PermitDetail"]) {
+                            this.zone.run(function () { return __awaiter(_this, void 0, void 0, function () {
+                                var response, userRoles;
+                                return __generator(this, function (_a) {
+                                    switch (_a.label) {
+                                        case 0:
+                                            this.permitData = result_1["PermitDetail"];
+                                            return [4 /*yield*/, this.restService.getStorage("userInfo")];
+                                        case 1:
+                                            response = _a.sent();
+                                            userRoles = response["roles"];
+                                            if (userRoles.indexOf("enforcement") !== -1) {
+                                                this.isEnforcement = true;
+                                            }
+                                            if (type === 2) {
+                                                if (this.permitData.Notes) {
+                                                    this.navCtrl.goForward("/view-notes/" + this.permitId);
+                                                }
+                                                else {
+                                                    this.restService.showAlert("Notice", "There are no notes for this permit.");
+                                                }
+                                            }
+                                            return [2 /*return*/];
+                                    }
+                                });
+                            }); });
+                        }
+                        return [3 /*break*/, 5];
+                    case 4:
+                        err_1 = _a.sent();
+                        this.restService.hideLoader();
+                        if (err_1.error) {
+                            this.restService.showAlert("Notice", this.restService.setErrorMessageArray(err_1.error.message));
+                        }
+                        else {
+                            this.restService.showAlert("Notice", err_1.statusText);
+                        }
+                        return [3 /*break*/, 5];
+                    case 5: return [2 /*return*/];
                 }
             });
         });
@@ -229,7 +250,7 @@ var PermitDetailPage = /** @class */ (function () {
     PermitDetailPage.prototype.addNote = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                this.navCtrl.goForward('/add-note/' + this.permitId);
+                this.navCtrl.goForward("/add-note/" + this.permitId);
                 return [2 /*return*/];
             });
         });
@@ -237,25 +258,24 @@ var PermitDetailPage = /** @class */ (function () {
     PermitDetailPage.prototype.viewNotes = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                if (this.permitData.Notes) {
-                    this.navCtrl.goForward('/view-notes/' + this.permitId);
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.getPermitDetail(2)];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
                 }
-                else {
-                    this.restService.showAlert("Notice", "There are no notes for this permit.");
-                }
-                return [2 /*return*/];
             });
         });
     };
     PermitDetailPage.prototype.goBack = function () {
-        this.navCtrl.goBack('/property-list');
+        this.navCtrl.goBack("/property-list");
     };
     PermitDetailPage.prototype.goToHome = function () {
         this.navCtrl.goRoot("/home");
     };
     PermitDetailPage = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-permit-detail',
+            selector: "app-permit-detail",
             template: __webpack_require__(/*! ./permit-detail.page.html */ "./src/app/permit-detail/permit-detail.page.html"),
             styles: [__webpack_require__(/*! ./permit-detail.page.scss */ "./src/app/permit-detail/permit-detail.page.scss")],
         }),

@@ -1276,7 +1276,8 @@ var RestService = /** @class */ (function () {
         return new Promise(function (resolve, reject) {
             _this.http.get(_this.apiUrl, {
                 headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Cache-Control': 'no-cache',
                 }),
                 params: data
             })
