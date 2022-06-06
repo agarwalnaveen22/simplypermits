@@ -349,7 +349,11 @@ export class RestService {
             };
             this.events.publish('pictureData', pictureData);
             if (this.permitFoundReady) {
-              await this.nativeAudio.play('permitFound');
+              if(pictureData.data.status === 'Active') {
+                await this.nativeAudio.play('permitFound');
+              } else {
+                await this.nativeAudio.play('permitNotFound');
+              }
             }
             await this.takeMultiplePictures();
           } else {

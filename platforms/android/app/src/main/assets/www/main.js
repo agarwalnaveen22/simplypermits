@@ -1423,7 +1423,7 @@ var RestService = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 17, , 19]);
+                        _a.trys.push([0, 19, , 21]);
                         request = {
                             upload: blob[0]
                         };
@@ -1431,9 +1431,9 @@ var RestService = /** @class */ (function () {
                     case 1:
                         resp = _a.sent();
                         resp = JSON.parse(resp.data);
-                        if (!(resp.results.length > 0)) return [3 /*break*/, 14];
+                        if (!(resp.results.length > 0)) return [3 /*break*/, 16];
                         lprNumber = resp.results[0].plate;
-                        if (!(lprNumber != this.lastLprNumber)) return [3 /*break*/, 11];
+                        if (!(lprNumber != this.lastLprNumber)) return [3 /*break*/, 13];
                         this.lastLprNumber = lprNumber;
                         requestParams = {
                             sp_action: "sp_permit_check_vehicle_image_upload",
@@ -1445,54 +1445,59 @@ var RestService = /** @class */ (function () {
                         return [4 /*yield*/, this.makePostRequest(requestParams)];
                     case 2:
                         pictureResult = _a.sent();
-                        if (!(pictureResult['json'].length > 0)) return [3 /*break*/, 6];
+                        if (!(pictureResult['json'].length > 0)) return [3 /*break*/, 8];
                         pictureData = {
                             status: true,
                             data: pictureResult['json'][0]
                         };
                         this.events.publish('pictureData', pictureData);
-                        if (!this.permitFoundReady) return [3 /*break*/, 4];
+                        if (!this.permitFoundReady) return [3 /*break*/, 6];
+                        if (!(pictureData.data.status === 'Active')) return [3 /*break*/, 4];
                         return [4 /*yield*/, this.nativeAudio.play('permitFound')];
                     case 3:
                         _a.sent();
-                        _a.label = 4;
-                    case 4: return [4 /*yield*/, this.takeMultiplePictures()];
+                        return [3 /*break*/, 6];
+                    case 4: return [4 /*yield*/, this.nativeAudio.play('permitNotFound')];
                     case 5:
                         _a.sent();
-                        return [3 /*break*/, 10];
-                    case 6:
+                        _a.label = 6;
+                    case 6: return [4 /*yield*/, this.takeMultiplePictures()];
+                    case 7:
+                        _a.sent();
+                        return [3 /*break*/, 12];
+                    case 8:
                         pictureData = {
                             status: false,
                             data: pictureResult['plateData']
                         };
                         this.events.publish('pictureData', pictureData);
-                        if (!this.permitNotFoundReady) return [3 /*break*/, 8];
+                        if (!this.permitNotFoundReady) return [3 /*break*/, 10];
                         return [4 /*yield*/, this.nativeAudio.play('permitNotFound')];
-                    case 7:
-                        _a.sent();
-                        _a.label = 8;
-                    case 8: return [4 /*yield*/, this.takeMultiplePictures()];
                     case 9:
                         _a.sent();
                         _a.label = 10;
-                    case 10: return [3 /*break*/, 13];
-                    case 11: return [4 /*yield*/, this.takeMultiplePictures()];
-                    case 12:
+                    case 10: return [4 /*yield*/, this.takeMultiplePictures()];
+                    case 11:
                         _a.sent();
-                        _a.label = 13;
-                    case 13: return [3 /*break*/, 16];
-                    case 14: return [4 /*yield*/, this.takeMultiplePictures()];
-                    case 15:
+                        _a.label = 12;
+                    case 12: return [3 /*break*/, 15];
+                    case 13: return [4 /*yield*/, this.takeMultiplePictures()];
+                    case 14:
                         _a.sent();
-                        _a.label = 16;
-                    case 16: return [3 /*break*/, 19];
+                        _a.label = 15;
+                    case 15: return [3 /*break*/, 18];
+                    case 16: return [4 /*yield*/, this.takeMultiplePictures()];
                     case 17:
+                        _a.sent();
+                        _a.label = 18;
+                    case 18: return [3 /*break*/, 21];
+                    case 19:
                         error_5 = _a.sent();
                         return [4 /*yield*/, this.takeMultiplePictures()];
-                    case 18:
+                    case 20:
                         _a.sent();
-                        return [3 /*break*/, 19];
-                    case 19: return [2 /*return*/];
+                        return [3 /*break*/, 21];
+                    case 21: return [2 /*return*/];
                 }
             });
         });
