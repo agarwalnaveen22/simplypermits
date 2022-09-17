@@ -88,7 +88,7 @@
     "@types/node": "10.7.1",
     "@types/tesseract.js": "0.0.2",
     "codelyzer": "4.4.2",
-    "cordova-android": "^7.1.0",
+    "cordova-android": "^8.0.0",
     "cordova-plugin-cleartext": "1.0.0",
     "jasmine-core": "2.99.1",
     "jasmine-spec-reporter": "4.2.1",

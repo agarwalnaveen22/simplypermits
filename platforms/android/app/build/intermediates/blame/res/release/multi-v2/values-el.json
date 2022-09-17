@@ -4,41 +4,7 @@
             "outputFile": "/Users/naveenagarwal/Projects/ionic/simplypermits/platforms/android/app/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-el/values-el.xml",
             "map": [
                 {
-                    "source": "/Users/naveenagarwal/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/f82fccce214ea804efd2b285eeb7e4c0/res/values-el/values-el.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,223,334,451,536,641,767,855,941,1026,1137,1247,1349,1460,1569,1677,1837,1937",
-                        "endColumns": "117,110,116,84,104,125,87,85,84,110,109,101,110,108,107,159,99,84",
-                        "endOffsets": "218,329,446,531,636,762,850,936,1021,1132,1242,1344,1455,1564,1672,1832,1932,2017"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,37",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,223,334,451,536,641,767,855,941,1026,1137,1247,1349,1460,1569,1677,1837,4792",
-                        "endColumns": "117,110,116,84,104,125,87,85,84,110,109,101,110,108,107,159,99,84",
-                        "endOffsets": "218,329,446,531,636,762,850,936,1021,1132,1242,1344,1455,1564,1672,1832,1932,4872"
-                    }
-                },
-                {
-                    "source": "/Users/naveenagarwal/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/3e36b1b17476bfde0631ed3f4bb3e64e/res/values-el/values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "247",
-                        "endColumns": "222",
-                        "endOffsets": "469"
-                    },
-                    "to": {
-                        "startLines": "27",
-                        "startColumns": "4",
-                        "startOffsets": "3164",
-                        "endColumns": "222",
-                        "endOffsets": "3382"
-                    }
-                },
-                {
-                    "source": "/Users/naveenagarwal/.gradle/caches/transforms-1/files-1.1/play-services-base-16.0.1.aar/3caa302ef8a5666ef9eb3f87c6a8ae71/res/values-el/values.xml",
+                    "source": "/Users/naveenagarwal/.gradle/caches/transforms-1/files-1.1/play-services-base-16.0.1.aar/a3b853bc42c563f988fb4b4d65ebd4f8/res/values-el/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -55,7 +21,24 @@
                     }
                 },
                 {
-                    "source": "/Users/naveenagarwal/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/d87230676ac1a113c8194251be245058/res/values-el/values-el.xml",
+                    "source": "/Users/naveenagarwal/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/f33c8ef66004ed9f7f659ae3b89fefe9/res/values-el/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "247",
+                        "endColumns": "222",
+                        "endOffsets": "469"
+                    },
+                    "to": {
+                        "startLines": "27",
+                        "startColumns": "4",
+                        "startOffsets": "3164",
+                        "endColumns": "222",
+                        "endOffsets": "3382"
+                    }
+                },
+                {
+                    "source": "/Users/naveenagarwal/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/15a15a51073e88b0f5b7424b4393acf7/res/values-el/values-el.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -69,6 +52,23 @@
                         "startOffsets": "4877",
                         "endColumns": "100",
                         "endOffsets": "4973"
+                    }
+                },
+                {
+                    "source": "/Users/naveenagarwal/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/80e460660969a9e91b6d14fccfe4f449/res/values-el/values-el.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,223,334,451,536,641,767,855,941,1026,1137,1247,1349,1460,1569,1677,1837,1937",
+                        "endColumns": "117,110,116,84,104,125,87,85,84,110,109,101,110,108,107,159,99,84",
+                        "endOffsets": "218,329,446,531,636,762,850,936,1021,1132,1242,1344,1455,1564,1672,1832,1932,2017"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,37",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,223,334,451,536,641,767,855,941,1026,1137,1247,1349,1460,1569,1677,1837,4792",
+                        "endColumns": "117,110,116,84,104,125,87,85,84,110,109,101,110,108,107,159,99,84",
+                        "endOffsets": "218,329,446,531,636,762,850,936,1021,1132,1242,1344,1455,1564,1672,1832,1932,4872"
                     }
                 }
             ]
