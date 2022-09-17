@@ -1,4 +1,4 @@
-#Fri Sep 16 18:52:27 IST 2022
+#Sat Sep 17 15:37:47 IST 2022
 base.0=/Users/naveenagarwal/Projects/ionic/simplypermits/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex

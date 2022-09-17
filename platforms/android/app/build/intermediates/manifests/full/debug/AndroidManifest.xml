@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.simplypermits"
     android:hardwareAccelerated="true"
-    android:versionCode="20010"
-    android:versionName="5.0.0" >
+    android:versionCode="20011"
+    android:versionName="5.0.2" >
 
     <uses-sdk
         android:minSdkVersion="19"
