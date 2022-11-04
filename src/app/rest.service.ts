@@ -1,34 +1,48 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { LoadingController, AlertController, ToastController, NavController, ModalController, Platform } from '@ionic/angular';
-import { Storage } from '@ionic/storage';
-import { Keyboard } from '@ionic-native/keyboard/ngx';
-import { FileTransfer, FileTransferObject, FileUploadOptions } from '@ionic-native/file-transfer/ngx';
-import { CameraPreview, CameraPreviewOptions } from '@ionic-native/camera-preview/ngx';
-import { Diagnostic } from '@ionic-native/diagnostic/ngx';
-import { LocationAccuracy } from '@ionic-native/location-accuracy/ngx';
-import { Geolocation, GeolocationOptions } from '@ionic-native/geolocation/ngx';
-import { NativeAudio } from '@ionic-native/native-audio/ngx';
-import { Location } from '@angular/common';
-import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
-import { HTTP } from '@ionic-native/http/ngx';
-import {Events} from './event.service';
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import {
+  LoadingController,
+  AlertController,
+  ToastController,
+  NavController,
+  ModalController,
+  Platform,
+} from "@ionic/angular";
+import { Storage } from "@ionic/storage";
+import { Keyboard } from "@ionic-native/keyboard/ngx";
+import {
+  FileTransfer,
+  FileTransferObject,
+  FileUploadOptions,
+} from "@ionic-native/file-transfer/ngx";
+import {
+  CameraPreview,
+  CameraPreviewOptions,
+} from "@ionic-native/camera-preview/ngx";
+import { Diagnostic } from "@ionic-native/diagnostic/ngx";
+import { LocationAccuracy } from "@ionic-native/location-accuracy/ngx";
+import { Geolocation, GeolocationOptions } from "@ionic-native/geolocation/ngx";
+import { NativeAudio } from "@ionic-native/native-audio/ngx";
+import { Location } from "@angular/common";
+import { ScreenOrientation } from "@ionic-native/screen-orientation/ngx";
+import { HTTP } from "@ionic-native/http/ngx";
+import { Events } from "./event.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class RestService {
-  apiUrl = 'https://simplypermits.com/API/rest.php';
-  cityApiUrl: string = '';
+  apiUrl = "https://simplypermits.com/API/rest.php";
+  cityApiUrl: string = "";
   loading: any;
   alert: any;
   checkSession: any;
   isKeyBoardHide: boolean = false;
-  selectedImage: string = '';
+  selectedImage: string = "";
   selectedProperty: number = 0;
   latitude: any = 0;
   longitude: any = 0;
-  lastLprNumber: string = '';
+  lastLprNumber: string = "";
   isTakeMultiplePics: boolean = false;
   permitFoundReady: boolean = false;
   permitNotFoundReady: boolean = false;
@@ -53,27 +67,41 @@ export class RestService {
     private nativeAudio: NativeAudio,
     private screenOrientation: ScreenOrientation,
     private nhttp: HTTP
-  ) { }
+  ) {}
 
   async showLoader(message) {
     this.loading = await this.loadingController.create({
-      spinner: 'hide',
-      content: `<div class="loading-outer"><div class="loader"></div>
+      spinner: "hide",
+      content:
+        `<div class="loading-outer"><div class="loader"></div>
       <img src="assets/icon/logo.png" /></div>
-              <div style="margin-top:2em">`+ message + `</div>`
+              <div style="margin-top:2em">` +
+        message +
+        `</div>`,
     });
     await this.loading.present();
-    document.getElementsByClassName("loading-content")[0].innerHTML = document.getElementsByClassName("loading-content")[0].textContent;
-    (<HTMLElement>document.getElementsByClassName("loading-wrapper")[0]).style.visibility = 'visible';
-    (<HTMLElement>document.getElementsByClassName("backdrop-no-tappable")[0]).style.opacity = '1';
+    document.getElementsByClassName("loading-content")[0].innerHTML =
+      document.getElementsByClassName("loading-content")[0].textContent;
+    (<HTMLElement>(
+      document.getElementsByClassName("loading-wrapper")[0]
+    )).style.visibility = "visible";
+    (<HTMLElement>(
+      document.getElementsByClassName("backdrop-no-tappable")[0]
+    )).style.opacity = "1";
     return;
   }
 
   hideLoader() {
-    if ((<HTMLElement>document.getElementsByClassName("backdrop-no-tappable")[0]) === undefined) {
+    if (
+      <HTMLElement>(
+        document.getElementsByClassName("backdrop-no-tappable")[0]
+      ) === undefined
+    ) {
       return;
     }
-    (<HTMLElement>document.getElementsByClassName("backdrop-no-tappable")[0]).style.opacity = '0.5';
+    (<HTMLElement>(
+      document.getElementsByClassName("backdrop-no-tappable")[0]
+    )).style.opacity = "0.5";
     this.loading.dismiss();
   }
 
@@ -81,7 +109,7 @@ export class RestService {
     this.alert = await this.alertController.create({
       header: header,
       message: message,
-      buttons: ['OK']
+      buttons: ["OK"],
     });
 
     await this.alert.present();
@@ -90,7 +118,7 @@ export class RestService {
   async showToast(message) {
     const toast = await this.toastController.create({
       message: message,
-      duration: 2000
+      duration: 2000,
     });
     toast.present();
   }
@@ -103,8 +131,8 @@ export class RestService {
     let promise = new Promise((resolve) => {
       this.storage.get(key).then((val) => {
         resolve(val);
-      })
-    })
+      });
+    });
     return await promise;
   }
 
@@ -117,30 +145,35 @@ export class RestService {
   }
 
   setUrl(requestData) {
-    return Object.keys(requestData).map((key) => {
-      return encodeURIComponent(key) + '=' + encodeURIComponent(requestData[key]);
-    }).join('&');
+    return Object.keys(requestData)
+      .map((key) => {
+        return (
+          encodeURIComponent(key) + "=" + encodeURIComponent(requestData[key])
+        );
+      })
+      .join("&");
   }
 
   async systemLogout() {
     const alert = await this.alertController.create({
-      header: 'Logout',
-      message: 'Are you sure?',
+      header: "Logout",
+      message: "Are you sure?",
       buttons: [
         {
-          text: 'No',
-          role: 'cancel',
-          cssClass: 'secondary',
+          text: "No",
+          role: "cancel",
+          cssClass: "secondary",
           handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
-        }, {
-          text: 'Yes',
+            console.log("Confirm Cancel: blah");
+          },
+        },
+        {
+          text: "Yes",
           handler: async () => {
             this.logout(1);
-          }
-        }
-      ]
+          },
+        },
+      ],
     });
 
     await alert.present();
@@ -149,10 +182,10 @@ export class RestService {
   logout = async (type) => {
     if (type === 1) {
       let requestData = {
-        sp_action: "sp_lpr_logout"
-      }
+        sp_action: "sp_lpr_logout",
+      };
       await this.keyBoardHide();
-      this.showLoader('Logging out...');
+      this.showLoader("Logging out...");
       try {
         await this.makePostRequest(requestData);
         this.hideLoader();
@@ -162,33 +195,36 @@ export class RestService {
     }
     this.storage.clear();
     this.navCtrl.goRoot("/login");
-  }
+  };
 
   sessionExpireAction = () => {
     this.hideLoader();
     this.modalCtrl.dismiss();
     this.logout(2);
-    this.showAlert("Error", "Your session has expired. Please login to continue.");
-  }
+    this.showAlert(
+      "Error",
+      "Your session has expired. Please login to continue."
+    );
+  };
 
   setSessionId = async (data) => {
     try {
-      data['session_id'] = await this.getStorage('session_id');
-      let response = await this.getStorage('userInfo');
-      data['user_id'] = response['user_id'];
+      data["session_id"] = await this.getStorage("session_id");
+      let response = await this.getStorage("userInfo");
+      data["user_id"] = response["user_id"];
       return data;
     } catch (error) {
       this.logout(2);
     }
-  }
+  };
 
   checkLoginStatus = async () => {
     await this.getCurrentLocation();
     let requestData = {
       sp_action: "sp_check_session",
       user_latitude: this.latitude,
-      user_longitude: this.longitude
-    }
+      user_longitude: this.longitude,
+    };
     try {
       await this.makePostRequest(requestData);
       setTimeout(() => {
@@ -197,83 +233,106 @@ export class RestService {
     } catch (error) {
       this.logout(2);
     }
-  }
-
+  };
 
   makeCommonGetRequest(data) {
     return new Promise((resolve, reject) => {
-      this.http.get(this.apiUrl, {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json',
-          'Cache-Control': 'no-cache',
-        }),
-        params: data
-      })
-        .subscribe(res => {
-          resolve(res);
-        }, (err) => {
-          reject(err);
-        });
+      this.http
+        .get(this.apiUrl, {
+          headers: new HttpHeaders({
+            "Content-Type": "application/json",
+            "Cache-Control": "no-cache",
+          }),
+          params: data,
+        })
+        .subscribe(
+          (res) => {
+            resolve(res);
+          },
+          (err) => {
+            reject(err);
+          }
+        );
     });
   }
 
   async makeGetRequest(data) {
     data = await this.setSessionId(data);
     return new Promise((resolve, reject) => {
-      this.http.get(this.cityApiUrl, {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json'
-        }),
-        params: data
-      })
-        .subscribe(res => {
-          if (res['session_status'] === "Invalid Session") {
-            this.sessionExpireAction();
-            return;
+      this.http
+        .get(this.cityApiUrl, {
+          headers: new HttpHeaders({
+            "Content-Type": "application/json",
+          }),
+          params: data,
+        })
+        .subscribe(
+          (res) => {
+            if (res["session_status"] === "Invalid Session") {
+              this.sessionExpireAction();
+              return;
+            }
+            resolve(res);
+          },
+          (err) => {
+            if (!err.url && !err.ok) {
+              this.sessionExpireAction();
+              return;
+            }
+            reject(err);
           }
-          resolve(res);
-        }, (err) => {
-          reject(err);
-        });
+        );
     });
   }
 
   makeCommonPostRequest(data) {
     data = this.setUrl(data);
     return new Promise((resolve, reject) => {
-      this.http.post(this.apiUrl, data, {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/x-www-form-urlencoded'
+      this.http
+        .post(this.apiUrl, data, {
+          headers: new HttpHeaders({
+            "Content-Type": "application/x-www-form-urlencoded",
+          }),
         })
-      })
-        .subscribe(res => {
-          resolve(res);
-        }, (err) => {
-          reject(err);
-        });
+        .subscribe(
+          (res) => {
+            resolve(res);
+          },
+          (err) => {
+            reject(err);
+          }
+        );
     });
   }
 
   async makePostRequest(data) {
-    if (data['sp_action'] !== 'sp_lpr_login') {
+    if (data["sp_action"] !== "sp_lpr_login") {
       data = await this.setSessionId(data);
     }
     data = this.setUrl(data);
     return new Promise((resolve, reject) => {
-      this.http.post(this.cityApiUrl, data, {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/x-www-form-urlencoded'
+      this.http
+        .post(this.cityApiUrl, data, {
+          headers: new HttpHeaders({
+            "Content-Type": "application/x-www-form-urlencoded",
+          }),
         })
-      })
-        .subscribe(res => {
-          if (res['session_status'] === "Invalid Session") {
-            this.sessionExpireAction();
-            return;
+        .subscribe(
+          (res) => {
+            if (res["session_status"] === "Invalid Session") {
+              this.sessionExpireAction();
+              return;
+            }
+            resolve(res);
+          },
+          (err) => {
+            if (!err.url && !err.ok) {
+              this.sessionExpireAction();
+              return;
+            }
+            reject(err);
           }
-          resolve(res);
-        }, (err) => {
-          reject(err);
-        });
+        );
     });
   }
 
@@ -289,7 +348,7 @@ export class RestService {
         }
       }, 100);
     });
-  }
+  };
 
   checkKeyBoardVisible = async () => {
     if (this.keyboard.isVisible) {
@@ -299,17 +358,17 @@ export class RestService {
     } else {
       this.isKeyBoardHide = true;
     }
-  }
+  };
 
   async openCameraMultiplePics() {
     try {
       if (this.selectedProperty == 0 || this.selectedProperty == undefined) {
         this.showToast("Please select property");
       } else {
-        this.navCtrl.goForward('/multiple-pics');
+        this.navCtrl.goForward("/multiple-pics");
         await this.startCameraPreview();
-        await this.cameraPreview.setFocusMode('continuous-picture');
-        await this.cameraPreview.setExposureMode('continuous');
+        await this.cameraPreview.setFocusMode("continuous-picture");
+        await this.cameraPreview.setExposureMode("continuous");
       }
     } catch (error) {
       this.hideLoader();
@@ -326,8 +385,8 @@ export class RestService {
   async checkPermitDetails(blob) {
     try {
       let request = {
-        upload: blob[0]
-      }
+        upload: blob[0],
+      };
       let resp: any = await this.scanPlateNumber(request);
       resp = JSON.parse(resp.data);
       if (resp.results.length > 0) {
@@ -339,31 +398,31 @@ export class RestService {
             selected_cat: this.selectedProperty,
             img_latitude: this.latitude,
             img_longitude: this.longitude,
-            plate_value: lprNumber
-          }
+            plate_value: lprNumber,
+          };
           let pictureResult: any = await this.makePostRequest(requestParams);
-          if (pictureResult['json'].length > 0) {
+          if (pictureResult["json"].length > 0) {
             let pictureData: any = {
               status: true,
-              data: pictureResult['json'][0]
+              data: pictureResult["json"][0],
             };
-            this.events.publish('pictureData', pictureData);
+            this.events.publish("pictureData", pictureData);
             if (this.permitFoundReady) {
-              if(pictureData.data.status === 'Active') {
-                await this.nativeAudio.play('permitFound');
+              if (pictureData.data.status === "Active") {
+                await this.nativeAudio.play("permitFound");
               } else {
-                await this.nativeAudio.play('permitNotFound');
+                await this.nativeAudio.play("permitNotFound");
               }
             }
             await this.takeMultiplePictures();
           } else {
             let pictureData: any = {
               status: false,
-              data: pictureResult['plateData']
+              data: pictureResult["plateData"],
             };
-            this.events.publish('pictureData', pictureData);
+            this.events.publish("pictureData", pictureData);
             if (this.permitNotFoundReady) {
-              await this.nativeAudio.play('permitNotFound');
+              await this.nativeAudio.play("permitNotFound");
             }
             await this.takeMultiplePictures();
           }
@@ -379,11 +438,15 @@ export class RestService {
   }
 
   async scanPlateNumber(data) {
-    let userInfo = await this.getStorage('userInfo');
-    data['regions'] = userInfo['region_code'];
+    let userInfo = await this.getStorage("userInfo");
+    data["regions"] = userInfo["region_code"];
     return new Promise(async (resolve, reject) => {
       try {
-        let resp = await this.nhttp.post('https://api.platerecognizer.com/v1/plate-reader/', data, { Authorization: 'Token e6ccde48a93495cd13a3e8fd0ceed83bb488f3d8' });
+        let resp = await this.nhttp.post(
+          "https://api.platerecognizer.com/v1/plate-reader/",
+          data,
+          { Authorization: "Token e6ccde48a93495cd13a3e8fd0ceed83bb488f3d8" }
+        );
         resolve(resp);
       } catch (error) {
         reject(error);
@@ -396,7 +459,7 @@ export class RestService {
       if (this.selectedProperty == 0 || this.selectedProperty == undefined) {
         this.showToast("Please select property");
       } else {
-        this.navCtrl.goForward('/single-pic');
+        this.navCtrl.goForward("/single-pic");
         await this.startCameraPreview();
       }
     } catch (error) {
@@ -406,7 +469,7 @@ export class RestService {
   }
 
   async stopCamera() {
-    this.lastLprNumber = '';
+    this.lastLprNumber = "";
     await this.stopCameraPreview();
     this.location.back();
   }
@@ -420,7 +483,10 @@ export class RestService {
     let deviceHeight = window.screen.height;
     let setWidth = 0;
     let setHeight = 0;
-    if (this.screenOrientation.type === 'landscape-primary' || this.screenOrientation.type === 'landscape-secondary') {
+    if (
+      this.screenOrientation.type === "landscape-primary" ||
+      this.screenOrientation.type === "landscape-secondary"
+    ) {
       setWidth = deviceHeight;
       setHeight = deviceWidth;
     } else {
@@ -432,12 +498,12 @@ export class RestService {
       y: 0,
       width: setWidth,
       height: setHeight,
-      camera: 'rear',
+      camera: "rear",
       tapPhoto: false,
       tapToFocus: false,
       previewDrag: false,
       toBack: true,
-      alpha: 1
+      alpha: 1,
     };
     await this.cameraPreview.startCamera(cameraPreviewOpts);
   }
@@ -449,9 +515,9 @@ export class RestService {
 
   async sendImageToServer(blob) {
     let request = {
-      upload: blob[0]
-    }
-    this.showLoader('Sending Image');
+      upload: blob[0],
+    };
+    this.showLoader("Sending Image");
     try {
       let resp: any = await this.scanPlateNumber(request);
       resp = JSON.parse(resp.data);
@@ -462,19 +528,25 @@ export class RestService {
           selected_cat: this.selectedProperty,
           img_latitude: this.latitude,
           img_longitude: this.longitude,
-          plate_value: lprNumber
-        }
+          plate_value: lprNumber,
+        };
         let pictureResult: any = await this.makePostRequest(requestParams);
         this.hideLoader();
-        if (pictureResult['json'].length > 0) {
+        if (pictureResult["json"].length > 0) {
           await this.setStorage("userData", []);
-          let response = await this.setStorage("vehicleData", pictureResult['json']);
+          let response = await this.setStorage(
+            "vehicleData",
+            pictureResult["json"]
+          );
           if (response) {
             this.navCtrl.goForward("/property-list");
             this.stopCameraPreview();
           }
         } else {
-          let response = await this.setStorage("plateData", pictureResult['plateData']);
+          let response = await this.setStorage(
+            "plateData",
+            pictureResult["plateData"]
+          );
           if (response) {
             this.navCtrl.goForward("/no-permit-result");
           }
@@ -483,17 +555,20 @@ export class RestService {
         this.hideLoader();
         let plateResp: any = {
           plateData: {
-            plateNumber: "NO PLATE FOUND"
-          }
+            plateNumber: "NO PLATE FOUND",
+          },
         };
-        let response = await this.setStorage("plateData", plateResp['plateData']);
+        let response = await this.setStorage(
+          "plateData",
+          plateResp["plateData"]
+        );
         if (response) {
           this.navCtrl.goForward("/no-permit-result");
         }
       }
     } catch (error) {
       this.hideLoader();
-      this.showAlert('Notice', error.error);
+      this.showAlert("Notice", error.error);
     }
   }
 
@@ -518,8 +593,8 @@ export class RestService {
   }
 
   getInfoFromBase64(base64: string) {
-    const meta = base64.split(',')[0];
-    const rawBase64 = base64.split(',')[1].replace(/\s/g, '');
+    const meta = base64.split(",")[0];
+    const rawBase64 = base64.split(",")[1].replace(/\s/g, "");
     const mime = /:([^;]+);/.exec(meta)[1];
     const extension = /\/([^;]+);/.exec(meta)[1];
 
@@ -527,7 +602,7 @@ export class RestService {
       mime,
       extension,
       meta,
-      rawBase64
+      rawBase64,
     };
   }
 
@@ -535,7 +610,7 @@ export class RestService {
     if (this.selectedProperty == 0 || this.selectedProperty == undefined) {
       this.showToast("Please select property");
     } else {
-      this.navCtrl.goForward('/search-by-vehicle');
+      this.navCtrl.goForward("/search-by-vehicle");
     }
   }
 
@@ -543,16 +618,17 @@ export class RestService {
     if (this.selectedProperty == 0 || this.selectedProperty == undefined) {
       this.showToast("Please select property");
     } else {
-      this.navCtrl.goForward('/search-by-user');
+      this.navCtrl.goForward("/search-by-user");
     }
   }
 
   async requestLocationAccuracy() {
     try {
-      let locationAuthorizationStatus = await this.diagnostic.getLocationAuthorizationStatus();
+      let locationAuthorizationStatus =
+        await this.diagnostic.getLocationAuthorizationStatus();
       switch (locationAuthorizationStatus) {
         case this.diagnostic.permissionStatus.GRANTED:
-          if (!this.platform.is('ios')) {
+          if (!this.platform.is("ios")) {
             await this.makeRequest();
           }
           break;
@@ -560,7 +636,7 @@ export class RestService {
           await this.requestLocationAuthorization();
           break;
         case this.diagnostic.permissionStatus.DENIED:
-          if (this.platform.is('android')) {
+          if (this.platform.is("android")) {
             this.showToast("User denied permission to use location");
           } else {
             await this.makeRequest();
@@ -589,9 +665,13 @@ export class RestService {
     try {
       let canRequest = await this.locationAccuracy.canRequest();
       if (canRequest) {
-        await this.locationAccuracy.request(this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY);
+        await this.locationAccuracy.request(
+          this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY
+        );
       } else {
-        this.showToast("Location service is currently in use or app does not have authorization to use location");
+        this.showToast(
+          "Location service is currently in use or app does not have authorization to use location"
+        );
       }
     } catch (error) {
       console.log("Error: " + error);
@@ -604,8 +684,8 @@ export class RestService {
       let options: GeolocationOptions = {
         maximumAge: 3000,
         timeout: 10000,
-        enableHighAccuracy: true
-      }
+        enableHighAccuracy: true,
+      };
       let coordinates = await this.geolocation.getCurrentPosition(options);
       this.latitude = coordinates.coords.latitude;
       this.longitude = coordinates.coords.longitude;
@@ -613,7 +693,7 @@ export class RestService {
     } catch (error) {
       return {
         latitude: this.latitude,
-        longitude: this.longitude
+        longitude: this.longitude,
       };
       // this.showToast("Error: " + error);
     }
@@ -621,42 +701,43 @@ export class RestService {
 
   async askLprMode() {
     const alert = await this.alertController.create({
-      header: 'Select a LPR mode...',
+      header: "Select a LPR mode...",
       inputs: [
         {
-          name: 'automatic',
-          type: 'radio',
-          label: 'Automatic',
-          value: 'automatic',
-          checked: true
+          name: "automatic",
+          type: "radio",
+          label: "Automatic",
+          value: "automatic",
+          checked: true,
         },
         {
-          name: 'manual',
-          type: 'radio',
-          label: 'Manual',
-          value: 'manual'
-        }
+          name: "manual",
+          type: "radio",
+          label: "Manual",
+          value: "manual",
+        },
       ],
       buttons: [
         {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
+          text: "Cancel",
+          role: "cancel",
+          cssClass: "secondary",
           handler: () => {
-            console.log('Confirm Cancel');
-          }
-        }, {
-          text: 'Ok',
+            console.log("Confirm Cancel");
+          },
+        },
+        {
+          text: "Ok",
           handler: async (value) => {
-            console.log('Confirm Ok', value);
-            if (value === 'automatic') {
+            console.log("Confirm Ok", value);
+            if (value === "automatic") {
               await this.openCameraMultiplePics();
             } else {
               await this.openCameraSinglePic();
             }
-          }
-        }
-      ]
+          },
+        },
+      ],
     });
 
     await alert.present();
@@ -665,13 +746,12 @@ export class RestService {
   async manageFlashMode(mode = 1) {
     try {
       if (mode === 1) {
-        await this.cameraPreview.setFlashMode('torch');
+        await this.cameraPreview.setFlashMode("torch");
       } else {
-        await this.cameraPreview.setFlashMode('off');
+        await this.cameraPreview.setFlashMode("off");
       }
     } catch (error) {
       await this.showToast(error);
     }
   }
-
 }

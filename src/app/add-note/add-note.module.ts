@@ -1,18 +1,18 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { Routes, RouterModule } from "@angular/router";
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule } from "@ionic/angular";
 
-import { AddNotePage } from './add-note.page';
-import { SharedModule } from '../shared/shared.module';
+import { AddNotePage } from "./add-note.page";
+import { SharedModule } from "../shared/shared.module";
 
 const routes: Routes = [
   {
-    path: '',
-    component: AddNotePage
-  }
+    path: "",
+    component: AddNotePage,
+  },
 ];
 
 @NgModule({
@@ -21,8 +21,8 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     SharedModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
   ],
-  declarations: [AddNotePage]
+  declarations: [AddNotePage],
 })
 export class AddNotePageModule {}
